@@ -1,0 +1,6 @@
+{
+  "name": "mario-02",
+  "seed": 0,
+  "oracle": "",
+  "overrides": "precision='\"32\"' nn.attention_type=torch nn.tri_mult_backend=torch batch_size=1"
+}

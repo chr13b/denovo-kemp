@@ -32,6 +32,13 @@ def test_command_with_and_without_oracle(mod, tmp_path):
     assert not any(a.startswith(("metrics/", "metrics_tags")) for a in without)
 
 
+def test_overrides_are_split_like_a_shell_line(mod, tmp_path):
+    cfg = mod.Config(oracle="", overrides="precision='\"32\"' nn.attention_type=torch batch_size=1")
+    cmd = mod.build_command(cfg, tmp_path)
+    assert cmd[-3:] == ['precision="32"', "nn.attention_type=torch", "batch_size=1"]  # quotes kept for Hydra
+    assert mod.build_command(mod.Config(oracle=""), tmp_path)[-1] == "~metrics"  # no overrides, nothing added
+
+
 @pytest.fixture
 def oracle_env(tmp_path, monkeypatch):
     """A complete oracle setup: apptainer on PATH, image and weights present, cache dir set."""

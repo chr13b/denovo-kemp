@@ -37,6 +37,8 @@ repo's own environment instead of that venv. Record the job ID and run directory
 ## First test
 [experiments/mario-01_rfd4-euler-smoke.md](experiments/mario-01_rfd4-euler-smoke.md): one unconditional monomer through
 the whole path, with the exact command and what is still unverified. Run it before anything larger.
+[experiments/mario-02_rfd4-rtx2080ti-fp32.md](experiments/mario-02_rfd4-rtx2080ti-fp32.md) tries the same on an RTX 2080 Ti
+(not a GPU RFD4 lists as supported) in full precision, through [../scripts/euler_job_rtx2080.sbatch](../scripts/euler_job_rtx2080.sbatch).
 
 ## Euler facts the template relies on
 From the ETH HPC docs, read 2026-11-21: [Slurm](https://docs.hpc.ethz.ch/batchsystem/slurm/),
