@@ -51,8 +51,8 @@ paste directly. Or use **Git Bash** / **WSL**, where `make` usually exists.
 
 **What `make setup` did:** it created a private Python environment inside the repo and installed git
 hooks. The hooks run automatically when you commit and catch the usual accidents (leftover merge
-markers, huge files, a private key, unformatted code). If a commit is refused, read the message —
-it tells you what to fix. Never bypass it with `--no-verify`.
+markers, huge files, a private key, unformatted code, **and committing to `main` by mistake**).
+If a commit is refused, read the message — it tells you what to fix. Never bypass it with `--no-verify`.
 
 ### 1.4 Claim your handle
 
@@ -66,7 +66,7 @@ echo "KEMP_HANDLE=yourhandle" >> .env    # .env is private to you and never comm
 
 ### 1.5 Your first branch
 
-**Never work directly on `main`.** Always work on your own branch:
+**Never work directly on `main`.** Always work on your own branch (the hooks will stop you anyway):
 
 ```bash
 git switch -c yourhandle/first-look     # create and switch to your branch

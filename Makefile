@@ -17,7 +17,7 @@ test:
 	uv run --frozen pytest
 
 lint:  # all pre-commit hooks on all files (incl. ruff and the INDEX check)
-	uv run --frozen pre-commit run --all-files
+	SKIP=no-commit-to-main uv run --frozen pre-commit run --all-files
 
 fmt:  # auto-format and auto-fix
 	uv run --frozen ruff format . && uv run --frozen ruff check --fix .

@@ -76,9 +76,14 @@ pulled, or commit with `--no-verify` to skip the hooks.
 - **Final:** `make reproduce` on a fresh clone must rebuild the submission. Tag what you submit:
   `git tag -a submission-v1 -m "…" && git push origin submission-v1`.
 
-## 6. One-time GitHub settings (repo owner)
+## 6. Protecting `main`
 
-Protect `main` so nobody can push to it by accident and so CI must pass first.
+**Already active for everyone, no setup needed:** after `make setup`, a git hook refuses a direct
+*commit* on `main` and tells you to use a branch. Merges are allowed, so integrating a finished branch
+still works. This is the protection that matters day to day, and it costs nothing.
+
+**Additionally, on GitHub (repo owner, optional):** require a pull request and a green CI run before
+anything lands on `main`.
 
 **With the GitHub CLI** (`gh auth login` once, then copy-paste):
 
