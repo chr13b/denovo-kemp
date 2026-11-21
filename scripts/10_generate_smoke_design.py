@@ -8,7 +8,7 @@ generated (`num_replicates=1`, no torch.compile warm-up); a design file exists a
 is refolded by the OpenFold3 oracle (`--oracle=of3`, the default), which needs apptainer, the oracle image
 and the converted weights (`envs/euler.sh` sets AF3_IMAGE, AF3_MODEL_DIR, AF3_JAX_CACHE_DIR). The oracle's
 pLDDT and the self-consistency RMSD are read from the metrics CSV into summary.json. `--oracle=` (empty)
-skips refolding.
+skips refolding. `--overrides=` adds Hydra arguments to the rfd4-generate command (mario-02 uses it for fp32).
 Does NOT check: Kemp conditioning (annotated CIF, base=/oxy=), the Kemp scoring, or the submission file.
 Run it from the repo root inside the RFD4-Proteina venv (`envs/euler.sh` does that under Slurm).
 """
@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import csv
 import os
+import shlex
 import shutil
 import subprocess
 import sys
@@ -41,6 +42,9 @@ class Config:
     num_replicates: int = 1
     oracle: str = "of3"  # refolding oracle: "of3" (OpenFold3), "af3", or "" to skip refolding and scoring
     metrics_tags: str = "design,unconditional_refolding"  # comma-separated; only used with an oracle
+    # extra Hydra arguments for rfd4-generate, split like a shell command line, so a value that must stay a
+    # string needs inner quotes (see configs/mario-02.json); empty adds none
+    overrides: str = ""
 
 
 def check_oracle(oracle: str) -> str | None:
@@ -109,7 +113,7 @@ def build_command(cfg: Config, out_dir: Path) -> list[str]:
         cmd += [f"metrics/refolding_oracles={cfg.oracle}", f"metrics_tags=[{cfg.metrics_tags}]"]
     else:
         cmd.append("~metrics")  # skip scoring: no refolding environment needed
-    return cmd
+    return cmd + shlex.split(cfg.overrides)
 
 
 def generate(cfg: Config, root: Path, out_dir: Path, log_path: Path) -> int:
@@ -139,6 +143,14 @@ def read_oracle_metrics(out_dir: Path) -> dict[str, float | str]:
             except ValueError:
                 out[key] = val
     return out
+
+
+def find_designs(samples: Path) -> list[Path]:
+    """The generated design files: RFD4 writes `<example>/<example>_generated.<ext>` below inference_samples/.
+
+    The refold and its confidences (`*_of3_*`) sit next to it and are not designs.
+    """
+    return sorted(p for p in samples.rglob("*_generated.*") if p.is_file()) if samples.is_dir() else []
 
 
 def read_sequences(path: Path) -> dict[str, str]:
@@ -174,12 +186,12 @@ def main(cfg: Config) -> None:
     out_dir = run.dir / "rfd4"
     exit_code = generate(cfg, root, out_dir, run.dir / "rfd4_generate.log")
     samples = out_dir / "inference_samples"
-    designs = sorted(p for p in samples.glob("*") if p.is_file()) if samples.is_dir() else []
+    designs = find_designs(samples)
 
     summary: dict = {
         "exit_code": exit_code,
         "n_design_files": len(designs),
-        "design_files": [p.name for p in designs],
+        "design_files": [str(p.relative_to(samples)) for p in designs],
         "n_env_packages": n_packages,
         "rfd4_commit": git_commit(root),
     }
@@ -192,6 +204,11 @@ def main(cfg: Config) -> None:
     ok = exit_code == 0 and len(designs) >= 1
     if cfg.oracle:
         summary["oracle"] = cfg.oracle
+        # what envs/euler.sh set for the oracle container (it sets both on a GPU below compute capability 8.0)
+        summary["af3_flash_attention"] = os.environ.get(
+            "AF3_FLASH_ATTENTION_IMPLEMENTATION", "cudnn (RFD4 default)"
+        )
+        summary["xla_flags"] = os.environ.get("XLA_FLAGS", "")
         summary["oracle_metrics"] = read_oracle_metrics(out_dir)
         ok = ok and "oracle.overall_plddt" in summary["oracle_metrics"]  # the refold produced a score
     run.finish(ok=ok, **summary)

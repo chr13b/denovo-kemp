@@ -2,11 +2,11 @@
 
 - **Owner:** mario
 - **Date:** 2026-11-21
-- **Status:** running (attempt 1 failed in the model, see Result)
+- **Status:** done: supported
 - **Question:** Can one RFD4-Proteina design be generated on Euler end to end, and refolded by the OpenFold3 oracle: `sbatch` → RFD4 venv → `rfd4-generate` → a design file → OpenFold3 refold (pLDDT, scRMSD) → a run directory with a summary?
 - **Why it matters:** Nothing else in the campaign works until this does. A failure shows which stage breaks (GPU request and driver, `eth_proxy` and the weight download, the venv, the output path, the oracle container and weights).
 - **Script + config:** `scripts/10_generate_smoke_design.py` + `configs/mario-01.json`
-- **Runs:** not run yet. It will be `$SCRATCH/kemp/runs/<timestamp>_mario-01/` on Euler; record the commit and Slurm job ID here.
+- **Runs:** seven run directories under `$SCRATCH/kemp/runs/` on Euler (table under Result); the successful oracle runs are `20261121-181403_mario-01` and `20261121-181418_mario-01`, both at commit `bcda7ea`.
 
 Status values: `planned`, `running`, `done: supported`, `done: refuted`, `done: inconclusive`, `abandoned`.
 
@@ -45,16 +45,29 @@ It does not test Kemp conditioning (annotated CIF, `base=` / `oxy=`), the Kemp s
 - That `gpumem:35G` is accepted by Slurm and gives a GPU RFD4 supports (`sbatch --test-only` first).
 
 ## Result
+Read from the run directories' `meta.json`, `summary.json` and job logs (2026-11-21):
 
-**Attempt 1, 2026-11-21** (first version of the script: no oracle, `~metrics`, request `gpumem:24G`). The Slurm job
-reached the model: the venv, Hydra, the checkpoint fetch (`Fetching 2 files`) and the input loading worked. It then
-failed in the first encoder forward pass with `RuntimeError: Invalid backend` in `F.scaled_dot_product_attention`
-(`pair_bias_attn.py`). The GPU the job got is not recorded here (it is in the job log's `[euler_job] gpu:` line). RFD4
-lists A100, H100, L40S, RTX 6000 Ada and Blackwell GPUs as tested, so the request was raised to `gpumem:35G` to exclude
-the 24 GB cards. The job also printed `CCD_MIRROR_PATH` / `PDB_MIRROR_PATH` not set warnings.
+| Run (`runs/…_mario-01`) | Commit | GPU | Outcome |
+|---|---|---|---|
+| `161421` | `2a3b7af` | RTX 2080 Ti | bf16 failed in the first forward pass: `RuntimeError: Invalid backend` (`F.scaled_dot_product_attention`) |
+| `174521` | `1ba1129` | TITAN RTX | the same error |
+| `175756` | `1ba1129` | none: "No devices were found" | stopped by the script's GPU check; cause not found |
+| `175810` | `1ba1129` | RTX PRO 6000 Blackwell (97887 MiB) | generation OK (progress bar 0:20), no oracle |
+| `181403` | `bcda7ea` | A100 80GB PCIe | generation and OpenFold3 refold OK: pLDDT 73.62, scRMSD 9.03 |
+| `181418` | `bcda7ea` | RTX PRO 6000 Blackwell | generation and OpenFold3 refold OK: pLDDT 78.98, scRMSD 2.06 |
 
-Attempt 2 (35 GB, OpenFold3 oracle): not run yet. Only numbers read from the run's `summary.json` go here.
+The two Turing cards (2080 Ti, TITAN RTX) failed in bf16; the Ampere and Blackwell cards worked. A design file exists
+in every successful run, and the OpenFold3 oracle ran with the defaults of `envs/euler.sh` (no preflight warning), so
+`apptainer`, the image and the weights are in place on Euler. Every run's `summary.json` still says `ok: false` and
+`n_design_files: 0`: the script looked for the design directly in `inference_samples/`, but RFD4 writes it to
+`inference_samples/<example>/<example>_generated.cif`; fixed in `find_designs` (commit after `4182845`).
+
+Same seed, different GPUs: the designs agree (CA RMSD 0.00–0.10 Å between the A100, Blackwell and 2080 Ti fp32 designs, see
+[mario-02](mario-02_rfd4-rtx2080ti-fp32.md)), but the two refolds of that design differ a lot (scRMSD 9.03 vs 2.06, pLDDT
+73.6 vs 79.0), so one refold of one design says little. The design is 61–62 % Glu (the first 30 residues are all E).
+RFD4's pass criterion for unconditional designs is scRMSD ≤ 1.5 ([metrics reference](https://github.com/RosettaCommons/RFD4-Proteina)); neither refold meets it.
 
 ## Verdict and next step
-
-TODO
+Supported: one design is generated on Euler, refolded by OpenFold3, and the metrics come back, on GPUs with at least
+35 GB (A100, RTX PRO 6000). Not covered: Kemp conditioning (`results/theozymes/`), the Kemp scoring, a second refold
+seed. Next: [theozyme-inputs.md](../theozyme-inputs.md) on Euler, and more than one refold per design.

@@ -37,6 +37,8 @@ repo's own environment instead of that venv. Record the job ID and run directory
 ## First test
 [experiments/mario-01_rfd4-euler-smoke.md](experiments/mario-01_rfd4-euler-smoke.md): one unconditional monomer through
 the whole path, with the exact command and what is still unverified. Run it before anything larger.
+[experiments/mario-02_rfd4-rtx2080ti-fp32.md](experiments/mario-02_rfd4-rtx2080ti-fp32.md) tries the same on an RTX 2080 Ti
+(not a GPU RFD4 lists as supported) in full precision, through [../scripts/euler_job_rtx2080.sbatch](../scripts/euler_job_rtx2080.sbatch).
 
 ## Euler facts the template relies on
 From the ETH HPC docs, read 2026-11-21: [Slurm](https://docs.hpc.ethz.ch/batchsystem/slurm/),
@@ -66,11 +68,16 @@ defines it, read from its checkout on 2026-11-21:
   `/cluster/project/alphafold/alphafold3`. The **weights are not provided** (DeepMind's terms): each user downloads them
   (about 1 GB) from [google-deepmind/alphafold3](https://github.com/google-deepmind/alphafold3), and should keep them out of
   `$SCRATCH` (15-day purge). GPUs below compute capability 8.0 need extra XLA/flash-attention flags (see that page).
+- **Verified (mario-01, 2026-11-21):** with the `envs/euler.sh` defaults the OpenFold3 oracle ran on an A100 80GB and an
+  RTX PRO 6000 Blackwell, so `apptainer`, the image and the weights exist on Euler for these accounts. It returns
+  `oracle.overall_plddt` and `refolded_backbone_rmsd.rmsd` in `inference_metrics/per_example_metrics.csv`.
 - **Mismatch to check:** RFD4 runs `run_alphafold_batch.py` inside its own `af3-open.sif`, while the Euler image ships
   `run_alphafold.py`, so the Euler image is probably not a drop-in for `AF3_IMAGE`. Unverified.
 - [../envs/euler.sh](../envs/euler.sh) sets the three variables (defaults under
   `$HOME/rfd4-proteina/data_path/openfold3/`, the place RFD4's download script uses; override from the shell) and warns,
-  without failing, when the image or weights are missing.
+  without failing, when the image or weights are missing. When `nvidia-smi` reports a compute capability below 8
+  (Turing: RTX 2080 Ti, TITAN RTX) it also sets `AF3_FLASH_ATTENTION_IMPLEMENTATION=xla` and
+  `XLA_FLAGS=--xla_disable_hlo_passes=custom-kernel-fusion-rewriter`, as the Euler AF3 page asks. Not run on a Turing card yet.
 
 ## What the repo already gives us
 - `kemp.run.start_run` writes config, commit, diff, script snapshot, host, GPU and seed into each run directory, so a
@@ -95,8 +102,8 @@ defines it, read from its checkout on 2026-11-21:
   is now `gpumem:35G`. The docs say the RTX Pro 6000 (96 GB) must be requested explicitly and cannot run
   CUDA-12-compiled programs; the job log prints the GPU name, so check which card a job got.
 - `eth_proxy` comes from third-party Euler guides, which say it gives compute nodes internet access; confirm that on a real job.
-- Refolding oracle on Euler: is `apptainer` available on compute nodes, who has the AF3 (or OpenFold3) weights, can the
-  RFD4 image and weights be downloaded (the `eth_proxy` question), and does `APPTAINER_BIND_PATHS` need anything.
+- Refolding oracle on Euler: works with the defaults on an A100 and a Blackwell card. Still open: the oracle on a Turing
+  card (mario-02 part 2), and the `eth_proxy` question (the weights were already in place).
 - Whether `kemp.run` should record `SLURM_JOB_ID` in each run's `meta.json` (it does not today).
 - Annotated-CIF inputs: the check of `results/theozymes/` on Euler ([theozyme-inputs.md](theozyme-inputs.md)) is still to
   do, and so is deriving the `base=` / `oxy=` indices from RFD4-Proteina output. [submission.md](submission.md) still describes the RFD3 + LigandMPNN summary

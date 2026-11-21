@@ -32,6 +32,29 @@ def test_command_with_and_without_oracle(mod, tmp_path):
     assert not any(a.startswith(("metrics/", "metrics_tags")) for a in without)
 
 
+def test_overrides_are_split_like_a_shell_line(mod, tmp_path):
+    cfg = mod.Config(oracle="", overrides="precision='\"32\"' nn.attention_type=torch batch_size=1")
+    cmd = mod.build_command(cfg, tmp_path)
+    assert cmd[-3:] == ['precision="32"', "nn.attention_type=torch", "batch_size=1"]  # quotes kept for Hydra
+    assert mod.build_command(mod.Config(oracle=""), tmp_path)[-1] == "~metrics"  # no overrides, nothing added
+
+
+def test_find_designs_looks_in_the_example_folder(mod, tmp_path):
+    assert mod.find_designs(tmp_path / "missing") == []
+    folder = tmp_path / "inference_samples" / "monomer-short"
+    folder.mkdir(parents=True)
+    for name in (
+        "monomer-short_generated.cif",
+        "monomer-short_of3_refolded.cif",
+        "monomer-short_of3_confidences.json",
+    ):
+        (folder / name).write_text("")
+    found = mod.find_designs(tmp_path / "inference_samples")
+    assert [p.name for p in found] == [
+        "monomer-short_generated.cif"
+    ]  # the refold and its confidences do not count
+
+
 @pytest.fixture
 def oracle_env(tmp_path, monkeypatch):
     """A complete oracle setup: apptainer on PATH, image and weights present, cache dir set."""

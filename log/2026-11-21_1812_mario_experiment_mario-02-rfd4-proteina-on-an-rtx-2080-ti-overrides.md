@@ -1,0 +1,6 @@
+# [2026-11-21 18:12] experiment | mario-02: RFD4-Proteina on an RTX 2080 Ti, overrides option (mario)
+
+- Question from mario: how to run RFD4-Proteina on an RTX 2080 Ti. From its code and docs: default `precision=bf16-mixed` (no native bf16 on Turing, and the attention runs in the autocast dtype); cuEquivariance triangle kernels assert bf16; `precision` accepts `"32"`; docs say to start at `batch_size=1` when memory is short. The card is not on RFD4's tested list.
+- `scripts/10_generate_smoke_design.py` gets `--overrides` (extra Hydra arguments, split with `shlex`, so a quoted value like `precision='"32"'` keeps its quotes); test added.
+- New `scripts/euler_job_rtx2080.sbatch`: only the Slurm request differs (`--gpus=rtx_2080:1`, 2 h, job name mario-02), then it runs `euler_job.sbatch`. Dry-run locally with faked Slurm and Euler pieces: the payload ran through the wrapper.
+- New experiment `wiki/experiments/mario-02_rfd4-rtx2080ti-fp32.md` and `configs/mario-02.json` (no oracle; `precision="32"`, `nn.attention_type=torch`, `nn.tri_mult_backend=torch`, `batch_size=1`). Not run on Euler. Unverified: that `rtx_2080` is the 2080 Ti, that 11 GB suffice in fp32, that the overrides are accepted, and the oracle on Turing (needs XLA flags and `AF3_FLASH_ATTENTION_IMPLEMENTATION=xla`; AF2 needs compute capability 8.0+).
