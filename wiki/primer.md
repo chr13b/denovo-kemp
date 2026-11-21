@@ -548,6 +548,33 @@ remembering as a mistake.
 So backbone diversity has to come from **more RFD3 seeds on the 4BS0 motif**, which is the cheap axis
 anyway at 12 min each. The motif-extraction tooling still works and stays available.
 
+### (g6b) Designability rank-orders backbones (ρ = 0.94) but says nothing about a sequence (r = 0.12)
+
+Six backbones swept under one protocol, ranked by designability:
+
+| backbone | n | median CA RMSD | **median base** | best base | in window |
+|---|---|---|---|---|---|
+| **seed 4** | 72 | **0.77 Å** | **5.12 Å** | 2.38 | **2/72** |
+| 4BS0_A fresh | 32 | 1.33 | 6.66 | 2.90 | 0/32 |
+| seed 3 | 48 | 1.53 | 7.45 | 3.86 | 0/48 |
+| 8USL_B | 32 | 1.99 | 9.73 | 3.52 | 0/32 |
+| Trp44 (3 anchors) | 72 | 2.02 | 7.64 | 3.26 | 0/72 |
+| seed 5 | 48 | 10.67 | 11.32 | 3.33 | 0/48 |
+
+| relationship | statistic |
+|---|---|
+| **across backbones**: median CA RMSD vs **median** base contact | **Spearman ρ = +0.943** |
+| **within** seed 4 (n=72): a sequence's CA RMSD vs its base contact | **r = +0.122** |
+
+These are not in conflict — the distinction is the point. **A backbone's designability almost
+perfectly predicts how close its ligand ends up. An individual sequence's refold quality predicts
+nothing about its own contact.** Hence the funnel: screen backbones on designability, then sample
+sequences blind, because no per-sequence filter exists and folding costs 19 s anyway.
+
+**A statistic to avoid:** ranking backbones by their *best* contact gives ρ = +0.486 instead of
++0.943, because best-of-72 beats best-of-32 by construction. When sample sizes differ, compare
+medians, not minima. I nearly reported the weak number as the result.
+
 ### (g7) The funnel all four experiments point at
 
 Everything measured so far collapses into one procedure:
