@@ -52,6 +52,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/experiments/chris-04_sequence-oversampling-fixed-backbone.md](wiki/experiments/chris-04_sequence-oversampling-fixed-backbone.md) — **Idea A**: 72 sequences on one fixed backbone; is the base drift sequence-level or backbone-level?
 - [wiki/experiments/chris-05_trp44-three-anchor-retested.md](wiki/experiments/chris-05_trp44-three-anchor-retested.md) — **Idea B**: zonghu's Trp44 theozyme, retested with 72 sequences instead of 1
 - [wiki/experiments/chris-06_motif-library-kemp-family.md](wiki/experiments/chris-06_motif-library-kemp-family.md) — **Idea C**: four RFD3 motifs from the family's own crystal structures
+- [wiki/experiments/chris-07_rescue-written-off-backbones.md](wiki/experiments/chris-07_rescue-written-off-backbones.md) — were seeds 2/3/5 ever bad, or did they just draw one bad sequence?
 - [wiki/data.md](wiki/data.md) — dataset registry: source, version, sha256, how to fetch
 - [wiki/decisions.md](wiki/decisions.md) — decision records (append-only, dated): what we chose, why, alternatives
 - [wiki/pitch.md](wiki/pitch.md) — the story for the final presentation, kept current
