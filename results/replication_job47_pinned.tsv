@@ -1,0 +1,31 @@
+seed	name	kind	pinned_base	pinned_donor	scan_base	scan_donor	scan_base_residue	scan_donor_residue	in_base_window	in_donor_window	iptm	complex_plddt	status
+1	c_s024	design	2.5131	3.5154	2.5131	3.5154	ASP86:OD2	GLN52:NE2	yes	yes	0.8843	0.9495	measured
+1	c_s059	design	4.6949	4.5155	4.6949	2.7508	ASP86:OD2	ASN217:ND2	no	no	0.8214	0.9389	measured
+1	c_seed4_original	design	2.8082	3.9690	2.8082	3.7104	ASP86:OD2	ASN217:ND2	no	no	0.8292	0.9455	measured
+1	c_4BS0	control			2.1888	5.9809	ASP129:OD2	GLN209:NE2	no	no	0.7275	0.6931	measured
+1	c_3NYD	control			2.7927	4.6394	ASP127:OD2	GLN207:NE2	no	no	0.8127	0.7934	measured
+1	c_7K4U	control			2.4468	3.2176	ASP132:OD2	GLN212:NE2	yes	yes	0.8914	0.7779	measured
+2	c_s024	design	2.4754	3.5705	2.4754	3.5705	ASP86:OD2	GLN52:NE2	yes	yes	0.8898	0.9517	measured
+2	c_s059	design	2.6215	3.8791	2.6215	2.7040	ASP86:OD2	GLN49:NE2	yes	no	0.8339	0.9397	measured
+2	c_seed4_original	design	6.1746	7.0838	6.1746	2.8158	ASP86:OD2	GLN119:NE2	no	no	0.8145	0.9443	measured
+2	c_4BS0	control			2.1547	6.9668	ASP129:OD2	THR127:OG1	no	no	0.7907	0.7267	measured
+2	c_3NYD	control			2.6353	4.5765	ASP127:OD2	GLN37:NE2	yes	no	0.8044	0.7890	measured
+2	c_7K4U	control			2.4354	2.9161	ASP132:OD2	GLN55:NE2	yes	no	0.9036	0.7669	measured
+3	c_s024	design	3.7839	5.5269	3.7839	2.8053	ASP86:OD2	ASN217:ND2	no	no	0.8676	0.9454	measured
+3	c_s059	design	2.7225	3.8238	2.7225	2.7139	ASP86:OD2	GLN49:NE2	no	no	0.8392	0.9399	measured
+3	c_seed4_original	design	3.8648	3.5492	3.8648	3.5492	ASP86:OD2	GLN52:NE2	no	yes	0.8289	0.9392	measured
+3	c_4BS0	control			2.2083	5.1872	ASP129:OD2	THR267:OG1	no	no	0.7376	0.7148	measured
+3	c_3NYD	control			4.0798	4.1113	ASP127:OD2	GLN207:NE2	no	no	0.7660	0.7492	measured
+3	c_7K4U	control			2.9248	4.3632	ASP132:OD1	SER239:OG	no	no	0.8702	0.7267	measured
+4	c_s024	design	2.5547	3.8401	2.5547	3.8401	ASP86:OD2	GLN52:NE2	yes	no	0.8883	0.9536	measured
+4	c_s059	design	2.6290	4.8534	2.6290	2.7262	ASP86:OD2	GLN49:NE2	yes	no	0.8355	0.9406	measured
+4	c_seed4_original	design	2.7026	3.3102	2.7026	3.3102	ASP86:OD2	GLN52:NE2	no	yes	0.8478	0.9492	measured
+4	c_4BS0	control			3.1852	6.9091	ASP129:OD2	THR267:OG1	no	no	0.7115	0.7078	measured
+4	c_3NYD	control			3.3642	3.7368	ASP127:OD2	GLN207:NE2	no	no	0.7688	0.7653	measured
+4	c_7K4U	control			2.4280	5.8435	ASP132:OD2	GLN55:NE2	yes	no	0.8855	0.7593	measured
+5	c_s024	design	2.4996	3.5913	2.4996	3.5913	ASP86:OD2	GLN52:NE2	yes	yes	0.8741	0.9519	measured
+5	c_s059	design	3.4107	3.9312	3.4107	2.9534	ASP86:OD2	ASN217:OD1	no	no	0.7973	0.9415	measured
+5	c_seed4_original	design	3.0503	4.5275	3.0503	3.6668	ASP86:OD2	ASN217:ND2	no	no	0.8396	0.9442	measured
+5	c_4BS0	control			2.0516	5.4489	ASP129:OD2	GLN209:NE2	no	no	0.7498	0.6999	measured
+5	c_3NYD	control			2.7202	3.6898	ASP127:OD1	SER234:OG	no	no	0.8083	0.7291	measured
+5	c_7K4U	control			2.7210	3.8400	ASP132:OD2	GLN212:NE2	no	no	0.8635	0.7761	measured

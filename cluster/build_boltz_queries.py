@@ -105,11 +105,19 @@ for extra in sys.argv[4:]:
     for header, sequence in parse_fasta(Path(extra)):
         if sequence in seen:
             continue
+        # A header in the SUBMISSION format - ">name base=86 oxy=52" - declares where the scorer
+        # measures. Honour it: such a record is a design, and gets the scorer's pinned measurement
+        # instead of the numbering-agnostic scan. The scan takes the nearest candidate atom over the
+        # whole protein, so it can only read equal or SHORTER than the declared residue, and for the
+        # donor it often latched onto a different Gln/Asn (job 47: s059's donor read 2.7-2.95 A by
+        # scan and 3.82-4.85 A at the declared Gln52). Headers without base=/oxy= stay controls.
+        declared = dict(HEADER.findall(header))
+        is_design = declared.get("base", "").isdigit() and declared.get("oxy", "").isdigit()
         record = {
-            "name": f"c_{header.split()[0]}",
+            "name": f"{'d' if is_design else 'c'}_{header.split()[0]}",
             "sequence": sequence,
             "length": len(sequence),
-            "source": "control",
+            "source": "submission" if is_design else "control",
             "temperature": float("nan"),
             "ligandmpnn_id": None,
             "seed": None,
@@ -117,8 +125,11 @@ for extra in sys.argv[4:]:
             "ligand_confidence": float("nan"),
             "seq_rec": float("nan"),
             "duplicates": 0,
-            "kind": "control",
+            "kind": "design" if is_design else "control",
         }
+        if is_design:
+            record["base_position"] = int(declared["base"])
+            record["donor_position"] = int(declared["oxy"])
         records.append(record)
         seen[sequence] = record
 

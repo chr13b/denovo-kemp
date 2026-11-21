@@ -2,7 +2,7 @@
 
 The story for the final presentation, kept current as results come in, so the slides take 30 minutes
 and not 3 hours. Every number here is read from a run's files and links to an experiment page.
-**Status: draft on real results as of 2026-11-21; job 47 (5-seed replication) still outstanding.**
+**Status: draft on real results as of 2026-11-21. The 5-seed replication (job 47) is in and has cut the headline from two designs to one.**
 
 ---
 
@@ -50,18 +50,28 @@ dozen.
 
 ## 3. Results — headline
 
-**On a backbone whose single original sequence missed both targets, 2 of 72 sampled sequences land
-inside both crystal windows — and both are novel folds.**
+**One sequence out of 72 on seed 4's backbone holds both catalytic contacts inside the crystal windows
+in 3 of 5 independent Boltz-2 seeds, where the pipeline's own sequence holds them in 0 of 5 — and it is
+a novel fold.** A second sequence that looked equally good in one fold did not survive replication.
 
-| | base (2.41–2.69) | donor (2.92–3.60) | novelty (qTM vs 40k PDB reps) |
-|---|---|---|---|
-| the pipeline's single sequence | 3.32 ✗ | 3.75 ✗ | 0.550 |
-| **s024** | **2.49 ✓** | **3.53 ✓** | **0.561 PASS** |
-| **s059** | **2.59 ✓** | **3.48 ✓** | **0.546 PASS** |
-| family crystals | median **2.51** | median 3.03 | — |
+Measured at the scorer's declared positions (`base=86`, `oxy=52`), five seeds each (`results/replication_job47_pinned.tsv`):
 
-s024's base contact is 2.49 Å against a family median of 2.51 Å, at **≤3 % sequence identity** to
-anything in the PDB. Same backbone, same motif — only the sequence changed.
+| | base mean ± sd (2.41–2.69) | donor mean ± sd (2.92–3.60) | both in window | novelty (qTM) |
+|---|---|---|---|---|
+| the pipeline's single sequence | 3.72 ± 1.29 | 4.49 ± 1.36 | 0 / 5 | 0.550 |
+| **s024** | **2.77 ± 0.51** (4/5 in) | 4.01 ± 0.77 (median 3.59; 3/5 in) | **3 / 5** | **0.561 PASS** |
+| s059 — *dropped* | 3.22 ± 0.80 (2/5 in) | 4.20 ± 0.41 (0/5 in) | 0 / 5 | 0.546 |
+| family crystals | median 2.51 | median 3.03 | — | — |
+
+Read this honestly: s024 is a real but imperfect candidate. Its base is tight in four seeds (2.48–2.55 Å)
+and one seed lost the ligand entirely (3.78 / 5.53 Å), and the scorer rewards consistency. In a single
+fold, s024 and s059 looked identical (2.49 / 3.53 and 2.59 / 3.48); replication separated them. **Half of
+our single-fold "hits" were noise** — which is why the funnel now ends in replication.
+
+For scale, the three natural Kemp eliminases folded by the same procedure land in both windows in 0/5,
+0/5 and 1/5 seeds (their sequences carry no MSA, so this is a handicapped comparison and we do not
+rely on it). s024 is at ≤3 % sequence identity to anything in the PDB. Same backbone, same motif — only
+the sequence changed.
 
 Supporting measurements, each cheap and each changing a decision:
 
@@ -78,8 +88,9 @@ Supporting measurements, each cheap and each changing a decision:
 ## 4. What is next, and why it matters
 
 **Next, concretely:**
-1. **Replicate every candidate over 5 Boltz-2 seeds** before it takes a submission slot — this is also
-   the organizers' own consistency term (job 47).
+1. **Replicate every candidate over 5 Boltz-2 seeds at the declared positions** before it takes a
+   submission slot (done for s024 and s059; `cluster/replicate_seeds.sbatch` now reads `base=`/`oxy=`
+   from a submission-format FASTA, so `results/designs.fasta` itself can be replicated).
 2. **Fill the 20 slots across different folds.** All 72 designs from one backbone are *one* fold at
    qTM 0.98–0.99, so sequence sampling buys geometry but no diversity. Backbones come from different
    crystal *arrangements* of the same two anchors (`cluster/build_family_motifs.py`).

@@ -85,8 +85,10 @@ for path in sorted(glob.glob(os.path.join(root, "seed*", "geometry.tsv"))):
             if values.get("status") != "measured":
                 continue
             try:
-                base = float(values["scan_base"])
-                donor = float(values["scan_donor"])
+                # Prefer the scorer's pinned measurement; fall back to the scan only for controls,
+                # whose residue numbering differs per construct.
+                base = float(values.get("pinned_base") or values["scan_base"])
+                donor = float(values.get("pinned_donor") or values["scan_donor"])
             except (KeyError, ValueError):
                 continue
             rows.setdefault(values["name"], []).append((seed, base, donor))

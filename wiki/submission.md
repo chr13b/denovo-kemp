@@ -71,7 +71,7 @@ Measured so far, all from `wiki/experiments/chris-04..07`:
 | quantity | measured value |
 |---|---|
 | RFD3 backbones that are **designable** (median CA RMSD < 2 Å over a sweep) | **2 of 5** seeds (3 and 4); seeds 2 and 5 are not |
-| in-window hit rate on a designable backbone | **2 of 72** sequences (~3 %) — and the Trp44 backbone gave 0 of 72 |
+| in-window hit rate on a designable backbone | **2 of 72** in a single fold (~3 %), **1 of 72 (~1.4 %) after 5-seed replication**; the Trp44 backbone gave 0 of 72 |
 | cost per backbone | 12 min RFD3 + ~25 min for a 72-sequence sweep ≈ **37 min** |
 | distinct folds per backbone | **1** — 71 of 72 designs cluster at qTM 0.98–0.99 |
 

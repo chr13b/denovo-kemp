@@ -68,7 +68,7 @@ the organizers' pipeline sampled missed both.**
 
 s024's base contact is 2.49 Å against a family median of 2.51 Å. Both designs pass the novelty gate
 against all 40,066 PDB representatives at ≤3.0 % sequence identity, and both are banked in
-`results/designs.jsonl` as `chris_osA_01` / `chris_osA_02`.
+`results/designs.jsonl` as `chris_osA_01` / `chris_osA_02`. *(After 5-seed replication, only `chris_osA_01` = s024 stays; see "Job 47 result" below.)*
 
 ### The distribution, and what actually varies
 
@@ -188,3 +188,39 @@ The scorer uses 5 replicates, so a candidate's value is its **replicated** geome
 | mean base ≤ 3.0 Å but < 3 of 5 seeds inside | plausible, noisy | keep as a lower-ranked candidate |
 | mean base > 3.0 Å | it was a lucky draw | drop; the Idea A headline weakens to "a backbone that occasionally lands near the window" |
 | the natural enzymes are themselves in-window in < 3 of 5 seeds | the *instrument* cannot hit the window reliably | recalibrate the target to the natural enzymes' replicated mean, and ask the organizers what the scorer's reference values are |
+
+## Job 47 result — read against the rule above
+
+Five Boltz seeds, same sequences, measured at the scorer's **declared** positions (`base=86`, `oxy=52`).
+`results/replication_job47_pinned.tsv` holds every sequence × seed with both measurements.
+
+| sequence | base mean ± sd | base in window | donor mean ± sd | donor in window | both | per-seed (base / donor) |
+|---|---|---|---|---|---|---|
+| **s024** | **2.77 ± 0.51** | 4/5 | 4.01 ± 0.77 | 3/5 | **3/5** | 2.51/3.52 · 2.48/3.57 · **3.78/5.53** · 2.55/3.84 · 2.50/3.59 |
+| s059 | 3.22 ± 0.80 | 2/5 | 4.20 ± 0.41 | **0/5** | 0/5 | 4.69/4.52 · 2.62/3.88 · 2.72/3.82 · 2.63/4.85 · 3.41/3.93 |
+| seed 4, the pipeline's sequence | 3.72 ± 1.29 | 0/5 | 4.49 ± 1.36 | 2/5 | 0/5 | 2.81/3.97 · 6.17/7.08 · 3.86/3.55 · 2.70/3.31 · 3.05/4.53 |
+
+**Applying the pre-registered rule:**
+- **s024: confirmed** (base and donor both in window in 3 of 5 seeds). Kept in `results/designs.jsonl`.
+  It is not a tight design: one seed lost the ligand (3.78 / 5.53 Å), and the donor mean (4.01) is pulled
+  above the window by it (median 3.59).
+- **s059: dropped** (mean base 3.22 > 3.0 Å, donor never in window). Commented out of `designs.jsonl`
+  with the reason, not deleted.
+- **Natural enzymes: the "instrument cannot hit the window" row fires** (both windows in 0/5, 0/5, 1/5
+  seeds). I am *not* recalibrating the target on that: the controls fold single-sequence with no MSA, as
+  natural 307–318-residue constructs, which handicaps Boltz-2 far more than it handicaps a de novo
+  design. The right response is the open question to the organizers about the scorer's reference values.
+
+**What this does to Idea A's headline.** The single-fold hit rate of 2/72 became a replicated yield of
+**1/72**: half of the single-fold hits did not survive. The funnel therefore has to over-select at the
+single-fold stage and replicate afterwards — which is what the plan already does.
+
+### A measurement error I made, and caught before reporting it
+The replication was first tabulated with the numbering-agnostic **scan** (nearest carboxylate O, nearest
+donor atom, anywhere in the protein) because the sequences entered as a plain FASTA with no declared
+positions. For the base the scan always picked the declared Asp86, so base numbers were unaffected. For
+the **donor** it often picked a different, closer atom (ASN217, GLN49, GLN119) than the declared GLN52,
+so it understated the distance the scorer measures: s059's donor read 2.70–2.95 Å by scan and is
+3.82–4.85 Å at GLN52; s024's mean read 3.46 and is 4.01. The table above is the pinned re-measurement.
+`cluster/build_boltz_queries.py` now takes `base=` / `oxy=` from FASTA headers, so this cannot recur
+for a submission-format file.

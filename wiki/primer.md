@@ -566,6 +566,14 @@ Three consequences, and the third is uncomfortable:
    read 2.5 Å once; designs we discarded may be better than they looked. Job 47's 5-seed replication
    is not a nicety — without it we cannot say s024 is a good design, only that it drew a good number.
 
+### (g5c) Replication changed the answer: 1 of 2 single-fold hits survived
+
+Five seeds at the scorer's declared positions (`results/replication_job47_pinned.tsv`): **s024** holds
+base and donor in-window in 3/5 seeds (base 2.77 ± 0.51 Å); **s059** in 0/5 (base 3.22 ± 0.80, donor
+never below 3.82 Å) though it looked identical to s024 in one fold. A single-fold "in window" call was
+right half the time. Measure at the *declared* positions, not by scan: a nearest-atom scan can only read
+equal or shorter, and for the donor it latched onto other Gln/Asn residues and made s059 look fine.
+
 ### (g6) Motif variety: one alternative arrangement looked worse than 4BS0 (weak evidence)
 
 > **Evidence grade, corrected:** one backbone per motif. Within the 4BS0 motif alone, RFD3 seeds give
@@ -926,7 +934,7 @@ written before any result existed.
 
 | | what it does | job | outcome |
 |---|---|---|---|
-| **A** | 72 sequences on seed 4's existing backbone | **27** | ✅ **SUPPORTED — 2 designs inside both windows, both novel** |
+| **A** | 72 sequences on seed 4's existing backbone | **27** | ✅ **supported, smaller than first reported** — 2 single-fold hits; **1 survived 5-seed replication** (s024, 3/5 seeds both in window; s059 0/5) |
 | **B** | 72 sequences on zonghu's Trp44 backbone | **31** | ⚠️ **inconclusive, leans negative** — 0/72, but n = 1 backbone and the comparison is against our best seed |
 | **C** | RFD3 on 4BS0_A vs 8USL_B, each chaining a sweep | **34** → 35, 36 | ⚠️ **inconclusive** — one backbone per motif; seed-to-seed spread within a motif is as large as the gap |
 | controls | 4BS0 / 3NYD / 7K4U folded in every batch | (bundled) | ✅ base validated, donor not — see (g2) |
@@ -1025,7 +1033,7 @@ compute goes.
 
 | | prediction | outcome |
 |---|---|---|
-| **A** sequence oversampling | "should find in-window designs" | ✅ **2/72, both novel** — the lever |
+| **A** sequence oversampling | "should find in-window designs" | ✅ **2/72 single-fold, 1/72 after replication** — still the lever, and a 50 % false-positive rate for one-fold calls |
 | **B** third anchor | "better posed, should win" | ❌ 0/72, worse on every axis — anchors cost designability (g4) |
 | **C** motif variety | "4BS0's placement may be unusually hard" | ❌ 4BS0 is the *best* arrangement, being HG3.17's own (g6) |
 
