@@ -939,25 +939,40 @@ Cheapest useful version: cluster the 26 copies by their base/donor/ligand intern
 3–4 distinct arrangements, run one RFD3 job each, then Idea A on top of every backbone that comes out.
 `results/kemp_family_geometry.tsv` already holds the measurements.
 
-### How they compose
+### How they turned out — this is the decision
 
-They are not alternatives — they stack, and A is the multiplier on both others:
+I expected the three to stack, with A multiplying B and C. **They did not. Two of the three are dead,
+and the survivor is better than the stack would have been**, because it is specific about where the
+compute goes.
+
+| | prediction | outcome |
+|---|---|---|
+| **A** sequence oversampling | "should find in-window designs" | ✅ **2/72, both novel** — the lever |
+| **B** third anchor | "better posed, should win" | ❌ 0/72, worse on every axis — anchors cost designability (g4) |
+| **C** motif variety | "4BS0's placement may be unusually hard" | ❌ 4BS0 is the *best* arrangement, being HG3.17's own (g6) |
+
+Both failures were informative in the same way: they showed that the thing that varies between
+backbones is not geometry — every backbone has perfect geometry — but **designability**, how readily
+a sequence can be written for it. That is measurable, cheap, and invisible in everything the pipeline
+reports about a single design. See §5(g4), (g6) and the funnel in §5(g7).
+
+**What we commit to:**
 
 ```
-       C (motif variety)        B (third anchor)
-              │                        │
-              └──────────┬─────────────┘
-                         ▼
-              RFD3  →  backbone with perfect geometry   (12 min, already solved)
-                         ▼
-              A: 64 × (LigandMPNN + Boltz-2)            (27 min, never attempted)
-                         ▼
-              keep base ∈ [2.41, 2.69] Å  →  novelty gate  →  submit
+RFD3 on the 4BS0 motif, many seeds       12 min each  — backbones are cheap and are the bottleneck
+        ↓
+short sweep (~16-32 seq) → median CA RMSD  ~7-16 min  — SCREEN ON DESIGNABILITY, keep < ~1.5 A
+        ↓                                                (2 of 5 seeds passed)
+deep sweep (72+ seq) at T = 0.2-0.3        ~25 min    — ~3 % land in the window
+        ↓                                                (32 seq is under-powered: P(0 hits) = 0.38)
+5-seed replication of the hits             ~10 min    — noise is 0.43 A, the window is 0.28 A
+        ↓
+novelty gate  →  bank  →  submit across folds
 ```
 
-Order of execution: **A first, on seed 4's existing backbone** — 27 minutes, no new tooling, and it
-tells us whether a backbone-level floor exists before we spend GPU-hours making more backbones. Then B
-and C in parallel on the two idle `l4small` nodes, with A applied to everything they produce.
+What we explicitly do **not** do, each with a measured reason: add motif anchors (g4), use other
+family motifs (g6), chase MSA depth (§6b), relax with force fields (§6b), build a pre-fold learned
+filter (d2b — nothing we can compute beats r = +0.12), or trust any single fold's geometry (g5).
 
 ### Two controls to run alongside (19 s and 2 min, both overdue)
 
