@@ -267,13 +267,32 @@ These are our own numbers, not assumptions.
 RFD3's reported contact distances are **2.527 Å and 3.09 Å in every single run**, because `Kemp.json`
 pins those motif atoms and the ligand. They are an *input*, not a result. You cannot screen on them.
 
-### (b) Designs either fold or they explode — nothing in between
+### (b) Designs mostly fold or explode — but the gap is not empty
 
-CA RMSD between the RFD3 backbone and the Boltz-2 prediction came out as **{0.70, 1.36, 1.43}** or
-**{13.67, 14.63}**. Nothing between 1.4 and 13.7. When it fails, the ligand leaves the site entirely
-(contacts of 15–22 Å) and iPDE collapses to 5.5–6.7.
+Our first five runs gave CA RMSD of **{0.70, 1.36, 1.43}** or **{13.67, 14.63}** — nothing between 1.4 and
+13.7, which looked cleanly bimodal. **zonghu's job 7 lands at 4.26 Å**, in the middle. So "binary" was an
+artefact of n=5; treat it as *strongly* bimodal with a sparsely populated middle, not a law.
 
-So the first question is never "how good is this design" but **"did it fold at all"** — one number.
+When a design does collapse, the ligand leaves the site entirely (contacts of 12–26 Å) and the catalytic
+geometry is gone. The first question is still **"did it fold at all"**, and CA RMSD is still the cheapest
+way to ask it — but use a threshold, not a presumed gap.
+
+### (b2) High confidence does **not** mean good catalytic geometry
+
+zonghu's job 7 is the clearest warning we have. Its global metrics look **better than our best design**:
+
+| | zonghu-07 | our seed 4 |
+|---|---|---|
+| `iptm` | **0.869** | 0.846 |
+| `complex_ipde` | 1.665 | 1.518 |
+| CA RMSD | 4.26 Å | 0.70 Å |
+| **base contact** | **11.99 Å** ✗ | 3.32 Å |
+| **donor contact** | **26.49 Å** ✗ | 3.75 Å |
+
+Boltz-2 is *confident* about where it put the ligand. It just put it 26 Å from the catalytic donor.
+`iptm` and `iPDE` measure how sure the model is, **not whether the chemistry is right**. Any filter built
+only on confidence metrics would have ranked this failed design above our best one. **Always measure the
+two catalytic distances explicitly.**
 
 ### (c) Roughly half of everything fails
 
@@ -459,6 +478,113 @@ if we accumulate 30–50 designs a simple logistic regression on those features 
 
 **What would change my answer:** a multi-day timeline, or discovering that burial and the other free
 features do *not* predict folding success — because then a learned filter would be the only route left.
+
+---
+
+---
+
+## 6b. Plausible ideas that do **not** work here, and why
+
+Each of these is a good instinct in a different setting. The reason they fail here is almost always the
+same: **we submit a sequence, and the organizers fold it themselves.** Nothing we compute on a structure
+is ever seen by the scorer.
+
+### Force-field relaxation (FoldX, Rosetta, OpenMM)
+
+> *"Geometry dominates and distances have an optimum — so relax the structure into ideal geometry."*
+
+**It cannot help the score.** The scored structure is Boltz-2's prediction from *our sequence*, produced
+on the organizers' machine. If we relax a structure locally and the contacts improve, we have improved a
+file that nobody will ever look at. Worse, it is actively misleading: a relaxed model reports distances
+that **differ from the ones actually scored**, so optimising against them optimises the wrong target.
+
+Where a force field *could* earn its place is as a **selection** signal — "this sequence's predicted
+structure is strained or clashing, so drop it". But we can already detect that directly from the Boltz-2
+output: `ligand_protein_pairs_below_2_2_angstrom` counts clashes, and we have exact target distances from
+4BS0. A force field would add licensing friction (FoldX and Rosetta both need registration) for
+information we already have. **Recommendation: no.**
+
+### Importing or transplanting an MSA
+
+> *"Our designs have MSA depth 1 — why not give them an MSA from a similar PDB structure?"*
+
+Two reasons, the second decisive.
+
+1. **It would be wrong.** An MSA encodes the evolutionary covariation of *a particular protein family*.
+   Pairing our sequence with HG3.17's alignment tells the folder "positions i and j co-vary" about a
+   protein that is not ours. That is injecting false evidence, and the resulting structure prediction is
+   not trustworthy.
+2. **We do not control it.** We submit **sequence only**. The organizers run their own MSA search on it.
+   Whatever they find — almost certainly depth 1 — is what they use. There is no field in a FASTA header
+   for an alignment. The MSA is simply not ours to change.
+
+The MSA finding ([§5e](#e-the-msa-step-costs-45-of-our-runtime-and-returns-nothing)) matters for **our own
+screening speed**, not for the score.
+
+### Chasing MSA depth by designing less novel proteins
+
+The tension in §5g is real in principle, but **our own data argues against acting on it**: seed 4 has
+MSA depth 1 and still reaches `complex_plddt` **0.947** and `iptm` **0.846**. Boltz-2 folded it
+confidently with no evolutionary information at all. Deliberately trading novelty — the one hard gate —
+for an MSA we have not shown we need would be a bad trade on current evidence. **Revisit only if we see
+designs failing with low pLDDT specifically attributable to shallow MSAs.**
+
+---
+
+## 6c. What to actually do with a learned filter
+
+The logistic regression idea is often misunderstood as "a model that designs proteins". It does not
+design anything. It answers one question: **"given what I can measure cheaply, should I spend the
+expensive step on this candidate?"**
+
+With [chris-03](experiments/chris-03_msa-free-boltz-screen.md) the economics changed, and so did the
+target. Evaluation (Boltz-2) is **19 seconds**; generation (RFD3) is **~12 minutes**. So the filter should
+not predict "is this worth folding" — folding is free. It should predict, **from the RFD3 backbone alone,
+whether this backbone is worth sequencing and keeping**, so we stop spending 12-minute generation slots on
+shapes that cannot host a working site.
+
+Features that are free at that point: base burial (CA atoms within 12 Å — a *scored* term), radius of
+gyration, secondary-structure fractions, loop length around the motif, solvent exposure of the base,
+LigandMPNN's own score, and — see below — ligand leverage. Label: did the design survive refolding with
+both catalytic contacts intact.
+
+**We have 6 runs.** That is nowhere near enough; a rule of thumb is ~10 examples per feature, so 4
+features needs ~40 designs. The point of logging features now is that the dataset builds itself while we
+do the work we were going to do anyway. **If we never reach 40 designs, we simply read the table by eye —
+which is also fine, and already told us that CA RMSD separates winners from losers.**
+
+### Can we put chemistry into it?
+
+Yes, in three increasingly interesting ways:
+
+1. **Already there.** LigandMPNN is run with `--ligand_mpnn_use_atom_context 1`: it sees 6NT's actual
+   atoms and their element types when choosing residues. The chemistry is in the model.
+2. **Through the motif.** zonghu's job 7 adds Trp44 — the aromatic that stacks on the ligand in 4BS0 at
+   3.86 Å. That is chemical knowledge encoded as a geometric constraint, which is how this pipeline
+   accepts it.
+3. **Through pKa reasoning, via burial.** The catalytic Asp must stay protonation-competent, which is
+   exactly why "catalytic base burial" is a scored term. Counting CA atoms within 12 Å is a crude proxy
+   for a pKa argument — and it is the one the organizers chose, so it is the one to optimise.
+
+### Ligand leverage: a free feature we are uniquely placed to compute
+
+[Bertsch, *Confidence is not competence*](literature.md) argues that an inverse-folding model's
+**confidence** is blind to binding by construction, and that the binding signal lives in the **mixed
+derivative** — the model's response to *ablating the partner*.
+
+In our pipeline that ablation is **one existing flag**: LigandMPNN runs with
+`--ligand_mpnn_use_atom_context 1`; running it again with `0` is the partner-ablated pass. The per-position
+logit difference is ligand leverage, and it is nearly free (LigandMPNN takes ~6 s).
+
+**As a diagnostic feature this is well motivated:** leverage at the catalytic positions asks *"did the
+sequence designer actually condition on the ligand here, or would it have chosen the same residue with an
+empty pocket?"* A design whose pocket residues show near-zero leverage was never really designed around
+6NT, and is a good candidate to discard early.
+
+**As a steering knob, the paper's own result says be careful:** the actionable tilt "vanishes on fully
+de-novo backbones", and on de novo binders plain confidence outperformed it. Our backbones are fully de
+novo. The honest position is that the *diagnostic* use costs one extra 6-second run and does not depend on
+the contested claim, while the *steering* use is a research question we should not bet the hackathon on.
 
 ---
 
