@@ -2,11 +2,11 @@
 
 - **Owner:** mario
 - **Date:** 2026-11-21
-- **Status:** planned
+- **Status:** running (part 1 done: generation works; part 2, the oracle, not run)
 - **Question:** Can RFD4-Proteina generate one design on an RTX 2080 Ti (Turing, compute capability 7.5, 11 GB) if it runs in full precision (`precision="32"`) with the PyTorch attention and triangle-multiplication paths and `batch_size=1`?
 - **Why it matters:** [mario-01](mario-01_rfd4-euler-smoke.md) asks for a 35 GB GPU (A100 class) after its first attempt failed with `RuntimeError: Invalid backend` in the bf16 attention. The 2080 Ti is not on RFD4's tested list (A100, H100, L40S, RTX 6000 Ada, Blackwell), but if it works it widens the pool of GPUs the campaign can use on Euler. If it fails, we stop looking at pre-Ampere cards.
 - **Script + config:** `scripts/10_generate_smoke_design.py` (its `--overrides` option) + `configs/mario-02.json`; Slurm request in `scripts/euler_job_rtx2080.sbatch`
-- **Runs:** not run yet. It will be `$SCRATCH/kemp/runs/<timestamp>_mario-02/` on Euler; record the commit and Slurm job ID here.
+- **Runs:** `$SCRATCH/kemp/runs/20261121-182146_mario-02/` on Euler, Slurm job 21856801, commit `4182845` (branch `mario-02-rtx2080ti`).
 
 Status values: `planned`, `running`, `done: supported`, `done: refuted`, `done: inconclusive`, `abandoned`.
 
@@ -39,12 +39,22 @@ environment are identical to mario-01. Check the `[euler_job] gpu:` line of the 
 - That the 11 GB are enough in fp32: the model's weight and activation size is unknown here.
 - That `nn.attention_type` and `nn.tri_mult_backend` exist as overrides of the installed checkout (they are in RFD4's CLI reference).
 - That nothing else in the model assumes bf16 or Ampere.
-- Not covered: the refolding oracle on this card. OpenFold3/AF3 would need `XLA_FLAGS=--xla_disable_hlo_passes=custom-kernel-fusion-rewriter` and `AF3_FLASH_ATTENTION_IMPLEMENTATION=xla` (from the Euler AF3 page and RFD4's source), and RFD4's AF2 oracle needs compute capability 8.0 or newer. Try that only if generation works.
+- Part 2, the refolding oracle on this card, is not run yet. OpenFold3/AF3 needs `XLA_FLAGS=--xla_disable_hlo_passes=custom-kernel-fusion-rewriter` and `AF3_FLASH_ATTENTION_IMPLEMENTATION=xla` below compute capability 8.0 (Euler AF3 page, RFD4 source); `envs/euler.sh` now sets both when `nvidia-smi` reports a capability below 8. Whether the container then folds on the 2080 Ti, and whether `XLA_FLAGS` reaches it through apptainer, is untested. RFD4's AF2 oracle needs 8.0 or newer.
 
 ## Result
-
-Not run yet. Only numbers read from the run's `summary.json` go here.
+Part 1 (generation, no oracle), read from the run directory and the job log:
+- GPU `NVIDIA GeForce RTX 2080 Ti`, 11264 MiB, host `eu-lo-g2-023`. `rfd4-generate` exited with 0 after a progress bar
+  of 1:23 (the Blackwell and A100 runs: 0:12 and 0:20, so about 4–7 times slower) and wrote
+  `inference_samples/monomer-short/monomer-short_generated.cif`: one chain, 100 residues.
+- The overrides were accepted (`precision="32"`, `nn.attention_type=torch`, `nn.tri_mult_backend=torch`, `batch_size=1`).
+  Which of them removed the bf16 failure of [mario-01](mario-01_rfd4-euler-smoke.md) was not isolated.
+- Same seed 0 as the other runs: the fp32 design differs from the Blackwell bf16 design by 0.09 Å CA RMSD (1 of 100
+  residues differs in the sequence), and from the A100 design by 0.10 Å, so full precision on Turing reproduces the bf16
+  design. CA–CA distances 3.67–3.94 Å, no CA pairs closer than 3.2 Å (own check of the CIFs, not an RFD4 metric).
+- `summary.json` says `ok: false` and 0 design files: the script's glob missed the example subfolder, fixed afterwards.
+- Not recorded: peak GPU memory; designs longer than 100 residues are untested.
 
 ## Verdict and next step
-
-TODO
+Part 1: supported. RFD4-Proteina generates on an RTX 2080 Ti in fp32 with these overrides. Next: part 2, the oracle on
+this card (`--oracle=of3` on the same config, with the settings `envs/euler.sh` now applies), and a 250-residue example
+(`monomer-long`) at `batch_size=1` to see whether 11 GB are enough.

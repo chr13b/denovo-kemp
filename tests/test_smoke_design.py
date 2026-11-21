@@ -39,6 +39,22 @@ def test_overrides_are_split_like_a_shell_line(mod, tmp_path):
     assert mod.build_command(mod.Config(oracle=""), tmp_path)[-1] == "~metrics"  # no overrides, nothing added
 
 
+def test_find_designs_looks_in_the_example_folder(mod, tmp_path):
+    assert mod.find_designs(tmp_path / "missing") == []
+    folder = tmp_path / "inference_samples" / "monomer-short"
+    folder.mkdir(parents=True)
+    for name in (
+        "monomer-short_generated.cif",
+        "monomer-short_of3_refolded.cif",
+        "monomer-short_of3_confidences.json",
+    ):
+        (folder / name).write_text("")
+    found = mod.find_designs(tmp_path / "inference_samples")
+    assert [p.name for p in found] == [
+        "monomer-short_generated.cif"
+    ]  # the refold and its confidences do not count
+
+
 @pytest.fixture
 def oracle_env(tmp_path, monkeypatch):
     """A complete oracle setup: apptainer on PATH, image and weights present, cache dir set."""

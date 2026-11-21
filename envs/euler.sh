@@ -11,8 +11,8 @@ source "$VENV_ACTIVATE"
 unset VENV_ACTIVATE _nounset
 
 # ---- Refolding oracle (AF3 / OpenFold3), only needed when metrics_tags enable a refolding metric --------
-# NOT VERIFIED on Euler. RFD4-Proteina folds in an Apptainer container and reads these three variables (docs/installation.rst
-# in its checkout). Override them from the shell; the defaults are where its download script puts the files.
+# Verified on Euler 2026-11-21 (mario-01: OpenFold3 refold on an A100 80GB and an RTX PRO 6000 with these defaults).
+# RFD4-Proteina folds in an Apptainer container and reads these three variables (docs/installation.rst in its checkout). Override them from the shell; the defaults are where its download script puts the files.
 # `apptainer` must be on PATH (check `which apptainer` on a compute node).
 #   AF3_IMAGE          RFD4's own container (af3-open.sif, from the Hugging Face repo nvidia/RFD4-Proteina). Not the Euler
 #                      one: /cluster/apps/nss/alphafold/containers/AlphaFold3/af3.sif has run_alphafold.py, while RFD4
@@ -35,3 +35,22 @@ for _v in AF3_IMAGE AF3_MODEL_DIR; do
     [ -e "${!_v:-}" ] || echo "[envs/euler.sh] WARNING: $_v='${!_v:-}' does not exist; refolding metrics will fail (generation with ~metrics is fine)" >&2
 done
 unset _of3_root _v
+
+# ---- GPUs below compute capability 8.0 (Turing: RTX 2080 Ti, TITAN RTX, ...) --------------------------------
+# The Euler AF3 page (docs.hpc.ethz.ch/software/chemistry/alphafold3) says such cards need the XLA attention and one XLA
+# pass switched off. RFD4 passes AF3_FLASH_ATTENTION_IMPLEMENTATION (default cudnn) to the container as a flag, and
+# apptainer hands the host environment, so XLA_FLAGS, on to it. NOT VERIFIED on a Turing card yet (mario-02, part 2).
+_cc="$(nvidia-smi --query-gpu=compute_cap --format=csv,noheader 2>/dev/null | head -1 || true)"
+case "$_cc" in
+    [0-9]*.[0-9]*)
+        if [ "${_cc%%.*}" -lt 8 ]; then
+            export AF3_FLASH_ATTENTION_IMPLEMENTATION="${AF3_FLASH_ATTENTION_IMPLEMENTATION:-xla}"
+            case "${XLA_FLAGS:-}" in
+                *custom-kernel-fusion-rewriter*) ;;
+                *) export XLA_FLAGS="${XLA_FLAGS:+$XLA_FLAGS }--xla_disable_hlo_passes=custom-kernel-fusion-rewriter" ;;
+            esac
+            echo "[envs/euler.sh] compute capability $_cc < 8.0: AF3 attention = $AF3_FLASH_ATTENTION_IMPLEMENTATION, XLA_FLAGS=$XLA_FLAGS" >&2
+        fi
+        ;;
+esac
+unset _cc

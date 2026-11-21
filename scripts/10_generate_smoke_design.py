@@ -145,6 +145,14 @@ def read_oracle_metrics(out_dir: Path) -> dict[str, float | str]:
     return out
 
 
+def find_designs(samples: Path) -> list[Path]:
+    """The generated design files: RFD4 writes `<example>/<example>_generated.<ext>` below inference_samples/.
+
+    The refold and its confidences (`*_of3_*`) sit next to it and are not designs.
+    """
+    return sorted(p for p in samples.rglob("*_generated.*") if p.is_file()) if samples.is_dir() else []
+
+
 def read_sequences(path: Path) -> dict[str, str]:
     """One-letter sequence per chain from the CA atoms of the first model of a plain mmCIF (stdlib only)."""
     cols: list[str] = []
@@ -178,12 +186,12 @@ def main(cfg: Config) -> None:
     out_dir = run.dir / "rfd4"
     exit_code = generate(cfg, root, out_dir, run.dir / "rfd4_generate.log")
     samples = out_dir / "inference_samples"
-    designs = sorted(p for p in samples.glob("*") if p.is_file()) if samples.is_dir() else []
+    designs = find_designs(samples)
 
     summary: dict = {
         "exit_code": exit_code,
         "n_design_files": len(designs),
-        "design_files": [p.name for p in designs],
+        "design_files": [str(p.relative_to(samples)) for p in designs],
         "n_env_packages": n_packages,
         "rfd4_commit": git_commit(root),
     }
@@ -196,6 +204,11 @@ def main(cfg: Config) -> None:
     ok = exit_code == 0 and len(designs) >= 1
     if cfg.oracle:
         summary["oracle"] = cfg.oracle
+        # what envs/euler.sh set for the oracle container (it sets both on a GPU below compute capability 8.0)
+        summary["af3_flash_attention"] = os.environ.get(
+            "AF3_FLASH_ATTENTION_IMPLEMENTATION", "cudnn (RFD4 default)"
+        )
+        summary["xla_flags"] = os.environ.get("XLA_FLAGS", "")
         summary["oracle_metrics"] = read_oracle_metrics(out_dir)
         ok = ok and "oracle.overall_plddt" in summary["oracle_metrics"]  # the refold produced a score
     run.finish(ok=ok, **summary)
