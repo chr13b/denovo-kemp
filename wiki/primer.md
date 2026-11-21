@@ -294,11 +294,24 @@ This is the largest single inefficiency available to us, and §6 Idea 1 exploits
 
 ### (f) Seed 4 is novel — measured, not assumed
 
-Against the whole Kemp-eliminase family downloaded from RCSB (4BS0 HG3.17, 3NYD HG3, 2RKX KE07,
-3IIO/3IIV KE70, and the 1THF/1A53 TIM-barrel scaffolds), seed 4's **best TM-score is 0.367**
-(to 4BS0 itself: 0.361) with **2–3 % sequence identity**. The gate is TM ≤ 0.7, and TM < 0.5 conventionally
-means "a different fold". Independently, every design reports **MSA depth 1** — MMseqs2 searched 183 GB
-and found no homologues at all.
+Checked with foldseek TM-align against two databases built from RCSB
+(`envs/foldseek.sh --full`, then `tools/novelty_check.sh <structure>`):
+
+| Database | Size | Seed 4's best TM | Closest hit |
+|---|---|---|---|
+| Kemp eliminase family | 7 structures incl. 4BS0, 3NYD, KE07, KE70 | **0.300** | 3NYD (HG3) |
+| **PDB 30 %-identity representatives** | **40,066 structures / 368,093 chains** | **0.550** | 4A01 |
+
+Sequence identity to every hit is **2–5 %**, and every design reports **MSA depth 1** — MMseqs2 searched
+183 GB and found no homologues at all. **Seed 4 passes both halves of the novelty gate.**
+
+> ⚠️ **TM-score normalisation decides this verdict, so get it right.** foldseek's default `alntmscore` is
+> normalised by the *alignment* length. A 122-residue protein matching 72 residues of our 260-residue
+> design scores **0.816** that way — which would look like a failure — while its TM normalised by our
+> query is **0.243**. The question "is my fold already known?" is answered by **`qtmscore`**, normalised
+> by the designed protein. `tools/novelty_check.sh` ranks on `qtmscore` and prints the others for context.
+> **We have not confirmed which normalisation the organizers use** — it is in the open questions, and it
+> is worth asking, because the three differ by more than the width of the gate.
 
 So despite being built on HG3.17's catalytic geometry, the protein around it is genuinely new. That is
 RFD3 doing its job: it was given three fixed fragments, not a scaffold.

@@ -151,6 +151,9 @@ we rank. We do not yet know *how* those 5 are nominated — see the open questio
       consequence: after it, S3 refuses uploads and there is no grace period.
 - [ ] **How are the 5 lab-validation designs chosen** — do we nominate them, or do they take our top 5?
       This decides whether we reserve submission slots for interesting-but-risky designs.
+- [ ] **Which TM-score normalisation defines the novelty gate** — by the designed protein, by the
+      matched structure, or by the alignment? For our seed-4 design these give 0.55, 0.80 and 0.82
+      against the same database, i.e. pass or fail depending only on the convention chosen.
 - [ ] Is there a presentation, and how long?
 - [ ] License/IP rules for our code and designs? (decides whether we add a LICENSE file)
 - [ ] What are the *target* values for the geometry term (ideal distance, angle, dihedral)? The slides say
