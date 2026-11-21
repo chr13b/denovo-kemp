@@ -34,6 +34,10 @@ through `KEMP_RUNS_DIR` / `KEMP_DATA_DIR`, and the job log in `logs/`. It prints
 `src/` on `PYTHONPATH` so `import kemp` works there. Run scripts with plain `python`, not `uv run`, which would use the
 repo's own environment instead of that venv. Record the job ID and run directory on the experiment page.
 
+## First test
+[experiments/mario-01_rfd4-euler-smoke.md](experiments/mario-01_rfd4-euler-smoke.md): one unconditional monomer through
+the whole path, with the exact command and what is still unverified. Run it before anything larger.
+
 ## Euler facts the template relies on
 From the ETH HPC docs, read 2026-11-21: [Slurm](https://docs.hpc.ethz.ch/batchsystem/slurm/),
 [GPU nodes](https://docs.hpc.ethz.ch/hardware/gpu_nodes/), [storage](https://docs.hpc.ethz.ch/hardware/storage/),
