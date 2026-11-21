@@ -47,6 +47,8 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/experiments/chris-01_reference-pipeline-baseline.md](wiki/experiments/chris-01_reference-pipeline-baseline.md) — baseline: pipeline verified, RFD3 → Boltz-2 contact drift
 - [wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md](wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md) — seed sweep (jobs 2–5): is that drift systematic? decides where GPU time goes
 - [wiki/experiments/zonghu-01_trp-stack-theozyme-vs-crystal.md](wiki/experiments/zonghu-01_trp-stack-theozyme-vs-crystal.md) — idealised Trp44 π-stack vs the crystal edge-on contact: does a custom theozyme scaffold?
+- [wiki/experiments/zonghu-02_affinity-ladder-controls.md](wiki/experiments/zonghu-02_affinity-ladder-controls.md) — does the affinity ladder separate a real Kemp eliminase from a non-enzyme? (controls first)
+- [wiki/affinity-ladder.md](wiki/affinity-ladder.md) — cofold substrate/TS-analogue/product and score transition-state discrimination; method, units and limits
 - [wiki/data.md](wiki/data.md) — dataset registry: source, version, sha256, how to fetch
 - [wiki/decisions.md](wiki/decisions.md) — decision records (append-only, dated): what we chose, why, alternatives
 - [wiki/pitch.md](wiki/pitch.md) — the story for the final presentation, kept current
@@ -67,8 +69,11 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [src/kemp/run.py](src/kemp/run.py) — `start_run()`: run directory plus provenance (config, commit, diff, script, lock hash, host, GPU, seed)
 - [src/kemp/data.py](src/kemp/data.py) — `fetch(url, dest, checksum)` and `sha256(path)` for reproducible data
 - [src/kemp/submission.py](src/kemp/submission.py) — `designs.fasta` building and offline rule checking (indices, residue types, limits)
+- [src/kemp/ligands.py](src/kemp/ligands.py) — the Kemp ladder (substrate / TS analogue / product) and the log10(IC50) → kcal/mol conversion
 - [scripts/00_smoke.py](scripts/00_smoke.py) — smoke test for env and run bookkeeping; **template for new scripts**
 - [scripts/30_compare_rfd3_vs_boltz.py](scripts/30_compare_rfd3_vs_boltz.py) — chris-02 table: RFD3 vs Boltz-2 contact drift + the pre-registered decision rule
+- [scripts/20_build_affinity_ladder.py](scripts/20_build_affinity_ladder.py) — build the cluster bundle that cofolds a sequence with all three ligands and predicts affinity
+- [scripts/21_report_affinity_ladder.py](scripts/21_report_affinity_ladder.py) — parse the returned affinity JSONs → ddG(substrate/product − TS analogue) with a noise check
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)
@@ -82,6 +87,9 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [runs/](runs/) — one directory per execution, gitignored; linked from the experiment pages
 - [results/](results/) — curated tracked outputs (figures, tables, the submission); each entry names its run
 - [results/designs.jsonl.template](results/designs.jsonl.template) — copy to `results/designs.jsonl`: our submission candidates
+- [results/affinity/hg3_k50q_7k4u_chainA.fasta](results/affinity/hg3_k50q_7k4u_chainA.fasta) — zonghu-02 positive control: HG3 K50Q sequence from 7K4U chain A, 305 aa, W44/Q50/D127 verified
+- [results/affinity/lysozyme_P00698.fasta](results/affinity/lysozyme_P00698.fasta) — zonghu-02 negative control: chicken lysozyme C, 147 aa, not a Kemp eliminase
+- [results/affinity/zonghu01_kemp7_design.fasta](results/affinity/zonghu01_kemp7_design.fasta) — zonghu-02 test case: the zonghu-01 job-7 LigandMPNN design, 260 aa
 - [results/theozyme/theozyme_7k4u_core.pdb](results/theozyme/theozyme_7k4u_core.pdb) — zonghu-01 input: HG3 K50Q motif from 7K4U (TRP44+GLN50+ASP127+6NT), crystal geometry
 - [results/theozyme/theozyme_7k4u_core_trpopt.pdb](results/theozyme/theozyme_7k4u_core_trpopt.pdb) — zonghu-01 input: same motif, TRP44 repositioned to an idealised π-stack; base/donor/ligand unchanged
 - [results/theozyme/theozyme_7k4u_core_trpopt2.pdb](results/theozyme/theozyme_7k4u_core_trpopt2.pdb) — zonghu-01 repaired input: idealised π-stack with crystal-calibrated clearance for the TRP44 attachment end
