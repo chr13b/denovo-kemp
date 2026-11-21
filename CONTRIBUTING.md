@@ -83,7 +83,8 @@ pulled, or commit with `--no-verify` to skip the hooks.
 still works. This is the protection that matters day to day, and it costs nothing.
 
 **Additionally, on GitHub (repo owner, optional):** require a pull request and a green CI run before
-anything lands on `main`.
+anything lands on `main`. **Read the plan caveat at the end of this section first** — for *this* repo it
+means the GitHub-side rule is probably not available, and that is fine.
 
 **With the GitHub CLI** (`gh auth login` once, then copy-paste):
 
@@ -106,6 +107,43 @@ tick "Require a pull request before merging" (0 approvals is fine for a hackatho
 Also under Settings → General → Pull Requests: allow **merge commits**. If people keep long-lived
 personal branches, leave "Automatically delete head branches" **off**.
 
-> On a **private** repo, branch protection needs a paid plan (Pro/Team). If GitHub refuses, it is not
-> worth paying for during a hackathon: CI still runs on every push and PR, and the team rule
-> "never commit to `main` directly, always open a PR" does the rest.
+### The plan caveat (checked 2026-11-21: it applies to us)
+
+`chr13b/kemp-challenge` is a **private** repo. Per
+[GitHub's docs](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule),
+branch protection and rulesets work on private repos only with **Pro, Team or Enterprise** — a free
+personal account gets them on public repos only.
+
+> **The trap:** on a private repo under a free account the ruleset form can let you save a rule and show it
+> as **Active while enforcing nothing**. So "I added the rule" is not evidence the rule works. If you set one
+> up, test it: try pushing a junk commit straight to `main` and see whether GitHub actually refuses.
+
+**What we do instead — and it is enough:** the local `no-commit-to-main` hook from `make setup` blocks the
+actual accident (committing straight to `main`), CI runs on every push and PR anyway, and the team rule is
+"branch, then merge". A hackathon does not need server-side enforcement.
+
+**If you want the GitHub-side rule anyway**, in rough order of sense:
+
+1. **Free GitHub Pro via the Student Developer Pack** — [education.github.com](https://education.github.com/pack)
+   if anyone on the team is a student or academic researcher. Pro covers private-repo protection.
+2. **Leave it.** The local hook already covers it.
+3. Making the repo public would enable protection for free, but **not during the competition** — our designs
+   and notes would be world-readable.
+
+### Getting `gh` to log in without an authenticator app
+
+The browser device flow (`gh auth login` → "Login with a web browser") can time out with
+`context deadline exceeded`, and it is the flow that asks for a password or 2FA code. Skip it — use a token:
+
+1. In a browser where you are already signed in to GitHub, go to
+   **Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token**.
+2. Scopes: `repo`, `read:org`, `gist`. Expiry: 7 days is plenty for a hackathon.
+3. Save the token to a file and pipe it in — **never paste a token into a chat or a commit**:
+   ```bash
+   gh auth login --with-token < ~/gh-token.txt && rm ~/gh-token.txt
+   gh auth status
+   ```
+   For one-off use without storing it: `export GH_TOKEN=...` in that shell only.
+
+`gh` is not needed for anything in our daily loop — plain `git` push/pull does not use it. It is only
+convenient for reading CI logs (`gh run list`) and opening PRs from the terminal.
