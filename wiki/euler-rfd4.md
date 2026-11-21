@@ -27,7 +27,7 @@ mkdir -p "$SCRATCH/kemp/logs"    # must exist before you submit, or the job leav
 sbatch scripts/euler_job.sbatch <command> [args...]    # e.g. python scripts/NN_verb_noun.py --seed=0
 ```
 
-The template ([../scripts/euler_job.sbatch](../scripts/euler_job.sbatch)) asks for one A100 (`--gpus=a100:1`) for
+The template ([../scripts/euler_job.sbatch](../scripts/euler_job.sbatch)) asks for one GPU with at least 24 GB of memory (`--gpus=1` and `--gres=gpumem:24G`) for
 24 hours, loads the `eth_proxy` module on startup, and writes everything under `$SCRATCH/kemp`: `runs/` and `data/`
 through `KEMP_RUNS_DIR` / `KEMP_DATA_DIR`, and the job log in `logs/`. It prints the commit and GPU into the log, sources
 [../envs/euler.sh](../envs/euler.sh) (which activates the RFD4-Proteina venv, `$HOME/rfd4-proteina/.venv`) and puts
@@ -51,13 +51,34 @@ From the ETH HPC docs, read 2026-11-21: [Slurm](https://docs.hpc.ethz.ch/batchsy
   500,000 files, backed up. `$TMPDIR` is node-local and deleted when the job ends.
 - Conda: avoid the Lustre work directory; the docs suggest an Apptainer container with conda inside to stay under file-count limits.
 
+## Refolding oracle (AF3 / OpenFold3)
+Only needed when `metrics_tags` switch on a refolding metric; generation with `~metrics` does not touch it
+([experiments/mario-01_rfd4-euler-smoke.md](experiments/mario-01_rfd4-euler-smoke.md) uses that). How RFD4-Proteina
+defines it, read from its checkout on 2026-11-21:
+- **Choice:** the config group `metrics/refolding_oracles` (`af3` default, `of3`, `af2`; `of3` is `af3` renamed).
+  Each oracle is a Hydra `_target_` (`AF3Oracle`, `AF2Oracle`); `required_tags_any` decides which one a run uses. Only one
+  oracle at a time. Boltz-2, which the organizers score with, is not among them.
+- **Runtime:** `AF3Oracle` folds in an Apptainer container (a per-rank daemon, or a direct `apptainer run`) and reads
+  `AF3_IMAGE`, `AF3_MODEL_DIR` and `AF3_JAX_CACHE_DIR`, plus `APPTAINER_BIND_PATHS` for data mounts. AF3 or OpenFold3 is
+  chosen by the weights: an `of3_ported_weights.provenance.json` in `AF3_MODEL_DIR` selects OpenFold3.
+- **Euler's own AF3** ([ETH docs](https://docs.hpc.ethz.ch/software/chemistry/alphafold3/), read 2026-11-21): container
+  `/cluster/apps/nss/alphafold/containers/AlphaFold3/af3.sif` (run `get-access` once), public databases
+  `/cluster/project/alphafold/alphafold3`. The **weights are not provided** (DeepMind's terms): each user downloads them
+  (about 1 GB) from [google-deepmind/alphafold3](https://github.com/google-deepmind/alphafold3), and should keep them out of
+  `$SCRATCH` (15-day purge). GPUs below compute capability 8.0 need extra XLA/flash-attention flags (see that page).
+- **Mismatch to check:** RFD4 runs `run_alphafold_batch.py` inside its own `af3-open.sif`, while the Euler image ships
+  `run_alphafold.py`, so the Euler image is probably not a drop-in for `AF3_IMAGE`. Unverified.
+- [../envs/euler.sh](../envs/euler.sh) sets the three variables (defaults under
+  `$HOME/rfd4-proteina/data_path/openfold3/`, the place RFD4's download script uses; override from the shell) and warns,
+  without failing, when the image or weights are missing.
+
 ## What the repo already gives us
 - `kemp.run.start_run` writes config, commit, diff, script snapshot, host, GPU and seed into each run directory, so a
   job on Euler is as traceable as a local one ([../INDEX.md](../INDEX.md) lists the modules).
 - `make submission` builds and checks `results/designs.fasta` offline; `kemp.paths` keeps paths out of the scripts.
 - Theozyme candidates from the pre-analysis, as PDB files in the common TSA frame, are the natural input for a
-  motif-based design: [theozyme-preanalysis.md](theozyme-preanalysis.md). Turning one into an annotated CIF for
-  RFD4-Proteina is not done yet (see Open).
+  motif-based design: [theozyme-preanalysis.md](theozyme-preanalysis.md). The recommended ones are already turned
+  into RFD4-Proteina condition specs in `results/theozymes/` ([theozyme-inputs.md](theozyme-inputs.md)); not yet run on Euler.
 
 ## Open (nobody has filled these in yet)
 - Euler access from the repo checkout: how Euler pulls from GitHub, and where the checkout lives.
@@ -68,10 +89,14 @@ From the ETH HPC docs, read 2026-11-21: [Slurm](https://docs.hpc.ethz.ch/batchsy
   faked `SLURM_*` variables, to check the paths, the guards and that `KEMP_RUNS_DIR` redirects the run directory.
 - Not stated on the ETH pages read so far: the maximum run time (the template asks for 24 h, so check Slurm accepts it)
   and the module names beyond `eth_proxy`.
+- A memory-only GPU request (`gpumem`) does not pin a type. The docs say the RTX Pro 6000 (96 GB) must be requested
+  explicitly and cannot run CUDA-12-compiled programs; the job log prints the GPU name, so check which card a job got.
 - `eth_proxy` comes from third-party Euler guides, which say it gives compute nodes internet access; confirm that on a real job.
+- Refolding oracle on Euler: is `apptainer` available on compute nodes, who has the AF3 (or OpenFold3) weights, can the
+  RFD4 image and weights be downloaded (the `eth_proxy` question), and does `APPTAINER_BIND_PATHS` need anything.
 - Whether `kemp.run` should record `SLURM_JOB_ID` in each run's `meta.json` (it does not today).
-- Annotated-CIF inputs: how a theozyme candidate becomes the design input, and how `base=` / `oxy=` indices are
-  derived from RFD4-Proteina output. [submission.md](submission.md) still describes the RFD3 + LigandMPNN summary
+- Annotated-CIF inputs: the check of `results/theozymes/` on Euler ([theozyme-inputs.md](theozyme-inputs.md)) is still to
+  do, and so is deriving the `base=` / `oxy=` indices from RFD4-Proteina output. [submission.md](submission.md) still describes the RFD3 + LigandMPNN summary
   (`rfd3.fixed`, `ligandmpnn.sequence`), which does not apply to this stack. Verify the residue at each index before submitting.
 - A first run: create an experiment page with `uv run python tools/new.py exp <slug>` before it, and record the
   Euler job ID and run directory on it.

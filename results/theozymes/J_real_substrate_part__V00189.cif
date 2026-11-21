@@ -1,0 +1,104 @@
+data_J_real_substrate_part__V00189
+#
+loop_
+_entity.id
+_entity.type
+1 polymer
+2 non-polymer
+#
+_entity_poly.entity_id 1
+_entity_poly.type 'polypeptide(L)'
+_entity_poly.pdbx_seq_one_letter_code_can DWHQ
+_entity_poly.pdbx_strand_id A
+#
+loop_
+_entity_poly_seq.entity_id
+_entity_poly_seq.num
+_entity_poly_seq.mon_id
+_entity_poly_seq.hetero
+1 1 ASP n
+1 2 TRP n
+1 3 HIS n
+1 4 GLN n
+#
+loop_
+_struct_asym.id
+_struct_asym.entity_id
+A 1
+B 2
+#
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_entity_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.B_iso_or_equiv
+_atom_site.auth_seq_id
+_atom_site.auth_comp_id
+_atom_site.auth_asym_id
+_atom_site.auth_atom_id
+_atom_site.pdbx_PDB_model_num
+ATOM 1 N N . ASP A 1 1 ? -3.122 24.478 0.899 1.00 0.00 1 ASP A N 1
+ATOM 2 C CA . ASP A 1 1 ? -3.139 25.219 -0.330 1.00 0.00 1 ASP A CA 1
+ATOM 3 C C . ASP A 1 1 ? -1.686 25.437 -0.705 1.00 0.00 1 ASP A C 1
+ATOM 4 O O . ASP A 1 1 ? -0.987 26.270 -0.146 1.00 0.00 1 ASP A O 1
+ATOM 5 C CB . ASP A 1 1 ? -3.932 26.508 -0.171 1.00 0.00 1 ASP A CB 1
+ATOM 6 C CG . ASP A 1 1 ? -5.400 26.238 0.051 1.00 0.00 1 ASP A CG 1
+ATOM 7 O OD1 . ASP A 1 1 ? -5.914 25.256 -0.444 1.00 0.00 1 ASP A OD1 1
+ATOM 8 O OD2 . ASP A 1 1 ? -6.038 26.972 0.808 1.00 0.00 1 ASP A OD2 1
+ATOM 9 N N . TRP A 1 2 ? -9.324 31.478 -2.539 1.00 0.00 2 TRP A N 1
+ATOM 10 C CA . TRP A 1 2 ? -8.129 31.496 -1.734 1.00 0.00 2 TRP A CA 1
+ATOM 11 C C . TRP A 1 2 ? -7.339 30.236 -2.074 1.00 0.00 2 TRP A C 1
+ATOM 12 O O . TRP A 1 2 ? -7.900 29.208 -2.320 1.00 0.00 2 TRP A O 1
+ATOM 13 C CB . TRP A 1 2 ? -8.477 31.417 -0.258 1.00 0.00 2 TRP A CB 1
+ATOM 14 C CG . TRP A 1 2 ? -9.442 32.602 0.200 1.00 0.00 2 TRP A CG 1
+ATOM 15 C CD1 . TRP A 1 2 ? -10.844 32.636 0.058 1.00 0.00 2 TRP A CD1 1
+ATOM 16 C CD2 . TRP A 1 2 ? -9.074 33.786 0.834 1.00 0.00 2 TRP A CD2 1
+ATOM 17 N NE1 . TRP A 1 2 ? -11.328 33.782 0.554 1.00 0.00 2 TRP A NE1 1
+ATOM 18 C CE2 . TRP A 1 2 ? -10.262 34.509 1.051 1.00 0.00 2 TRP A CE2 1
+ATOM 19 C CE3 . TRP A 1 2 ? -7.855 34.332 1.272 1.00 0.00 2 TRP A CE3 1
+ATOM 20 C CZ2 . TRP A 1 2 ? -10.284 35.709 1.685 1.00 0.00 2 TRP A CZ2 1
+ATOM 21 C CZ3 . TRP A 1 2 ? -7.828 35.621 1.838 1.00 0.00 2 TRP A CZ3 1
+ATOM 22 C CH2 . TRP A 1 2 ? -9.070 36.281 2.041 1.00 0.00 2 TRP A CH2 1
+ATOM 23 N N . HIS A 1 3 ? -15.492 35.852 9.702 1.00 0.00 3 HIS A N 1
+ATOM 24 C CA . HIS A 1 3 ? -14.691 34.830 9.025 1.00 0.00 3 HIS A CA 1
+ATOM 25 C C . HIS A 1 3 ? -13.255 35.000 9.530 1.00 0.00 3 HIS A C 1
+ATOM 26 O O . HIS A 1 3 ? -12.539 35.913 9.109 1.00 0.00 3 HIS A O 1
+ATOM 27 C CB . HIS A 1 3 ? -14.809 34.992 7.513 1.00 0.00 3 HIS A CB 1
+ATOM 28 C CG . HIS A 1 3 ? -13.992 34.029 6.703 1.00 0.00 3 HIS A CG 1
+ATOM 29 N ND1 . HIS A 1 3 ? -14.564 33.138 5.821 1.00 0.00 3 HIS A ND1 1
+ATOM 30 C CD2 . HIS A 1 3 ? -12.652 33.871 6.576 1.00 0.00 3 HIS A CD2 1
+ATOM 31 C CE1 . HIS A 1 3 ? -13.616 32.453 5.207 1.00 0.00 3 HIS A CE1 1
+ATOM 32 N NE2 . HIS A 1 3 ? -12.446 32.873 5.652 1.00 0.00 3 HIS A NE2 1
+ATOM 33 N N . GLN A 1 4 ? 1.512 32.170 5.671 1.00 0.00 4 GLN A N 1
+ATOM 34 C CA . GLN A 1 4 ? 1.903 32.747 4.403 1.00 0.00 4 GLN A CA 1
+ATOM 35 C C . GLN A 1 4 ? 3.428 32.904 4.367 1.00 0.00 4 GLN A C 1
+ATOM 36 O O . GLN A 1 4 ? 4.120 32.804 5.397 1.00 0.00 4 GLN A O 1
+ATOM 37 C CB . GLN A 1 4 ? 1.235 34.097 4.175 1.00 0.00 4 GLN A CB 1
+ATOM 38 C CG . GLN A 1 4 ? -0.283 34.109 4.359 1.00 0.00 4 GLN A CG 1
+ATOM 39 C CD . GLN A 1 4 ? -1.031 33.261 3.347 1.00 0.00 4 GLN A CD 1
+ATOM 40 N NE2 . GLN A 1 4 ? -2.325 33.098 3.563 1.00 0.00 4 GLN A NE2 1
+ATOM 41 O OE1 . GLN A 1 4 ? -0.454 32.788 2.365 1.00 0.00 4 GLN A OE1 1
+HETATM 42 N N1 . 6NT B 2 1 ? -4.350 30.894 2.795 1.00 0.00 1 6NT B N1 1
+HETATM 43 N N2 . 6NT B 2 1 ? -4.171 29.769 2.044 1.00 0.00 1 6NT B N2 1
+HETATM 44 C C3A . 6NT B 2 1 ? -6.311 29.981 2.428 1.00 0.00 1 6NT B C3A 1
+HETATM 45 N N3 . 6NT B 2 1 ? -5.395 29.209 1.824 1.00 0.00 1 6NT B N3 1
+HETATM 46 C C4 . 6NT B 2 1 ? -7.703 29.874 2.520 1.00 0.00 1 6NT B C4 1
+HETATM 47 C C5 . 6NT B 2 1 ? -8.409 30.830 3.227 1.00 0.00 1 6NT B C5 1
+HETATM 48 C C6 . 6NT B 2 1 ? -7.766 31.899 3.837 1.00 0.00 1 6NT B C6 1
+HETATM 49 C C7 . 6NT B 2 1 ? -6.385 32.006 3.749 1.00 0.00 1 6NT B C7 1
+HETATM 50 C C7A . 6NT B 2 1 ? -5.661 31.035 3.037 1.00 0.00 1 6NT B C7A 1
+HETATM 51 O O11 . 6NT B 2 1 ? -10.464 31.644 3.619 1.00 0.00 1 6NT B O11 1
+HETATM 52 O O21 . 6NT B 2 1 ? -10.471 29.509 2.938 1.00 0.00 1 6NT B O21 1
+HETATM 53 N NO1 . 6NT B 2 1 ? -9.841 30.709 3.293 1.00 0.00 1 6NT B NO1 1
+#

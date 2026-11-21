@@ -49,6 +49,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/glossary.md](wiki/glossary.md) — domain and project terms
 - [wiki/theozyme-preanalysis.md](wiki/theozyme-preanalysis.md) — pointer page for the pre-analysis: what it is, where the results are, how it relates to the scored contacts, caveats
 - [wiki/euler-rfd4.md](wiki/euler-rfd4.md) — our stack: Euler + RFD4-Proteina, the edit → push → pull → `sbatch` loop, and what is still open
+- [wiki/theozyme-inputs.md](wiki/theozyme-inputs.md) — how the recommended theozymes become RFD4-Proteina inputs (condition spec): what is fixed, unindexed and designed, choices to review, how to check it on Euler
 
 ## Sources: raw/ (immutable, added by humans)
 - [raw/20261121_organizers_start-here.md](raw/20261121_organizers_start-here.md) — organizers' one-page start (2 GPUs, novelty rule)
@@ -66,6 +67,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [src/kemp/submission.py](src/kemp/submission.py) — `designs.fasta` building and offline rule checking (indices, residue types, limits)
 - [scripts/00_smoke.py](scripts/00_smoke.py) — smoke test for env and run bookkeeping; **template for new scripts**
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
+- [scripts/01_build_theozyme_inputs.py](scripts/01_build_theozyme_inputs.py) — recommended theozyme candidates → `results/theozymes/` (input CIFs + RFD4 condition spec `theozymes.yaml`); stdlib only, runs locally
 - [scripts/10_generate_smoke_design.py](scripts/10_generate_smoke_design.py) — mario-01: generate one RFD4-Proteina design on Euler and check the pipeline (GPU, tool, design file, run summary); see `wiki/experiments/mario-01_rfd4-euler-smoke.md`
 - [scripts/euler_job.sbatch](scripts/euler_job.sbatch) — Slurm template for Euler: runs one repo command with a GPU, `runs/` and `data/` on `$SCRATCH`, provenance in the log; **not yet verified on Euler**
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
@@ -84,5 +86,6 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [data/](data/) — bulk inputs, gitignored; registry in `wiki/data.md`
 - [runs/](runs/) — one directory per execution, gitignored; linked from the experiment pages
 - [results/](results/) — curated tracked outputs (figures, tables, the submission); each entry names its run
+- [results/theozymes/](results/theozymes/) — RFD4-Proteina design inputs built from the theozyme candidates: one CIF per candidate plus `theozymes.yaml`; made by `scripts/01_build_theozyme_inputs.py`, **not yet run through RFD4**
 - [results/designs.jsonl.template](results/designs.jsonl.template) — copy to `results/designs.jsonl`: our submission candidates
 - [notebooks/](notebooks/) — exploration only, one folder per person (`notebooks/<handle>/`); outputs stripped on commit

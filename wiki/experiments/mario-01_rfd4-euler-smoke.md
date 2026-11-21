@@ -33,7 +33,7 @@ It does not test Kemp conditioning (annotated CIF, `base=` / `oxy=`), scoring or
 
 - The script's logic was tested only against a stub `rfd4-generate` (arguments, working directory, success, failure, empty and compressed output); the real model has not been run.
 - That the RFD4-Proteina checkout is `~/rfd4-proteina` (inferred from the venv path; set `--rfd4_root` otherwise), that designs are written as plain `.cif` files in `inference_samples/` (from the README), and that the weights are cached or reachable through `eth_proxy`.
-- Whether the driver on the A100 nodes suits the build: the README asks for a CUDA 13-compatible driver (CUDA 12 containers also exist).
+- Whether the driver on the GPU nodes Slurm picks suits the build: the README asks for a CUDA 13-compatible driver (CUDA 12 containers also exist).
 
 ## Result
 

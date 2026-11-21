@@ -14,6 +14,7 @@ optional donor at N1 (the leaving-group side), plus an aromatic stacker and an o
 - Observed base, stacker and donor geometries in 36 TSA complexes: [../pre_analysis/kemp_eliminase/theozyme/extracted/theozyme_summary.csv](../pre_analysis/kemp_eliminase/theozyme/extracted/theozyme_summary.csv)
 - Origin of the published theozymes and best kcat/KM per family: [../pre_analysis/kemp_eliminase/theozyme/THEOZYME_ORIGIN.md](../pre_analysis/kemp_eliminase/theozyme/THEOZYME_ORIGIN.md)
 - Nitro-group donor and stacker geometries from other enzymes: [../pre_analysis/nitro_enzymes/README.md](../pre_analysis/nitro_enzymes/README.md)
+- Turning the recommended candidates into RFD4-Proteina design inputs: [theozyme-inputs.md](theozyme-inputs.md)
 - Candidate theozyme PDBs (TSA in chain A, the real substrate in `__michaelis` files): [../pre_analysis/kemp_theozymes_v2/candidates/](../pre_analysis/kemp_theozymes_v2/candidates/)
 
 ## What to keep in mind
