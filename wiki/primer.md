@@ -69,6 +69,37 @@ N and **O**); the analogue is a benzo**triazole** (ring contains three **N**, no
 This matters practically: optimise geometry **to those nitrogens**, and do not reason about an oxygen
 that is not in the scored structure.
 
+### The target geometry — measured, not guessed
+
+The organizers say the scored distance targets come "from crystal structures of working Kemp eliminases".
+**That structure is PDB `4BS0`** — HG3.17 at 1.09 Å, and it has **6NT itself** bound, the same ligand we are
+scored against. So we can read the targets straight off it
+(`uv run python scripts/31_measure_reference_geometry.py`):
+
+| Contact | chain A | chain B | What it is |
+|---|---|---|---|
+| **Asp127 OD2 → 6NT N3** | **2.53 Å** | 2.69 Å | the catalytic base, poised on the atom it deprotonates |
+| **Gln50 NE2 → 6NT N1** | **3.10 Å** | 3.00 Å | the oxyanion-hole donor |
+| Trp44 NE1 → 6NT N3 | 3.86 Å | 3.98 Å | the third motif residue — aromatic, packs the site |
+
+Two things follow.
+
+**1. This is where RFD3's "constant" numbers come from.** RFD3 is handed 2.527 Å and 3.09 Å — these
+crystal values. The motif in `inputs/Kemp.json` is lifted directly out of 4BS0. What looked like an
+arbitrary constant is actually the geometry of the best Kemp eliminase ever made.
+
+**2. We now have a scoring proxy we can compute ourselves.** Target ≈ **2.5–2.7 Å** for the base and
+**3.0–3.1 Å** for the donor. Against that:
+
+| Design | base (target ~2.6) | donor (target ~3.05) |
+|---|---|---|
+| seed 1 baseline | 5.91 Å ✗ far too long | 2.94 Å ✓ |
+| seed 3 | 8.33 Å ✗ | 3.08 Å ✓ |
+| **seed 4** | 3.32 Å — ~0.7 Å long | 3.75 Å — ~0.7 Å long |
+
+Remember the penalty is asymmetric: too long is punished **less** than too short. Seed 4 is loose on both
+but errs in the forgiving direction.
+
 ---
 
 ## 2. The computational problem
@@ -104,6 +135,72 @@ The slides frame it as **Shape → Sequence → Score**.
 **The crucial asymmetry:** stages 1–2 *design*, stage 4 *checks*. Stage 4 does not know what stage 1
 intended. It just predicts what the sequence will do. When those disagree, the design has failed — and
 that disagreement is the central problem of the whole field (see §5).
+
+### LigandMPNN does not fold anything — it does the opposite
+
+This trips everyone up, so it is worth being precise. There are two opposite problems:
+
+| | Question | Input → Output | Tool here |
+|---|---|---|---|
+| **Folding** | "what shape does this sequence take?" | sequence → structure | Boltz-2 |
+| **Inverse folding** | "what sequence would produce this shape?" | structure → sequence | LigandMPNN |
+
+LigandMPNN is **inverse folding**. It never folds anything and never produces a 3D structure. It is handed
+a finished backbone (from RFD3) plus the ligand, and for each position it answers *"given the local
+geometry here, and the ligand sitting there, which amino acid belongs at this position?"* Its output is a
+string of letters.
+
+So nothing is "folded separately from the whole protein". The sequence of the **entire 260-residue
+protein** is designed at once, with the ligand present throughout — that is exactly what the "Ligand" in
+LigandMPNN means, and it is why the residues lining the pocket come out hydrophobic and correctly shaped
+rather than random.
+
+**The real folding happens once, in Boltz-2, and it folds everything together** — full sequence plus
+ligand, simultaneously, as one complex. That is also the honest test: Boltz-2 is given *only* the
+sequence and the ligand. It is never told what RFD3 designed. If the sequence genuinely encodes the
+intended structure, Boltz-2 rediscovers it; if not, we find out. That independence is the whole point —
+if we fed RFD3's backbone to the folder, the check would be circular and meaningless.
+
+### What exactly we ran in the seed sweep — only the seed
+
+Four copies of the verified example (`new-project.sh`), then **one integer changed** in each, at three
+places: RFD3's diffusion seed, LigandMPNN's sampling seed, Boltz-2's sampling seed. Verified before
+submitting that exactly those three lines differed and `inputs/Kemp.json` was byte-identical. Nothing
+else was touched.
+
+**RFD3's input is the motif, not a protein.** `HG3_17_kemp_motif.pdb` plus instructions in `Kemp.json`:
+hold Asp `A127` rigid by its OD1/CG/OD2 atoms, hold Gln `A50` by OE1/CD/NE2, hold all of ligand 6NT, and
+build **exactly 260 residues** around them (`contig: 260-260`).
+
+**RFD3's output is a bare backbone** — N, CA, C, O coordinates only, no side chains, no sequence — that
+holds those three fragments in the given arrangement. LigandMPNN then reads backbone + ligand and writes
+a sequence for it.
+
+Changing the seed changes the diffusion trajectory, so each run builds a **completely different protein**:
+seed 2 shares only 8.5 % sequence identity with seed 1, and the catalytic residues land at different
+positions (seed 1 `base=177 oxy=99`, seed 4 `base=86 oxy=52`).
+
+### What if we did *not* pin the motif atoms?
+
+`select_fixed_atoms` is a choice, not a law. Loosening it is a real design axis:
+
+| Setting | Effect | Trade-off |
+|---|---|---|
+| **Fix all motif atoms** (current) | every design starts from exact HG3.17 catalytic geometry | RFD3 must build a foldable 260-mer around a rigid constraint — and ~50 % of the time it cannot |
+| **Fix fewer atoms** (e.g. base carboxylate only, drop the donor) | RFD3 has far more freedom to find a foldable backbone | the donor is no longer guaranteed to be positioned; we would have to recover it afterwards |
+| **Fix nothing** | pure de novo binder design | almost certainly loses catalytic geometry — the thing we are actually scored on |
+
+The case for loosening: our failures are **folding** failures, not geometry failures, and the rigid motif
+is the main thing making the backbone hard to build. Giving RFD3 slack where it matters least (the donor
+contact already survives refolding reliably — see §5d) could raise the success rate without costing the
+contact that actually drives the score.
+
+The case against: catalytic geometry **is** the score, geometry is the dominant term, and the constraint
+costs us nothing at generation time — it is "free" precision. Unpinning risks trading a scored quantity
+for an unscored one.
+
+**This is testable and cheap**: generate backbones with the donor unpinned, and compare refolding success
+rate and final Boltz-2 geometry against the pinned runs. It only needs the design stage, not Boltz.
 
 ---
 
@@ -195,7 +292,18 @@ verification mode runs.) From file timestamps, that search takes **~10 of the 23
 
 This is the largest single inefficiency available to us, and §6 Idea 1 exploits it.
 
-### (f) The novelty/confidence tension
+### (f) Seed 4 is novel — measured, not assumed
+
+Against the whole Kemp-eliminase family downloaded from RCSB (4BS0 HG3.17, 3NYD HG3, 2RKX KE07,
+3IIO/3IIV KE70, and the 1THF/1A53 TIM-barrel scaffolds), seed 4's **best TM-score is 0.367**
+(to 4BS0 itself: 0.361) with **2–3 % sequence identity**. The gate is TM ≤ 0.7, and TM < 0.5 conventionally
+means "a different fold". Independently, every design reports **MSA depth 1** — MMseqs2 searched 183 GB
+and found no homologues at all.
+
+So despite being built on HG3.17's catalytic geometry, the protein around it is genuinely new. That is
+RFD3 doing its job: it was given three fixed fragments, not a scaffold.
+
+### (g) The novelty/confidence tension
 
 Slide 7 warns that "MSA depth for de novo design can impact folding confidence", and iPDE and consistency
 both depend on folding confidence. Our designs have the shallowest possible MSA. So maximum novelty may
@@ -289,6 +397,55 @@ slots.
 
 **What kills it.** If shorter designs cannot host the motif and burial drops (the base ends up
 solvent-exposed), we trade one scoring term for another. **Measure burial, not just success rate.**
+
+---
+
+---
+
+### Idea 4 — fine-tune a model on public structures (evaluated, and my recommendation is **no, not today**)
+
+The idea: take public structural data — the PDB, the ~200 Kemp-eliminase-related entries, TIM barrels,
+AlphaFold DB — and fine-tune one of the models so it produces designs more like the ones that work.
+
+**Where it could plausibly help**
+
+| Target | Rationale |
+|---|---|
+| **LigandMPNN** | Fine-tune on structures with carboxylate–heteroaromatic contacts so it picks pocket residues that preserve the base contact — our measured weak point (§5d). Smallest model, cheapest to train. |
+| **RFD3** | Fine-tune on TIM barrels / known eliminase folds so generated backbones are more foldable. Attacks the 50 % failure rate directly. |
+| **A cheap surrogate scorer** | *Not* fine-tuning a generator: train a small classifier on (design features → did it survive refolding). This is the one that actually fits our situation. |
+
+**Pros**
+- The failure mode is systematic (half of designs don't fold), and systematic failures are what learned
+  filters fix well.
+- Public data genuinely exists: PDB, AFDB, and the Kemp literature are all available.
+- A surrogate scorer is cheap, needs no GPU training at scale, and compounds — every run we do adds a
+  labelled example.
+
+**Cons — and they are decisive for a one-day hackathon**
+1. **We have 5 labelled examples.** Fine-tuning a generative model on 5 outcomes is not possible; even a
+   surrogate classifier needs tens to hundreds. The data to train on is the thing we lack.
+2. **The compute is the same compute.** Training competes directly with generating designs, on the same
+   two GPUs, under the fairness rule. Every GPU-hour spent training is a GPU-hour not spent producing
+   submittable designs.
+3. **Fine-tuning on known enzymes pushes *toward* the novelty gate.** Train a generator to make things
+   that look like published Kemp eliminases and you move it toward TM > 0.7 — disqualification. The
+   objective is actively in tension with the rules.
+4. **Setup cost is not small.** Training scripts, data curation, checkpoint handling, and a validation
+   protocol — likely most of the remaining time, with the first usable checkpoint arriving near the
+   deadline.
+5. **The cheap wins are not yet taken.** We have a measured ~2× from dropping the MSA stage, an untested
+   burial filter, and an untested length reduction. Fine-tuning is the expensive move to make *after*
+   those are exhausted, not before.
+
+**What I would do instead, which captures most of the benefit:** collect features for every design we
+generate (burial count, radius of gyration, secondary-structure fraction, LigandMPNN score) alongside
+the binary did-it-fold outcome. That costs nothing, it is the training set a surrogate would need, and
+if we accumulate 30–50 designs a simple logistic regression on those features becomes genuinely useful
+*within* the hackathon — and is the honest first step toward fine-tuning if the project continues.
+
+**What would change my answer:** a multi-day timeline, or discovering that burial and the other free
+features do *not* predict folding success — because then a learned filter would be the only route left.
 
 ---
 
