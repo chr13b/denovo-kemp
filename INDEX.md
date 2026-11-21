@@ -76,6 +76,8 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [scripts/21_report_affinity_ladder.py](scripts/21_report_affinity_ladder.py) — parse the returned affinity JSONs → ddG(substrate/product − TS analogue) with a noise check
 - [scripts/22_build_hg_series.py](scripts/22_build_hg_series.py) — build HG3/HG3.7/HG3.17 sequences from published mutation lists, asserting every wild-type residue
 - [scripts/23_compare_ladder_to_kinetics.py](scripts/23_compare_ladder_to_kinetics.py) — predicted ladder vs measured k_cat/K_M: expected vs observed ddG, rank order, sign
+- [scripts/24_build_anchored_ladder.py](scripts/24_build_anchored_ladder.py) — two-stage ladder: cofold once with the TS analogue, then score every ligand in that same pocket
+- [scripts/make_stage_b.py](scripts/make_stage_b.py) — cluster-side helper for the above: reads the stage-A complex, finds the pocket residues, writes the anchored stage-B inputs
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)

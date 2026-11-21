@@ -91,6 +91,36 @@ MSA defaults to `empty` (Boltz-2 single-sequence mode). That lowers absolute str
 but it is **identical across the three ligands**, so it cannot bias the difference between them.
 Pass `--msa=<path to an .a3m on the cluster>` to reuse an alignment from an earlier run.
 
+## Attempted fix: the anchored (two-stage) ladder
+
+The plain ladder gives **each ligand its own cofold**, so ddG compares three *different*
+predicted pockets with the ligand sitting in three different places. That is a real confound,
+and it is the most likely reason zonghu-02 failed. [`scripts/24_build_anchored_ladder.py`](../scripts/24_build_anchored_ladder.py)
+removes it:
+
+```
+Stage A   protein + TS analogue  ->  one predicted complex
+          (biotite finds every residue within --pocket_radius of the ligand)
+Stage B   each ligand re-predicted with
+            constraints: pocket(binder=B, contacts=<stage-A pocket residues>, force: true)
+```
+
+so all three ligands are scored in **the same site**. Boltz-2 has **no fixed-ligand-pose input**,
+so the ligand still relaxes inside the constraint — this anchors the site, not the coordinates.
+
+**Templates are implemented but OFF by default** (`--use_template=true` to try again). Pinning the
+receptor conformation as well would be ideal, but every template format failed in this Boltz build:
+
+| template source | failure |
+|---|---|
+| Boltz's own stage-A CIF | `ValueError: CCD component LIG1 not found!` — it still contains the ligand, and `parse_mmcif` resolves every component against the CCD |
+| biotite atom_site-only CIF | gemmi builds **0 models** → `IndexError` at `structure[0]` |
+| bare coordinate PDB | `parse_polymer` → `res_name = sequence[j]` `IndexError` — no SEQRES, so the entity sequence is empty |
+
+The pocket constraint alone addresses the ligand-position confound, which is the one actually under
+test, so that is what the pilot runs. Pilot settings (`--cheap=true`) cut sampling to
+50/1/1/50/2; stage A measured **~70 s** per cofold at those settings.
+
 ## There is no experimental substrate-binding constant to validate against
 
 This is the single most important thing to know before reading a ladder result.
