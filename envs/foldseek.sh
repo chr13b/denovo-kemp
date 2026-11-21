@@ -72,9 +72,11 @@ if [ "$FULL" = "1" ]; then
     export -f download
     xargs -a "$WORK/ids.txt" -P 8 -I{} bash -c 'download "$@"' _ {} 2>/dev/null
     echo "  have $(ls -1 "$WORK/cif" | wc -l) structures, $(du -sh "$WORK/cif" | cut -f1)"
-    echo "=== building foldseek database ==="
-    rm -rf "$WORK/db"; mkdir -p "$WORK/db"
-    "$BIN" createdb "$WORK"/cif/*.cif.gz "$WORK/db/pdbrep" --threads 8 2>&1 | tail -2
+    echo "=== building foldseek database (takes a while; 40k structures) ==="
+    rm -rf "$WORK/db"; mkdir -p "$WORK/db"   # foldseek will NOT create this directory itself
+    # Pass the directory, not a glob: 40k filenames can exceed the shell's argument limit.
+    "$BIN" createdb "$WORK/cif/" "$WORK/db/pdbrep" --threads 4 2>&1 | tail -2
+    [ -f "$WORK/db/pdbrep.dbtype" ] || { echo "STOP: createdb produced no database"; exit 1; }
 fi
 
 echo
