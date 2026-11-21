@@ -77,6 +77,29 @@ MSA defaults to `empty` (Boltz-2 single-sequence mode). That lowers absolute str
 but it is **identical across the three ligands**, so it cannot bias the difference between them.
 Pass `--msa=<path to an .a3m on the cluster>` to reuse an alignment from an earlier run.
 
+## There is no experimental substrate-binding constant to validate against
+
+This is the single most important thing to know before reading a ladder result.
+
+Table 1 of [Broom et al.](https://www.biorxiv.org/content/10.1101/2020.03.19.999235v1.full)
+reports the HG series as **k_cat/K_M only**, with this footnote, verbatim:
+
+> "Individual parameters *K*<sub>M</sub> and *k*<sub>cat</sub> could not be determined accurately
+> because saturation was not possible at the maximum substrate concentration tested (2 mM)."
+
+So for the best-characterised Kemp eliminases in existence, **K_M was never measured** — these
+enzymes bind 5-nitrobenzisoxazole too weakly to saturate at 2 mM. Two consequences:
+
+1. **"Substrate binding affinity" has no published ground truth here.** Any claim this pipeline
+   makes about substrate binding cannot be checked against experiment for this series.
+2. **k_cat/K_M is the right target anyway.** Transition-state theory makes k_cat/K_M the free-energy
+   difference between the transition state and *free* enzyme + *free* substrate — i.e. it is a
+   measure of **transition-state affinity**, which is exactly what the ladder's reference leg
+   estimates. So validate against k_cat/K_M, and do not claim to validate K_M.
+
+It also means the real affinities are **≥ mM**, i.e. log10(IC50/µM) ≳ 3.3 — the weak-binding
+extreme, far from the nM–µM regime where Boltz-2's affinity head was trained.
+
 ## Limits — read before trusting a number
 
 1. **These ligands are far smaller than Boltz-2's affinity training data.** The model warns above 56
