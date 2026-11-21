@@ -449,6 +449,31 @@ Practical consequence: **optimise and report the base contact; treat the donor a
 that control is redone. Convenient, because the base contact is where our designs were failing and
 geometry is dominated by it.
 
+### (g3) Sequence oversampling buys catalytic geometry but ZERO fold diversity
+
+`tools/self_diversity.sh` on chris-04's 75 structures, all-vs-all, single linkage at qTM 0.7:
+
+| cluster | members | what it is |
+|---|---|---|
+| fold 1 | **71 of 72 designs** | all one fold — qTM 0.98–0.99 to each other |
+| fold 2 | 3 | the natural controls 4BS0 / 3NYD / 7K4U, qTM 0.82–0.90, 72–90 % identity |
+| fold 3 | 1 | `s070`, the one design that refolded into something else |
+
+The controls clustering together is the check that the tool works: they genuinely *are* homologues,
+and our designs sit in a separate cluster from them.
+
+The designs' sequences differ a lot — 58–74 % pairwise identity — but the fold is identical, which is
+exactly what "same backbone, different sequence" has to mean. **So Idea A alone cannot fill 20
+submission slots.** Twenty sequences off one backbone are twenty copies of one fold, and if that fold
+is inactive in the lab, every slot fails together. Fold diversity has to come from different
+**backbones** — which is what Ideas B and C supply. A and B/C are complements, not competitors.
+
+One trap worth recording, because it produced a confidently wrong answer first time: foldseek names a
+hit `<stem>_<chain>`, e.g. `s059_A`. Matching those against filenames needs both sides normalised, and
+stripping a 1–3 character suffix turns `..._model_0` into `..._model` and `c_3NYD` into `c`. The
+mismatch silently matched nothing and reported "75 structures -> 75 distinct folds" for 75 copies of
+one fold. The script now strips exactly one character and aborts if no edge matches a node.
+
 ### (h) Boltz-2's affinity head reads ligand chemistry, not catalytic proficiency
 
 Boltz-2 ships a binding-affinity head, and zonghu has already run it on the three real enzymes against

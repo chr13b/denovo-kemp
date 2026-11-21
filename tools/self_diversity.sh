@@ -25,11 +25,20 @@ trap 'rm -rf "$WORK"' EXIT
 mkdir -p "$WORK/in"
 COUNT=0
 # Flatten whatever layout the predictions came in; foldseek wants one directory of structures.
+# Name each copy after its Boltz prediction directory (s024/s024_model_0.cif -> s024.cif) rather
+# than after the file. Keeping the "_model_0" suffix breaks the name matching below, because
+# foldseek appends a chain id and stripping "_A" is indistinguishable from stripping "_0".
 while IFS= read -r f; do
     [ -s "$f" ] || continue
-    cp "$f" "$WORK/in/$(echo "$f" | sed 's#.*/predictions/##; s#/#_#g')"
+    name=$(basename "$(dirname "$f")")
+    case "$(basename "$f")" in
+        *_model_[0-9].cif) : ;;                      # Boltz layout: the directory carries the name
+        *) name=$(basename "$f" | sed 's#\.[^.]*$##') ;;
+    esac
+    [ -e "$WORK/in/$name.cif" ] && name="${name}_$COUNT"
+    cp "$f" "$WORK/in/$name.cif"
     COUNT=$((COUNT + 1))
-done < <(find "$SRC" -name "*_model_0.cif" -o -name "*.pdb" 2>/dev/null | sort)
+done < <(find "$SRC" \( -name "*_model_0.cif" -o -name "*.pdb" \) 2>/dev/null | sort)
 
 echo "structures collected: $COUNT"
 [ "$COUNT" -ge 2 ] || { echo "need at least 2 structures to compare"; exit 0; }
@@ -54,33 +63,67 @@ echo
 echo "Distinct-fold clustering at qTM $GATE (single linkage):"
 awk -F'\t' -v g="$GATE" '$1 != $2 && $3+0 > g {print $1"\t"$2}' "$WORK/hits.tsv" | sort -u > "$WORK/edges.tsv"
 ls -1 "$WORK/in" > "$WORK/nodes.txt"
+# NOTE: foldseek reports names as "<basename-without-extension>_<chain>", e.g. s059_A for the file
+# s059.cif. The node list is filenames. Getting this wrong silently matches NOTHING, every node stays
+# its own cluster, and the script happily reports "75 structures -> 75 distinct folds" for 75 copies of
+# one fold. Both sides are normalised to a bare stem below.
 python3 - "$WORK/nodes.txt" "$WORK/edges.tsv" <<'PY'
+import re
 import sys
-nodes = [line.strip() for line in open(sys.argv[1]) if line.strip()]
+
+
+def stem(name):
+    """'s059.cif' and 's059_A' both become 's059'.
+
+    The chain suffix is exactly ONE character. Allowing more would turn 'c_3NYD' into 'c' and
+    'x_model_0' into 'x_model', which is how this silently broke the first time.
+    """
+    name = re.sub(r"\.(cif|pdb|ent)(\.gz)?$", "", name.strip())
+    return re.sub(r"_[A-Za-z0-9]$", "", name)
+
+
+files = [line.strip() for line in open(sys.argv[1]) if line.strip()]
+nodes = {}
+for f in files:
+    nodes.setdefault(stem(f), []).append(f)
 parent = {n: n for n in nodes}
 
+
 def find(x):
-    while parent.get(x, x) != x:
+    while parent[x] != x:
         parent[x] = parent[parent[x]]
         x = parent[x]
     return x
 
+
+edges = matched = 0
 for line in open(sys.argv[2]):
     parts = line.rstrip("\n").split("\t")
     if len(parts) != 2:
         continue
-    a, b = (p if p in parent else p + ".cif" for p in parts)
+    edges += 1
+    a, b = stem(parts[0]), stem(parts[1])
     if a in parent and b in parent:
+        matched += 1
         ra, rb = find(a), find(b)
         if ra != rb:
             parent[ra] = rb
 
+if edges and not matched:
+    sys.exit(f"  BUG: {edges} edges, none matched a structure name - clustering is meaningless. "
+             f"example edge name vs node name: {parts[0]!r} vs {files[0]!r}")
+
 clusters = {}
 for n in nodes:
     clusters.setdefault(find(n), []).append(n)
-print(f"  {len(nodes)} structures -> {len(clusters)} distinct folds")
+print(f"  {len(nodes)} structures -> {len(clusters)} distinct fold(s)   "
+      f"[{matched}/{edges} same-fold edges matched]")
 for i, (_, members) in enumerate(sorted(clusters.items(), key=lambda kv: -len(kv[1])), 1):
-    print(f"  fold {i}: {len(members)} member(s)  e.g. {members[0]}")
+    extra = f" (+{len(members) - 1} more)" if len(members) > 1 else ""
+    print(f"  fold {i}: {len(members)} member(s)  e.g. {members[0]}{extra}")
+if len(clusters) == 1 and len(nodes) > 2:
+    print("\n  >> ALL of these are the same fold. Sequence sampling on one backbone gives catalytic")
+    print("  >> geometry but NO fold diversity. Submission slots need different BACKBONES.")
 PY
 
 echo
