@@ -64,6 +64,8 @@ for SEED in $SEEDS; do
         > "$RUN/boltz.log" 2>&1
     "$ENV_ROOT/env-rfd3/bin/python" "$PROJECT/measure_boltz_outputs.py" \
         "$RUN" - "$RUN/geometry.tsv" | tail -3
+    "$ENV_ROOT/env-rfd3/bin/python" "$PROJECT/geometry_vs_crystal.py" /mnt/work/tools/kemp_pdb \
+        "$RUN/geometry_full.tsv" "x=$RUN" | tail -1
 done
 
 echo "=================================================================="

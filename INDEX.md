@@ -86,6 +86,8 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [tools/fetch_papers.sh](tools/fetch_papers.sh) — download the open-access literature into `data/papers/` (gitignored)
 - [tools/novelty_check.sh](tools/novelty_check.sh) — TM-score a design against published structures; PASS/FAIL against the 0.7 gate
 - [tools/self_diversity.sh](tools/self_diversity.sh) — all-vs-all TM-score over OUR OWN candidates: how many distinct folds are we actually submitting?
+- [tools/make_share_pack.py](tools/make_share_pack.py) — bundle structures + our metrics for a teammate to test other metrics against (writes `data/`, gitignored)
+- [tools/share_pack_README.md](tools/share_pack_README.md) — the README that goes inside that bundle
 - [tools/status.py](tools/status.py) — overview: experiments table and recent log entries (`make status`)
 - [configs/](configs/) — reusable run configs, `<handle>-NN.json`, referenced from experiment pages
 - [envs/](envs/) — pinned environments for external tools with their own deps (`<tool>.yml` / `<tool>.Dockerfile`)
@@ -97,6 +99,8 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [cluster/replicate_seeds.sbatch](cluster/replicate_seeds.sbatch) — fold the same sequences at 5 Boltz-2 seeds: the scored consistency term, and the noise floor
 - [cluster/geometry_vs_crystal.py](cluster/geometry_vs_crystal.py) — distances, approach angle and in-plane angle of every design vs the 25 crystal copies
 - [cluster/pocket_and_smoothness.py](cluster/pocket_and_smoothness.py) — does pocket sequence or similarity to winners predict geometry? (no, at 56-74 % identity)
+- [cluster/make_arm_inputs.py](cluster/make_arm_inputs.py) — per-residue bias files for the aromatic-pocket and close-variants arms (calibrated)
+- [cluster/autopilot.py](cluster/autopilot.py) — **unattended pipeline** on the head node: replicate, four arms, main sweep, replicate, rank
 - [cluster/launch_oversample.sh](cluster/launch_oversample.sh) — deploy + submit an oversampling job from a finished run's `bridge/`
 - [cluster/launch_design.sh](cluster/launch_design.sh) — deploy + submit the RFD3 design stage over a directory of motifs
 - [cluster/build_boltz_queries.py](cluster/build_boltz_queries.py) — many sequences → one Boltz-2 query directory, with query-only alignments

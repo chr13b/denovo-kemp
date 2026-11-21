@@ -71,6 +71,32 @@ cat /mnt/work/projects/<handle>_<topic>/results/kemp-JOB_NUMBER/summary.json
   with status `completed_with_warnings` is normal, but read the warnings.
 - We all share one Linux login, so folder separation is organisational, not permissions.
 
+## Only ONE GPU actually works (checked 2026-11-21 23:28 UTC)
+
+`gpu-dy-l4-1` (g6.2xlarge, 8 CPU, 31 GB) is the only usable node. `gpu-dy-l4small-1/-2` are stuck at
+`Scheduler health check failed` (stamped 20:39 UTC). A one-job probe with `--constraint=l4small --no-requeue`
+started on `l4small-1` at 23:28:08 and ended 12 s later as `NODE_FAIL / NodeDown`; the node then failed its health
+check again. `l4big` is reserved and off limits. So **everything is serial on one GPU**: ~19 s per Boltz-2 fold at
+260 residues. Pin jobs to `--constraint=g6.2xlarge`; a constraint that allows the small nodes makes Slurm allocate
+to a dead node and requeue the job to the back of the line (one of ours was requeued 6 times and never ran).
+Use `--no-requeue` on any probe.
+
+## The unattended pipeline (`cluster/autopilot.py`)
+
+A driver that runs on the head node under `nohup` and survives a dropped session. It only polls Slurm and parses TSV
+files; all GPU work is submitted with `sbatch`. Stages: `repl1` (replicate the 20 best existing designs by geometry
+D), `arms` (four 72-sequence arms on seed 4's backbone: baseline, aromatic pocket, close variants of s024, LigandMPNN
+checkpoint 005), `main` (216 more sequences with the winning arm's settings), `repl2` (replicate the best new
+designs), `final` (aggregate, apply the selection rule, write `final_candidates.tsv` and `designs_candidate.fasta`).
+
+- Start: `cd /mnt/work/projects/chris_autopilot && nohup setsid python3 src/autopilot.py > autopilot.out 2>&1 &`
+- Rehearse without submitting: `python3 src/autopilot.py --dry-run`. Watch: `tail -f autopilot.log`.
+- It is resumable (`state.json`), halts if a job fails twice, warns if a job pends over 90 min, and will not start
+  a stage that cannot finish before `--stop-by` (default 2026-11-22T08:00 UTC).
+- It never uploads and never touches other users' jobs. The novelty gate and the upload stay with a human.
+- Selection rule (pre-registered): both distances in window in >= 3/5 seeds, mean D <= 15, the nearest carboxylate
+  oxygen is OD2 in >= 4/5 seeds, qTM <= 0.70 (checked separately), the organizers' validator accepts.
+
 ## Interactive poking around (no heavy compute!)
 
 ```bash

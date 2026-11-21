@@ -23,6 +23,9 @@
 #   OS_BATCH        sequences per batch                       (default 8)
 #   OS_NBATCHES     batches per temperature                   (default 3)
 #   OS_CONTROLS     FASTA of natural-enzyme controls to fold under identical conditions
+#   OS_CKPT         LigandMPNN checkpoint to use instead of the default (an experiment arm)
+#   OS_EXTRA_ARGS   extra LigandMPNN arguments, e.g. "--bias_AA_per_residue <json>" (an experiment arm)
+#   OS_SEED_OFFSET  added to the per-temperature seed, so two sweeps at the same T do not repeat sequences
 # Node sizing: this job does not run MMseqs2 (chris-03: the stage is a no-op), so it needs only
 # 4 CPUs / 14 GB and would fit the small l4small nodes. BUT those nodes are currently dead
 # (idle~, "Scheduler health check failed"), and a constraint that ALLOWS them is a trap: Slurm
@@ -62,16 +65,16 @@ echo "START 1/4: LigandMPNN sequence oversampling"
 for T in $TEMPERATURES; do
     # A distinct seed per temperature keeps the three sweeps independent; without it the
     # same RNG stream would make the low-temperature samples near-copies of each other.
-    SEED=$(awk -v t="$T" 'BEGIN{printf "%.0f", t*1000}')
+    SEED=$(awk -v t="$T" -v o="${OS_SEED_OFFSET:-0}" 'BEGIN{printf "%.0f", t*1000+o}')
     echo "  --- T=$T seed=$SEED"
     "$ENV_ROOT/env-ligandmpnn/bin/python" "$LIGANDMPNN_ROOT/run.py" \
         --model_type ligand_mpnn \
-        --checkpoint_ligand_mpnn "$LIGANDMPNN_CHECKPOINT" \
+        --checkpoint_ligand_mpnn "${OS_CKPT:-$LIGANDMPNN_CHECKPOINT}" \
         --pdb_path "$OS_BACKBONE" \
         --out_folder "$RUN_ROOT/ligandmpnn/T$T" \
         --fixed_residues "$OS_FIXED" \
         --ligand_mpnn_use_atom_context 1 --ligand_mpnn_use_side_chain_context 1 \
-        --temperature "$T" \
+        --temperature "$T" ${OS_EXTRA_ARGS:-} \
         --batch_size "$BATCH" --number_of_batches "$NBATCHES" \
         --pack_side_chains 0 --seed "$SEED" --verbose 0 \
         >> "$RUN_ROOT/ligandmpnn.log" 2>&1
@@ -102,5 +105,10 @@ done
 echo "START 4/4: measuring catalytic geometry"
 "$ENV_ROOT/env-rfd3/bin/python" "$PROJECT/measure_boltz_outputs.py" \
     "$RUN_ROOT" "$OS_BACKBONE" "$RUN_ROOT/geometry.tsv"
+# Full geometry (distances + approach angle + in-plane angle) against the crystal copies. Cheap, and the
+# structures are kept, so this could be redone later - but doing it here means every sweep is ranked the
+# same way without a separate step.
+"$ENV_ROOT/env-rfd3/bin/python" "$PROJECT/geometry_vs_crystal.py" /mnt/work/tools/kemp_pdb \
+    "$RUN_ROOT/geometry_full.tsv" "x=$RUN_ROOT" | tail -2
 
 echo "OVERSAMPLE COMPLETE: $RUN_ROOT/geometry.tsv"

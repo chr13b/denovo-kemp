@@ -636,6 +636,32 @@ the wrong place touches different residues, so the refold-defined number was cir
 **Consequence.** My planned "pocket-fixed resampling around s024" would mostly reproduce blind sampling, because
 the pocket is already near-identical in every design. Replaced by three small comparison arms (see the plan).
 
+### (g10) Why most designs are 'bad', which are good, and what a free metric can do
+
+Over all 352 swept designs, geometry D (0 = inside every crystal range; our proxy): 5th percentile 17.3, median
+53.5, 95th percentile 129. Only 6 designs (1.7 %) have D <= 10 and 29 (8 %) have D <= 20.
+
+**The dominant failure is not a subtle pose error: in 297 of 352 designs (84 %) the ligand is not in the pocket at
+all** (base > 5 Å or donor > 6 Å). Only 19 designs (5 %) put it roughly in place, and 6 of those reach D <= 10.
+Share inside the crystal range per quantity: base distance 2.0 %, donor distance 1.7 %, base approach 2.3 %, donor
+approach 1.1 %, but in-plane 24.7 % (base) and 27.8 % (donor), so lying in the ring plane is the easy part and
+arriving along the ring's outward axis is the hard part.
+
+**What the good ones share.** 12 of the 15 best by D sit on seed 4's backbone (72 of 352 designs); by temperature
+they are 3 at T 0.1, 6 at 0.2, 6 at 0.3, a rate of 3.8 %, 3.4 % and 6.3 % (not significant). They refold more
+faithfully and more confidently: median iptm 0.885 against 0.793, iPDE 1.23 against 2.17, CA RMSD 0.80 against 1.83.
+Not their pocket residues and not their sequence similarity (see g9).
+
+**A free filter.** Across all designs geometry D correlates with iPDE (+0.43), iptm (-0.42) and complex pLDDT (-0.47);
+within seed 4 alone only weakly (+0.22, -0.23, -0.27). As a pre-filter, `iPDE < 1.6 and iptm > 0.85` keeps 17 % of
+designs and 5 of the 6 with D <= 10 (precision 8.2 %, 4.8x the 1.7 % base rate). It is a triage step to shrink what
+gets replicated, not a replacement for measuring the geometry.
+
+**How the pose is tested, and its limits.** The same Boltz-2 cofold the scorer runs (single sequence, 6NT), the
+contacts measured at the declared residues, compared with the span of 25 engaged crystal copies, repeated over 5 seeds
+for consistency, plus iPDE and burial. It is one model judged against crystals. There is no independent second
+predictor on the cluster and no wet lab, and Boltz-2 itself does not reproduce the natural enzymes' donor contact.
+
 ### (g6) Motif variety: one alternative arrangement looked worse than 4BS0 (weak evidence)
 
 > **Evidence grade, corrected:** one backbone per motif. Within the 4BS0 motif alone, RFD3 seeds give
