@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Perlin — Walkthrough of your Team Cluster</title>
+<style>
+:root { color-scheme:light; --ink:#173c32; --text:#293e35; --muted:#5a6b63; --line:#dce5de; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:#f5f7f3; color:var(--text); font:16px/1.7 "Segoe UI",system-ui,sans-serif; }
+main { max-width:1080px; margin:32px auto; background:#fff; border:1px solid var(--line); border-radius:18px; padding:40px 54px 55px; }
+.eyebrow { color:var(--muted); font-size:12px; letter-spacing:.12em; text-transform:uppercase; }
+h1 { margin:12px 0; color:var(--ink); font-size:40px; line-height:1.2; font-weight:650; max-width:800px; }
+.intro { color:var(--muted); max-width:740px; font-size:18px; margin:14px 0 24px; }
+.intro.fairness-note { font-size:13px; line-height:1.5; margin:8px 0 16px; }
+a { color:#17634b; text-underline-offset:3px; }
+a:focus-visible { outline:3px solid #709cc9; outline-offset:3px; }
+h2 { color:var(--ink); font-size:28px; line-height:1.35; margin:28px 0 18px; padding-top:20px; border-top:1px solid var(--line); scroll-margin-top:22px; }
+h3 { color:var(--ink); font-size:19px; line-height:1.4; margin:29px 0 12px; }
+p { margin:14px 0; } ul { padding-left:23px; } li { margin:10px 0; }
+.table-scroll { overflow-x:auto; margin:20px 0; border:1px solid var(--line); border-radius:9px; }
+table { width:100%; min-width:610px; border-collapse:collapse; font-size:14px; line-height:1.5; }
+th, td { text-align:left; padding:11px 13px; border-bottom:1px solid var(--line); vertical-align:top; }
+th { background:#f0f5ef; color:var(--ink); font-weight:600; }
+tr:last-child td { border-bottom:0; }
+pre { margin:19px 0; background:#142e26; color:#ecf6ee; padding:19px 21px; border-radius:9px; font-size:13px; line-height:1.65; overflow-x:auto; tab-size:4; }
+code { font-family:Consolas,"Liberation Mono",monospace; }
+:not(pre)>code { background:#edf3ed; padding:1px 4px; border-radius:3px; font-size:.92em; }
+figure { margin:24px 0; overflow-x:auto; border:1px solid #e3e9e3; border-radius:12px; padding:12px 7px; background:#fcfdfb; }
+svg { display:block; width:100%; min-width:0; height:auto; }
+@media(max-width:700px) { main { margin:0; padding:25px 20px 35px; border:0; border-radius:0; } h1 { font-size:31px; } .intro { font-size:17px; } h2 { font-size:25px; } }
+@media(max-width:600px) { svg { min-width:680px; } }
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+@media print { body { background:#fff; font-size:11pt; } main { margin:0; padding:0; border:0; max-width:none; } pre { white-space:pre-wrap; overflow-wrap:anywhere; background:#f2f4f1; color:#172c22; } h2, h3 { break-after:avoid; } figure { break-inside:avoid; } svg, table { min-width:0; } }
+</style></head><body><main>
+<div class="eyebrow">Perlin · participant walkthrough</div>
+<h1>Walkthrough of your Team Cluster</h1>
+<p class="intro">We provide pre-installed environments, state-of-the-art tools with their respective weights, relevant data for MSAs, and an end-to-end example for your convenience. This helps you get started quickly without wasting time on setup.</p>
+<p class="intro">Please do not hesitate to ask us if something is unclear or you need help :)</p>
+<p class="intro fairness-note">Note: We ask you to use only the provided computing resources for fairness reasons.</p>
+
+<h2 id="infrastructure-and-workflows">Infrastructure and Workflows</h2>
+<h3>Where your work happens</h3>
+<p><figure><svg viewBox="0 0 960 320" role="img" aria-labelledby="architecture-title architecture-description" xmlns="http://www.w3.org/2000/svg">
+<title id="architecture-title">Your laptop controls a remote team cluster</title>
+<desc id="architecture-description">SSH connects the laptop to the head node. Slurm sends work to a GPU worker. The head and worker share the team reference and work disks.</desc>
+<defs><marker id="architecture-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#48675e"/></marker></defs>
+<g font-family="Segoe UI, sans-serif" fill="#183d33">
+<rect x="15" y="24" width="250" height="112" rx="12" fill="#eaf2fc" stroke="#a6bddc"/>
+<rect x="345" y="24" width="250" height="112" rx="12" fill="#eaf5ee" stroke="#9bc5ae"/>
+<rect x="685" y="24" width="250" height="112" rx="12" fill="#fff2df" stroke="#dabd8e"/>
+<g font-size="21" font-weight="600"><text x="35" y="60">Your laptop</text><text x="365" y="60">Head node</text><text x="705" y="60">GPU worker</text></g>
+<g font-size="16"><text x="35" y="89">SSH terminal / VS Code</text><text x="35" y="115">No local model installation</text><text x="365" y="89">Edit files and submit jobs</text><text x="365" y="115">Your remote terminal</text><text x="705" y="89">Runs the model calculations</text><text x="705" y="115">Allocated by Slurm</text></g>
+<g stroke="#48675e" stroke-width="2" fill="none" marker-end="url(#architecture-arrow)"><path d="M266,85 H337"/><path d="M596,85 H677"/><path d="M470,137 V184"/><path d="M810,137 V184"/></g>
+<g font-size="14" text-anchor="middle"><text x="303" y="71">SSH</text><text x="639" y="71">Slurm</text></g>
+<rect x="345" y="188" width="590" height="114" rx="12" fill="#f3f5f2" stroke="#bac9bf"/>
+<text x="365" y="216" font-size="17" font-weight="600">Shared within this team</text>
+<g font-size="16"><text x="365" y="246">/mnt/ref</text><text x="365" y="275">Prepared tools and data</text><text x="675" y="246">/mnt/work</text><text x="675" y="275">Your code and outputs</text></g>
+</g></svg></figure></p>
+<ul>
+<li>SSH opens a terminal on the head node. You use it to edit files, prepare inputs and submit jobs. Once connected, your commands run on the cluster.</li>
+<li>Slurm is the job scheduler. It queues your calculation and assigns a GPU worker. Run model calculations and all heavy calculations on compute nodes through Slurm. Never run heavy calculations on the head node; it has no GPU.</li>
+<li>The head node and workers see the same /mnt/ref and /mnt/work folders. Files stay on the cluster until you copy them elsewhere.</li>
+</ul>
+<h3>Computing Resources</h3>
+<ul>
+<li><strong>Your team can run 8 logical CPUs of GPU workers at a time.</strong> That is either one g6.2xlarge, or two g6.xlarge. Every g6 size carries the same single NVIDIA L4 with 24 GB of VRAM, so two g6.xlarge give your team <strong>two GPUs at once</strong> and one g6.2xlarge gives you one. Prefer the pair unless you need the larger host memory.</li>
+<li>The larger host matters for one step only: building an MSA with MMseqs2 needs about 28 GB of system RAM, so that step must run on the g6.2xlarge. RFD3, LigandMPNN and Boltz-2 all fit comfortably on a g6.xlarge.</li>
+<li>CPU and memory values below are per node. Counts are configured capacity, not a guarantee that a worker is free the moment you ask.</li>
+</ul>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>Role</th>
+  <th>Instance type</th>
+  <th>Configured count</th>
+  <th>Logical CPUs</th>
+  <th>System RAM</th>
+  <th>GPU and GPU memory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Head node</td>
+  <td>m7i.2xlarge</td>
+  <td>1</td>
+  <td>8</td>
+  <td>32 GiB</td>
+  <td>None</td>
+</tr>
+<tr>
+  <td>GPU worker</td>
+  <td>g6.xlarge</td>
+  <td>2</td>
+  <td>4</td>
+  <td>16 GiB</td>
+  <td>1 NVIDIA L4, 24 GB</td>
+</tr>
+<tr>
+  <td>GPU worker</td>
+  <td>g6.2xlarge</td>
+  <td>1</td>
+  <td>8</td>
+  <td>32 GiB</td>
+  <td>1 NVIDIA L4, 24 GB</td>
+</tr>
+<tr>
+  <td>GPU worker</td>
+  <td>g6.4xlarge</td>
+  <td>Not available</td>
+  <td>16</td>
+  <td>64 GiB</td>
+  <td>1 NVIDIA L4, 24 GB</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Logical CPUs are the processing threads available to the operating system. RAM holds ordinary working data; GPU memory, also called VRAM, holds data used by the GPU.</li>
+<li>The g6.4xlarge queue (<code>l4big</code> in Slurm) is above your team's allocation. A job sent there waits in the queue indefinitely rather than failing, so do not use it.</li>
+<li>Instance specifications: <a href="https://aws.amazon.com/ec2/instance-types/g6/">AWS G6</a> and <a href="https://aws.amazon.com/ec2/instance-types/m7i/">AWS M7i</a>.</li>
+</ul>
+<h3>Your reference library and workbench</h3>
+<ul>
+<li>/mnt/ref is the prepared, read-only reference library. It contains the installed tools, their environments, model weights and sequence data. An environment supplies a tool with its Python interpreter and libraries; weights are the learned model parameters.</li>
+<li>/mnt/work is your writable workbench. Put your inputs, code, caches and results here.</li>
+</ul>
+<pre><code class="language-text">/mnt/ref/
+├── software/                  Installed tools and their environments
+├── data_weights/              Model weights and reference data
+└── hackathon/                 Prepared example and participant tools
+
+/mnt/work/
+├── kemp_example/              Your team’s working copy of the example
+└── projects/                  Your own project folders
+</code></pre>
+<h3>Provided tools</h3>
+<ul>
+<li>The supplied example runs RFD3 to generate a structure, LigandMPNN to design its sequence, MMseqs2 to build a multiple sequence alignment (MSA), and Boltz-2 to predict the protein-ligand structure.</li>
+<li>The participant entry points are setup.sh, status.sh, new-project.sh and run.sh. The next two sections show when to use each one.</li>
+</ul>
+<h2 id="connecting-to-the-cluster-and-setup">Connecting to the Cluster and Setup</h2>
+<h3>Before you connect</h3>
+<ul>
+<li>Your organisers give your team one packet containing a private key file and a <code>CONNECT.txt</code> with your head-node address, your login name and the server fingerprint to check. Everything in this section uses values from that packet.</li>
+<li>Your laptop needs an SSH client. VS Code with Remote SSH is optional. You do not need local AWS CLI, ParallelCluster, Conda, Python, CUDA or WSL for this prepared-cluster workflow.</li>
+<li>Allow about 15 minutes of hands-on preparation after access is ready. GPU startup, queueing and model runtime are additional time.</li>
+</ul>
+<h3>Your team key</h3>
+<ul>
+<li>Your team is issued one key by the organisers. You do not generate a key and there is nothing to register. Everyone on the team uses the same key file, so keep it within the team and do not post it anywhere.</li>
+<li>Open PowerShell on Windows, or Terminal on macOS/Linux. Check that the SSH client exists:</li>
+</ul>
+<pre><code class="language-text">ssh -V
+</code></pre>
+<ul>
+<li>-V prints the client version. On Windows, install OpenSSH Client through Optional Features if it is missing, then reopen PowerShell. <a href="https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse">Microsoft instructions</a></li>
+<li>macOS normally includes the client. On Ubuntu/Debian Linux, install a missing client with sudo apt install openssh-client.</li>
+<li>Copy the key file from your packet into your .ssh folder, then restrict its permissions. SSH refuses to use a private key that other accounts on your machine can read.</li>
+<li>Windows PowerShell, from the folder holding the key:</li>
+</ul>
+<pre><code class="language-powershell">New-Item -ItemType Directory -Force -Path &quot;$env:USERPROFILE\.ssh&quot; | Out-Null
+Copy-Item .\pdh-team-NN.pem &quot;$env:USERPROFILE\.ssh\&quot;
+icacls &quot;$env:USERPROFILE\.ssh\pdh-team-NN.pem&quot; /inheritance:r /grant:r &quot;$env:USERNAME:R&quot;
+</code></pre>
+<ul>
+<li>macOS/Linux Terminal:</li>
+</ul>
+<pre><code class="language-bash">mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+cp ./pdh-team-NN.pem ~/.ssh/
+chmod 600 ~/.ssh/pdh-team-NN.pem
+</code></pre>
+<ul>
+<li>Replace NN with your team number. chmod 700 restricts the folder to your user and chmod 600 restricts the key to your user; icacls does the equivalent on Windows by removing inherited permissions and granting only yourself read access.</li>
+</ul>
+<h3>Connect to the head node</h3>
+<ul>
+<li>On your laptop, edit <code>C:\Users\YOUR_WINDOWS_USER\.ssh\config</code> on Windows, or <code>~/.ssh/config</code> on macOS/Linux. Create the file if needed and preserve existing entries.</li>
+<li>Add this block, replacing YOUR_HEAD_NODE_ADDRESS and NN with the values from your packet:</li>
+</ul>
+<pre><code class="language-text">Host pdh-team
+    HostName YOUR_HEAD_NODE_ADDRESS
+    User ec2-user
+    IdentityFile ~/.ssh/pdh-team-NN.pem
+    IdentitiesOnly yes
+</code></pre>
+<ul>
+<li>Host gives the connection a shortcut name. HostName and User select the server and remote account. IdentityFile selects your private key; IdentitiesOnly restricts authentication to that identity.</li>
+<li>Windows SSH and WSL SSH use separate configuration files. Configure the client you actually use. Windows VS Code normally uses Windows SSH.</li>
+<li>Connect from your laptop:</li>
+</ul>
+<pre><code class="language-text">ssh pdh-team
+</code></pre>
+<ul>
+<li>On the first connection SSH prints the server fingerprint. Compare it with the one in your <code>CONNECT.txt</code> before accepting. If it does not match, stop and tell an organiser. The fingerprint identifies the server; the key identifies your team.</li>
+<li>For Permission denied, check the username is <code>ec2-user</code>, that the config points at your team's key file, and that the key's permissions are restricted as above. For a timeout, ask the organiser to check the address and network access.</li>
+<li>You are now on the head node. Run the remaining setup and design commands in this remote terminal. To see the computer and your login name:</li>
+</ul>
+<pre><code class="language-bash">hostname
+whoami
+</code></pre>
+<ul>
+<li>Optional editor: install VS Code and Remote - SSH. Press F1, choose Remote-SSH: Connect to Host, select pdh-team and choose Linux if prompted. Open /mnt/work, then Terminal, New Terminal. That terminal also runs on the cluster. <a href="https://code.visualstudio.com/docs/remote/ssh">VS Code instructions</a></li>
+</ul>
+<h3>Prepare the example</h3>
+<ul>
+<li>Run this once for your team’s working example. The organisers have made /mnt/work and /mnt/work/projects available for your team. If a teammate has already prepared /mnt/work/kemp_example, check its status below instead.</li>
+</ul>
+<pre><code class="language-bash">bash /mnt/ref/hackathon/setup.sh
+</code></pre>
+<ul>
+<li>Setup checks the prepared installation, copies the example code and inputs to /mnt/work/kemp_example, and creates folders for logs, results, caches and temporary files. It uses the installed environments without reinstalling software.</li>
+<li>It submits one Slurm job that runs three small model tests and then the complete Kemp example. Keep the terminal connected until setup prints the job number. Submission means the job is queued, not that the tests have passed.</li>
+</ul>
+<p><figure><svg viewBox="0 0 960 245" role="img" aria-labelledby="workflow-title workflow-description" xmlns="http://www.w3.org/2000/svg">
+<title id="workflow-title">From the supplied example to your own project</title>
+<desc id="workflow-description">Setup copies the authoritative Kemp example from read-only reference storage into the writable Kemp example workspace. New-project then copies code and inputs into a separate project without copying old results or verification markers.</desc>
+<defs><marker id="workflow-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#48675e"/></marker></defs>
+<g font-family="Segoe UI, sans-serif" fill="#183d33">
+<rect x="15" y="46" width="270" height="138" rx="12" fill="#eef2f8" stroke="#a7b9d2"/>
+<rect x="345" y="46" width="270" height="138" rx="12" fill="#eaf5ee" stroke="#9bc5ae"/>
+<rect x="675" y="46" width="270" height="138" rx="12" fill="#fff2df" stroke="#dabd8e"/>
+<g font-size="14" letter-spacing="1"><text x="35" y="73">PROVIDED</text><text x="365" y="73">LEARN THE WORKFLOW</text><text x="695" y="73">ITERATE</text></g>
+<g font-size="21" font-weight="600"><text x="35" y="106">Reference example</text><text x="365" y="106">Kemp example</text><text x="695" y="106">Your project</text></g>
+<g font-size="14" font-family="Consolas, monospace"><text x="35" y="136">/mnt/ref/hackathon/</text><text x="35" y="158">example_e2e_kemp/</text><text x="365" y="136">/mnt/work/</text><text x="365" y="158">kemp_example/</text><text x="695" y="136">/mnt/work/projects/</text><text x="695" y="158">my_first_design/</text></g>
+<g stroke="#48675e" stroke-width="2" fill="none" marker-end="url(#workflow-arrow)"><path d="M286,115 H337"/><path d="M616,115 H667"/></g>
+<g font-size="14" text-anchor="middle"><text x="315" y="30">setup.sh</text><text x="645" y="30">new-project.sh</text></g>
+<text x="20" y="220" font-size="16">Copy code and inputs. Keep new results, logs, caches and temporary files in each workspace.</text>
+</g></svg></figure></p>
+<ul>
+<li>If setup stops before printing a job number, keep the terminal output and ask the organiser to inspect it. Do not delete a workspace to retry.</li>
+<li>Once submitted, the job continues if SSH disconnects. Closing your laptop does not stop the cluster.</li>
+</ul>
+<h3>Check that setup succeeded</h3>
+<ul>
+<li>Run this on the head node:</li>
+</ul>
+<pre><code class="language-bash">bash /mnt/work/kemp_example/status.sh
+</code></pre>
+<ul>
+<li>While the job is queued or running, status.sh reports that verification is incomplete. Wait and check again; do not submit another job just because the first is waiting.</li>
+<li>The expected success message is:</li>
+</ul>
+<pre><code class="language-text">VERIFIED: three independent GPU smoke tests and the Kemp pipeline passed.
+</code></pre>
+<ul>
+<li>status.sh checks the queue and the saved success evidence. A job disappearing from the queue alone does not mean it succeeded.</li>
+<li>To inspect progress or a failure, replace JOB_NUMBER with the number printed by setup:</li>
+</ul>
+<pre><code class="language-bash">tail -n 50 /mnt/work/kemp_example/logs/verify-JOB_NUMBER.log
+</code></pre>
+<ul>
+<li>tail -n 50 prints the last fifty log lines. The log appears after the worker starts. If verification fails, keep the files and share the job number and final log lines with the organiser.</li>
+</ul>
+<h2 id="run-your-designs">Run Your Designs</h2>
+<h3>Create a clean project</h3>
+<ul>
+<li>Keep the verified working example unchanged as a reference. Choose a new project name that your teammates are not using. Replace my_first_design in these commands with that name:</li>
+</ul>
+<pre><code class="language-bash">bash /mnt/ref/hackathon/new-project.sh /mnt/work/kemp_example /mnt/work/projects/my_first_design
+</code></pre>
+<ul>
+<li>The first path selects the source workspace; the second selects the new project. The destination must not exist and its parent must be writable.</li>
+<li>This copies the code, inputs and run settings. It creates empty output folders and does not copy previous results, caches or verification history. It does not submit a job.</li>
+<li>Open your project folder in VS Code, or edit it from the remote terminal:</li>
+</ul>
+<pre><code class="language-text">/mnt/work/projects/my_first_design/
+├── inputs/                 Editable model input and motif files
+├── src/                    Editable pipeline and helper code
+├── results/                Separate output folder for each job
+├── logs/                   Job output and error messages
+├── cache/ and tmp/         Runtime working data
+├── env.sh                  Workspace and environment settings
+└── run.sh                  Submit this project’s Kemp pipeline
+</code></pre>
+<ul>
+<li>Start by reading inputs/Kemp.json, inputs/HG3_17_kemp_motif.pdb and src/kemp-e2e.sbatch together.</li>
+<li>This launcher is specific to the Kemp example. Its inputs and validation helpers assume one 150-residue design, particular motif identities and the Kemp ligand. It is not a general launcher for arbitrary design tasks. Changing only a JSON length or motif is insufficient; adapt the inputs, residue mapping, pipeline and scientific checks together, with the organiser’s help if needed.</li>
+<li>Separate project folders organise your files. They do not create private accounts; participants sharing a Linux login have the same permissions.</li>
+</ul>
+<h3>Submit and follow a run</h3>
+<ul>
+<li>Run on the head node:</li>
+</ul>
+<pre><code class="language-bash">bash /mnt/work/projects/my_first_design/run.sh
+</code></pre>
+<ul>
+<li>run.sh selects the model environments and submits the pipeline through Slurm. It prints a new job number and the paths for that job’s log and results.</li>
+<li>Do not change a project’s inputs or code while its job is queued or running. Use another project folder for concurrent changes.</li>
+<li>Replace JOB_NUMBER below with the new job number:</li>
+</ul>
+<pre><code class="language-bash">squeue -j JOB_NUMBER
+tail -n 50 /mnt/work/projects/my_first_design/logs/kemp-JOB_NUMBER.log
+</code></pre>
+<ul>
+<li>squeue shows a queued or running job. Once the job finishes, inspect its summary:</li>
+</ul>
+<pre><code class="language-bash">cat /mnt/work/projects/my_first_design/results/kemp-JOB_NUMBER/summary.json
+</code></pre>
+<ul>
+<li>A successful run writes a summary with pipeline_execution_passed set to true. If the summary is missing, inspect the log and ask for help. The example’s status.sh checks only the initial setup verification; it does not track these later runs.</li>
+<li>Results include the RFD3 structure, LigandMPNN sequence, MSA and Boltz-2 prediction. A designed sequence may have no database homologues and use a query-only alignment; the natural-protein control must produce database hits.</li>
+<li>This small example checks execution and data flow. It does not establish enzyme activity or competitive design quality.</li>
+</ul>
+<h3>Optional interactive environment</h3>
+<ul>
+<li>The scripts load their own environments. For interactive inspection, load your project settings and activate the tool you need:</li>
+</ul>
+<pre><code class="language-bash">source /mnt/work/projects/my_first_design/env.sh
+conda activate /mnt/ref/software/envs/env-rfd3
+</code></pre>
+<ul>
+<li>source loads settings into your current shell. conda activate selects an environment. The other prepared environments are env-ligandmpnn and env-boltz2 under /mnt/ref/software/envs. Continue to submit GPU calculations through Slurm.</li>
+</ul>
+<h3>Save your work</h3>
+<ul>
+<li>After a run finishes, open PowerShell on Windows or Terminal on macOS/Linux on your laptop in the folder where you want to save your work. These scp commands work on all three systems and copy your inputs, code, settings and results through the same SSH connection:</li>
+</ul>
+<pre><code class="language-text">mkdir my_first_design_export
+scp -r pdh-team:/mnt/work/projects/my_first_design/inputs pdh-team:/mnt/work/projects/my_first_design/src pdh-team:/mnt/work/projects/my_first_design/results my_first_design_export
+scp pdh-team:/mnt/work/projects/my_first_design/env.sh pdh-team:/mnt/work/projects/my_first_design/run.sh my_first_design_export
+</code></pre>
+<ul>
+<li>scp copies files between your laptop and the cluster; -r includes folders. Check the local files before cluster storage is removed. For large exports, ask the organiser for the approved shared destination.</li>
+<li>The prepared reference snapshot can restore /mnt/ref. It does not back up your new files in /mnt/work; follow the team’s work-backup policy.</li>
+</ul>
+
+<h2 id="submitting-your-designs">Submitting Your Designs</h2>
+<ul>
+<li>Designs are submitted as one FASTA file to a shared S3 bucket. <strong>SUBMISSION.md</strong>, alongside this guide, is the complete instruction: the file format, the catalytic residues you must declare in each header, the eligibility rules, what is scored, and the upload commands.</li>
+<li>Read it early rather than at the deadline. It ships with a validator you can run on your own machine, with no AWS and no network, which tells you whether your file would be accepted.</li>
+</ul>
+
+</main></body></html>

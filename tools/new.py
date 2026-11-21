@@ -4,7 +4,8 @@
     python tools/new.py log <type> "<title>"  # -> log/YYYY-MM-DD_HHMM_<handle>_<type>_<slug>.md
     python tools/new.py exp <slug>            # -> wiki/experiments/<handle>-NN_<slug>.md (prints the ID)
 
-<handle> is $KEMP_HANDLE if set, else the first word of `git config user.name`, lowercased.
+<handle> comes from $KEMP_HANDLE, else KEMP_HANDLE in .env (`make onboard` writes it), else the first word of
+`git config user.name`, lowercased.
 Experiment numbers count per handle, so two people can never take the same ID. There is no global counter.
 """
 
@@ -29,6 +30,10 @@ def slugify(text: str) -> str:
 
 def handle() -> str:
     name = os.environ.get("KEMP_HANDLE", "")
+    env_file = ROOT / ".env"
+    if not name and env_file.is_file():
+        m = re.search(r"^\s*KEMP_HANDLE\s*=\s*(\S+)", env_file.read_text(encoding="utf-8"), re.M)
+        name = m.group(1) if m else ""
     if not name:
         try:
             out = subprocess.run(["git", "config", "user.name"], cwd=ROOT, capture_output=True, text=True)

@@ -1,0 +1,11 @@
+---
+description: Kemp challenge hackathon repo — layout, rules and playbooks
+alwaysApply: true
+---
+
+The instructions for this repo are in [AGENTS.md](mdc:AGENTS.md) — tool-neutral and written for any
+AI assistant. Read it first, then [INDEX.md](mdc:INDEX.md), the map of every file.
+
+Short version: never invent numbers (read them from a run's `summary.json`); never edit `raw/`;
+update `INDEX.md` when you add a file; work on `<handle>/<topic>` branches; run `make check`
+before claiming you are done.

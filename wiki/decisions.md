@@ -40,3 +40,21 @@ entry that names the old one.
 - **Alternatives:**
   - One `LOG.md` with `merge=union` (GitHub's web merge ignores merge drivers, so conflicts would still appear there)
   - Trunk-only development (too risky while people don't know each other's code yet)
+
+## 2026-11-21 · Keep AI-assistant instructions tool-neutral (chris)
+- **Decision:** `AGENTS.md` is the canonical brief for AI assistants, and `CLAUDE.md`, `GEMINI.md`,
+  `.github/copilot-instructions.md` and `.cursor/rules/kemp-challenge.mdc` point at it. Procedures live
+  as plain-Markdown playbooks in `.claude/skills/<name>/SKILL.md`, readable by any tool.
+- **Why:** Everyone on the team uses a different assistant and brings their own prompts and skills. One
+  shared brief keeps the project rules identical across tools, while personal tooling stays personal.
+- **Alternatives:** Claude-only instructions (excludes teammates); duplicating the rules per tool
+  (they would drift apart within a day).
+
+## 2026-11-21 · Our own offline submission validator (chris)
+- **Decision:** `kemp.submission` + `make submission` rebuild `designs.fasta` from `results/designs.jsonl`
+  and enforce every documented rule locally; the organizers' `validate-submission.py` stays the authority.
+- **Why:** Scoring cannot detect a wrong `base=`/`oxy=` index — it measures an unrelated residue and
+  returns a plausible but wrong number. A local check with tests makes that mistake visible immediately,
+  and the file is rebuilt reproducibly instead of hand-edited.
+- **Alternatives:** Writing the FASTA by hand (one typo costs a slot or the score); relying only on the
+  organizers' validator (needs AWS, and tends to be run too late).

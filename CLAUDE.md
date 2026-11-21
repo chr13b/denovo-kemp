@@ -1,9 +1,18 @@
 # CLAUDE.md: Kemp Challenge (hackathon)
 
-This file is the **schema** for the repo. It says how the repo is organized and how Claude and humans
-work in it. Keep it short. Details belong in the files it points to.
+This file is the **schema** for the repo: how it is organized and how we work in it. Keep it short;
+details belong in the files it points to. `AGENTS.md` is the same brief for non-Claude assistants —
+keep the two in sync when you change a rule here.
 
 @INDEX.md
+
+## The project in five lines
+
+**Perlin x D-BSSE Protein Design Hackathon, team 01.** We design Kemp eliminase enzymes and submit up to
+20 sequences as one `designs.fasta`; the organizers cofold each with ligand 6NT in Boltz-2 and score
+catalytic geometry. GPU work runs on a remote Slurm cluster (`wiki/cluster.md`), never on a laptop.
+Hard rules, scoring and open questions: `wiki/challenge.md`. Submission format: `wiki/submission.md`.
+New teammates: `SETUP.md`.
 
 ## Session start
 
@@ -25,6 +34,8 @@ work in it. Keep it short. Details belong in the files it points to.
 - **Ingest** (new brief, paper, or organizer note): save it to `raw/`, then update wiki pages, then INDEX, then a log entry. Use `/ingest`.
 - **Experiment**: run `python tools/new.py exp <slug>` *before* running. Then script → run → record the result and verdict on that page. Use `/experiment`.
 - **Query**: look in INDEX → wiki → raw/code. If the answer is reusable, write it into the wiki instead of leaving it in chat.
+- **Cluster** (generate designs): prepare a project, submit through Slurm, follow the job, bring results back. Use `/cluster`.
+- **Submit** (any change to the submission): build `designs.fasta`, validate, check novelty, upload. Use `/submit`.
 - **Lint** (before every push): run `make check`, then fix dead links, orphans, duplicates and stale claims. Use `/lint`.
 - **Sync** (every 2–3 h and before every PR): merge `origin/main` into the branch and resolve conflicts per CONTRIBUTING.md. Use `/sync`.
 
@@ -62,6 +73,19 @@ Everyone works on their own `<handle>/<topic>` branch. The full playbook is in `
 - Notebooks are for exploration only: `notebooks/<handle>/YYYYMMDD_<topic>.ipynb`. Nothing imports from them,
   and outputs are stripped on commit.
 
+## Science and submission discipline
+
+- **Never invent a number.** Report only what you read from a run's `summary.json` / `metrics.jsonl`, a
+  cluster job's log, or a `raw/` source. If it is not measured, say so.
+- `base=` / `oxy=` in a FASTA header are **1-based indices into the submitted sequence**, and the residue
+  there must be D/E (base) or Q/N/S/T/Y/K/R (donor, never H). An off-by-one is not rejected by the
+  scorer — it silently measures an unrelated residue. Verify by printing the residue at each index.
+- Geometry dominates scoring and the terms **multiply**; distances have an **optimum**, and too short is
+  punished harder than too long. Novelty (TM ≤ 0.7, identity ≤ 70 %) is a gate, so check it before a
+  design takes one of our 20 slots.
+- Cluster etiquette: no heavy compute on the head node, never the `l4big` queue, never modify
+  `/mnt/work/kemp_example`, and never print or commit the `.pem` key.
+
 ## Data and artifacts
 
 - `data/` (gitignored) holds bulk inputs, reproducible through `kemp.data.fetch` or documented in `wiki/data.md`.
@@ -71,7 +95,7 @@ Everyone works on their own `<handle>/<topic>` branch. The full playbook is in `
 
 ## Commands
 
-`make setup` · `make status` · `make smoke` · `make test` · `make lint` · `make fmt` · `make index` · `make check` · `make lock` · `make reproduce`
+`make setup` · `make status` · `make smoke` · `make test` · `make lint` · `make fmt` · `make index` · `make check` · `make sync` · `make submission` · `make lock` · `make reproduce`
 Without make, each target is one or more `uv run ...` lines in the Makefile.
 
 ## Don't
@@ -83,3 +107,4 @@ Without make, each target is one or more `uv run ...` lines in the Makefile.
 - Hardcode paths
 - Claim a result without a run directory behind it
 - Force-push `main`, or bypass the hooks with `--no-verify`
+- Commit the cluster key or any credential, or paste key contents into chat

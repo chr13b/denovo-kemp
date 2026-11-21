@@ -1,5 +1,5 @@
 # Each target is a thin wrapper around uv. No make? Run the indented line(s) by hand.
-.PHONY: setup status smoke test lint fmt index check lock reproduce
+.PHONY: setup status smoke test lint fmt index check lock reproduce sync submission
 
 setup:  # exact env from uv.lock + git hooks + better merge defaults (repo-local git config)
 	uv sync --locked
@@ -26,6 +26,14 @@ index:  # INDEX.md covers every file; no dead links, duplicates or bad names
 	uv run --frozen python tools/check_index.py
 
 check: lint test  # run before every push; CI runs the same
+
+sync:  # bring this branch up to date with main (do this before every pull request)
+	git fetch origin
+	git merge origin/main
+	@echo "If there were conflicts: see CONTRIBUTING.md section 4, then run make check."
+
+submission:  # results/designs.jsonl -> results/designs.fasta, with all format rules checked offline
+	uv run --frozen python scripts/90_build_submission.py
 
 lock:  # after editing deps in pyproject.toml by hand or after a merge conflict (prefer `uv add <pkg>`)
 	uv lock

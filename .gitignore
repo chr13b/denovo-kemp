@@ -33,3 +33,15 @@ runs/*
 *.pth
 *.safetensors
 *.h5
+
+# Cluster keys and credentials: NEVER commit these
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+.aws/
+credentials
+
+# Organizers' tools: fetched per machine with aws s3 cp (see wiki/submission.md), not ours to version
+validate-submission.py
+submit-designs.sh
