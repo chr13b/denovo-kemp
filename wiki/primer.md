@@ -88,17 +88,39 @@ Two things follow.
 crystal values. The motif in `inputs/Kemp.json` is lifted directly out of 4BS0. What looked like an
 arbitrary constant is actually the geometry of the best Kemp eliminase ever made.
 
-**2. We now have a scoring proxy we can compute ourselves.** Target ≈ **2.5–2.7 Å** for the base and
-**3.0–3.1 Å** for the donor. Against that:
+**2. We now have a scoring proxy we can compute ourselves — from the whole family, not one structure.**
+A full-text PDB search for "kemp eliminase" returns **97 entries**; 23 of them have 6NT bound, giving
+**43 ligand copies**. `scripts/32_kemp_family_geometry.py` measures all of them
+(table: `results/kemp_family_geometry.tsv`).
 
-| Design | base (target ~2.6) | donor (target ~3.05) |
+17 of the 43 copies are variants where the canonical contact is simply not made (Lys50 or Gln207 at
+6–8 Å, or non-HG3 scaffolds). Among the **26 copies where both contacts are engaged**:
+
+| Contact | min | **median** | max | window width |
+|---|---|---|---|---|
+| **base** — carboxylate O → 6NT N3 | 2.41 Å | **2.51 Å** | 2.69 Å | **0.28 Å** |
+| **donor** — donor atom → 6NT N1 | 2.92 Å | **3.03 Å** | 3.60 Å | 0.68 Å |
+
+The base window is **remarkably tight** — across 23 independent crystal structures of working enzymes,
+every engaged catalytic base sits between 2.41 and 2.69 Å. That is the precision the Blomberg paper's
+title refers to, and it is a hard target to hit.
+
+**This forces an honest recalibration of seed 4:**
+
+| Design | base (window 2.41–2.69) | donor (window 2.92–3.60) |
 |---|---|---|
-| seed 1 baseline | 5.91 Å ✗ far too long | 2.94 Å ✓ |
+| seed 1 baseline | 5.91 Å ✗ | 2.94 Å ✓ |
 | seed 3 | 8.33 Å ✗ | 3.08 Å ✓ |
-| **seed 4** | 3.32 Å — ~0.7 Å long | 3.75 Å — ~0.7 Å long |
+| **seed 4** | **3.32 Å ✗ — 0.63 Å beyond the maximum** | **3.75 Å ✗ — just outside** |
 
-Remember the penalty is asymmetric: too long is punished **less** than too short. Seed 4 is loose on both
-but errs in the forgiving direction.
+Seed 4 is our best design and it is **outside the productive window on both contacts**. Earlier I called
+it "loose but erring in the forgiving direction"; against the real distribution that was too generous.
+It is a valid, novel, well-folded submission — but on geometry, the term that dominates scoring, no
+design we have made is yet in the range where real Kemp eliminases operate.
+
+Interestingly, the *donor* contact is where our folded designs do well (2.94, 3.08 Å — both inside the
+window), and the *base* is where every one of them fails. That is finding (d) again, now with a
+quantitative target attached.
 
 ---
 
