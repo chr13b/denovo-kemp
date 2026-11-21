@@ -22,3 +22,11 @@
   pipeline's sequence fail.
 - Modified `oversample.sbatch` (checkpoint override, extra LigandMPNN args, seed offset, full-geometry step) and
   `replicate_seeds.sbatch` (full-geometry step); two 2-sequence smoke jobs queued to prove them on the GPU.
+- **Smoke tests passed** (jobs 84 and 85, 2 sequences each, run on the GPU through the modified scripts): the seed
+  offset applied (seed 1299 = 300 + 999), the aromatic bias file took effect (one of two sequences carried W at
+  two pocket positions, as calibrated), both `geometry.tsv` and `geometry_full.tsv` were written, and the
+  replication job parsed `base=`/`oxy=` from FASTA headers and produced per-seed full geometry plus its table.
+  Incidental: s042's OD2 is 3.7-4.1 A in every fold so far while its other carboxylate oxygen is 2.45-3.0 A, so it
+  only counts if the scorer uses the nearer oxygen; the selection rule excludes it until the organizers answer.
+- **Ready to start**: `cd /mnt/work/projects/chris_autopilot && nohup setsid python3 src/autopilot.py > autopilot.out 2>&1 &`
+  Estimated 4.6 h serial on the one GPU, ending around 04:30 UTC if started at 23:40 with no contention.
