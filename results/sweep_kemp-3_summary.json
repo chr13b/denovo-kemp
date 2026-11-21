@@ -1,0 +1,103 @@
+{
+  "run_mode": "project",
+  "pipeline_completed": true,
+  "protein_length": 260,
+  "ligand": "6NT",
+  "rfd3": {
+    "run_mode": "project",
+    "protein_length": 260,
+    "fixed": [
+      {
+        "original": "A50",
+        "id": "A198",
+        "position": 198,
+        "amino_acid": "Q"
+      },
+      {
+        "original": "A127",
+        "id": "A33",
+        "position": 33,
+        "amino_acid": "D"
+      }
+    ],
+    "fixed_pair_distance_max_deviation_angstrom": 0.01289987564086914,
+    "contacts_angstrom": {
+      "A127_OD2_to_6NT_N3": 2.5273685455322266,
+      "A50_NE2_to_6NT_N1": 3.0925650596618652
+    },
+    "minimum_ligand_protein_distance_angstrom": 2.314484119415283,
+    "ligand_protein_pairs_below_2_2_angstrom": 0
+  },
+  "ligandmpnn": {
+    "sequence": "MTRVGVDPGGQLDPARAAALARRAAAAGAEFLDIGGGAPGGEAAAEAAAALGLPVILNAYTSHTGQPLADQMARVAALARRYAGQVAAGLVSGHATECAGELGLSPENLPAAVALARATLPADTPKGVMVPATHVADGLAWAAACVAAARAAGADFVMIQVHLAANPQVPCTRAVTDAELDAYFALAAAAGATAVKVQFTLATATPANLARVLARATAAGLPYLVFGVPCPTSGNNPALDVSAEAQDAEMDALLAALSAL",
+    "length": 260,
+    "fixed": [
+      {
+        "original": "A50",
+        "id": "A198",
+        "position": 198,
+        "amino_acid": "Q"
+      },
+      {
+        "original": "A127",
+        "id": "A33",
+        "position": 33,
+        "amino_acid": "D"
+      }
+    ],
+    "ligandmpnn_scores": {
+      "id": "1",
+      "T": "0.1",
+      "seed": "3",
+      "overall_confidence": "0.5337",
+      "ligand_confidence": "0.5515",
+      "seq_rec": "0.5310"
+    }
+  },
+  "msa": {
+    "kemp_design": {
+      "depth": 1,
+      "nonquery_rows": 0,
+      "query_length": 260
+    }
+  },
+  "boltz": {
+    "confidence": {
+      "confidence_score": 0.8732134699821472,
+      "ptm": 0.9518874883651733,
+      "iptm": 0.8378413319587708,
+      "ligand_iptm": 0.8378413319587708,
+      "protein_iptm": 0.0,
+      "complex_plddt": 0.8820565342903137,
+      "complex_iplddt": 0.7760706543922424,
+      "complex_pde": 0.5003914833068848,
+      "complex_ipde": 1.7469350099563599,
+      "chains_ptm": {
+        "0": 0.9572675228118896,
+        "1": 0.9399548172950745
+      },
+      "pair_chains_iptm": {
+        "0": {
+          "0": 0.9572675228118896,
+          "1": 0.3381149470806122
+        },
+        "1": {
+          "0": 0.8378413319587708,
+          "1": 0.9399548172950745
+        }
+      }
+    },
+    "contacts_angstrom": {
+      "A127_OD2_to_6NT_N3": 8.330309867858887,
+      "A50_NE2_to_6NT_N1": 3.0750575065612793
+    },
+    "minimum_ligand_protein_distance_angstrom": 2.576833486557007,
+    "ligand_protein_pairs_below_2_2_angstrom": 0,
+    "backbone_ca_rmsd_from_rfd3_angstrom": 1.3583820743027533
+  },
+  "interpretation": "Execution reached the final report. Review any validation warnings; geometry and confidence do not prove catalytic activity.",
+  "validation_passed": true,
+  "pipeline_execution_passed": true,
+  "status": "passed",
+  "validation_warnings": []
+}
