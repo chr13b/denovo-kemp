@@ -71,6 +71,28 @@ def test_build_writes_spec_and_cifs(mod, tmp_path):
     assert {e["group"] for e in design["conditions"]["C_IDX"][False]} == {"res1", "res2", "res3", "res4"}
 
 
+def test_formal_charges_are_explicit(mod, tmp_path):
+    for base_charge, expect in (
+        (-1, {"NO1": "+1", "O21": "-1", "OD2": "-1"}),
+        (0, {"NO1": "+1", "O21": "-1"}),
+    ):
+        ligand, motif, _ = mod.read_candidate(CANDIDATES / "A_top_observed__V00001.pdb")
+        cif = tmp_path / "x.cif"
+        mod.write_cif(cif, "x", ligand, motif, base_charge)
+        rows = [ln.split() for ln in cif.read_text().splitlines() if ln.startswith(("ATOM", "HETATM"))]
+        assert all(len(r) == 21 for r in rows)
+        charged = {r[3]: r[19] for r in rows if r[19] != "0"}  # label_atom_id -> pdbx_formal_charge
+        assert (
+            charged == expect
+        )  # no "?" anywhere; the 6NT zwitterion is the CCD one; only the carboxylate O differs
+
+
+def test_lysine_in_the_motif_is_refused(mod):
+    res = mod.Residue("F", "LYS", [("NZ", "N", 0.0, 0.0, 0.0)])
+    with pytest.raises(SystemExit, match="LYS"):
+        mod.formal_charge(res, "NZ", -1)
+
+
 def test_length_limit_is_enforced(mod, tmp_path, monkeypatch):
     monkeypatch.setattr(mod, "start_run", lambda *a, **k: None)  # no run directory for a failing call
     cfg = mod.Config(out_dir=str(tmp_path), slots="A_top_observed", seg_min=250, seg_max=258)

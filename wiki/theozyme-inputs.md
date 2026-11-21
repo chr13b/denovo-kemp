@@ -37,9 +37,25 @@ fixes that residue's identity as well ([conditioning concepts](https://github.co
   residue in every design.
 - **Not conditioned**: `C_HB` (donor/acceptor roles on 6NT), `C_PISTACK` on the stacker rings, `C_RAS` (burial of the
   6NT). They would reinforce the contacts but are extra levers; add them once the plain inputs run.
-- **Chemistry of the 6NT** (bond orders, formal charges of the nitro group, aromatic bonds kekulized) is left to
-  RFD4's parser, which should take it from the CCD entry `6NT`. RFD4 says aromatic bonds left unresolved are read as
-  single bonds, so this is the first thing to check.
+- **Formal charges are written explicitly** (`pdbx_formal_charge`, no `?`): 6NT as in its CCD entry (nitro N +1, O21 −1,
+  the rest 0), −1 on one carboxylate oxygen of the base (Asp OD2 / Glu OE2) and of the dyad Asp, 0 elsewhere. RFD4
+  embeds the charge of atomized tokens (the 6NT); for a canonical residue the benefit is unclear, and the CCD form of
+  Asp/Glu is the neutral acid, so `--base_charge=0` writes that instead. See "How RFD4 uses charges" below.
+- **Bond orders and aromaticity of the 6NT** are left to RFD4's parser, which should take them from the CCD entry `6NT`.
+  RFD4 reads a bond left as aromatic as a single bond, so check the kekulized bonds on Euler.
+
+## How RFD4 uses charges
+Read from its code and docs on 2026-11-21:
+- The model embeds formal charge per atom in 11 classes (−4 … +6, out-of-range clamped), initialised from sin/cos of the
+  charge. `AtomChargeSeqFeat` applies it only to **atomized tokens** (ligands, non-canonical residues): the 6NT, not the
+  protein residues. A second feature, `Atom37ElementChargeEmbeddingSeqFeat`, combines element and charge at every occupied
+  atom37 slot; I did not find where it is switched on, so I do not know if protein charges reach the model.
+- An unknown charge (`?`) is read as 0 or the CCD value, not as "unknown"; RFD4's checker warns about it (and about a
+  mix of known and unknown) because that hides the difference from neutral. The benchmark CIFs leave most atoms `?`
+  and write only Lys NZ and Arg NH2 (+1), the CCD values.
+- No training definition for charges is documented, and the CCD form of Asp/Glu is the neutral acid. A −1 carboxylate
+  may therefore lie outside what the model saw for a canonical residue. Whether the explicit charge helps is untested;
+  compare designs with `--base_charge=-1` and `0` if it matters.
 
 ## Check it on Euler before spending GPU time
 From the RFD4-Proteina checkout, with its venv active (a CPU job is enough; not on a login node for anything long):
@@ -54,6 +70,6 @@ fails; the second checks the file's chemistry and conditions. Compare the printe
 first design: `rfd4-generate inputs=<repo>/results/theozymes/theozymes.yaml subset_to_examples=A_top_observed__V00001 ...`.
 
 ## Not verified
-- That RFD4 parses the hand-written CIFs (entity blocks, `label_seq_id` for the ligand, no formal charges written).
+- That RFD4 parses the hand-written CIFs (entity blocks, `label_seq_id` for the ligand, the `pdbx_formal_charge` column).
 - That `sel('A/*/1/[CA,CB,...]')` and the contig resolve as intended (contig `res_id`s refer to `label_seq_id`).
 - That the Euler RFD4 checkout has the `scripts/` and `skills/` directories used above.

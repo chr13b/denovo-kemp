@@ -1,0 +1,5 @@
+# [2026-11-21 16:58] setup | Explicit formal charges in the theozyme input CIFs (mario)
+
+- `scripts/01_build_theozyme_inputs.py` now writes `pdbx_formal_charge` for every atom (no `?`): 6NT as in its CCD entry (NO1 +1, O21 -1, rest 0, read from files.rcsb.org/ligands/view/6NT.cif), -1 on one carboxylate oxygen of the base and the dyad Asp (Asp OD2 / Glu OE2), 0 elsewhere; Lys/Arg in the motif stop the script. `--base_charge=0` writes the neutral acid (the CCD form) instead. `results/theozymes/` regenerated; two new tests.
+- Read how RFD4 uses charges: 11-class per-atom embedding (-4..+6) applied to atomized tokens (the 6NT); `?` is read as 0/CCD; no documented training definition, and the CCD form of Asp/Glu is neutral, so the -1 base may be off-distribution. Written up in `wiki/theozyme-inputs.md`.
+- Expected effect for the 6NT: none (same as the CCD default) beyond removing the `formal_charge_unknown` warning; for the base: unknown. To check on Euler: the warning is gone, then compare designs with `--base_charge=-1` and `0` if it matters.

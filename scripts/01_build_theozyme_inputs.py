@@ -36,6 +36,12 @@ RECOMMENDED = (
 THREE = "ALA ARG ASN ASP CYS GLN GLU GLY HIS ILE LEU LYS MET PHE PRO SER THR TRP TYR VAL".split()
 THREE_TO_ONE = dict(zip(THREE, "ARNDCQEGHILKMFPSTWYV", strict=True))
 BACKBONE = ("N", "CA", "C", "O")
+# CCD entry 6NT (files.rcsb.org/ligands/view/6NT.cif, read 2026-11-21): zwitterionic nitro, rest neutral
+LIGAND_CHARGES = {"NO1": 1, "O21": -1}
+CARBOXYLATE_O = {
+    "ASP": "OD2",
+    "GLU": "OE2",
+}  # the oxygen that carries the charge when the carboxylate is deprotonated
 PROTEIN_CHAIN, LIGAND_CHAIN = "A", "B"  # in the input CIF
 
 
@@ -48,6 +54,9 @@ class Config:
     slots: str = RECOMMENDED  # comma-separated candidate slots (the part of the file name before "__")
     seg_min: int = 160  # designed scaffold length range; with the motif residues the design must stay <= 260
     seg_max: int = 240
+    # charge on one carboxylate O of the base and dyad Asp: -1 = deprotonated; 0 = neutral acid, as in the CCD
+    # entries of ASP/GLU (and what RFD4 reads from an unknown charge)
+    base_charge: int = -1
 
 
 Atom = tuple[str, str, float, float, float]  # name, element, x, y, z
@@ -102,21 +111,35 @@ def policy_from_remark(remark: str, res_name: str, path: Path) -> str:
     raise SystemExit(f"{path.name}: the REMARK 'fix atoms' line has no entry for {res_name}: {remark!r}")
 
 
-def write_cif(path: Path, title: str, ligand: list[Atom], motif: list[Residue]) -> None:
+def formal_charge(res: Residue | None, atom_name: str, base_charge: int) -> int:
+    """Formal charge of one atom: from the 6NT CCD entry (res is None), else 0 except the base carboxylate."""
+    if res is None:
+        return LIGAND_CHARGES.get(atom_name, 0)
+    if res.name in ("LYS", "ARG"):  # charged in the CCD; none of the recommended candidates has one
+        raise SystemExit(f"{res.name} in the motif: its CCD charge is not handled by this script yet")
+    if res.chain in "BC" and CARBOXYLATE_O.get(res.name) == atom_name:  # B base, C dyad Asp
+        return base_charge
+    return 0
+
+
+def write_cif(
+    path: Path, title: str, ligand: list[Atom], motif: list[Residue], base_charge: int = -1
+) -> None:
     """A plain mmCIF: motif residues renumbered 1..n in chain A (polymer), 6NT as chain B residue 1."""
     rows: list[str] = []
-    fmt = "{} {} {} {} . {} {} {} {} ? {:.3f} {:.3f} {:.3f} 1.00 0.00 {} {} {} {} 1"
+    fmt = "{} {} {} {} . {} {} {} {} ? {:.3f} {:.3f} {:.3f} 1.00 0.00 {} {} {} {} {} 1"
 
-    def add(group, atom, res, asym, entity, seq):
+    def add(group, atom, res, asym, entity, seq, charge):
         name, el, x, y, z = atom
-        row = (group, len(rows) + 1, el, name, res, asym, entity, seq, x, y, z, seq, res, asym, name)
+        sign = "0" if charge == 0 else f"{charge:+d}"  # the benchmark CIFs write "+1", "-1" and "0"
+        row = (group, len(rows) + 1, el, name, res, asym, entity, seq, x, y, z, seq, res, asym, name, sign)
         rows.append(fmt.format(*row))
 
     for i, r in enumerate(motif, start=1):
         for atom in r.atoms:
-            add("ATOM", atom, r.name, PROTEIN_CHAIN, 1, i)
+            add("ATOM", atom, r.name, PROTEIN_CHAIN, 1, i, formal_charge(r, atom[0], base_charge))
     for atom in ligand:
-        add("HETATM", atom, "6NT", LIGAND_CHAIN, 2, 1)
+        add("HETATM", atom, "6NT", LIGAND_CHAIN, 2, 1, formal_charge(None, atom[0], base_charge))
     # label_seq_id and auth_seq_id are the same on purpose: the spec's res_id resolves against label_seq_id
     seq = "".join(THREE_TO_ONE[r.name] for r in motif)
     lines = [
@@ -152,7 +175,8 @@ def write_cif(path: Path, title: str, ligand: list[Atom], motif: list[Residue]) 
             for c in (
                 "group_PDB id type_symbol label_atom_id label_alt_id label_comp_id label_asym_id "
                 "label_entity_id label_seq_id pdbx_PDB_ins_code Cartn_x Cartn_y Cartn_z occupancy "
-                "B_iso_or_equiv auth_seq_id auth_comp_id auth_asym_id auth_atom_id pdbx_PDB_model_num"
+                "B_iso_or_equiv auth_seq_id auth_comp_id auth_asym_id auth_atom_id pdbx_formal_charge "
+                "pdbx_PDB_model_num"
             ).split()
         ],
         *rows,
@@ -237,7 +261,7 @@ def main(cfg: Config) -> None:
         ligand, motif, remarks = read_candidate(files[0])
         if len(motif) + cfg.seg_max > 260:
             raise SystemExit(f"{key}: {len(motif)} motif residues + seg_max {cfg.seg_max} > the 260 limit")
-        write_cif(out / f"{key}.cif", key, ligand, motif)
+        write_cif(out / f"{key}.cif", key, ligand, motif, cfg.base_charge)
         entries.append(design_entry(key, f"{key}.cif", motif, remarks, cfg))
         summary[key] = {
             "motif": [f"{r.name}:{r.policy}:{'+'.join(r.fixed)}" for r in motif],
