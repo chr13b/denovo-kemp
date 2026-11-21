@@ -50,6 +50,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/experiments/zonghu-02_affinity-ladder-controls.md](wiki/experiments/zonghu-02_affinity-ladder-controls.md) — does the affinity ladder separate a real Kemp eliminase from a non-enzyme? (controls first)
 - [wiki/affinity-ladder.md](wiki/affinity-ladder.md) — cofold substrate/TS-analogue/product and score transition-state discrimination; method, units and limits
 - [wiki/design-filters.md](wiki/design-filters.md) — where every filter threshold comes from, which gate is binding, and why we rank rather than gate
+- [wiki/rfd4-proteina.md](wiki/rfd4-proteina.md) — RFD4-Proteina installed on the cluster and verified on our L4: how to use it, the CUDA-12 constraint, what is and is not verified
 - [wiki/data.md](wiki/data.md) — dataset registry: source, version, sha256, how to fetch
 - [wiki/decisions.md](wiki/decisions.md) — decision records (append-only, dated): what we chose, why, alternatives
 - [wiki/pitch.md](wiki/pitch.md) — the story for the final presentation, kept current
