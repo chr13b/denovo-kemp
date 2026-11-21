@@ -24,19 +24,24 @@ QUERY="${1:-}"
 search() {  # search <db> <label>
     local db="$1" label="$2" out="/tmp/novelty_$2_$$.tsv"
     [ -f "${db}.dbtype" ] || { echo "  ($label database not built - skipped)"; return 0; }
+    # NOTE ON NORMALISATION - this is easy to get wrong and it flips the verdict.
+    # foldseek's alntmscore is normalised by the ALIGNMENT length, so a short structure matching
+    # a fragment of our design scores near 1.0 while sharing almost nothing. The number that
+    # answers "is my fold already known" is qtmscore: normalised by OUR query length.
+    # We rank on qtmscore and print the others for context.
     "$FS" easy-search "$QUERY" "$db" "$out" "$TMP" \
-        --alignment-type 1 -e 1000000 --max-seqs 2000 \
-        --format-output "target,alntmscore,fident,alnlen" >/dev/null 2>&1
+        --alignment-type 1 -e 1000000 --max-seqs 4000 \
+        --format-output "target,qtmscore,ttmscore,alntmscore,fident,alnlen,qlen,tlen" >/dev/null 2>&1
     if [ ! -s "$out" ]; then echo "  $label: no alignments"; return 0; fi
-    echo "  $label — top hits:"
+    echo "  $label — top hits by query-normalised TM:"
+    printf "    %-22s %7s %7s %7s %7s %6s\n" target qTM tTM alnTM ident tlen
     sort -k2 -gr "$out" | head -5 | \
-        awk '{printf "    %-24s TM=%.3f  identity=%.3f  len=%s\n", $1, $2, $3, $4}'
+        awk '{printf "    %-22s %7.3f %7.3f %7.3f %7.3f %6s\n", $1, $2, $3, $4, $5, $8}'
     local best
     best=$(sort -k2 -gr "$out" | head -1 | cut -f2)
-    echo "    best TM-score: $best"
     awk -v b="$best" -v g="$GATE" 'BEGIN{
-        if (b+0 > g) printf "    *** FAILS the novelty gate (TM %.3f > %.2f) ***\n", b, g;
-        else         printf "    PASSES (TM %.3f <= %.2f)\n", b, g }'
+        if (b+0 > g) printf "    *** FAILS the novelty gate (qTM %.3f > %.2f) ***\n", b, g;
+        else         printf "    PASSES (best qTM %.3f <= %.2f)\n", b, g }'
     rm -f "$out"
 }
 
