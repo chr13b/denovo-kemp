@@ -1,14 +1,14 @@
 # kemp-challenge
 
 Team 01 at the **Perlin x D-BSSE Protein Design Hackathon**. We design Kemp eliminase enzymes and submit
-up to 20 protein sequences; GPU work runs on the provided AWS cluster.
+up to 20 protein sequences; GPU work runs on ETH's Euler cluster (Slurm).
 
 ### 👉 New here? Read [SETUP.md](SETUP.md) — it takes you from zero to running in about 20 minutes.
 
 | | |
 |---|---|
 | What we must deliver, and how it is scored | [wiki/challenge.md](wiki/challenge.md) |
-| How to use the GPU cluster | [wiki/cluster.md](wiki/cluster.md) |
+| How we run on Euler (RFD4-Proteina, Slurm) | [wiki/euler-rfd4.md](wiki/euler-rfd4.md) |
 | How to submit designs | [wiki/submission.md](wiki/submission.md) |
 | Where every file is | [INDEX.md](INDEX.md) |
 | Where the team is right now | `make status` |

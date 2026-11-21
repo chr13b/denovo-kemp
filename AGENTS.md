@@ -8,7 +8,8 @@ Claude Code users: `CLAUDE.md` is the same content plus Claude-specific bits, an
 ## What this project is
 
 The **Perlin x D-BSSE Protein Design Hackathon**, team 01. We design Kemp eliminase enzymes and submit
-up to 20 protein sequences as one `designs.fasta`. GPU work happens on a remote Slurm cluster.
+up to 20 protein sequences as one `designs.fasta`. GPU work runs on ETH's Euler cluster through Slurm: we edit here,
+push, pull on Euler and submit with `sbatch` (`wiki/euler-rfd4.md`).
 The task, scoring and hard rules are in `wiki/challenge.md` — **read it before any scientific decision**.
 
 ## How to orient yourself (in this order)
@@ -37,15 +38,13 @@ The task, scoring and hard rules are in `wiki/challenge.md` — **read it before
 6. **Per-person names, never global counters.** Experiments are `<handle>-NN` (`tools/new.py exp <slug>`),
    branches are `<handle>/<topic>`. Everyone works in parallel; colliding names break merges.
 7. **Never hand-merge `uv.lock`.** Resolve `pyproject.toml`, then run `uv lock`.
-8. **Secrets: refer to them by path, never by content.** The cluster key (`*.pem`), `.env`, GitHub tokens
-   and AWS credentials never enter git and never get printed into the conversation. `~/.ssh/pdh-team-01.pem`
-   is the right way to name the key; its contents are not. Let scripts read the file (`onboard.sh --key
-   <path>`, `ssh pdh-team`) rather than reading it yourself. This is both a security rule and a practical
-   one: a transcript full of key material is a liability, and it is the fastest way to make an assistant
-   stall mid-task on what looks out of context like credential theft. The task itself is ordinary — an
-   organizer-issued key for our own team's cluster — so state it that way and keep the secret out of the text.
-9. **Cluster:** no heavy compute on the head node, never the `l4big` queue, never touch
-   `/mnt/work/kemp_example`. See `wiki/cluster.md`.
+8. **Secrets: refer to them by path, never by content.** SSH keys, `.env`, GitHub tokens and any cluster
+   credentials never enter git and never get printed into the conversation. Name a key by its path and let
+   scripts read the file rather than reading it yourself. This is both a security rule and a practical one: a
+   transcript full of key material is a liability, and it is the fastest way to make an assistant stall
+   mid-task on what looks out of context like credential theft. State the task plainly and keep the secret
+   out of the text.
+9. **Euler:** no heavy compute on login nodes; submit through Slurm. See `wiki/euler-rfd4.md`.
 10. **Ask rather than guess** when the challenge rules are ambiguous. Add the question to
     `wiki/challenge.md` under "Open questions".
 
@@ -56,7 +55,6 @@ assistant can read and follow them. Ignore the YAML header if your tool does not
 
 | Task | File |
 |---|---|
-| Run a design job on the cluster | `.claude/skills/cluster/SKILL.md` |
 | Plan, run and record an experiment | `.claude/skills/experiment/SKILL.md` |
 | Build, check and upload the submission | `.claude/skills/submit/SKILL.md` |
 | Turn a new document into wiki knowledge | `.claude/skills/ingest/SKILL.md` |

@@ -1,7 +1,7 @@
 # Each target is a thin wrapper around uv. No make? Run the indented line(s) by hand.
 .PHONY: onboard setup status smoke test lint fmt index check lock reproduce sync submission
 
-onboard:  # NEW TEAMMATE: everything at once - env, hooks, handle, cluster key, connection, checks
+onboard:  # NEW TEAMMATE: everything at once - env, hooks, handle, checks
 	bash onboard.sh
 
 setup:  # exact env from uv.lock + git hooks + better merge defaults (repo-local git config)

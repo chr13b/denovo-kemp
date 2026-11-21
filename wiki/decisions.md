@@ -58,3 +58,13 @@ entry that names the old one.
   and the file is rebuilt reproducibly instead of hand-edited.
 - **Alternatives:** Writing the FASTA by hand (one typo costs a slot or the score); relying only on the
   organizers' validator (needs AWS, and tends to be run too late).
+
+## 2026-11-21 · Run on Euler with RFD4-Proteina, not the AWS cluster with RFD3 (mario)
+- **Decision:** Design campaigns run on Euler (ETH Zurich HPC, Slurm) with RFD4-Proteina. Workflow: edit locally,
+  push, pull on Euler, run through `sbatch`. On branch `mario` the AWS-cluster tooling (the cluster skill and wiki
+  page, the key and connection steps of `onboard.sh`, the organizer-validator test) and the RFD3 → Boltz-2
+  experiment records (chris-01, chris-02, the reference run summary) are removed. They remain on `main`.
+- **Why:** The repo's tooling and docs assume the organizers' AWS cluster and the RFD3 + LigandMPNN pipeline; these
+  campaigns use Euler and RFD4-Proteina.
+- **Alternatives:** Keep everything and add Euler beside it (the cluster skill and onboarding would still point
+  newcomers at the wrong machine); remove only the code and leave the docs pointing at deleted files.

@@ -8,7 +8,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 (or a subdirectory line). Elsewhere, a line for the directory is enough.
 
 ## Start here
-- [onboard.sh](onboard.sh) — **one command that sets everything up.** `bash onboard.sh` — env, hooks, handle, key, cluster, checks
+- [onboard.sh](onboard.sh) — **one command that sets everything up.** `bash onboard.sh` — env, hooks, handle, checks
 - [SETUP.md](SETUP.md) — **new teammate? start here.** Laptop setup, cluster access, daily rhythm, cheat sheet
 - [README.md](README.md) — what this project is, in one page
 - `wiki/challenge.md` — the task, hard rules, scoring and submission checklist (linked under Knowledge below)
@@ -31,7 +31,6 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [.github/](.github/) — CI (hooks + pytest on every push and PR, `uv sync --locked`), PR checklist, Copilot pointer
 
 ## Playbooks (`/name` in Claude Code; plain Markdown any assistant can follow)
-- [.claude/skills/cluster/SKILL.md](.claude/skills/cluster/SKILL.md) — `/cluster`: run a design job on the GPU cluster and bring results back
 - [.claude/skills/experiment/SKILL.md](.claude/skills/experiment/SKILL.md) — `/experiment`: question → run → verdict, reproducibly
 - [.claude/skills/submit/SKILL.md](.claude/skills/submit/SKILL.md) — `/submit`: build, check and upload `designs.fasta`
 - [.claude/skills/ingest/SKILL.md](.claude/skills/ingest/SKILL.md) — `/ingest`: turn a raw source into wiki knowledge
@@ -40,18 +39,16 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 
 ## Knowledge: wiki/ (maintained mostly by Claude)
 - [wiki/challenge.md](wiki/challenge.md) — the task, rules, scoring, timeline, submission checklist and open questions. **Start here.**
-- [wiki/cluster.md](wiki/cluster.md) — cluster layout, connect, Slurm jobs, project folders, getting results back
 - [wiki/submission.md](wiki/submission.md) — `designs.fasta` format, catalytic annotation, upload, deadline rules, status
 - [wiki/experiments/](wiki/experiments/) — one page per experiment, `<handle>-NN_<slug>.md` (`tools/new.py exp`); table: `make status`
 - [wiki/experiments/_template.md](wiki/experiments/_template.md) — template for experiment pages
-- [wiki/experiments/chris-01_reference-pipeline-baseline.md](wiki/experiments/chris-01_reference-pipeline-baseline.md) — baseline: pipeline verified, RFD3 → Boltz-2 contact drift
-- [wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md](wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md) — seed sweep (jobs 2–5): is that drift systematic? decides where GPU time goes
 - [wiki/data.md](wiki/data.md) — dataset registry: source, version, sha256, how to fetch
 - [wiki/decisions.md](wiki/decisions.md) — decision records (append-only, dated): what we chose, why, alternatives
 - [wiki/pitch.md](wiki/pitch.md) — the story for the final presentation, kept current
 - [wiki/team.md](wiki/team.md) — handles, owners, branches, working agreements, division of labour
 - [wiki/glossary.md](wiki/glossary.md) — domain and project terms
 - [wiki/theozyme-preanalysis.md](wiki/theozyme-preanalysis.md) — pointer page for the pre-analysis: what it is, where the results are, how it relates to the scored contacts, caveats
+- [wiki/euler-rfd4.md](wiki/euler-rfd4.md) — our stack: Euler + RFD4-Proteina, the edit → push → pull → `sbatch` loop, and what is still open
 
 ## Sources: raw/ (immutable, added by humans)
 - [raw/20261121_organizers_start-here.md](raw/20261121_organizers_start-here.md) — organizers' one-page start (2 GPUs, novelty rule)
@@ -74,7 +71,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [tools/status.py](tools/status.py) — overview: experiments table and recent log entries (`make status`)
 - [configs/](configs/) — reusable run configs, `<handle>-NN.json`, referenced from experiment pages
 - [envs/](envs/) — pinned environments for external tools with their own deps (`<tool>.yml` / `<tool>.Dockerfile`)
-- [tests/](tests/) — pytest suite (config, runs, data, submission rules, cross-check vs the organizers' validator, tools, index)
+- [tests/](tests/) — pytest suite (config, runs, data, submission rules, tools, index)
 
 ## Pre-analysis: published Kemp structures and theozyme building
 - [pre_analysis/](pre_analysis/) — standalone analysis done before the design runs (own scripts, not in the nano-style, outside `uv`); bulk downloads are gitignored and re-created by script
@@ -86,5 +83,4 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [runs/](runs/) — one directory per execution, gitignored; linked from the experiment pages
 - [results/](results/) — curated tracked outputs (figures, tables, the submission); each entry names its run
 - [results/designs.jsonl.template](results/designs.jsonl.template) — copy to `results/designs.jsonl`: our submission candidates
-- [results/reference_kemp-1_summary.json](results/reference_kemp-1_summary.json) — verified reference run (cluster job 1); the baseline we must beat
 - [notebooks/](notebooks/) — exploration only, one folder per person (`notebooks/<handle>/`); outputs stripped on commit

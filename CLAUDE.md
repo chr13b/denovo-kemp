@@ -10,7 +10,7 @@ keep the two in sync when you change a rule here.
 
 **Perlin x D-BSSE Protein Design Hackathon, team 01.** We design Kemp eliminase enzymes and submit up to
 20 sequences as one `designs.fasta`; the organizers cofold each with ligand 6NT in Boltz-2 and score
-catalytic geometry. GPU work runs on a remote Slurm cluster (`wiki/cluster.md`), never on a laptop.
+catalytic geometry. GPU work runs on Euler through Slurm (`wiki/euler-rfd4.md`), never on a laptop: edit here, push, pull on Euler, `sbatch`.
 Hard rules, scoring and open questions: `wiki/challenge.md`. Submission format: `wiki/submission.md`.
 New teammates: `SETUP.md`.
 
@@ -34,7 +34,7 @@ New teammates: `SETUP.md`.
 - **Ingest** (new brief, paper, or organizer note): save it to `raw/`, then update wiki pages, then INDEX, then a log entry. Use `/ingest`.
 - **Experiment**: run `python tools/new.py exp <slug>` *before* running. Then script → run → record the result and verdict on that page. Use `/experiment`.
 - **Query**: look in INDEX → wiki → raw/code. If the answer is reusable, write it into the wiki instead of leaving it in chat.
-- **Cluster** (generate designs): prepare a project, submit through Slurm, follow the job, bring results back. Use `/cluster`.
+- **Euler** (generate designs): edit here, push, pull on Euler, submit through Slurm (`sbatch`), bring small results back through git. See `wiki/euler-rfd4.md`.
 - **Submit** (any change to the submission): build `designs.fasta`, validate, check novelty, upload. Use `/submit`.
 - **Lint** (before every push): run `make check`, then fix dead links, orphans, duplicates and stale claims. Use `/lint`.
 - **Sync** (every 2–3 h and before every PR): merge `origin/main` into the branch and resolve conflicts per CONTRIBUTING.md. Use `/sync`.
@@ -83,8 +83,7 @@ Everyone works on their own `<handle>/<topic>` branch. The full playbook is in `
 - Geometry dominates scoring and the terms **multiply**; distances have an **optimum**, and too short is
   punished harder than too long. Novelty (TM ≤ 0.7, identity ≤ 70 %) is a gate, so check it before a
   design takes one of our 20 slots.
-- Cluster etiquette: no heavy compute on the head node, never the `l4big` queue, never modify
-  `/mnt/work/kemp_example`, and never print or commit the `.pem` key.
+- Euler etiquette: no heavy compute on login nodes (submit through Slurm), and never print or commit a key or token.
 
 ## Data and artifacts
 
@@ -107,6 +106,5 @@ Without make, each target is one or more `uv run ...` lines in the Makefile.
 - Hardcode paths
 - Claim a result without a run directory behind it
 - Force-push `main`, or bypass the hooks with `--no-verify`
-- Commit the cluster key or any credential, or paste key contents into chat. Name secrets by **path**
-  (`~/.ssh/pdh-team-01.pem`) and let scripts read them; see `AGENTS.md` rule 8 for why this also keeps
-  sessions from stalling
+- Commit any key or credential, or paste key contents into chat. Name secrets by **path** and let scripts
+  read them; see `AGENTS.md` rule 8 for why this also keeps sessions from stalling

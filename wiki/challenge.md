@@ -7,7 +7,7 @@ Sources: [raw/20261121_organizers_start-here.md](../raw/20261121_organizers_star
 [raw/20261121_organizers_challenge-slides.pdf](../raw/20261121_organizers_challenge-slides.pdf)
 (Lucas Merlicek, CTO & co-founder, Perlin Bio — **image-only PDF, 8 slides**: it has no extractable text,
 so render it to images to read it. Everything decision-relevant in it is distilled onto this page).
-Details on running jobs are in [cluster.md](cluster.md); the file format is in [submission.md](submission.md).
+Our own setup for running jobs is in [euler-rfd4.md](euler-rfd4.md); the file format is in [submission.md](submission.md).
 
 ## Goal
 
@@ -57,9 +57,8 @@ their items 1 and 2 are the two halves of one **Geometry** term. The four as the
 > **Burial is the one term we can compute exactly and cheaply right now**: count CA atoms within 12 Å of the
 > declared base. No model needed, just the predicted structure. Highest value-per-GPU-minute of anything here.
 
-> **Consistency is measured the way we are measuring it in
-> [experiments/chris-02…](experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md)** — repeated Boltz-2
-> predictions under different seeds. Our sweep and the scorer's replicate count (5) are the same procedure.
+> **Consistency is measured over repeated Boltz-2 predictions under different seeds**; the scorer's replicate
+> count is 5.
 
 ### The ligand is a transition-state *analogue*, not the substrate
 
@@ -78,18 +77,19 @@ The submission doc says designs are folded with MSAs, "so a design on a natural 
 relative to a de novo one." Slide 7 says **"MSA depth for de novo design can impact folding confidence."**
 
 Both can be true: the *procedure* treats everyone alike, but a genuinely de novo sequence has no homologues
-to find, so its MSA is shallow and its folding confidence can suffer. Our reference run is evidence —
-the design got **MSA depth 1** while the natural control got **301**
-([chris-01](experiments/chris-01_reference-pipeline-baseline.md)).
+to find, so its MSA is shallow and its folding confidence can suffer. Our reference run showed it:
+the design got **MSA depth 1** while the natural control got **301** (recorded on `main` in
+`wiki/experiments/chris-01_reference-pipeline-baseline.md`, not on this branch).
 
 Since iPDE and consistency both depend on folding confidence, **a maximally novel design may pay for its
 novelty in two of the four scoring terms**, while the novelty gate forbids staying close to known enzymes.
 Finding the sweet spot between those is a genuine strategic question, not a settled one.
 
-> **Scoring happens on the Boltz-2 cofold, not on RFD3's output.** In our verified reference run the base
+> **Scoring happens on the Boltz-2 cofold, not on the generator's own output.** In our reference run (RFD3,
+> recorded on `main` in `wiki/experiments/chris-01_reference-pipeline-baseline.md`, not on this branch) the base
 > contact was 2.53 Å in the RFD3 design but 5.91 Å after refolding, while the donor contact held. One run
-> is not proof, but filter candidates on Boltz-2 geometry rather than RFD3 geometry until we know better:
-> [experiments/chris-01_reference-pipeline-baseline.md](experiments/chris-01_reference-pipeline-baseline.md).
+> is not proof, and RFD4-Proteina is a different generator; filter candidates on Boltz-2 geometry rather than
+> the generator's own geometry until we know better.
 
 ## Limitations the organizers named (slide 7)
 
@@ -119,7 +119,8 @@ we rank. We do not yet know *how* those 5 are nominated — see the open questio
 ## Resources
 
 - **Cluster:** AWS GPU cluster, Slurm, 2 GPUs in parallel (2× g6.xlarge) **or** 1 bigger node (g6.2xlarge), not both.
-  Details and commands: [cluster.md](cluster.md).
+  The organizers' guide: [../raw/20261121_organizers_cluster-guide.md](../raw/20261121_organizers_cluster-guide.md).
+  We are not using it; see [euler-rfd4.md](euler-rfd4.md) and the first open question below.
 - **Provided pipeline:** RFD3 (backbone) → LigandMPNN (sequence) → MMseqs2 (MSA) → Boltz-2 (complex prediction).
 - **Provided example:** a single 260-residue Kemp design with the catalytic base, donor and ligand fixed.
 - Other tools and pipelines are allowed, but **only the provided compute**.
@@ -144,6 +145,9 @@ we rank. We do not yet know *how* those 5 are nominated — see the open questio
 
 ## Open questions (ask the organisers)
 
+- [ ] **Is generating designs on our own cluster (Euler, ETH HPC) allowed?** The cluster guide says to "use only
+      the provided computing resources for fairness reasons" (`raw/20261121_organizers_cluster-guide.md`), and the
+      hard-rules table above lists it as a rule. Ask before relying on designs made anywhere else. (mario)
 - [ ] **What is the exact submission deadline (date, time, timezone)?** ← the only one with a hard
       consequence: after it, S3 refuses uploads and there is no grace period.
 - [ ] **How are the 5 lab-validation designs chosen** — do we nominate them, or do they take our top 5?
