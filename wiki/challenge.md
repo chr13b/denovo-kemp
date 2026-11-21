@@ -46,6 +46,11 @@ The terms **multiply**, so one failed term cannot be bought back by another.
 Geometry (1 + 2) **outweighs everything else combined**. Designs are folded **with MSAs**, so a natural-scaffold
 design is not handicapped versus a de novo one.
 
+> **Scoring happens on the Boltz-2 cofold, not on RFD3's output.** In our verified reference run the base
+> contact was 2.53 Å in the RFD3 design but 5.91 Å after refolding, while the donor contact held. One run
+> is not proof, but filter candidates on Boltz-2 geometry rather than RFD3 geometry until we know better:
+> [experiments/chris-01_reference-pipeline-baseline.md](experiments/chris-01_reference-pipeline-baseline.md).
+
 ## Resources
 
 - **Cluster:** AWS GPU cluster, Slurm, 2 GPUs in parallel (2× g6.xlarge) **or** 1 bigger node (g6.2xlarge), not both.
