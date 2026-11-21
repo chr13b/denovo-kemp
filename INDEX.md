@@ -85,6 +85,8 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/theozyme/theozyme_7k4u_core.pdb](results/theozyme/theozyme_7k4u_core.pdb) — zonghu-01 input: HG3 K50Q motif from 7K4U (TRP44+GLN50+ASP127+6NT), crystal geometry
 - [results/theozyme/theozyme_7k4u_core_trpopt.pdb](results/theozyme/theozyme_7k4u_core_trpopt.pdb) — zonghu-01 input: same motif, TRP44 repositioned to an idealised π-stack; base/donor/ligand unchanged
 - [results/reference_kemp-1_summary.json](results/reference_kemp-1_summary.json) — verified reference run (cluster job 1); the baseline we must beat
+- [results/zonghu-01_trpopt_kemp-7_summary.json](results/zonghu-01_trpopt_kemp-7_summary.json) — zonghu-01 job 7: custom theozyme runs end-to-end, but Boltz-2 put the ligand 12 Å from the base; not a candidate
+- [results/zonghu-01_trpopt_kemp-7_validation-warnings.jsonl](results/zonghu-01_trpopt_kemp-7_validation-warnings.jsonl) — zonghu-01 job 7: the 2 expected launcher warnings from the extended motif
 - [results/sweep_kemp-2_summary.json](results/sweep_kemp-2_summary.json) — chris-02 seed 2: collapsed refold (CA RMSD 14.6 Å)
 - [results/sweep_kemp-3_summary.json](results/sweep_kemp-3_summary.json) — chris-02 seed 3: folded, base contact drifted to 8.33 Å
 - [results/sweep_kemp-4_summary.json](results/sweep_kemp-4_summary.json) — chris-02 seed 4: **best design so far**, beats the baseline; novelty unchecked

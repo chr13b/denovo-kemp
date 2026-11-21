@@ -1,0 +1,2 @@
+{"stage": "prepare_rfd3_input.py", "message": "This launcher maps the Kemp base/donor A50,A127; adapt the helpers for another motif"}
+{"stage": "prepare_rfd3_input.py", "message": "This launcher expects the Kemp fixed atoms; adapt the helpers for other selections"}

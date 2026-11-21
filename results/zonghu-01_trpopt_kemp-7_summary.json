@@ -1,0 +1,124 @@
+{
+  "run_mode": "project",
+  "pipeline_completed": true,
+  "protein_length": 260,
+  "ligand": "6NT",
+  "rfd3": {
+    "run_mode": "project",
+    "protein_length": 260,
+    "fixed": [
+      {
+        "original": "A50",
+        "id": "A237",
+        "position": 237,
+        "amino_acid": "Q"
+      },
+      {
+        "original": "A127",
+        "id": "A54",
+        "position": 54,
+        "amino_acid": "D"
+      },
+      {
+        "original": "A44",
+        "id": "A98",
+        "position": 98,
+        "amino_acid": "W"
+      }
+    ],
+    "fixed_pair_distance_max_deviation_angstrom": 0.016718387603759766,
+    "contacts_angstrom": {
+      "A127_OD2_to_6NT_N3": 2.5317742824554443,
+      "A50_NE2_to_6NT_N1": 3.1956238746643066
+    },
+    "minimum_ligand_protein_distance_angstrom": 1.6552913188934326,
+    "ligand_protein_pairs_below_2_2_angstrom": 6
+  },
+  "ligandmpnn": {
+    "sequence": "MVDADAHHAAVEAALVAAGFTAHDFEVAPGLTVTAFTRRLASGALLVLLSGLEDQPAARAALIAEGAAFVDRAVDAAVAMVRELLAEHGVDQVVLGGWSLGGAIAVLIAARHPELVRAVLLVSPIVAPDACREVMVERSWPHFCSREEGRALMDALPNVLPLLPKTPPTLVVHAVNDLIYPPIQALELARDPAVQCRLLVVDVASDPFRDPDGRAWAAELAALSPRVVTTEAPDDAQDLARTLRDVVEPLLEELLAAARP",
+    "length": 260,
+    "fixed": [
+      {
+        "original": "A50",
+        "id": "A237",
+        "position": 237,
+        "amino_acid": "Q"
+      },
+      {
+        "original": "A127",
+        "id": "A54",
+        "position": 54,
+        "amino_acid": "D"
+      },
+      {
+        "original": "A44",
+        "id": "A98",
+        "position": 98,
+        "amino_acid": "W"
+      }
+    ],
+    "ligandmpnn_scores": {
+      "id": "1",
+      "T": "0.1",
+      "seed": "1",
+      "overall_confidence": "0.5301",
+      "ligand_confidence": "0.5343",
+      "seq_rec": "0.4825"
+    }
+  },
+  "msa": {
+    "kemp_design": {
+      "depth": 12,
+      "nonquery_rows": 11,
+      "query_length": 260
+    }
+  },
+  "boltz": {
+    "confidence": {
+      "confidence_score": 0.7925629615783691,
+      "ptm": 0.8862113952636719,
+      "iptm": 0.8689152002334595,
+      "ligand_iptm": 0.8689152002334595,
+      "protein_iptm": 0.0,
+      "complex_plddt": 0.773474931716919,
+      "complex_iplddt": 0.6910428404808044,
+      "complex_pde": 0.8023160696029663,
+      "complex_ipde": 1.6650952100753784,
+      "chains_ptm": {
+        "0": 0.8875179290771484,
+        "1": 0.9465299248695374
+      },
+      "pair_chains_iptm": {
+        "0": {
+          "0": 0.8875179290771484,
+          "1": 0.3502689599990845
+        },
+        "1": {
+          "0": 0.8689152002334595,
+          "1": 0.9465299248695374
+        }
+      }
+    },
+    "contacts_angstrom": {
+      "A127_OD2_to_6NT_N3": 11.992435455322266,
+      "A50_NE2_to_6NT_N1": 26.490745544433594
+    },
+    "minimum_ligand_protein_distance_angstrom": 2.473031997680664,
+    "ligand_protein_pairs_below_2_2_angstrom": 0,
+    "backbone_ca_rmsd_from_rfd3_angstrom": 4.26073376454012
+  },
+  "interpretation": "Execution reached the final report. Review any validation warnings; geometry and confidence do not prove catalytic activity.",
+  "validation_passed": false,
+  "pipeline_execution_passed": false,
+  "status": "completed_with_warnings",
+  "validation_warnings": [
+    {
+      "stage": "prepare_rfd3_input.py",
+      "message": "This launcher maps the Kemp base/donor A50,A127; adapt the helpers for another motif"
+    },
+    {
+      "stage": "prepare_rfd3_input.py",
+      "message": "This launcher expects the Kemp fixed atoms; adapt the helpers for other selections"
+    }
+  ]
+}
