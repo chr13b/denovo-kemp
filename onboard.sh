@@ -106,7 +106,7 @@ else
         ok "wiki/team.md already has a row for '$HANDLE'"
     else
         GH=$(git config user.email 2>/dev/null | cut -d@ -f1)
-        ROW="| $HANDLE | ${GH:-} | TODO: your background | TODO | $HANDLE/<topic> |"
+        ROW="| $HANDLE | ${GH:-} | TODO: your background | TODO | \`$HANDLE\` |"
         TMP=$(mktemp)
         awk -v row="$ROW" '!done && /^\| *TODO *\|/ { print row; done=1 } { print }' wiki/team.md > "$TMP"
         if grep -qF "$ROW" "$TMP"; then mv "$TMP" wiki/team.md; ok "added your row to wiki/team.md"
@@ -223,8 +223,10 @@ cat <<EOF
 What to do next
   1. uv run python tools/status.py        what the team has done so far
   2. Read wiki/challenge.md               the rules and how designs are scored
-  3. Start your own branch:
-         git checkout -b ${HANDLE:-<handle>}/<topic>
+  3. Start your own branch (one branch per person is simplest):
+         git checkout -b ${HANDLE:-<handle>}
+     Prefer a branch per topic instead? Use ${HANDLE:-<handle>}/<topic> - but git cannot have
+     both styles for one name, so pick one. See CONTRIBUTING.md section 1.
   4. Before you run anything:
          uv run python tools/new.py exp <slug>
   5. Working with an AI assistant? Point it at AGENTS.md first - see SETUP.md part 4.

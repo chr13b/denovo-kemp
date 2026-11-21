@@ -10,7 +10,7 @@ The handle goes into every name below, so parallel work can't collide.
 
 | Thing | Pattern | Create with |
 |-------|---------|-------------|
-| Branch | `<handle>/<topic>` | `git switch -c chris/scoring` |
+| Branch | `<handle>` **or** `<handle>/<topic>` — pick one, see below | `git switch -c ana` |
 | Experiment | `wiki/experiments/<handle>-NN_<slug>.md` | `python tools/new.py exp baseline-scoring` |
 | Config | `configs/<handle>-NN.json` | by hand |
 | Run dir | `runs/<timestamp>_<handle>-NN/` | `start_run("<handle>-NN", cfg)` |
@@ -19,6 +19,27 @@ The handle goes into every name below, so parallel work can't collide.
 | New script | `scripts/NN_<specific_verb_noun>.py` (`10_generate_candidates.py`, not `10_generate.py`) | copy `scripts/00_smoke.py` |
 
 **No global counters.** "E-007, the next free number" collides as soon as two branches take it at the same time.
+
+### Branch naming: you must choose one style per person
+
+> ⚠️ **Git cannot have both a branch `ana` and a branch `ana/novelty`.** Refs are stored as files, so
+> `refs/heads/ana` (a file) and `refs/heads/ana/novelty` (a directory) cannot coexist. Creating the second
+> fails with *"cannot lock ref"*. This is a git limitation, not a rule of ours.
+
+Two workable styles — **decide once, per person, and put it in your `wiki/team.md` row**:
+
+| Style | Looks like | Good when |
+|---|---|---|
+| **One long-lived branch** | `ana` | you want one place to work all day and merge into `main` often. Simplest. |
+| **A branch per topic** | `ana/novelty`, `ana/scoring` | you want separate, independently mergeable lines of work. |
+
+If you started with `ana` and now want `ana/topic`: merge `ana` into `main`, delete it
+(`git branch -d ana`), then create the topic branch. Nothing is lost — the work is in `main`.
+
+Everything *else* (experiments, configs, logs) keeps the `<handle>-NN` / `<handle>_` naming regardless,
+so collision safety does not depend on which branch style you pick.
+
+Current: **chris** uses the single-branch style (`chris`).
 
 ## 2. Why merges stay painless
 
