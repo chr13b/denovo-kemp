@@ -78,6 +78,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [scripts/31_measure_reference_geometry.py](scripts/31_measure_reference_geometry.py) — catalytic geometry targets measured from PDB 4BS0 (HG3.17 + 6NT)
 - [scripts/32_kemp_family_geometry.py](scripts/32_kemp_family_geometry.py) — measures catalytic geometry across all 97 PDB 'kemp eliminase' entries
 - [scripts/33_analyze_oversampling.py](scripts/33_analyze_oversampling.py) — reads a sweep's `geometry.tsv`: instrument check, sequence-vs-backbone verdict, what predicts the base contact
+- [scripts/34_plot_contact_vs_rmsd.py](scripts/34_plot_contact_vs_rmsd.py) — the talk's figure: base contact vs CA RMSD per sweep, with the crystal window as a band
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [scripts/91_bank_from_sweep.py](scripts/91_bank_from_sweep.py) — promote a sweep's best designs into `results/designs.jsonl`, verifying the base/donor residue at each index
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
@@ -110,6 +111,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/oversample_a_seed4_job27.tsv](results/oversample_a_seed4_job27.tsv) — chris-04: 72 sequences on seed 4's backbone + 3 natural controls, fully measured
 - [results/oversample_b_trp44_job31.tsv](results/oversample_b_trp44_job31.tsv) — chris-05: 72 sequences on zonghu's Trp44 backbone; refutes the three-anchor motif
 - [results/oversample_rescue_s5_job40.tsv](results/oversample_rescue_s5_job40.tsv) — chris-07: seed 5 is not rescuable (0/48 refolded under 2 Å)
+- [results/oversample_a_seed4_job27_contact_vs_rmsd.png](results/oversample_a_seed4_job27_contact_vs_rmsd.png) — **the figure**: the fold is reproduced, the catalytic contact is not
 - [results/reference_kemp-1_summary.json](results/reference_kemp-1_summary.json) — verified reference run (cluster job 1); the baseline we must beat
 - [results/kemp_family_geometry.tsv](results/kemp_family_geometry.tsv) — **the geometry target**: 43 ligand copies from 23 crystal structures
 - [results/sweep_kemp-2_summary.json](results/sweep_kemp-2_summary.json) — chris-02 seed 2: collapsed refold (CA RMSD 14.6 Å)

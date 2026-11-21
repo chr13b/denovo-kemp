@@ -5,7 +5,9 @@ description = "Kemp challenge hackathon project"
 readme = "README.md"
 requires-python = ">=3.10"
 # Add deps with `uv add <pkg>` (it updates uv.lock too) and give the reason in a log/ entry.
-dependencies = []
+dependencies = [
+    "matplotlib>=3.10.9",
+]
 
 [dependency-groups]
 dev = [
