@@ -27,7 +27,7 @@ mkdir -p "$SCRATCH/kemp/logs"    # must exist before you submit, or the job leav
 sbatch scripts/euler_job.sbatch <command> [args...]    # e.g. python scripts/NN_verb_noun.py --seed=0
 ```
 
-The template ([../scripts/euler_job.sbatch](../scripts/euler_job.sbatch)) asks for one GPU with at least 24 GB of memory (`--gpus=1` and `--gres=gpumem:24G`) for
+The template ([../scripts/euler_job.sbatch](../scripts/euler_job.sbatch)) asks for one GPU with at least 35 GB of memory (`--gpus=1` and `--gres=gpumem:35G`, which keeps out the 24 GB cards RFD4-Proteina does not list as supported) for
 24 hours, loads the `eth_proxy` module on startup, and writes everything under `$SCRATCH/kemp`: `runs/` and `data/`
 through `KEMP_RUNS_DIR` / `KEMP_DATA_DIR`, and the job log in `logs/`. It prints the commit and GPU into the log, sources
 [../envs/euler.sh](../envs/euler.sh) (which activates the RFD4-Proteina venv, `$HOME/rfd4-proteina/.venv`) and puts
@@ -89,8 +89,11 @@ defines it, read from its checkout on 2026-11-21:
   faked `SLURM_*` variables, to check the paths, the guards and that `KEMP_RUNS_DIR` redirects the run directory.
 - Not stated on the ETH pages read so far: the maximum run time (the template asks for 24 h, so check Slurm accepts it)
   and the module names beyond `eth_proxy`.
-- A memory-only GPU request (`gpumem`) does not pin a type. The docs say the RTX Pro 6000 (96 GB) must be requested
-  explicitly and cannot run CUDA-12-compiled programs; the job log prints the GPU name, so check which card a job got.
+- A memory-only GPU request (`gpumem`) does not pin a type. The first mario-01 attempt (2026-11-21, with `gpumem:24G`)
+  failed in the model with `RuntimeError: Invalid backend` in `F.scaled_dot_product_attention`; the GPU it got is not
+  recorded here yet. RFD4-Proteina lists only A100, H100, L40S, RTX 6000 Ada and Blackwell GPUs as tested, so the request
+  is now `gpumem:35G`. The docs say the RTX Pro 6000 (96 GB) must be requested explicitly and cannot run
+  CUDA-12-compiled programs; the job log prints the GPU name, so check which card a job got.
 - `eth_proxy` comes from third-party Euler guides, which say it gives compute nodes internet access; confirm that on a real job.
 - Refolding oracle on Euler: is `apptainer` available on compute nodes, who has the AF3 (or OpenFold3) weights, can the
   RFD4 image and weights be downloaded (the `eth_proxy` question), and does `APPTAINER_BIND_PATHS` need anything.

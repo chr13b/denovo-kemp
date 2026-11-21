@@ -8,7 +8,7 @@
 #   e.g. sbatch scripts/euler_job.sbatch python scripts/10_generate_candidates.py --seed=0
 #
 # Override resources for one submission without editing this file:
-#   sbatch --time=08:00:00 --gres=gpumem:40G scripts/euler_job.sbatch <command>
+#   sbatch --time=08:00:00 --gres=gpumem:70G scripts/euler_job.sbatch <command>
 # Check that Slurm accepts a request without queueing it:  sbatch --test-only <same options> scripts/euler_job.sbatch x
 #
 # Euler facts used here come from docs.hpc.ethz.ch (read 2026-11-21): see wiki/euler-rfd4.md.
@@ -22,11 +22,14 @@
 #SBATCH --cpus-per-task=4
 # Memory is per CPU core on Euler (--mem-per-cpu), so the job gets cpus-per-task x this.
 #SBATCH --mem-per-cpu=8G
-# One GPU with at least 24 GB of memory, whatever the type. The ETH page lists --gres=gpumem:<size>[units] but gives
-# no example, no unit spelling and no word on combining it with --gpus, so confirm Slurm accepts these two lines
-# (sbatch --test-only). To pick a type instead: --gpus=<type>:1 (rtx_3090, rtx_4090, a100, a100_80gb, ...).
+# One GPU with at least 35 GB of memory, whatever the type. This keeps the 24 GB cards (rtx_3090, rtx_4090,
+# nvidia_titan_rtx, rtx_6000) out, which RFD4-Proteina does not list as supported: its tested GPUs are A100, H100,
+# L40S, RTX 6000 Ada and Blackwell. On Euler that should leave the A100s (40 and 80 GB) and the RTX Pro 6000.
+# The ETH page lists --gres=gpumem:<size>[units] but gives no example, no unit spelling and no word on combining it
+# with --gpus, so confirm Slurm accepts these two lines (sbatch --test-only). To pick a type instead:
+# --gpus=<type>:1 (a100, a100_80gb, ...).
 #SBATCH --gpus=1
-#SBATCH --gres=gpumem:24G
+#SBATCH --gres=gpumem:35G
 # The job log (stdout and stderr) goes to $SCRATCH/kemp/logs. Slurm does not expand $SCRATCH in #SBATCH lines
 # but does expand %u (your username), and the ETH docs give scratch as /cluster/scratch/<username>.
 #SBATCH --output=/cluster/scratch/%u/kemp/logs/%x-%j.out

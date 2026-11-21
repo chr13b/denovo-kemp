@@ -68,7 +68,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [scripts/00_smoke.py](scripts/00_smoke.py) — smoke test for env and run bookkeeping; **template for new scripts**
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [scripts/01_build_theozyme_inputs.py](scripts/01_build_theozyme_inputs.py) — recommended theozyme candidates → `results/theozymes/` (input CIFs + RFD4 condition spec `theozymes.yaml`); stdlib only, runs locally
-- [scripts/10_generate_smoke_design.py](scripts/10_generate_smoke_design.py) — mario-01: generate one RFD4-Proteina design on Euler and check the pipeline (GPU, tool, design file, run summary); see `wiki/experiments/mario-01_rfd4-euler-smoke.md`
+- [scripts/10_generate_smoke_design.py](scripts/10_generate_smoke_design.py) — mario-01: generate one RFD4-Proteina design on Euler and check the pipeline (GPU, tool, design file, OpenFold3 refold, run summary); see `wiki/experiments/mario-01_rfd4-euler-smoke.md`
 - [scripts/euler_job.sbatch](scripts/euler_job.sbatch) — Slurm template for Euler: runs one repo command with a GPU, `runs/` and `data/` on `$SCRATCH`, provenance in the log; **not yet verified on Euler**
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)

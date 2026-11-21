@@ -1,0 +1,6 @@
+# [2026-11-21 18:04] experiment | mario-01 smoke test: 35 GB GPUs and an OpenFold3 oracle (mario)
+
+- First Euler run of mario-01 (script without oracle, `gpumem:24G`) reached the model and failed in the first forward pass: `RuntimeError: Invalid backend` in `F.scaled_dot_product_attention`. The GPU is not known yet (job log line `[euler_job] gpu:`). RFD4 lists only A100, H100, L40S, RTX 6000 Ada and Blackwell GPUs as tested.
+- `scripts/euler_job.sbatch` now requests `--gres=gpumem:35G` (was 24G) to exclude the 24 GB cards; `wiki/euler-rfd4.md` updated. Whether Slurm accepts it and which card it gives is still to check with `sbatch --test-only` and the job log.
+- `scripts/10_generate_smoke_design.py` gets an OpenFold3 oracle (`--oracle=of3`, default; empty skips it): preflight for apptainer, `AF3_IMAGE`, `AF3_MODEL_DIR`, `AF3_JAX_CACHE_DIR` and the OpenFold3 provenance file; `metrics/refolding_oracles=of3` and `metrics_tags=[design,unconditional_refolding]` on the command; `oracle.*` and `refolded_*` columns copied into `summary.json`. New `tests/test_smoke_design.py` (3 tests). Not run on Euler.
+- `wiki/experiments/mario-01_rfd4-euler-smoke.md`: status running, attempt 1 recorded, new unverified items (apptainer, oracle image and weights, CSV column names).
