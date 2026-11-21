@@ -4,12 +4,17 @@ version = "0.1.0"
 description = "Kemp challenge hackathon project"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = [
-    # Add runtime deps here and note the reason in LOG.md, e.g. "numpy>=2",
-]
+# Add deps with `uv add <pkg>` (it updates uv.lock too) and give the reason in a log/ entry.
+dependencies = []
 
 [dependency-groups]
-dev = ["pytest>=8", "ruff>=0.6"]
+dev = [
+    "nbstripout>=0.7",
+    "pre-commit>=3.7,<4.6.1",  # 4.6.1+ needs git >= 2.31 (`ls-files --deduplicate`); keeps git 2.25 (Ubuntu 20.04) working
+    "pre-commit-hooks>=4.6",
+    "pytest>=8",
+    "ruff>=0.6",
+]
 
 [build-system]
 requires = ["hatchling"]

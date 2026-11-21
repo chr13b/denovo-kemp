@@ -22,7 +22,15 @@
 - TODO: submission deadline, presentation slot
 
 ## Resources provided
-- TODO: datasets, compute, credits, mentors. Record how to fetch each dataset into `data/`.
+- TODO: datasets, compute, credits, mentors. Register each dataset in [data.md](data.md).
+
+## Submission checklist
+- [ ] Deliverables match the required format (see Rules)
+- [ ] `make reproduce` on a fresh clone regenerates them
+- [ ] Every claimed number traces back: experiment page → run dir → `summary.json`
+- [ ] The submitted commit is tagged: `git tag -a submission-v1 -m "…" && git push origin submission-v1`
+- [ ] [pitch.md](pitch.md) matches the slides
 
 ## Open questions (ask the organizers)
+- [ ] License and IP rules for the code and designs? (decides whether and which LICENSE we add)
 - [ ] TODO

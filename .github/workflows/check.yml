@@ -1,9 +1,14 @@
 name: check
 
+# Every push to any branch, plus PRs. PR runs test the *merge result* with main, which catches
+# integration breakage before it lands.
 on:
   push:
-    branches: [main]
   pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   check:
@@ -11,8 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
-      - run: uv sync
-      - name: INDEX.md covers every file, no dead links
-        run: uv run python tools/check_index.py
-      - run: uv run ruff check .
-      - run: uv run pytest
+      - name: Exact env from uv.lock (fails if the lock is stale vs pyproject.toml)
+        run: uv sync --locked
+      - name: Hooks on all files (conflict markers, large files, keys, ruff, notebooks, INDEX)
+        run: uv run --frozen pre-commit run --all-files --show-diff-on-failure
+      - run: uv run --frozen pytest

@@ -2,33 +2,41 @@
 
 The map of this repo, one line per file or directory: `path — what it is`.
 **If you add, move or delete a file, update this file in the same commit.** `make index` enforces it:
-it catches dead links and files that aren't listed.
-Files in `wiki/ raw/ src/ scripts/ tools/ configs/ results/ .claude/skills/` each need their own line.
+it catches dead links, files that aren't listed, and duplicates.
+This file is union-merged across branches, so append your line in the right section and don't reorder.
+Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need their own line (or a subdirectory line).
 Elsewhere, a line for the directory is enough.
 
 ## Meta
 - [CLAUDE.md](CLAUDE.md) — schema: rules, conventions and workflows for Claude and humans
+- [CONTRIBUTING.md](CONTRIBUTING.md) — branch and merge playbook, naming scheme, reproducibility checklist
 - [AGENTS.md](AGENTS.md) — pointer to CLAUDE.md for other coding agents (Codex, Cursor, …)
-- [README.md](README.md) — human quickstart and team workflow
-- [LOG.md](LOG.md) — append-only chronological log; recent entries: `grep "^## \[" LOG.md | tail`
-- [pyproject.toml](pyproject.toml) — package `kemp`, dependencies (uv), ruff and pytest config
+- [README.md](README.md) — human quickstart
+- [log/](log/) — the log: one file per entry, `YYYY-MM-DD_HHMM_<handle>_<type>_<slug>.md`; `make status` shows the latest
+- [pyproject.toml](pyproject.toml) — package `kemp`, dependencies (add with `uv add`), ruff and pytest config
+- [uv.lock](uv.lock) — exact pinned versions of every dependency; never hand-edit or hand-merge it (`uv lock`)
 - [.python-version](.python-version) — Python version uv installs and uses
-- `uv.lock` — exact pinned dependency versions; created by the first `uv sync`, then committed
-- [Makefile](Makefile) — `setup smoke test lint fmt index check`
-- [.env.example](.env.example) — template for local paths and secrets; copy to `.env` (gitignored)
-- [.gitignore](.gitignore) · [.gitattributes](.gitattributes) — ignore rules; LF line endings everywhere
-- [.github/](.github/) — CI: runs the index lint, ruff and pytest on every push to main and every PR
+- [Makefile](Makefile) — `setup status smoke test lint fmt index check lock reproduce`
+- [.pre-commit-config.yaml](.pre-commit-config.yaml) — commit hooks: conflict markers, large files, keys, whitespace, ruff, nbstripout, INDEX lint
+- [.env.example](.env.example) — template for `.env` (gitignored): `KEMP_HANDLE`, data/runs locations, secrets
+- [.gitattributes](.gitattributes) — LF line endings; `merge=union` for shared lists; `uv.lock` never text-merged
+- [.gitignore](.gitignore) · [.editorconfig](.editorconfig) — ignore rules; same whitespace in every editor
+- [.github/](.github/) — CI (hooks + pytest on every push and PR, `uv sync --locked`) and the PR checklist template
 
 ## Claude skills (`/name` in Claude Code)
 - [.claude/skills/ingest/SKILL.md](.claude/skills/ingest/SKILL.md) — `/ingest`: turn a raw source into wiki knowledge
 - [.claude/skills/experiment/SKILL.md](.claude/skills/experiment/SKILL.md) — `/experiment`: question → run → verdict, reproducibly
-- [.claude/skills/lint/SKILL.md](.claude/skills/lint/SKILL.md) — `/lint`: health-check INDEX, LOG and wiki, then fix drift
+- [.claude/skills/lint/SKILL.md](.claude/skills/lint/SKILL.md) — `/lint`: health-check INDEX, log and wiki, then fix drift
+- [.claude/skills/sync/SKILL.md](.claude/skills/sync/SKILL.md) — `/sync`: merge `origin/main` into the current branch and resolve conflicts safely
 
 ## Knowledge: wiki/ (maintained mostly by Claude)
-- [wiki/challenge.md](wiki/challenge.md) — the task, rules, scoring, timeline and open questions. **Start here.**
-- [wiki/experiments.md](wiki/experiments.md) — experiment registry: question → script/config → run → verdict
-- [wiki/decisions.md](wiki/decisions.md) — decision records: what we chose, why, and the alternatives
-- [wiki/team.md](wiki/team.md) — who owns what, plus working agreements
+- [wiki/challenge.md](wiki/challenge.md) — the task, rules, scoring, timeline, submission checklist and open questions. **Start here.**
+- [wiki/experiments/](wiki/experiments/) — one page per experiment, `<handle>-NN_<slug>.md` (`tools/new.py exp`); table: `make status`
+- [wiki/experiments/_template.md](wiki/experiments/_template.md) — template for experiment pages
+- [wiki/data.md](wiki/data.md) — dataset registry: source, version, sha256, how to fetch
+- [wiki/decisions.md](wiki/decisions.md) — decision records (append-only, dated): what we chose, why, alternatives
+- [wiki/pitch.md](wiki/pitch.md) — the story for the final presentation, kept current
+- [wiki/team.md](wiki/team.md) — handles, owners, branches, working agreements
 - [wiki/glossary.md](wiki/glossary.md) — domain and project terms
 
 ## Sources: raw/ (immutable, added by humans)
@@ -37,14 +45,18 @@ Elsewhere, a line for the directory is enough.
 ## Code
 - [src/kemp/paths.py](src/kemp/paths.py) — every project path, defined once (data/runs can be overridden by env var)
 - [src/kemp/config.py](src/kemp/config.py) — `parse(Config)`: dataclass config with JSON/TOML file and `--key=value` overrides
-- [src/kemp/run.py](src/kemp/run.py) — `start_run()`: run directory plus provenance (config, git commit, seed, metrics)
+- [src/kemp/run.py](src/kemp/run.py) — `start_run()`: run directory plus provenance (config, commit, diff, script, lock hash, host, GPU, seed)
+- [src/kemp/data.py](src/kemp/data.py) — `fetch(url, dest, checksum)` and `sha256(path)` for reproducible data
 - [scripts/00_smoke.py](scripts/00_smoke.py) — smoke test for env and run bookkeeping; **template for new scripts**
-- [tools/check_index.py](tools/check_index.py) — lint: dead markdown links and files missing from INDEX.md
-- [configs/](configs/) — reusable run configs, named `<experiment-id>.json` (none yet)
-- [tests/](tests/) — pytest suite (config parsing, run bookkeeping, index lint)
+- [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
+- [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)
+- [tools/status.py](tools/status.py) — overview: experiments table and recent log entries (`make status`)
+- [configs/](configs/) — reusable run configs, `<handle>-NN.json`, referenced from experiment pages
+- [envs/](envs/) — pinned environments for external tools with their own deps (`<tool>.yml` / `<tool>.Dockerfile`)
+- [tests/](tests/) — pytest suite (config, run bookkeeping, data fetch, tools, index lint)
 
 ## Artifacts
-- [data/](data/) — bulk inputs, gitignored; how to obtain them is documented in `wiki/challenge.md`
-- [runs/](runs/) — one directory per execution, gitignored; registry in `wiki/experiments.md`
+- [data/](data/) — bulk inputs, gitignored; registry in `wiki/data.md`
+- [runs/](runs/) — one directory per execution, gitignored; linked from the experiment pages
 - [results/](results/) — curated tracked outputs (figures, tables, submission); each entry names its run (none yet)
-- [notebooks/](notebooks/) — exploration only; nothing imports from here
+- [notebooks/](notebooks/) — exploration only, one folder per person (`notebooks/<handle>/`); outputs stripped on commit

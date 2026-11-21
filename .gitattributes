@@ -6,3 +6,14 @@
 *.pdf binary
 *.gz binary
 *.zip binary
+
+# Line lists that every branch appends to: on merge, keep BOTH sides' lines instead of conflicting.
+# Applies to local merges and rebases (run `git merge origin/main` before the PR, see CONTRIBUTING.md).
+# Afterwards `make index` flags any duplicate INDEX entries.
+INDEX.md          merge=union
+wiki/decisions.md merge=union
+wiki/glossary.md  merge=union
+wiki/data.md      merge=union
+
+# The lockfile is never text-merged. On conflict: resolve pyproject.toml, then `uv lock`, then `git add uv.lock`.
+uv.lock -merge linguist-generated=true

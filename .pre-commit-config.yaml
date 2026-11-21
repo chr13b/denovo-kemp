@@ -1,0 +1,50 @@
+# Git hooks, installed by `make setup`. They run on every commit, and CI runs them on all files.
+# All hooks are local and call tools pinned in uv.lock, so everyone runs exactly the same versions.
+repos:
+  - repo: local
+    hooks:
+      - id: conflict-markers
+        name: no merge-conflict markers
+        entry: uv run --frozen check-merge-conflict --assume-in-merge
+        language: system
+        types: [text]
+      - id: large-files
+        name: no files > 10 MB (bulk data belongs in data/, see wiki/data.md)
+        entry: uv run --frozen check-added-large-files --maxkb=10240 --enforce-all
+        language: system
+      - id: private-keys
+        name: no private keys
+        entry: uv run --frozen detect-private-key
+        language: system
+        types: [text]
+      - id: end-of-file
+        name: files end with one newline
+        entry: uv run --frozen end-of-file-fixer
+        language: system
+        types: [text]
+      - id: trailing-whitespace
+        name: no trailing whitespace
+        entry: uv run --frozen trailing-whitespace-fixer --markdown-linebreak-ext=md
+        language: system
+        types: [text]
+      - id: ruff
+        name: ruff lint
+        entry: uv run --frozen ruff check --fix
+        language: system
+        types: [python]
+      - id: ruff-format
+        name: ruff format
+        entry: uv run --frozen ruff format
+        language: system
+        types: [python]
+      - id: nbstripout
+        name: strip notebook outputs (unmergeable otherwise)
+        entry: uv run --frozen nbstripout
+        language: system
+        files: \.ipynb$
+      - id: check-index
+        name: INDEX.md covers every file, no dead links
+        entry: uv run --frozen python tools/check_index.py
+        language: system
+        pass_filenames: false
+        always_run: true

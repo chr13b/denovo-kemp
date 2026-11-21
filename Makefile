@@ -1,22 +1,34 @@
-# Each target is a thin wrapper around one uv command. No make? Run the indented line by hand.
-.PHONY: setup smoke test lint fmt index check
+# Each target is a thin wrapper around uv. No make? Run the indented line(s) by hand.
+.PHONY: setup status smoke test lint fmt index check lock reproduce
 
-setup:  # create .venv with pinned deps (uv.lock) and the right Python (.python-version)
-	uv sync
+setup:  # exact env from uv.lock + git hooks + better merge defaults (repo-local git config)
+	uv sync --locked
+	uv run --frozen pre-commit install
+	git config rerere.enabled true
+	git config merge.conflictstyle diff3
+
+status:  # where are we? experiments table + recent log entries
+	uv run --frozen python tools/status.py
 
 smoke:  # end-to-end check of env + run bookkeeping -> runs/<timestamp>_smoke/
-	uv run python scripts/00_smoke.py
+	uv run --frozen python scripts/00_smoke.py
 
 test:
-	uv run pytest
+	uv run --frozen pytest
 
-lint:
-	uv run ruff check .
+lint:  # all pre-commit hooks on all files (incl. ruff and the INDEX check)
+	uv run --frozen pre-commit run --all-files
 
 fmt:  # auto-format and auto-fix
-	uv run ruff format . && uv run ruff check --fix .
+	uv run --frozen ruff format . && uv run --frozen ruff check --fix .
 
-index:  # INDEX.md covers every file; no dead markdown links
-	uv run python tools/check_index.py
+index:  # INDEX.md covers every file; no dead links, duplicates or bad names
+	uv run --frozen python tools/check_index.py
 
-check: index lint test  # run before every push; CI runs the same
+check: lint test  # run before every push; CI runs the same
+
+lock:  # after editing deps in pyproject.toml by hand or after a merge conflict (prefer `uv add <pkg>`)
+	uv lock
+
+reproduce:  # FULL pipeline from a fresh clone -> results/. Add every pipeline stage here, in order.
+	uv run --frozen python scripts/00_smoke.py
