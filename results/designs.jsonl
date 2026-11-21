@@ -1,0 +1,17 @@
+# Template for results/designs.jsonl — our submission candidates.
+# Copy this file to results/designs.jsonl (same folder, drop the .template) and replace the example.
+# One JSON object per line. Lines starting with # and empty lines are ignored.
+#
+# Required keys:
+#   name      letters/digits/_/-, unique, max 64 chars
+#   sequence  50-260 standard uppercase amino acids
+#   base      1-BASED index of the catalytic base; the residue there must be D or E
+#   oxy       1-BASED index of the oxyanion-hole donor; must be Q N S T Y K or R (never H)
+# Any other key (note, run, score, ...) is kept here for us and left out of the FASTA.
+#
+# Then run:  make submission      -> writes results/designs.fasta and checks every rule
+# Details:   wiki/submission.md
+#
+# {"name": "chris_01", "sequence": "MKAYLVTGG...", "base": 19, "oxy": 24, "note": "run kemp-1234, seed 7"}
+{"name": "chris_osA_01", "sequence": "VEALAEEIRAAGERAVREARRRGEEALAEGEAAGLSHSLRNLRVLVAGMSVQARLVGEILELARSYDLEFGLAANRGLIAAATEADIRTLREVARRTRSEHWEAVELAARVIRAAQAVLEVLLSEIIRDCDPETVRIVVTATLTAGFLAGALGALLAYYLFSDKSPVEILKWSVIIATIIALVIGTITWEVLDKVYNLGKVVRRDTILAICVASALNAAPIFLILGCLCQVDPAELIDVVCELIRRMTEGAVEAVLAAAK", "base": 86, "oxy": 52, "note": "results/s024; base 2.49 A (D86), donor 3.53 A (Q52); window base=in donor=in; CA RMSD 1.0684; iptm 0.8876; T=0.2"}
+{"name": "chris_osA_02", "sequence": "VEALVEQIRAAGERAVEEIEAAGKKALAEGRAAGLSDTATRGLVFAAAQAIQCRLVGRMLRLAKAESTELGLACAKGLIDAATVADAEILRDAAAATKSDDWEAVDLAVRVIKEAQAVQLELISKIIRDCDPETVEIVVAVTGSAGVLAGVLGAALAYQLFKDKSPVEILRWAVVIATILALIIGSIAWRIMKKKYNLDKTVKRADFILLTVASALNSCPIFLILGCLCKLPAERLIDYAKRLAREQTEGAAQAVLDAAE", "base": 86, "oxy": 52, "note": "results/s059; base 2.59 A (D86), donor 3.48 A (Q52); window base=in donor=in; CA RMSD 0.5977; iptm 0.8465; T=0.3"}

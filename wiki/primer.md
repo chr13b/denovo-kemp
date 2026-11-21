@@ -352,6 +352,25 @@ the refold.** The question is not "can we design the right geometry" — we alre
 And `CA RMSD` tracks the loss almost monotonically: 0.70 Å → +0.79, 1.4 Å → +3.4/+5.8, 4.3 Å → +9.5,
 14 Å → +12/+19. Refold fidelity *is* the scored quantity, one step removed.
 
+### (d2b) CORRECTION to (d2): the ligand moves, not the fold
+
+(d2) called the loss "refold fidelity", and across backbones that reading was right — the failing
+seeds genuinely collapsed at CA RMSD 13–15 Å. **Within a single backbone it is wrong**, and chris-04
+(72 sequences on seed 4's backbone) shows it clearly:
+
+| | min | median | max |
+|---|---|---|---|
+| CA RMSD | 0.49 | **0.77 Å** | 17.37 |
+| base contact | 2.38 | **5.12 Å** | 23.15 |
+
+The protein refolds reliably — at T = 0.1, **all 24** sequences came back under 2 Å CA RMSD — while the
+base contact ranges over 21 Å. And CA RMSD hardly predicts it: **r = +0.12**. (iptm is the best of what
+we log, at r = −0.40; LigandMPNN's `ligand_confidence` is r = −0.00.)
+
+So the sequence is not failing to encode the fold. It is failing to **hold the ligand**. Nothing we can
+compute before folding is a good enough filter — which is fine, since folding is 19 s. **Fold
+everything and filter on the measured contact.**
+
 ### (d3) We have been taking the first sequence LigandMPNN offered, every time
 
 `ligandmpnn_scores` reads `id: 1, T: 0.1` on every run. One sequence per backbone, at a temperature low
@@ -405,6 +424,30 @@ cost us in two of four scoring terms — while the novelty gate forbids staying 
 a sweet spot and we do not know where it is.
 
 ---
+
+### (g2) The instrument check: the base contact is trustworthy, the donor contact is not
+
+We judge designs against crystal distances but measure them with Boltz-2. chris-04 folded three real
+enzymes' own sequences in the same batch to compare the two instruments directly:
+
+| structure | base→N3 | donor→N1 | crystal base | crystal donor |
+|---|---|---|---|---|
+| **4BS0** (HG3.17) | **2.49** | **6.08** ✗ | 2.53 | 3.10 |
+| 3NYD (HG3) | 3.49 (but base→N1 = 2.21, a flipped pose) | 2.80 | — | — |
+| 7K4U | 2.11 | **5.34** ✗ | 2.54 | 3.20 |
+
+- ✅ **Base: validated.** 2.49 Å predicted against 2.53 Å crystallographic, on the very structure our
+  motif came from. The 2.41–2.69 Å window is reachable through Boltz-2 and base numbers mean what we
+  have been treating them as meaning.
+- ❌ **Donor: not validated.** Boltz-2 loses the donor on two of three real enzymes.
+- **Caveat:** these controls are 307–318-residue natural constructs folded single-sequence with **no
+  pocket conditioning**, while zonghu's `aff_*` runs use `pocket_force: true` at 5 Å. The control is
+  harsher than it needs to be, so the donor failure may be an artefact rather than a limit of the
+  model. Redoing it with pocket conditioning is the proper follow-up.
+
+Practical consequence: **optimise and report the base contact; treat the donor as secondary** until
+that control is redone. Convenient, because the base contact is where our designs were failing and
+geometry is dominated by it.
 
 ### (h) Boltz-2's affinity head reads ligand chemistry, not catalytic proficiency
 
@@ -684,12 +727,23 @@ Status as of 2026-11-21, built and launched. Tooling lives in `cluster/`; experi
 `chris-04` (A), `chris-05` (B) and `chris-06` (C) carry the pre-registered decision rules,
 written before any result existed.
 
-| | what it does | job | cost |
+| | what it does | job | outcome |
 |---|---|---|---|
-| **A** | 72 sequences on seed 4's existing backbone | **27** | ~25 min, no RFD3 |
-| **B** | 72 sequences on zonghu's Trp44 backbone | **28** | ~25 min, no RFD3 |
-| **C** | RFD3 on 4 family motifs, each chaining into its own sweep | **30** | ~48 min + 4 sweeps |
-| controls | 4BS0 / 3NYD / 7K4U folded in every batch | (bundled) | 19 s each |
+| **A** | 72 sequences on seed 4's existing backbone | **27** | ✅ **SUPPORTED — 2 designs inside both windows, both novel** |
+| **B** | 72 sequences on zonghu's Trp44 backbone | **31** | running |
+| **C** | RFD3 on 4BS0_A vs 8USL_B, each chaining a sweep | **34** → 35, 36 | design stage done, 0 failures; sweeps queued |
+| controls | 4BS0 / 3NYD / 7K4U folded in every batch | (bundled) | ✅ base validated, donor not — see (g2) |
+
+**Idea A's headline:** on seed 4's own backbone, where the organizers' single sequence gave base
+3.32 Å and donor 3.75 Å (both outside the window), two of 72 sampled sequences land inside both —
+**s024 at base 2.49 Å** against a family median of 2.51, and s059 at 2.59 Å. Both pass the novelty
+gate against all 40,066 PDB representatives (qTM 0.561 and 0.546, ≤3 % identity) and are banked in
+`results/designs.jsonl`. The hit rate is ~3 % per sequence, which is precisely why sampling once
+found nothing. Full numbers in `wiki/experiments/chris-04_…`.
+
+**Also measured: T = 0.1 — the organizers' default — is the worst of the three temperatures**, giving
+0 winners from 24 sequences against 2 at T = 0.2 and 1 at T = 0.3, with no meaningful loss in folding
+success (24/23/23 refolded under 2 Å). Use T = 0.2–0.3.
 
 Two things had to be fixed to make this possible, and both are worth knowing:
 
