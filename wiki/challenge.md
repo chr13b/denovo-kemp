@@ -157,8 +157,22 @@ we rank. We do not yet know *how* those 5 are nominated — see the open questio
 - [ ] Is there a presentation, and how long?
 - [ ] License/IP rules for our code and designs? (decides whether we add a LICENSE file)
 - [ ] What are the *target* values for the geometry term (ideal distance, angle, dihedral)? The slides say
-      "comparing against the ideal approach geometry" without giving numbers, and we have to guess them
-      from crystal structures otherwise.
+      "comparing against the ideal approach geometry" without giving numbers. We now measure them from the
+      family ourselves (base 2.41–2.69 Å, donor 2.92–3.60 Å, over 26 engaged ligand copies from 23
+      structures — `results/kemp_family_geometry.tsv`), but whether the scorer uses these values,
+      an angle term as well, or a different reference set is still unknown.
+- [ ] **Is the geometry term measured on the Boltz-2 refold only, or also on a submitted structure?**
+      This matters more than it sounds: RFD3 hits the crystal window on every design we have made and the
+      refold is where it is lost (primer d2). If only the refold is scored — which is what "cofold the
+      submitted sequence" implies — then refold fidelity *is* the score, and we optimise for it directly.
+
+### A question we can answer ourselves, and must
+
+- [ ] **Does Boltz-2 reproduce crystal geometry for a real Kemp eliminase?** We compare designs against
+      distances measured from crystal structures but measure the designs with Boltz-2 — two different
+      instruments, never cross-checked. Folding 4BS0 / 3NYD / 7K4U's own sequences settles it, costs 19 s
+      each, and is bundled into every sweep in `cluster/oversample.sbatch`. Until that number exists, no
+      statement of the form "our design misses the window by X Å" can be trusted.
 
 **Answered** (from the slides, 2026-11-21 — keep for the record):
 - ~~Which atom is the `oxy` target?~~ 6NT is a benzo**triazole** with no ring oxygen; the reference pipeline
