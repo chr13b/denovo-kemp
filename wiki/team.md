@@ -22,6 +22,35 @@ Full setup: [../SETUP.md](../SETUP.md). "Owns" = who reviews and decides, not th
 - Cluster etiquette: 2 GPU workers for the whole team, so say in the chat when you start a long job.
   Name your project folders `<handle>_<topic>` and never touch `/mnt/work/kemp_example`.
 
+## For zonghu — please read before launching more backbones (chris, 2026-11-21)
+
+Your Trp44 theozyme was **not** refuted by job 7, and I was wrong to read it that way.
+
+`summary.json` reports the catalytic contacts twice. On your run the RFD3 column reads **base 2.53 Å,
+donor 3.20 Å** — inside the window measured across 23 crystal structures (2.41–2.69 / 2.92–3.60). The
+geometry was lost in the **Boltz-2 refold** (CA RMSD 4.26 Å), not in the motif. The same is true of all
+five of my seeds: RFD3 nails it every time, the refold loses it, and the refold is decided by the
+**sequence** — which the launcher samples exactly once (`id: 1, T: 0.1`).
+
+Your hand-off is also correct, which I had doubted: `bridge/sequence.json` maps A50→237 (Q), A127→54 (D),
+A44→98 (W), so all three anchors survive into the sequence. The `prepare_rfd3_input.py` warnings are just
+the launcher noting the motif is not its 2-residue default. And your LigandMPNN scores beat mine
+(`ligand_confidence` 0.534 vs 0.445, `seq_rec` 0.483 vs 0.302).
+
+**What this means for your queue:** a new RFD3 backbone costs 12 min; a new sequence on an existing
+backbone costs 6 s (LigandMPNN) + 19 s (Boltz-2). Sampling 32–72 sequences on a backbone you already
+have is cheaper than two new backbones and varies the thing that actually fails.
+
+`cluster/launch_oversample.sh <project-name> <your-run-dir>` does it from any finished run's `bridge/`,
+read-only — I ran it on your `kemp-7` as chris-05 and touched nothing in your directories. Two things to
+know: `boltz predict <dir>` chokes on `.a3m` files in the same directory, and the template's
+`--constraint=g6.2xlarge --mem=30G` exists only for the MMseqs2 index, so dropping MMseqs2 lets a job fit
+the l4small nodes.
+
+Also worth your time: your `aff_*` affinity runs show the TS analogue separating cleanly from substrate
+and product in all three enzymes, but HG3 and HG3.17 score **2.06 vs 2.06** despite ~1000× activity
+difference. Good negative filter, not a ranker. Details in `wiki/primer.md` §5(h).
+
 ## Division of labour (suggestion for the first hours)
 
 Discuss and overwrite. The point is that nobody waits on anybody.

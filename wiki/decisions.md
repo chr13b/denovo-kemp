@@ -58,3 +58,29 @@ entry that names the old one.
   and the file is rebuilt reproducibly instead of hand-edited.
 - **Alternatives:** Writing the FASTA by hand (one typo costs a slot or the score); relying only on the
   organizers' validator (needs AWS, and tends to be run too late).
+
+## 2026-11-21 · Split the pipeline: design once, sample sequences many times (chris)
+- **Decision:** Stop running the organizers' end-to-end pipeline for each design. Run RFD3 once per
+  *design problem* (`cluster/design_backbones.sbatch`) and then sample 30–70 sequences per backbone,
+  folding each (`cluster/oversample.sbatch`). Neither stage runs MMseqs2. Keep every design whose refold
+  lands in the family-measured window, base 2.41–2.69 Å and donor 2.92–3.60 Å.
+- **Why:** `summary.json` reports the catalytic contacts twice, on the RFD3 backbone and on the Boltz-2
+  refold. Across all six full-pipeline runs — ours and zonghu's — RFD3 gives base 2.53 Å / donor 3.09 Å
+  every time, dead centre in the crystal window, reproducing the pinned motif to 0.013 Å. **All of the
+  geometric loss is in the refold**, which is determined by the sequence — and the pipeline samples the
+  sequence exactly once per backbone (`id: 1, T: 0.1`). At 6 s for LigandMPNN and 19 s for Boltz-2 against
+  12 min for RFD3, we were spending the expensive step to re-roll the cheap one.
+- **Alternatives:** More RFD3 seeds (what we did before — varies the one thing that was already correct);
+  force-field relaxation (never scored, since the organizers fold the submitted sequence themselves);
+  tighter `select_fixed_atoms` or shorter contigs (both act on a step already exact to 0.013 Å).
+
+## 2026-11-21 · Judge designs against the instrument, not only the crystals (chris)
+- **Decision:** Fold the real enzymes' own sequences (4BS0, 3NYD, 7K4U) with 6NT in **every** sweep, and
+  calibrate the target window against what Boltz-2 reports for them rather than against the crystal
+  distances alone. `cluster/build_control_fasta.py` takes the sequences from the deposited structures.
+- **Why:** The target window comes from crystallography; our designs are measured by Boltz-2. Those are
+  different instruments and we had never cross-checked them. If Boltz-2 reports ~3.3 Å for HG3.17 itself,
+  then seed 4's 3.32 Å is at parity with a working enzyme and the "miss" was an artefact of comparing
+  across instruments. It costs 19 s and it changes the meaning of every geometry number we report.
+- **Alternatives:** Trusting the crystal numbers directly (risks optimising toward an unreachable target);
+  asking the organisers for the scorer's reference values (worth doing anyway, but slower than measuring).
