@@ -22,6 +22,24 @@ Full setup: [../SETUP.md](../SETUP.md). "Owns" = who reviews and decides, not th
 - Cluster etiquette: 2 GPU workers for the whole team, so say in the chat when you start a long job.
   Name your project folders `<handle>_<topic>` and never touch `/mnt/work/kemp_example`.
 
+## ⚠️ Cluster: the two l4small nodes are dead, and jobs asking for them hang forever
+
+`gpu-dy-l4small-1` and `-2` sit in `idle~`/`idle%` with reason "Scheduler health check" and Slurm
+will not resume them. We are not admins, so `scontrol update NodeName=... State=POWER_UP` returns
+`Invalid user id`. **Effectively the cluster is one GPU: `gpu-dy-l4-1` (g6.2xlarge, 8 CPU, 31 GB).**
+
+**If your job requests `--constraint=g6.xlarge` it will never start.** It shows as
+`Reason=ReqNodeNotAvail,_UnavailableNodes:gpu-dy-l4small-[1-2]`. zonghu's jobs 32 and 33 are in
+exactly this state as of 2026-11-21 — I have not touched them, since they are yours to requeue.
+
+Use `--constraint="l4small|l4"` instead: it takes a small node if one ever comes back and falls
+through to `gpu-dy-l4-1` otherwise. Never request `l4big` — it is reserved.
+
+Check your own jobs with:
+
+    squeue -o "%.6i %.14j %.9T %.6M %.18R"
+    scontrol show job <id> | grep -E "Reason|Features"
+
 ## For zonghu — please read before launching more backbones (chris, 2026-11-21)
 
 Your Trp44 theozyme was **not** refuted by job 7, and I was wrong to read it that way.
