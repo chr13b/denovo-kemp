@@ -46,6 +46,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/experiments/_template.md](wiki/experiments/_template.md) — template for experiment pages
 - [wiki/experiments/chris-01_reference-pipeline-baseline.md](wiki/experiments/chris-01_reference-pipeline-baseline.md) — baseline: pipeline verified, RFD3 → Boltz-2 contact drift
 - [wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md](wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md) — seed sweep (jobs 2–5): is that drift systematic? decides where GPU time goes
+- [wiki/experiments/flavia-01_theozyme-target-geometry.md](wiki/experiments/flavia-01_theozyme-target-geometry.md) — the measured catalytic geometry a working Kemp eliminase holds 6NT in; the target our designs aim at
 - [wiki/data.md](wiki/data.md) — dataset registry: source, version, sha256, how to fetch
 - [wiki/decisions.md](wiki/decisions.md) — decision records (append-only, dated): what we chose, why, alternatives
 - [wiki/pitch.md](wiki/pitch.md) — the story for the final presentation, kept current
@@ -66,7 +67,10 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [src/kemp/run.py](src/kemp/run.py) — `start_run()`: run directory plus provenance (config, commit, diff, script, lock hash, host, GPU, seed)
 - [src/kemp/data.py](src/kemp/data.py) — `fetch(url, dest, checksum)` and `sha256(path)` for reproducible data
 - [src/kemp/submission.py](src/kemp/submission.py) — `designs.fasta` building and offline rule checking (indices, residue types, limits)
+- [src/kemp/geometry.py](src/kemp/geometry.py) — PDB parsing and the scored catalytic geometry (distance, in-plane, out-of-plane, burial); stdlib only
 - [scripts/00_smoke.py](scripts/00_smoke.py) — smoke test for env and run bookkeeping; **template for new scripts**
+- [scripts/30_measure_theozyme_geometry.py](scripts/30_measure_theozyme_geometry.py) — measure the target geometry from PDB 7K4Z → theozyme, numbers, viewer (`flavia-01`)
+- [scripts/assets/](scripts/assets/) — templates used by scripts (the theozyme viewer page)
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)
@@ -81,4 +85,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/](results/) — curated tracked outputs (figures, tables, the submission); each entry names its run
 - [results/designs.jsonl.template](results/designs.jsonl.template) — copy to `results/designs.jsonl`: our submission candidates
 - [results/reference_kemp-1_summary.json](results/reference_kemp-1_summary.json) — verified reference run (cluster job 1); the baseline we must beat
+- [results/theozyme_7k4z.pdb](results/theozyme_7k4z.pdb) — the theozyme: 6NT plus the catalytic base and donor, scaffold stripped (run `flavia-01`)
+- [results/theozyme_7k4z_geometry.json](results/theozyme_7k4z_geometry.json) — the measured target numbers behind `flavia-01`; quote these, not estimates
+- [results/theozyme_viewer.html](results/theozyme_viewer.html) — standalone 3D viewer of the theozyme with the measured contacts labelled (open in a browser)
 - [notebooks/](notebooks/) — exploration only, one folder per person (`notebooks/<handle>/`); outputs stripped on commit

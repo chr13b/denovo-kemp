@@ -1,0 +1,10 @@
+{
+  "name": "flavia-01",
+  "pdb_id": "7K4Z",
+  "url": "https://files.rcsb.org/download/7K4Z.pdb",
+  "checksum": "ec7451e03db3b74f9a58589f61782dd94818555544eba23d4a83e40899eaca85",
+  "ligand": "6NT",
+  "acid_h_mimic": "N3",
+  "oxyanion_mimic": "N1",
+  "publish": true
+}

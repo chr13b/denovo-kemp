@@ -1,0 +1,49 @@
+{
+  "source": "PDB 7K4Z, Kemp eliminase HG3.17 with 6-nitrobenzotriazole (6NT), 1.08 A",
+  "note": "Geometry reference only. HG3.17 is ineligible as a design under the novelty rules.",
+  "ligand": "6NT A402",
+  "contacts": {
+    "base": {
+      "distance_a": 2.51,
+      "in_plane_deg": 5.3,
+      "out_of_plane_deg": 7.3,
+      "partner_angle_deg": 128.5,
+      "residue": "ASP127",
+      "atom": "OD2",
+      "ligand_atom": "N3",
+      "role_text": "deprotonates the acidic position",
+      "h_bond_angle_deg": 165.4,
+      "h_to_partner_a": 1.67
+    },
+    "donor": {
+      "distance_a": 3.1,
+      "in_plane_deg": 6.5,
+      "out_of_plane_deg": 2.8,
+      "partner_angle_deg": 134.0,
+      "residue": "GLN50",
+      "atom": "NE2",
+      "ligand_atom": "N1",
+      "role_text": "stabilises the developing oxyanion"
+    }
+  },
+  "base_burial": {
+    "ca_atoms_within_12a": 47,
+    "measured_from": "ASP127 CG"
+  },
+  "pocket_residues": [
+    "MET237",
+    "GLY83",
+    "CYS84",
+    "ALA21",
+    "THR265",
+    "LEU236",
+    "MET172",
+    "TRP44",
+    "MET267",
+    "PRO45",
+    "GLU46",
+    "VAL266",
+    "ALA82",
+    "TRP87"
+  ]
+}
