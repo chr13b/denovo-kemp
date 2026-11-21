@@ -70,6 +70,8 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [src/kemp/data.py](src/kemp/data.py) — `fetch(url, dest, checksum)` and `sha256(path)` for reproducible data
 - [src/kemp/submission.py](src/kemp/submission.py) — `designs.fasta` building and offline rule checking (indices, residue types, limits)
 - [src/kemp/ligands.py](src/kemp/ligands.py) — the Kemp ladder (substrate / TS analogue / product) and the log10(IC50) → kcal/mol conversion
+- [src/kemp/filters.py](src/kemp/filters.py) — design-funnel filters: GRAVY, pI, catalytic-residue integrity, MPNN/Boltz score parsing; `passed=None` means not evaluated
+- [src/kemp/structure.py](src/kemp/structure.py) — structure filters: motif RMSD, RoG, clashes, Ramachandran, P-SEA topology, packing proxy, pLDDT, ligand contacts
 - [scripts/00_smoke.py](scripts/00_smoke.py) — smoke test for env and run bookkeeping; **template for new scripts**
 - [scripts/30_compare_rfd3_vs_boltz.py](scripts/30_compare_rfd3_vs_boltz.py) — chris-02 table: RFD3 vs Boltz-2 contact drift + the pre-registered decision rule
 - [scripts/20_build_affinity_ladder.py](scripts/20_build_affinity_ladder.py) — build the cluster bundle that cofolds a sequence with all three ligands and predicts affinity
@@ -78,6 +80,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [scripts/23_compare_ladder_to_kinetics.py](scripts/23_compare_ladder_to_kinetics.py) — predicted ladder vs measured k_cat/K_M: expected vs observed ddG, rank order, sign
 - [scripts/24_build_anchored_ladder.py](scripts/24_build_anchored_ladder.py) — two-stage ladder: cofold once with the TS analogue, then score every ligand in that same pocket
 - [scripts/make_stage_b.py](scripts/make_stage_b.py) — cluster-side helper for the above: reads the stage-A complex, finds the pocket residues, writes the anchored stage-B inputs
+- [scripts/30_filter_designs.py](scripts/30_filter_designs.py) — the three-stage design funnel: per-design gates, error isolation, resumable JSONL/CSV verdicts
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)
