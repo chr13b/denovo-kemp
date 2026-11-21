@@ -137,7 +137,29 @@ whose ligand *was* in the site. If we build a cheap filter on iPDE (chris-02 nex
 counter-example: **iPDE can look healthy while the ligand is in the wrong place.** Filter on the base and
 donor contact distances themselves, not on iPDE alone.
 
-### The RFD3 clash, and why I think the idealised Trp caused it
+### The RFD3 clash — and a correction
+
+> **Correction (same day, before any follow-up GPU run).** The paragraph below originally argued that the
+> cofacial pose "leaves the attachment end nowhere to go but into the nitro group". **That was wrong, and
+> measuring it refuted it.** `scripts/attach.py` reports the clearance of exactly the atoms RFD3 is free
+> to move:
+>
+> | pose | attachment end (CB/CG/CD1/NE1) min to ligand | backbone min to ligand | ring centroid radial offset |
+> |---|---|---|---|
+> | crystal | 3.86 Å | 5.11 Å | 4.02 Å |
+> | idealised (`_trpopt`) | 3.48 Å | **5.81 Å** | 0.92 Å |
+> | repaired (`_trpopt2`) | **3.97 Å** | **6.04 Å** | 0.92 Å |
+>
+> The idealised pose had *more* backbone room than the crystal, and a clash-free attachment plainly exists
+> — `_trpopt2` reaches better clearance than the crystal on both measures **while keeping a cofacial stack**
+> (perp 3.65 Å, offset 0.00 Å, interplanar 0.0°; it costs 0.20 Å of stacking distance). So the pose was not
+> the cause. **The cause was under-constraint:** `select_fixed_atoms` pinned only the six-membered ring, and
+> RFD3 moved CD1/NE1/CB by roughly 1 Å — which it should not be able to do at all, since the indole is a
+> rigid fused ring system. The remaining, weaker version of the original idea is that a face-centred ring
+> (radial offset 0.92 Å vs 4.02 Å) leaves a *smaller fraction* of RFD3's allowed placements clash-free; that
+> is plausible and still untested.
+
+
 
 RFD3 produced **6 protein–ligand pairs below 2.2 Å (min 1.655 Å)**; chris's runs had 0 and a 2.53 Å minimum.
 Note the pipeline *records* this and never checks it, so it does not appear as a warning. Every clash is
@@ -158,13 +180,20 @@ the six-membered indole ring (`CD2,CE2,CE3,CZ2,CZ3,CH2`), leaving CB, CG, CD1, N
 Laying that ring flat over the ligand at 3.45 Å forces the side chain to attach from one edge, and in the
 cofacial pose the only free direction points at the nitro substituent. In the theozyme *file* those atoms
 were clear (CB ≥ 3.25 Å from any ligand atom, backbone 5.81 Å); RFD3 moved them, never having been told not
-to. **This is a flaw in how I built the theozyme, not a pipeline defect:** the ring–ring interaction was
-optimised in isolation, ignoring that the residue needs somewhere to attach. It is also a plausible — but
-untested — reason the Boltz-2 ligand left the site, since LigandMPNN designed a sequence for a pocket with
-the ligand jammed into it.
+to. It is a plausible — but untested — reason the Boltz-2 ligand left the site, since LigandMPNN designed a
+sequence for a pocket with the ligand jammed into it.
 
-This supports the caveat raised when the theozyme was built: the crystal's "suboptimal" 4.00 Å offset,
-edge-on contact may be how HG3 keeps the tryptophan *attachable* without colliding with the nitro group.
+**The fix, applied (laptop only, no GPU):** `theozyme_7k4u_core_trpopt2.pdb` and
+`..._extended_trpopt2.pdb`, built with the attachment end and backbone constrained to at least the crystal's
+clearance. Thresholds are calibrated to the crystal pose rather than chosen by me: CB/CG/CD1/NE1 ≥ 3.90 Å
+and backbone ≥ 5.10 Å from any ligand atom. The same placement satisfies both the core and extended
+constraint sets, so it does not clash with Thr265 or Phe267 either. ASP127, GLN50 and 6NT remain
+byte-for-byte unchanged, and Trp44 keeps the canonical p-90 rotamer (chi1 68.8°, chi2 −78.3°).
+
+**And the constraint that actually matters:** the new configs pin the **whole indole**
+(`CG,CD1,CD2,NE1,CE2,CE3,CZ2,CZ3,CH2`), not just the six-ring. The indole cannot bend, so pinning 6 of its
+9 atoms was never physically coherent; it is what let RFD3 move the attachment end. The cost is 3 more
+fixed atoms, which lowers scaffolding success — that trade is the thing the next run should measure.
 
 ## Verdict and next step
 
@@ -180,13 +209,17 @@ depending on a seed.
 
 Next steps, cheapest first:
 
-1. **Fix the theozyme before spending more GPU.** Re-run the optimiser with the Trp's attachment direction
-   constrained — require CB, CG, CD1 and NE1 to stay ≥ 3.3 Å from the nitro group and point away from the
-   ligand — and accept a lateral offset of 1.5–2.0 Å if that is the price. A clash-free idealised pose may
-   not exist, which would itself be the answer.
-2. **Also pin `CG` (and ideally `CD1`) in `select_fixed_atoms`**, so RFD3 cannot resolve the remaining
-   freedom by pushing the attachment end into the ligand.
-3. **Only then run the controls** `zonghu_core_s1` / `_s2` against the repaired idealised theozyme. The
-   project folders survive, configured and ready: `bash /mnt/work/projects/zonghu_core_s1/run.sh`.
+1. ~~Fix the theozyme before spending more GPU.~~ **Done** — `_trpopt2`, see above. No lateral offset was
+   needed: the cofacial stack survives, at 3.65 Å instead of 3.45 Å.
+2. ~~Also pin `CG` (and ideally `CD1`).~~ **Done** — the whole indole is pinned in the new configs.
+3. **Run the real comparison when the GPU is free**, 3 arms × 2 seeds = 6 jobs ≈ 2.3 h serial:
+   crystal (`theozyme_7k4u_core.pdb`), `_trpopt` (six-ring pinned, the job-7 setup) and `_trpopt2`
+   (whole indole pinned). Arm 2 vs 3 isolates **the pinning change**; arm 1 vs 3 isolates **the geometry**.
+   Read `ligand_protein_pairs_below_2_2_angstrom` first — the prediction is that it drops to 0 for
+   `_trpopt2`. The `zonghu_core_s1` / `_s2` folders survive, configured and ready:
+   `bash /mnt/work/projects/zonghu_core_s1/run.sh`.
 4. Tell the team that **iPDE alone is not a safe refold filter** (observation 2 above) before anyone builds
    a screening pipeline on it.
+5. Worth considering: `ligand_protein_pairs_below_2_2_angstrom` is recorded by the pipeline and **never
+   checked**. A one-line addition to our own tooling would turn it into a free pre-filter on RFD3 output —
+   unlike the contact distances, it is not constant by construction, so it carries information.
