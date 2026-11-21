@@ -48,9 +48,12 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md](wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md) — seed sweep (jobs 2–5): is that drift systematic? decides where GPU time goes
 - [wiki/experiments/zonghu-01_trp-stack-theozyme-vs-crystal.md](wiki/experiments/zonghu-01_trp-stack-theozyme-vs-crystal.md) — idealised Trp44 π-stack vs the crystal edge-on contact: does a custom theozyme scaffold?
 - [wiki/experiments/zonghu-02_affinity-ladder-controls.md](wiki/experiments/zonghu-02_affinity-ladder-controls.md) — does the affinity ladder separate a real Kemp eliminase from a non-enzyme? (controls first)
+- [wiki/experiments/zonghu-03_trp-flexibility-and-dyad-geometry.md](wiki/experiments/zonghu-03_trp-flexibility-and-dyad-geometry.md) — rigid indole wrecks the donor; the dyad is too wide in every design; best design of the project
 - [wiki/affinity-ladder.md](wiki/affinity-ladder.md) — cofold substrate/TS-analogue/product and score transition-state discrimination; method, units and limits
 - [wiki/design-filters.md](wiki/design-filters.md) — where every filter threshold comes from, which gate is binding, and why we rank rather than gate
 - [wiki/rfd4-proteina.md](wiki/rfd4-proteina.md) — RFD4-Proteina installed on the cluster and verified on our L4: how to use it, the CUDA-12 constraint, what is and is not verified
+- [wiki/novelty.md](wiki/novelty.md) — the one hard gate: TM <= 0.7 and identity <= 70 %; foldseek method, results, and which design already fails it
+- [wiki/scoring.md](wiki/scoring.md) — the organizers' five criteria, a metric for each, the multiplicative combined score, and why there is no cheap pre-filter
 - [wiki/data.md](wiki/data.md) — dataset registry: source, version, sha256, how to fetch
 - [wiki/decisions.md](wiki/decisions.md) — decision records (append-only, dated): what we chose, why, alternatives
 - [wiki/pitch.md](wiki/pitch.md) — the story for the final presentation, kept current
@@ -84,6 +87,10 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [scripts/make_stage_b.py](scripts/make_stage_b.py) — cluster-side helper for the above: reads the stage-A complex, finds the pocket residues, writes the anchored stage-B inputs
 - [scripts/30_filter_designs.py](scripts/30_filter_designs.py) — the three-stage design funnel: per-design gates, error isolation, resumable JSONL/CSV verdicts
 - [scripts/31_screen_summaries.py](scripts/31_screen_summaries.py) — replay the stage-3 gates over every tracked `summary.json` (no GPU) to get the expected pass rate and the binding gate
+- [scripts/32_check_sequence_novelty.py](scripts/32_check_sequence_novelty.py) — pairwise sequence identity of designs vs the HG series (novelty gate, half 2); no cluster needed
+- [scripts/33_combine_criteria.py](scripts/33_combine_criteria.py) — the five criteria -> one multiplicative score, with the novelty gate applied as a gate
+- [scripts/34_score_five_criteria.py](scripts/34_score_five_criteria.py) — measure K1-K4 on every cofolded design, plus the inter-criterion correlation check
+- [scripts/35_test_cheap_prefilter.py](scripts/35_test_cheap_prefilter.py) — does any RFD3-stage feature predict the Boltz-2 outcome? (answer: no)
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)
@@ -117,4 +124,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/sweep_kemp-3_summary.json](results/sweep_kemp-3_summary.json) — chris-02 seed 3: folded, base contact drifted to 8.33 Å
 - [results/sweep_kemp-4_summary.json](results/sweep_kemp-4_summary.json) — chris-02 seed 4: **best design so far**, beats the baseline; novelty unchecked
 - [results/sweep_kemp-5_summary.json](results/sweep_kemp-5_summary.json) — chris-02 seed 5: collapsed refold (CA RMSD 13.7 Å)
+- [results/criteria/five_criteria_n16.json](results/criteria/five_criteria_n16.json) — K1-K4 measured on all 16 team designs, 2026-11-22; input to the combined score
+- [results/criteria/tm_vs_7k4u.json](results/criteria/tm_vs_7k4u.json) — per-design TM-score against 7K4U, the novelty gate's binding half
+- [results/criteria/foldseek_tm_vs_7k4u.tsv](results/criteria/foldseek_tm_vs_7k4u.tsv) — raw foldseek output behind that table (all three TM normalizations)
 - [notebooks/](notebooks/) — exploration only, one folder per person (`notebooks/<handle>/`); outputs stripped on commit
