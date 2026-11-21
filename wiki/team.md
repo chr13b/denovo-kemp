@@ -22,6 +22,30 @@ Full setup: [../SETUP.md](../SETUP.md). "Owns" = who reviews and decides, not th
 - Cluster etiquette: 2 GPU workers for the whole team, so say in the chat when you start a long job.
   Name your project folders `<handle>_<topic>` and never touch `/mnt/work/kemp_example`.
 
+## ⚠️ Every `kemp-e2e` job burns ~10 min of shared GPU on a stage that does nothing
+
+As of 2026-11-21 there are five `kemp-e2e` jobs queued behind one usable GPU. Each spends roughly
+**10 of its ~23 minutes** in the MMseqs2 stage, and chris-03 proved that stage is a **no-op** for de
+novo designs: every one returns `depth 1, nonquery_rows 0`, and removing it gives **bit-identical**
+Boltz-2 output (same MD5). Five jobs is therefore about **50 minutes of queue time spent on nothing**,
+on a cluster where we are all waiting behind each other.
+
+The MMseqs2 index is also the only reason the template asks for `--mem=30G --constraint=g6.2xlarge`.
+Drop the stage and a job fits a smaller node and runs ~2× faster.
+
+If you only need backbones, or only need to fold sequences, use the split pipeline in `cluster/`:
+
+    bash cluster/launch_design.sh     <name> <motif-dir>   # RFD3 only, ~12 min per motif
+    bash cluster/launch_oversample.sh <name> <run-dir>     # LigandMPNN + Boltz-2 only, ~25 s/sequence
+
+`launch_oversample.sh` reads any finished run's `bridge/` **read-only**, so it works on your runs
+without touching them.
+
+**And a second reason not to run single end-to-end designs:** one Boltz-2 fold is noisier than the
+geometry window we are aiming at. The same control sequence at the same `--seed 1` gave base contacts
+of 2.49 Å and 2.07 Å in two different batches, against a window 0.28 Å wide. A single design's
+geometry number is not a result — see `wiki/primer.md` §5(g5).
+
 ## ⚠️ Cluster: the two l4small nodes are dead, and jobs asking for them hang forever
 
 `gpu-dy-l4small-1` and `-2` sit in `idle~`/`idle%` with reason "Scheduler health check" and Slurm
