@@ -501,6 +501,32 @@ and 0.0167 Å. The difference appears only once you try to write sequences for t
 Backbone diversity therefore has to come from different **arrangements** of the same two anchors —
 which is exactly chris-06 — not from adding anchors.
 
+### (g5) A single Boltz-2 prediction is noisier than the target window
+
+The natural-enzyme controls go into every sweep with the same sequences and the same `--seed 1`. They
+matched to 4 decimal places between two 75-structure batches, then changed in a 51-structure batch:
+
+| batch | rows | 4BS0 base | 4BS0 donor |
+|---|---|---|---|
+| job 27 | 75 | 2.4925 | 6.0775 |
+| job 31 | 75 | 2.4925 | 6.0775 |
+| job 40 | 51 | **2.0722** | **4.8453** |
+
+Boltz's `--seed` applies per invocation, so the RNG stream depends on batch composition rather than on
+the structure. The identical sequence gives **2.49 Å and 2.07 Å** — a 0.42 Å swing against a window
+**0.28 Å wide**.
+
+So **no single fold can place a design inside the window.** Measurement noise exceeds the thing being
+measured. Three consequences:
+
+1. **Every submission candidate needs 5-seed replication** before we believe its geometry. This is
+   also precisely the organizers' consistency term, which we had never measured
+   (`cluster/replicate_seeds.sbatch`, job 47).
+2. **Treat the hit rate, not the single best number, as the signal.** 2/72 in-window for seed 4's
+   backbone against 0/72 and 0/48 for two others is a comparison between distributions, and that part
+   survives the noise.
+3. A sweep's winner is a *shortlist entry*, not a result. Rank by replicated mean, not by one fold.
+
 ### (h) Boltz-2's affinity head reads ligand chemistry, not catalytic proficiency
 
 Boltz-2 ships a binding-affinity head, and zonghu has already run it on the three real enzymes against

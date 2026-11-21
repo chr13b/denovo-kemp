@@ -93,6 +93,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [cluster/](cluster/) — the two-stage pipeline we run on the GPU cluster (design once, sample sequences many times)
 - [cluster/oversample.sbatch](cluster/oversample.sbatch) — **Idea A**: many LigandMPNN sequences on one existing backbone, folded and measured
 - [cluster/design_backbones.sbatch](cluster/design_backbones.sbatch) — stage 1: RFD3 backbones only, one per motif, no MMseqs2 and no Boltz-2
+- [cluster/replicate_seeds.sbatch](cluster/replicate_seeds.sbatch) — fold the same sequences at 5 Boltz-2 seeds: the scored consistency term, and the noise floor
 - [cluster/launch_oversample.sh](cluster/launch_oversample.sh) — deploy + submit an oversampling job from a finished run's `bridge/`
 - [cluster/launch_design.sh](cluster/launch_design.sh) — deploy + submit the RFD3 design stage over a directory of motifs
 - [cluster/build_boltz_queries.py](cluster/build_boltz_queries.py) — many sequences → one Boltz-2 query directory, with query-only alignments
@@ -108,6 +109,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/designs.jsonl](results/designs.jsonl) — **our submission candidates**; rebuild the FASTA with `make submission`
 - [results/oversample_a_seed4_job27.tsv](results/oversample_a_seed4_job27.tsv) — chris-04: 72 sequences on seed 4's backbone + 3 natural controls, fully measured
 - [results/oversample_b_trp44_job31.tsv](results/oversample_b_trp44_job31.tsv) — chris-05: 72 sequences on zonghu's Trp44 backbone; refutes the three-anchor motif
+- [results/oversample_rescue_s5_job40.tsv](results/oversample_rescue_s5_job40.tsv) — chris-07: seed 5 is not rescuable (0/48 refolded under 2 Å)
 - [results/reference_kemp-1_summary.json](results/reference_kemp-1_summary.json) — verified reference run (cluster job 1); the baseline we must beat
 - [results/kemp_family_geometry.tsv](results/kemp_family_geometry.tsv) — **the geometry target**: 43 ligand copies from 23 crystal structures
 - [results/sweep_kemp-2_summary.json](results/sweep_kemp-2_summary.json) — chris-02 seed 2: collapsed refold (CA RMSD 14.6 Å)
