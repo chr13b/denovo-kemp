@@ -49,6 +49,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/experiments/zonghu-01_trp-stack-theozyme-vs-crystal.md](wiki/experiments/zonghu-01_trp-stack-theozyme-vs-crystal.md) — idealised Trp44 π-stack vs the crystal edge-on contact: does a custom theozyme scaffold?
 - [wiki/experiments/zonghu-02_affinity-ladder-controls.md](wiki/experiments/zonghu-02_affinity-ladder-controls.md) — does the affinity ladder separate a real Kemp eliminase from a non-enzyme? (controls first)
 - [wiki/affinity-ladder.md](wiki/affinity-ladder.md) — cofold substrate/TS-analogue/product and score transition-state discrimination; method, units and limits
+- [wiki/design-filters.md](wiki/design-filters.md) — where every filter threshold comes from, which gate is binding, and why we rank rather than gate
 - [wiki/data.md](wiki/data.md) — dataset registry: source, version, sha256, how to fetch
 - [wiki/decisions.md](wiki/decisions.md) — decision records (append-only, dated): what we chose, why, alternatives
 - [wiki/pitch.md](wiki/pitch.md) — the story for the final presentation, kept current
@@ -81,6 +82,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [scripts/24_build_anchored_ladder.py](scripts/24_build_anchored_ladder.py) — two-stage ladder: cofold once with the TS analogue, then score every ligand in that same pocket
 - [scripts/make_stage_b.py](scripts/make_stage_b.py) — cluster-side helper for the above: reads the stage-A complex, finds the pocket residues, writes the anchored stage-B inputs
 - [scripts/30_filter_designs.py](scripts/30_filter_designs.py) — the three-stage design funnel: per-design gates, error isolation, resumable JSONL/CSV verdicts
+- [scripts/31_screen_summaries.py](scripts/31_screen_summaries.py) — replay the stage-3 gates over every tracked `summary.json` (no GPU) to get the expected pass rate and the binding gate
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)

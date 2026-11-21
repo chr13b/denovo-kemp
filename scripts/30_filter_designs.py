@@ -63,9 +63,14 @@ MOTIF_SPEC = {
     "A127": ("OD1", "CG", "OD2"),  # catalytic base
     "A50": ("OE1", "CD", "NE2"),  # oxyanion-hole donor
 }
-# (residue, protein atom, ligand atom, min A, max A) - windows, not minima
+# (residue, protein atom, ligand atom, min A, max A) - windows, not minima.
+# Provenance for every bound: wiki/design-filters.md.
+#   base  2.4-3.6  7K4U crystal is 2.53 A, and Broom et al. report 2.5-2.6 A across all six
+#                  HG variants (HG3 through HG3.17). Beyond ~3.5 A it is not an H-bond.
+#   donor 2.6-3.4  7K4U crystal is 3.20 A; folded runs give 2.94 and 3.08 A. Deliberately NOT
+#                  widened to 3.9 A, which would be fitting the gate to sweep_kemp-4 (3.75 A).
 CATALYTIC_CONTACTS = [
-    ("A127", "OD2", "N3", 2.4, 3.4),
+    ("A127", "OD2", "N3", 2.4, 3.6),
     ("A50", "NE2", "N1", 2.6, 3.4),
 ]
 
@@ -89,7 +94,10 @@ class Config:
     min_mpnn_ligand: float = 0.35
     gravy_range: list[float] = field(default_factory=lambda: [-1.0, 0.3])
     pi_range: list[float] = field(default_factory=lambda: [4.0, 9.5])
-    min_plddt: float = 85.0
+    # 80 is the gate, 85 the target: kemp_rfd3_workflow/README.md says "keep pLDDT > 80
+    # (ideally > 85)", and the organizers' own verified reference scores 83.6, so a gate
+    # at 85 rejects their working example. See wiki/design-filters.md.
+    min_plddt: float = 80.0
     min_iptm: float = 0.6
     catalytic: dict = field(default_factory=dict)  # {"127": "D", "50": "Q"} 1-based
     pocket_positions: list[int] = field(default_factory=list)
