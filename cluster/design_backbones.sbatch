@@ -100,10 +100,12 @@ if [ "${DS_CHAIN:-1}" = "1" ] && [ -s "$PROJECT/oversample.sbatch" ]; then
               OS_FIXED="$(cat "$RUN/bridge/fixed_residues.txt")" \
               OS_SEQUENCE="$POSITIONS" \
               OS_TEMPERATURES="${DS_CHAIN_TEMPERATURES:-0.1 0.2 0.3}" \
+              OS_BATCH="${DS_CHAIN_BATCH:-8}" \
+              OS_NBATCHES="${DS_CHAIN_NBATCHES:-3}" \
               OS_CONTROLS="${DS_CHAIN_CONTROLS:-}" \
               sbatch --parsable --chdir="$PDH_WORKSPACE" \
                      --output="$PDH_WORKSPACE/logs/oversample-%j.log" \
-                     --export=ALL,OS_BACKBONE,OS_FIXED,OS_SEQUENCE,OS_TEMPERATURES,OS_CONTROLS \
+                     --export=ALL,OS_BACKBONE,OS_FIXED,OS_SEQUENCE,OS_TEMPERATURES,OS_BATCH,OS_NBATCHES,OS_CONTROLS \
                      --job-name="os-$TAG" \
                      "$PROJECT/oversample.sbatch" 2>&1)
         echo "  $TAG -> job $JOB"
