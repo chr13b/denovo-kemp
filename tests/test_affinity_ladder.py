@@ -99,6 +99,10 @@ def test_builder_writes_one_yaml_per_ligand_and_seed(tmp_path):
         assert "boltz2_aff.ckpt" in sbatch
         assert "--cache" in sbatch
         assert "l4big" not in sbatch, "the l4big queue must never be used"
+        # Slurm runs the script from /var/spool/slurmd/jobNNNN, so the bundle path
+        # must come from SLURM_SUBMIT_DIR, never from BASH_SOURCE (that failed once).
+        assert "SLURM_SUBMIT_DIR" in sbatch
+        assert "BASH_SOURCE" not in sbatch
         meta = json.loads((run_dir / "bundle" / "ladder.json").read_text())
         assert meta["length"] == 11
     finally:

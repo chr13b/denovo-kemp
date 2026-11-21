@@ -41,7 +41,14 @@ SBATCH = """#!/usr/bin/env bash
 # pipeline keeps the big node.
 set -e -o pipefail
 
-BUNDLE=$(cd -- "$(dirname -- "${{BASH_SOURCE[0]}}")" && pwd -P)
+# Slurm copies the batch script to /var/spool/slurmd/jobNNNN/, so deriving the bundle
+# path from the running script's own location gives the spool dir, not the bundle
+# (this failed once, job 11). SLURM_SUBMIT_DIR is where sbatch was invoked.
+BUNDLE="${{SLURM_SUBMIT_DIR:-$PWD}}"
+if [ ! -d "$BUNDLE/yaml" ]; then
+    echo "STOP: no yaml/ under $BUNDLE - submit with 'cd <bundle> && sbatch run.sh'" >&2
+    exit 1
+fi
 source /mnt/work/kemp_example/env.sh
 OUT="$BUNDLE/out"
 CACHE="$BUNDLE/boltz-cache"
