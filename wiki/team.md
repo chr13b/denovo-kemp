@@ -1,8 +1,11 @@
 # Team
 
-Add **your own row** (don't edit other people's). Your handle is a short lowercase nickname; it goes into
-your branch names, experiment IDs and log entries. Setup: [../SETUP.md](../SETUP.md).
-"Owns" = who reviews and decides, not the only person allowed to touch it.
+**`bash onboard.sh` adds your row for you** — it asks for a handle and fills in the rest. Then edit your own
+row to say what you're good at and what you're taking on. Don't edit other people's rows; this file is
+union-merged, so two people adding rows at once will not conflict.
+
+Your handle is a short lowercase nickname; it goes into your branch names, experiment IDs and log entries.
+Full setup: [../SETUP.md](../SETUP.md). "Owns" = who reviews and decides, not the only person allowed to touch it.
 
 | Handle | GitHub | Background / strengths | Owns | Current branch |
 |--------|--------|------------------------|------|----------------|
@@ -26,6 +29,6 @@ Discuss and overwrite. The point is that nobody waits on anybody.
 | Track | What | Why it is independent |
 |---|---|---|
 | Pipeline | get the example verified, then run the first own design end to end | needs the cluster, not our analysis code |
-| Scoring | reimplement the published scoring terms (contact distances, angles, in-plane) as a local filter | pure geometry on predicted structures |
+| Scoring | reimplement the scoring terms as a local filter: contact distance/angle/dihedral, and **base burial = count CA atoms within 12 Å of the catalytic base** (the one term with an exact published definition — start there) | pure geometry on predicted structures |
 | Novelty | TM-score and sequence-identity checks against published structures | gate every candidate before it takes a submission slot |
 | Strategy | read the scoring section closely, decide what to optimize, keep `wiki/pitch.md` current | reading and writing, no compute |

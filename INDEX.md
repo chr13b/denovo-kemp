@@ -8,6 +8,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 (or a subdirectory line). Elsewhere, a line for the directory is enough.
 
 ## Start here
+- [onboard.sh](onboard.sh) — **one command that sets everything up.** `bash onboard.sh` — env, hooks, handle, key, cluster, checks
 - [SETUP.md](SETUP.md) — **new teammate? start here.** Laptop setup, cluster access, daily rhythm, cheat sheet
 - [README.md](README.md) — what this project is, in one page
 - `wiki/challenge.md` — the task, hard rules, scoring and submission checklist (linked under Knowledge below)
@@ -57,6 +58,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [raw/20261121_organizers_cluster-guide.html](raw/20261121_organizers_cluster-guide.html) — same guide as delivered (HTML)
 - [raw/20261121_organizers_submission.md](raw/20261121_organizers_submission.md) — submission format, eligibility, scoring criteria
 - [raw/20261121_organizers_connect-team01.txt](raw/20261121_organizers_connect-team01.txt) — our cluster address, fingerprint and S3 folder (**no key**)
+- [raw/20261121_organizers_challenge-slides.pdf](raw/20261121_organizers_challenge-slides.pdf) — kickoff slides: chemistry, the 4 scoring terms, limitations (**image-only, no text layer**)
 
 ## Code
 - [src/kemp/paths.py](src/kemp/paths.py) — every project path, defined once (data/runs can be overridden by env var)
