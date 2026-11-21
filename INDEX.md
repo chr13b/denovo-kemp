@@ -75,6 +75,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [scripts/20_build_affinity_ladder.py](scripts/20_build_affinity_ladder.py) — build the cluster bundle that cofolds a sequence with all three ligands and predicts affinity
 - [scripts/21_report_affinity_ladder.py](scripts/21_report_affinity_ladder.py) — parse the returned affinity JSONs → ddG(substrate/product − TS analogue) with a noise check
 - [scripts/22_build_hg_series.py](scripts/22_build_hg_series.py) — build HG3/HG3.7/HG3.17 sequences from published mutation lists, asserting every wild-type residue
+- [scripts/23_compare_ladder_to_kinetics.py](scripts/23_compare_ladder_to_kinetics.py) — predicted ladder vs measured k_cat/K_M: expected vs observed ddG, rank order, sign
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)
@@ -94,6 +95,9 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/affinity/hg3_7.fasta](results/affinity/hg3_7.fasta) — zonghu-02 validation arm: HG3.7, 7 mutations, k_cat/K_M 28 000 M-1 s-1
 - [results/affinity/hg3_17.fasta](results/affinity/hg3_17.fasta) — zonghu-02 validation arm: HG3.17, 17 mutations, k_cat/K_M 170 000 M-1 s-1
 - [results/affinity/hg_series_kinetics.json](results/affinity/hg_series_kinetics.json) — the published HG-series kinetics (Broom et al. Table 1) with mutation lists and assay conditions
+- [results/affinity/zonghu-02_ladder_vs_kinetics.md](results/affinity/zonghu-02_ladder_vs_kinetics.md) — zonghu-02 verdict table: predicted TS affinity is flat across a 1062-fold activity range
+- [results/affinity/zonghu-02_ladder_vs_kinetics_summary.json](results/affinity/zonghu-02_ladder_vs_kinetics_summary.json) — the same comparison as machine-readable numbers
+- [results/affinity/runs/](results/affinity/runs/) — the 27 returned Boltz-2 affinity JSONs (9 per HG variant), the raw evidence for zonghu-02
 - [results/affinity/zonghu01_kemp7_design.fasta](results/affinity/zonghu01_kemp7_design.fasta) — zonghu-02 test case: the zonghu-01 job-7 LigandMPNN design, 260 aa
 - [results/theozyme/theozyme_7k4u_core.pdb](results/theozyme/theozyme_7k4u_core.pdb) — zonghu-01 input: HG3 K50Q motif from 7K4U (TRP44+GLN50+ASP127+6NT), crystal geometry
 - [results/theozyme/theozyme_7k4u_core_trpopt.pdb](results/theozyme/theozyme_7k4u_core_trpopt.pdb) — zonghu-01 input: same motif, TRP44 repositioned to an idealised π-stack; base/donor/ligand unchanged

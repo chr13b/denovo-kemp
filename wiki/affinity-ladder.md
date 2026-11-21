@@ -1,5 +1,19 @@
 # Affinity ladder: scoring transition-state discrimination
 
+> ## ⛔ Validated against real kinetics and REFUTED (2026-11-21)
+>
+> Do **not** use this to rank designs. Tested on HG3 / HG3.7 / HG3.17, whose measured k_cat/K_M
+> spans **1062-fold** (= 4.13 kcal/mol of transition-state stabilisation):
+> the predicted **TS affinity was flat — 2.062 / 2.003 / 2.060, a shift of 0.06 % of expected
+> (0.0 σ)** — and ddG(substrate−TS) came out **negative for all three**, i.e. anti-catalytic, even
+> for one of the best artificial enzymes known. Full numbers and the reasoning:
+> [experiments/zonghu-02…](experiments/zonghu-02_affinity-ladder-controls.md).
+>
+> The tooling below is correct and reusable for other Boltz-2 affinity work (it runs on the small
+> GPU nodes, two at a time, without touching the RFD3 node). The *metric* is what failed: Boltz-2's
+> affinity head does not resolve 12-heavy-atom fragments at the ≥ mM affinities Kemp eliminases have.
+
+
 Cofold one sequence with the **substrate**, the **TS analogue** and the **product**, predict a
 binding affinity for each with Boltz-2, and report how much worse the substrate and product bind
 than the TS analogue.

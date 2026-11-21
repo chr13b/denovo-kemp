@@ -9,7 +9,7 @@
 
 - **Owner:** zonghu
 - **Date:** 2026-11-21
-- **Status:** planned
+- **Status:** done: refuted — the ladder does **not** track catalytic efficiency; do not rank designs with it
 - **Question:** Boltz-2 can predict a binding affinity for a protein–ligand pair. If we run it for the
   substrate, the TS analogue and the product against the same protein, does
   **ddG(substrate − TS)** come out positive for a *real* Kemp eliminase (HG3 K50Q) and ~zero for a
@@ -111,8 +111,72 @@ transition state, and n = 3 seeds gives a spread, not statistics. See
 
 ## Result
 
-TODO: only numbers read from the run's `affinity_*.json` / `summary.json`.
+**Status: done: refuted.** 27/27 predictions completed (cluster jobs `14`, `15`, `16`; jobs `11–13`
+were a launcher bug, no results). Every number below is read from the tracked
+[../../results/affinity/zonghu-02_ladder_vs_kinetics.md](../../results/affinity/zonghu-02_ladder_vs_kinetics.md);
+regenerate with `uv run python scripts/23_compare_ladder_to_kinetics.py`.
+
+| variant | measured k_cat/K_M | TS leg log10(IC50/µM) | ddG(sub−TS) kcal/mol | ddG(prod−TS) kcal/mol | mean P(binder) |
+|---|---|---|---|---|---|
+| HG3 | 160 | 2.062 ± 0.174 | **−1.116 ± 0.162** | −0.661 ± 0.155 | 0.42 |
+| HG3.7 | 28 000 | 2.003 ± 0.202 | **−1.015 ± 0.236** | −0.704 ± 0.188 | 0.41 |
+| HG3.17 | 170 000 | 2.060 ± 0.118 | **−0.703 ± 0.131** | −0.946 ± 0.141 | 0.33 |
+
+HG3 → HG3.17 is a measured **1062-fold** change in catalytic efficiency = **+4.129 kcal/mol** of
+transition-state stabilisation.
+
+- **TS leg shift: −0.003 ± 0.166 kcal/mol — 0.06 % of expected, 0.0 σ.** Predicted transition-state
+  affinity is 2.062 / 2.003 / 2.060: *flat to three significant figures* across a thousand-fold
+  change in real catalytic power. This is the decisive number.
+- **ddG(sub−TS) shift: +0.413 ± 0.208 kcal/mol — 10.0 % of expected, 2.0 σ.** Rank order matches
+  activity (HG3 < HG3.7 < HG3.17).
+- **The sign is wrong for all three.** ddG(sub−TS) is **negative** everywhere, i.e. the substrate is
+  predicted to bind *more tightly* than the TS analogue — the anti-catalytic direction — including
+  for HG3.17, one of the most efficient artificial enzymes ever made.
+- **The product leg runs backwards:** ddG(prod−TS) becomes *more* negative along the series
+  (−0.661 → −0.946), predicting the best enzyme suffers the worst product inhibition.
+- **P(binder) < 0.5 for all 9 protein/ligand combinations, and it is inverted:** HG3.17 scores
+  *lowest* (0.33) and HG3 highest (0.42). Boltz-2's own binder/decoy head ranks the best enzyme as
+  the least likely binder.
 
 ## Verdict and next step
 
-TODO
+**The pre-registered rule's first row was technically met — and I am failing the method anyway.**
+That is a judgement call and it should be visible, not buried: the rule asked for correct rank order
+plus a gap exceeding its noise, and it got correct order at exactly 2.0 σ. Five reasons it should
+still be rejected:
+
+1. **The TS leg is flat (0.06 % of expected, 0.0 σ).** k_cat/K_M *is* a transition-state affinity,
+   so this is the most direct comparison available, and it shows no signal whatsoever. The small
+   ddG(sub−TS) trend therefore comes from the substrate leg drifting, not from the TS being bound
+   better — which is not the physics the metric claims to measure.
+2. **The sign is wrong in every arm**, so the metric would label a 170 000 M⁻¹s⁻¹ enzyme
+   anti-catalytic.
+3. **10 % of the expected magnitude.** Our designs will differ far less than 1062-fold, so the
+   residual signal would be far below noise.
+4. **Correct rank order of 3 items happens by chance 1 in 6 times.** With n = 3 it is weak evidence,
+   and I pre-registered it without accounting for that — a flaw in my rule, not a result.
+5. **P(binder) is inverted vs activity**, an independent head of the same model disagreeing with
+   the ordering.
+
+**Do not use the affinity ladder to rank designs.** The pipeline itself is correct and reusable —
+the API is verified, the ligands are size- and mass-matched, the noise handling works — but
+Boltz-2's affinity head does not resolve these 12-heavy-atom fragments at the ≥ mM affinities Kemp
+eliminases actually have. This is limit 1 and limit 4 of [../affinity-ladder.md](../affinity-ladder.md)
+turning out to bite.
+
+**Cost of finding this out: ~35 min on two small GPU nodes**, with the big node left free. Cheap for
+a result that stops us ranking 20 submission slots on a number that does not track catalysis.
+
+Next steps:
+
+1. **Do not re-run this on designs.** Record and move on; that is the whole value here.
+2. The two original controls (HG3 K50Q vs lysozyme) are **no longer worth running** — a method that
+   cannot separate 160 from 170 000 M⁻¹s⁻¹ within one scaffold will not be rescued by an
+   enzyme/non-enzyme contrast.
+3. If anyone wants to revisit affinity prediction: the open question is whether an MSA (instead of
+   `msa: empty`) or many more seeds changes the TS leg. I would not spend GPU on it before the
+   submission deadline.
+4. **Keep `scripts/20–23`.** The bundle builder is a working, tested way to run any Boltz-2 affinity
+   job on the small nodes without touching the RFD3 node, which is useful independently of this
+   negative result.
