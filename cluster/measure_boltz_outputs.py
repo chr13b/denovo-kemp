@@ -189,8 +189,25 @@ with out_path.open("w") as stream:
         stream.write("\t".join(cell(row.get(column)) for column in columns) + "\n")
 
 measured = [r for r in rows if r.get("status") == "measured"]
-both = [r for r in measured if r.get("in_base_window") and r.get("in_donor_window")]
-print(f"measured {len(measured)} of {len(rows)} structures; {len(both)} inside BOTH crystal windows")
+# Count DESIGNS and CONTROLS separately. Reporting one combined number is actively misleading:
+# a batch where a natural enzyme landed in the window and no design did reported "1 inside BOTH
+# crystal windows", which reads as a design hit. The controls are the instrument, not the result.
+designs = [r for r in measured if r.get("kind") == "design"]
+controls = [r for r in measured if r.get("kind") == "control"]
+
+
+def in_both(items):
+    return [r for r in items if r.get("in_base_window") and r.get("in_donor_window")]
+
+
+print(f"measured {len(measured)} of {len(rows)} structures")
+print(f"  DESIGNS:  {len(in_both(designs))} of {len(designs)} inside BOTH crystal windows")
+if controls:
+    names = ", ".join(sorted(str(r["name"]).replace("c_", "") for r in in_both(controls)))
+    print(
+        f"  controls: {len(in_both(controls))} of {len(controls)} inside both"
+        f"{' (' + names + ')' if names else ''} — instrument check, not a result"
+    )
 print(f"wrote {out_path}")
 if measured:
     header = f"{'name':<10}{'src':<10}{'base':>8}{'donor':>8}{'CA RMSD':>9}{'iptm':>7}  window"

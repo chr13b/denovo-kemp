@@ -501,7 +501,9 @@ and 0.0167 Å. The difference appears only once you try to write sequences for t
 Backbone diversity therefore has to come from different **arrangements** of the same two anchors —
 which is exactly chris-06 — not from adding anchors.
 
-### (g5) A single Boltz-2 prediction is noisier than the target window
+### (g5) A single Boltz-2 prediction is MUCH noisier than the target window
+
+*(first measured on 4BS0; the 3NYD numbers below are worse and were added later)*
 
 The natural-enzyme controls go into every sweep with the same sequences and the same `--seed 1`. They
 matched to 4 decimal places between two 75-structure batches, then changed in a 51-structure batch:
@@ -526,6 +528,35 @@ measured. Three consequences:
    backbone against 0/72 and 0/48 for two others is a comparison between distributions, and that part
    survives the noise.
 3. A sweep's winner is a *shortlist entry*, not a result. Rank by replicated mean, not by one fold.
+
+### (g5b) How bad the noise actually is: the same enzyme reads 2.45 to 3.78 Å
+
+The controls go into every sweep unchanged. Five batches of 3NYD, the same sequence and the same
+`--seed 1` each time:
+
+| batch | rows | base | donor | nearest donor |
+|---|---|---|---|---|
+| job 27 | 75 | 3.49 | 2.80 | GLN37:NE2 |
+| job 40 | 51 | 2.45 | 4.25 | GLN207:NE2 |
+| job 39 | 51 | 2.45 | 4.25 | GLN207:NE2 |
+| job 35 | 35 | 3.78 | 5.32 | GLN207:NE2 |
+| **job 59** | **19** | **2.53** | **3.10** | GLN207:NE2 |
+| crystal | — | ~2.5 | ~3.0 | — |
+
+**Base spans 1.33 Å, donor spans 2.52 Å, for a real and highly evolved enzyme.** The two 51-row
+batches agree exactly, confirming that the RNG stream is fixed by batch composition rather than by
+the structure. In job 59 the geometry comes out essentially perfect (2.53 / 3.10, both in window);
+in job 35 the same sequence looks like a failed design.
+
+Three consequences, and the third is uncomfortable:
+
+1. **Absolute single-fold geometry is close to meaningless.** A real enzyme reads anywhere from 2.45
+   to 3.78 Å on the contact we are optimising.
+2. **Within one batch, comparisons are still fair** — every design in a sweep shares the same batch
+   RNG. So a sweep's internal ranking, and hit-rate comparisons between backbones, survive.
+3. **Our 2/72 "hits" are one draw each, and may be partly noise.** A design whose true mean is 4 Å can
+   read 2.5 Å once; designs we discarded may be better than they looked. Job 47's 5-seed replication
+   is not a nicety — without it we cannot say s024 is a good design, only that it drew a good number.
 
 ### (g6) Motif variety is not the lever: 4BS0 is already the best arrangement
 
