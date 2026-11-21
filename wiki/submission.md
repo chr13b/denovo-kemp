@@ -64,6 +64,39 @@ refuses the file if a residue is of the wrong type.
    [raw/20261121_organizers_connect-team01.txt](../raw/20261121_organizers_connect-team01.txt).
    Opening the bucket from the S3 home page shows "Access denied" — that is expected.
 
+## How to fill the 20 slots — the arithmetic, from measured rates
+
+Measured so far, all from `wiki/experiments/chris-04..07`:
+
+| quantity | measured value |
+|---|---|
+| RFD3 backbones that are **designable** (median CA RMSD < 2 Å over a sweep) | **2 of 5** seeds (3 and 4); seeds 2 and 5 are not |
+| in-window hit rate on a designable backbone | **2 of 72** sequences (~3 %) — and the Trp44 backbone gave 0 of 72 |
+| cost per backbone | 12 min RFD3 + ~25 min for a 72-sequence sweep ≈ **37 min** |
+| distinct folds per backbone | **1** — 71 of 72 designs cluster at qTM 0.98–0.99 |
+
+Twenty slots filled with twenty *distinct folds* would need ~20 designable backbones that each yield
+a hit. At ~40 % designable and a 3 % hit rate, that is far more than a day of one GPU. **It is not
+reachable, and planning for it would waste the time we do have.**
+
+So the realistic shape of a submission is:
+
+- **Aim for 4–6 distinct folds**, not 20. Each needs its own backbone, from a different crystal
+  *arrangement* of the same two anchors (`cluster/build_family_motifs.py`) — not from more anchors,
+  which costs designability (chris-05).
+- **Fill the remaining slots with different sequences on the folds that work.** The slots are per
+  sequence, not per fold, and sequences on one backbone differ by 26–42 % identity, so they are not
+  duplicates — they are independent bets on the same scaffold.
+- **Spread the ≥5 lab-validation nominations across folds**, not across sequences of one fold. If a
+  fold is inactive, every sequence on it fails together.
+- **Never submit a geometry number from a single fold.** One Boltz-2 prediction carries ~±0.4 Å of
+  noise against a 0.28 Å window (primer §5(g5)). Replicate the shortlist over 5 seeds
+  (`cluster/replicate_seeds.sbatch`) and rank on the replicated mean.
+
+Order of operations for each candidate: sweep → in-window filter → **5-seed replication** → novelty
+gate (`tools/novelty_check.sh`) → `scripts/91_bank_from_sweep.py` → `make submission`. Check fold
+diversity across the whole set at the end with `tools/self_diversity.sh`.
+
 ## Rules of the road
 
 - Re-upload as often as you like. **The file at the deadline is the one scored**; each upload replaces the last.
