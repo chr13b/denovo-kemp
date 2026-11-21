@@ -1,0 +1,6 @@
+# [2026-11-21 15:46] setup | Euler Slurm job template (mario)
+
+- Added `scripts/euler_job.sbatch`: runs one repo command through Slurm with one A100 (`--gpus=a100:1`) for 24 h, loads `eth_proxy` on startup, and writes runs, data and the job log under `$SCRATCH/kemp` (`KEMP_RUNS_DIR` / `KEMP_DATA_DIR`; log via `/cluster/scratch/%u/kemp/logs`, which must exist before submitting). Provenance goes to the log. `envs/euler.sh` (new) activates the RFD4-Proteina venv `$HOME/rfd4-proteina/.venv`, and the template puts `src/` on `PYTHONPATH` so `import kemp` works there; scripts run with `python`, not `uv run`.
+- Euler facts (GPU syntax and types, 1 h default time, `--mem-per-cpu`, scratch purge after 15 days, shareholder-only GPU nodes) are from docs.hpc.ethz.ch and are listed with links in `wiki/euler-rfd4.md`.
+- Checked locally only: `bash -n`, and a run with faked `SLURM_*` variables (`eth_proxy` is loaded first, a venv without `kemp` can import it via `PYTHONPATH`, a missing venv exits 4, the run directory landed under the fake scratch, a missing `module` command exits 3, guards and exit codes behave). Not run through `sbatch` on Euler.
+- Not known yet: the maximum run time (24 h is unconfirmed) and what `eth_proxy` does beyond third-party reports. The RFD4-Proteina venv is outside the repo, so its package versions are not recorded in `meta.json`.

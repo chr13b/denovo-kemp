@@ -10,7 +10,7 @@ Full setup: [../SETUP.md](../SETUP.md). "Owns" = who reviews and decides, not th
 | Handle | GitHub | Background / strengths | Owns | Current branch |
 |--------|--------|------------------------|------|----------------|
 | chris | chr13b | — | repo, cluster access, pipeline | `chris` |
-| mario | | pre-analysis: published Kemp structures, theozyme building | `pre_analysis/`, theozyme candidates | `mario` (single-branch style) |
+| mario | M4R1KU | pre-analysis: published Kemp structures, theozyme building | `pre_analysis/`, theozyme candidates | `mario` (single-branch style) |
 | TODO | | | | |
 
 ## Working agreements
