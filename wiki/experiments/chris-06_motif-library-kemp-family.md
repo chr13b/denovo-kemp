@@ -2,7 +2,7 @@
 
 - **Owner:** chris
 - **Date:** 2026-11-21
-- **Status:** running
+- **Status:** done: refuted (as a lever; the tooling works)
 - **Question:** Every design we and zonghu have made uses **one** arrangement of base + donor + ligand,
   lifted from 4BS0. The family offers 26 engaged ligand copies across 23 crystal structures. **Does the
   choice of arrangement change how well a de novo backbone holds the base contact through refolding?**
@@ -63,7 +63,7 @@ Stage 2 is chris-04's oversampling job, pointed at each `bridge/` this produces.
 A per-motif sanity check applies first: RFD3 must reproduce each motif to ≤0.05 Å
 (`fixed_pair_distance_max_deviation_angstrom`). A motif it cannot satisfy tells us nothing about refolding.
 
-## Result (partial — 4BS0_A done, 8USL_B queued as job 36)
+## Result — arrangement matters, but the incumbent is already the best of the two
 
 ### Design stage: clean, both motifs
 
@@ -118,6 +118,45 @@ have been scoring against is not where Boltz-2 puts a good enzyme, and our candi
 ranked against the model's own reading of the natural enzymes instead. Job **47** settles it: all
 three natural enzymes and all three of our candidates, 5 seeds each, one measurement protocol.
 
+### 8USL_B, the most distinct arrangement: worse, and on the informative axis
+
+`results/oversample_c_8usl_job36.tsv`. Same protocol, 32 sequences at T = 0.1 / 0.2.
+
+| | **4BS0_A** (the incumbent arrangement) | **8USL_B** (2.20 Å away in pinned-atom geometry) |
+|---|---|---|
+| median CA RMSD | **1.33 Å** | 1.99 Å |
+| refolded < 2 Å | **27/32 (84 %)** | 17/32 (53 %) |
+| best base contact | **2.90 Å** | 3.52 Å |
+| median base contact | **6.66 Å** | 9.73 Å |
+| in window | 0/32 | 0/32 |
+
+The hit counts are both 0 and both uninformative at this sample size. The *distributions* are not:
+8USL_B is worse on designability (1.99 vs 1.33 Å median CA RMSD, 53 % vs 84 % refolding) and worse on
+the contact distribution at every quantile. Those are 32-sample estimates of a distribution, far more
+reliable than a 0-versus-0 hit comparison.
+
 ## Verdict and next step
 
-TODO
+**Arrangement matters — and the arrangement the pipeline already ships with is the better one.**
+Idea C's hypothesis was that 4BS0's base placement might be unusually hard to realise de novo and
+another family member's might be easier. The opposite held for the one alternative tested: the most
+geometrically distinct member gave less designable backbones.
+
+In hindsight this is unsurprising, and we could have predicted it: **4BS0 is the 1.09 Å structure of
+HG3.17, the most optimised variant in the family.** Its active-site arrangement is the product of
+directed evolution; an arbitrary other member is a less refined version of the same idea. Geometric
+*distance* from 4BS0 selects for difference, not for quality — the farthest-point selection I used
+was choosing the most different motif, which is not the same as the most useful one.
+
+So: **drop motif variety as a lever**, keep the tooling. What survives and is worth keeping:
+
+1. `cluster/build_family_motifs.py` works — a motif lifted from any family member satisfies the
+   launcher verbatim and RFD3 hits it to 0.013–0.016 Å. If we ever need a different arrangement, the
+   path exists.
+2. **Backbone diversity must come from more RFD3 seeds on the 4BS0 motif**, not from other motifs.
+   That is the cheap axis: 12 min per backbone, and seeds 3 and 4 show different seeds give genuinely
+   different folds and different designability.
+3. **The funnel that falls out of all four experiments:** generate many backbones from the 4BS0 motif
+   → screen each with a short sweep on **designability** (median CA RMSD, ~16 min) → deep-sweep only
+   the designable ones (72+ sequences) → replicate the in-window hits over 5 seeds → novelty gate.
+   Designability is measurable, cheap, and is the thing that actually varies between backbones.

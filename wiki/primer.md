@@ -527,6 +527,47 @@ measured. Three consequences:
    survives the noise.
 3. A sweep's winner is a *shortlist entry*, not a result. Rank by replicated mean, not by one fold.
 
+### (g6) Motif variety is not the lever: 4BS0 is already the best arrangement
+
+chris-06 took the most geometrically distinct family member (8USL_B, 2.20 Å away from 4BS0 in the
+pinned-atom distance matrix) and ran the identical sweep on a backbone built from each:
+
+| | 4BS0_A (what the pipeline ships) | 8USL_B (most distinct) |
+|---|---|---|
+| median CA RMSD | **1.33 Å** | 1.99 Å |
+| refolded < 2 Å | **84 %** | 53 % |
+| best base contact | **2.90 Å** | 3.52 Å |
+| median base contact | **6.66 Å** | 9.73 Å |
+
+Worse on every axis. And in hindsight predictable: **4BS0 is the 1.09 Å structure of HG3.17, the most
+optimised variant in the family.** Its active site is the product of directed evolution; an arbitrary
+other member is a less refined version of the same idea. My farthest-point selection picked the most
+*different* motif, which is not the same as the most *useful* one — a selection criterion worth
+remembering as a mistake.
+
+So backbone diversity has to come from **more RFD3 seeds on the 4BS0 motif**, which is the cheap axis
+anyway at 12 min each. The motif-extraction tooling still works and stays available.
+
+### (g7) The funnel all four experiments point at
+
+Everything measured so far collapses into one procedure:
+
+```
+RFD3 on the 4BS0 motif, many seeds          12 min each   — backbones are cheap
+        ↓
+short sweep (~32 seq) → median CA RMSD      ~16 min       — SCREEN ON DESIGNABILITY
+        ↓    keep < ~1.5 Å                                   (2 of 5 seeds pass)
+deep sweep (72+ seq) at T = 0.2–0.3         ~25 min       — ~3 % land in window
+        ↓
+5-seed replication of the hits              ~10 min       — the noise is 0.43 Å, the window 0.28 Å
+        ↓
+novelty gate, then submit across folds
+```
+
+The point of the screen is that **designability is the property that actually varies between
+backbones** — 0.77, 1.33, 1.99, 10.67 Å median CA RMSD across the four we have swept — it is cheap to
+measure, and it is invisible in everything the pipeline reports about a design.
+
 ### (h) Boltz-2's affinity head reads ligand chemistry, not catalytic proficiency
 
 Boltz-2 ships a binding-affinity head, and zonghu has already run it on the three real enzymes against
@@ -809,7 +850,7 @@ written before any result existed.
 |---|---|---|---|
 | **A** | 72 sequences on seed 4's existing backbone | **27** | ✅ **SUPPORTED — 2 designs inside both windows, both novel** |
 | **B** | 72 sequences on zonghu's Trp44 backbone | **31** | ❌ **REFUTED — 0/72 in window, worse on every axis** |
-| **C** | RFD3 on 4BS0_A vs 8USL_B, each chaining a sweep | **34** → 35, 36 | design stage done, 0 failures; sweeps queued |
+| **C** | RFD3 on 4BS0_A vs 8USL_B, each chaining a sweep | **34** → 35, 36 | ❌ **REFUTED as a lever — the shipped 4BS0 arrangement is the better one** |
 | controls | 4BS0 / 3NYD / 7K4U folded in every batch | (bundled) | ✅ base validated, donor not — see (g2) |
 
 **Idea A's headline:** on seed 4's own backbone, where the organizers' single sequence gave base
