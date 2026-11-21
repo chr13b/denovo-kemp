@@ -325,6 +325,46 @@ two catalytic distances explicitly.**
 Among designs that *did* fold, the donor contact moved −0.15, −0.02, +0.66 Å while the base contact moved
 +3.38, +5.80, +0.79 Å. Since geometry dominates scoring, **base placement is where designs lose points.**
 
+### (d2) THE central finding: RFD3 already hits the crystal window every single time
+
+This is the most important table in this document. `summary.json` reports the catalytic contacts
+**twice** — once on the RFD3 backbone, once on the Boltz-2 refold. Nobody had compared the two columns
+across runs:
+
+| run | RFD3 base | RFD3 donor | → | Boltz base | Boltz donor | base drift | CA RMSD |
+|---|---|---|---|---|---|---|---|
+| reference-1 | 2.53 | 3.09 | | 5.91 | 2.94 | +3.38 | 1.43 |
+| seed 2 | 2.53 | 3.09 | | 21.92 | 18.86 | +19.39 | 14.63 |
+| seed 3 | 2.53 | 3.09 | | 8.33 | 3.08 | +5.80 | 1.36 |
+| **seed 4** | 2.53 | 3.09 | | **3.32** | **3.75** | **+0.79** | **0.70** |
+| seed 5 | 2.53 | 3.09 | | 14.88 | 15.83 | +12.35 | 13.67 |
+| zonghu-07 | 2.53 | 3.20 | | 11.99 | 26.49 | +9.46 | 4.26 |
+| **crystal target** | **2.41–2.69** | **2.92–3.60** | | | | | |
+
+**The RFD3 column is dead centre in the crystal window on every run** — base 2.53 Å against a family
+median of 2.51 Å, donor 3.09 Å against a median of 3.03 Å. RFD3 reproduces the pinned motif to
+`fixed_pair_distance_max_deviation = 0.013 Å`.
+
+So the generation step is not the problem, and it never was. **100 % of the geometric loss happens in
+the refold.** The question is not "can we design the right geometry" — we already do, every time. It is
+**"can we find a sequence that encodes the backbone well enough that a folder rebuilds it."**
+
+And `CA RMSD` tracks the loss almost monotonically: 0.70 Å → +0.79, 1.4 Å → +3.4/+5.8, 4.3 Å → +9.5,
+14 Å → +12/+19. Refold fidelity *is* the scored quantity, one step removed.
+
+### (d3) We have been taking the first sequence LigandMPNN offered, every time
+
+`ligandmpnn_scores` reads `id: 1, T: 0.1` on every run. One sequence per backbone, at a temperature low
+enough to be nearly deterministic. The sequence is the only thing that varies between a 0.70 Å refold
+and a 14 Å one — and we sampled it **once**.
+
+Costs, from chris-03: LigandMPNN **6 s**, Boltz-2 **19 s**, RFD3 **12 min**. Generating 50 sequences for
+one backbone and folding all of them costs ~21 min — less than two new backbones. Our observed rate of
+sub-1 Å refolds is 1 in 6; at 50 samples we should expect ~8 per backbone, and we get to keep the best
+instead of the first.
+
+**This is the single largest mispriced resource in the project.**
+
 ### (e) The MSA step costs ~45 % of our runtime and returns nothing
 
 Every de novo design reports **MSA depth 1, nonquery_rows 0** — MMseqs2 searched 183 GB and found zero
@@ -365,6 +405,34 @@ cost us in two of four scoring terms — while the novelty gate forbids staying 
 a sweet spot and we do not know where it is.
 
 ---
+
+### (h) Boltz-2's affinity head reads ligand chemistry, not catalytic proficiency
+
+Boltz-2 ships a binding-affinity head, and zonghu has already run it on the three real enzymes against
+three ligand states (`/mnt/work/projects/zonghu_aff_*`). Mean `affinity_pred_value`, 3 seeds each:
+
+| enzyme | substrate | product | **TS analogue** | real activity |
+|---|---|---|---|---|
+| HG3 | 1.24 | 1.58 | **2.06** | baseline |
+| HG3.7 | 1.26 | 1.49 | **2.00** | intermediate |
+| HG3.17 | 1.55 | 1.37 | **2.06** | **~1000× HG3** |
+
+Two things fall out, and they point in opposite directions:
+
+- ✅ **The TS analogue separates cleanly from substrate and product in all three enzymes, with zero
+  overlap across 9 runs** (TS 1.83–2.24; substrate 1.09–1.63; product 1.22–1.63). Preferential binding
+  of the transition state over substrate and product is the textbook thermodynamic definition of
+  catalysis, and the head detects it.
+- ❌ **It cannot rank enzymes.** HG3 and HG3.17 differ ~1000-fold in rate and score **2.06 vs 2.06**.
+
+So ΔG from this head is a usable **negative filter** — "does this pocket recognise the TS analogue
+preferentially at all?" — and useless as a ranking signal, because on the one comparison where we know
+the answer it returns the same number for a mediocre enzyme and a great one. Same lesson as (b2): the
+learned scalars encode *recognition*, not *catalysis*. Only geometry encodes catalysis.
+
+One loose end worth 3 seeds: HG3.17's `affinity_probability_binary1` for the TS analogue is 0.164 ±
+0.003, against 0.36 ± 0.11 for both other enzymes — uniquely low and 30× less variable. That may be
+noise in a 3-seed sample; it is the only number anywhere in our data that singles out the best enzyme.
 
 ## 6. Three candidate pipelines
 
@@ -610,13 +678,93 @@ the contested claim, while the *steering* use is a research question we should n
 
 ---
 
-## 7. How these fit together
+## 7. The three ideas we commit to (supersedes §6)
 
-A sensible order given ~a day of compute:
+§6 was written before finding (d2). Once you know RFD3 already hits the crystal window on every run and
+the entire loss is in the refold, the ranking changes completely. These three are ordered by expected
+points per GPU-hour, and the first one is not close.
 
-1. **Idea 1 step 2 first** (one job): does single-sequence Boltz-2 reproduce seed 4's numbers? One answer
-   unlocks roughly double throughput, or rules the idea out.
-2. **Idea 3 step 1** in parallel with that, since it only needs the design stage.
-3. **Idea 2** once we have 3–5 folding designs worth ranking.
-4. Keep every design that folds. With ≥5 lab-validation slots available independent of score, a design
-   that is chemically interesting but mid-ranked still has somewhere to go.
+### Idea A — **Sequence oversampling.** Stop making backbones, start making sequences.
+
+*The one-line case:* we have been discarding the cheapest axis in the pipeline. RFD3 (12 min) gives
+perfect geometry; LigandMPNN (6 s) and Boltz-2 (19 s) decide whether we keep it; we sampled that pair
+**once per backbone**.
+
+Take seed 4's backbone — the one with a 0.70 Å refold — and instead of one sequence, generate **64 at
+T = 0.2–0.3**, fold every one, keep those whose base contact lands in 2.41–2.69 Å.
+
+- Cost: 64 × (6 s + 19 s) ≈ **27 min on one GPU**, no RFD3, no MMseqs2.
+- What it tests: is seed 4's +0.79 Å base drift a property of *that backbone* (floor) or of *that one
+  sequence* (sampling artefact)? The answer decides the whole project.
+- Why it should work: refold fidelity is sequence-determined, and we have never looked at its
+  distribution. Our 1-in-6 rate of sub-1 Å refolds came from 6 *different* backbones; within a backbone
+  already known to refold at 0.70 Å, the odds are far better than that.
+- Failure mode that still teaches us something: if all 64 sequences cluster at +0.8 Å, the backbone has
+  a geometric floor and we need Idea B. One 27-minute job either way.
+- T = 0.1 is also just wrong for this purpose — it is the organizers' demo setting, near-deterministic.
+  Diversity is the entire point.
+
+**This is the recommendation.** It is one job, it needs no new tooling, and it converts a 12-minute
+bottleneck into a 25-second one.
+
+### Idea B — **Over-determine the ligand.** Three anchors, not two.
+
+Our motif pins two residues (Asp127 base, Gln50 donor). With two anchors the benzotriazole can pivot
+about the axis joining them — which is precisely the degree of freedom the base contact loses.
+
+zonghu's `trpopt` motif already adds the third: **Trp44**, whose indole stacks on the ligand ring at
+3.86 Å in 4BS0. Their spec pins all six aromatic carbons plus `6NT: ALL`
+(`/mnt/work/projects/zonghu_trpopt_s1/inputs/Kemp.json`). That is a better-posed theozyme than ours.
+
+And their run did **not** refute it: RFD3 gave 2.53 / 3.20 Å — in the window, same as ours. It lost the
+geometry in the refold at CA RMSD 4.26 Å, which is **Idea A's problem, not the motif's**. The motif has
+never actually been tested, because it was tested with one sequence.
+
+So: Trp44 motif × Idea A's sequence oversampling. The combination is the best of both branches — their
+geometry hypothesis, our diagnosis of where the loss happens.
+
+### Idea C — **A motif library from 23 crystal structures**, not one.
+
+We have been designing against a single arrangement of base + donor + ligand, lifted from 4BS0. The
+family search gave **26 engaged ligand copies from 23 independent crystal structures** — 26
+experimentally real, catalytically competent theozymes, each a slightly different solution to the same
+chemical problem.
+
+Each becomes an RFD3 motif. If our base contact keeps drifting because *4BS0's particular* base
+placement is hard to realise in a de novo backbone, another family member's placement may simply be
+easier — and we currently have no way to know, because n = 1 on the one variable we never varied.
+
+Cheapest useful version: cluster the 26 copies by their base/donor/ligand internal geometry, take the
+3–4 distinct arrangements, run one RFD3 job each, then Idea A on top of every backbone that comes out.
+`results/kemp_family_geometry.tsv` already holds the measurements.
+
+### How they compose
+
+They are not alternatives — they stack, and A is the multiplier on both others:
+
+```
+       C (motif variety)        B (third anchor)
+              │                        │
+              └──────────┬─────────────┘
+                         ▼
+              RFD3  →  backbone with perfect geometry   (12 min, already solved)
+                         ▼
+              A: 64 × (LigandMPNN + Boltz-2)            (27 min, never attempted)
+                         ▼
+              keep base ∈ [2.41, 2.69] Å  →  novelty gate  →  submit
+```
+
+Order of execution: **A first, on seed 4's existing backbone** — 27 minutes, no new tooling, and it
+tells us whether a backbone-level floor exists before we spend GPU-hours making more backbones. Then B
+and C in parallel on the two idle `l4small` nodes, with A applied to everything they produce.
+
+### Two controls to run alongside (19 s and 2 min, both overdue)
+
+1. **Instrument check.** Fold HG3.17's *real* sequence with 6NT and measure the two contacts with our
+   own code. We judge designs against *crystal* distances but measure with *Boltz-2* — different
+   instruments. If Boltz-2 reports 2.5 Å for the real enzyme, the window is real and seed 4 genuinely
+   misses. If it reports 3.3 Å, then seed 4 is already at parity with HG3.17 and our target is
+   miscalibrated. **We cannot interpret any number in finding (d2) until this is run.** Cost: 19 s.
+2. **Self-diversity.** foldseek all-vs-all on our own designs before submitting. 20 slots filled with
+   20 copies of one fold is a bad hedge when the organizers pick ≥5 for the lab. The 40 k-representative
+   database is already built; this reuses it.
