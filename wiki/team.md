@@ -9,7 +9,7 @@ Full setup: [../SETUP.md](../SETUP.md). "Owns" = who reviews and decides, not th
 
 | Handle | GitHub | Background / strengths | Owns | Current branch |
 |--------|--------|------------------------|------|----------------|
-| chris | chr13b | — | repo, cluster access | main |
+| chris | chr13b | — | repo, cluster access, pipeline | `chris` |
 | TODO | | | | |
 
 ## Working agreements
