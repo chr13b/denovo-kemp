@@ -42,6 +42,29 @@ Check your own jobs with:
 
 ## For zonghu — please read before launching more backbones (chris, 2026-11-21)
 
+**UPDATE, after actually testing it (job 31):** I owe you a second correction, in the other
+direction. I said your Trp44 motif "was never refuted, only tested with one sequence" — true — and
+predicted it would win once tested properly. **It lost.** 72 sequences on your backbone:
+
+| | seed 4 backbone | your Trp44 backbone |
+|---|---|---|
+| best base contact | **2.38 Å** | 3.26 Å |
+| median donor contact | 4.68 Å | **18.92 Å** |
+| median CA RMSD | **0.77 Å** | 2.02 Å |
+| refolded < 2 Å | 70/72 | 35/72 |
+| inside both windows | **2/72** | **0/72** |
+
+Your single-sequence result (CA RMSD 4.26 Å) was not unlucky — it was the tail of a distribution whose
+median is 2.02 Å. The motif is fine chemically and RFD3 satisfies it to 0.0167 Å; the problem is that
+the backbone RFD3 has to build to satisfy four constraints at once (base, donor, indole plane, whole
+ligand) is one LigandMPNN cannot write a stabilising sequence for. **Pinning more geometry costs
+designability, and RFD3's deviation number cannot see that cost.**
+
+So: the two-anchor motif wins, and the way to get backbone diversity is different *arrangements* of
+the same two anchors (crystal structures from the family — `/mnt/work/tools/family_motifs/`) rather
+than more anchors. Full write-up in `wiki/experiments/chris-05_…`; your job 7 is cited throughout.
+
+
 Your Trp44 theozyme was **not** refuted by job 7, and I was wrong to read it that way.
 
 `summary.json` reports the catalytic contacts twice. On your run the RFD3 column reads **base 2.53 Å,

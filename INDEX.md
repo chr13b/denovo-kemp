@@ -107,6 +107,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/designs.jsonl.template](results/designs.jsonl.template) — copy to `results/designs.jsonl`: our submission candidates
 - [results/designs.jsonl](results/designs.jsonl) — **our submission candidates**; rebuild the FASTA with `make submission`
 - [results/oversample_a_seed4_job27.tsv](results/oversample_a_seed4_job27.tsv) — chris-04: 72 sequences on seed 4's backbone + 3 natural controls, fully measured
+- [results/oversample_b_trp44_job31.tsv](results/oversample_b_trp44_job31.tsv) — chris-05: 72 sequences on zonghu's Trp44 backbone; refutes the three-anchor motif
 - [results/reference_kemp-1_summary.json](results/reference_kemp-1_summary.json) — verified reference run (cluster job 1); the baseline we must beat
 - [results/kemp_family_geometry.tsv](results/kemp_family_geometry.tsv) — **the geometry target**: 43 ligand copies from 23 crystal structures
 - [results/sweep_kemp-2_summary.json](results/sweep_kemp-2_summary.json) — chris-02 seed 2: collapsed refold (CA RMSD 14.6 Å)

@@ -474,6 +474,33 @@ stripping a 1–3 character suffix turns `..._model_0` into `..._model` and `c_3
 mismatch silently matched nothing and reported "75 structures -> 75 distinct folds" for 75 copies of
 one fold. The script now strips exactly one character and aborts if no edge matches a node.
 
+### (g4) Backbone designability is a real property, and more motif constraints destroy it
+
+chris-05 ran the identical 72-sequence protocol on zonghu's three-anchor Trp44 backbone:
+
+| | seed 4 (2 anchors) | Trp44 (3 anchors) |
+|---|---|---|
+| best base contact | **2.38 Å** | 3.26 Å |
+| median donor contact | 4.68 Å | **18.92 Å** |
+| median CA RMSD | **0.77 Å** | 2.02 Å |
+| refolded < 2 Å | 70/72 (97 %) | 35/72 (49 %) |
+| inside both windows | **2/72** | **0/72** |
+
+Both backbones satisfy their motifs essentially perfectly in design space — RFD3 deviation 0.0129 Å
+and 0.0167 Å. The difference appears only once you try to write sequences for them. So:
+
+- **`fixed_pair_distance_max_deviation` measures whether the design met the constraint, and says
+  nothing about whether the backbone is encodable.** A motif can look perfectly satisfied and still
+  produce a backbone no sequence stabilises.
+- **Designability is measurable per backbone**: the median CA RMSD over a sequence sweep. 0.77 Å vs
+  2.02 Å here, and it tracks the in-window hit rate. But it needs a sweep to measure, which is why
+  single-sequence verdicts (chris-02) were unreliable in *both* directions.
+- **Prefer the minimal motif.** Two anchors already place the ligand correctly. Extra pinned geometry
+  costs the sequences that would have worked.
+
+Backbone diversity therefore has to come from different **arrangements** of the same two anchors —
+which is exactly chris-06 — not from adding anchors.
+
 ### (h) Boltz-2's affinity head reads ligand chemistry, not catalytic proficiency
 
 Boltz-2 ships a binding-affinity head, and zonghu has already run it on the three real enzymes against
@@ -755,7 +782,7 @@ written before any result existed.
 | | what it does | job | outcome |
 |---|---|---|---|
 | **A** | 72 sequences on seed 4's existing backbone | **27** | ✅ **SUPPORTED — 2 designs inside both windows, both novel** |
-| **B** | 72 sequences on zonghu's Trp44 backbone | **31** | running |
+| **B** | 72 sequences on zonghu's Trp44 backbone | **31** | ❌ **REFUTED — 0/72 in window, worse on every axis** |
 | **C** | RFD3 on 4BS0_A vs 8USL_B, each chaining a sweep | **34** → 35, 36 | design stage done, 0 failures; sweeps queued |
 | controls | 4BS0 / 3NYD / 7K4U folded in every batch | (bundled) | ✅ base validated, donor not — see (g2) |
 
