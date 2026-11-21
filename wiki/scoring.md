@@ -12,7 +12,7 @@ which is why the combined score below is a product and not a sum.
 | K2 | Approach geometry: angle **and** ring plane | `check_approach_geometry` | `src/kemp/structure.py` |
 | K3 | Interface confidence **iPDE** | `check_interface_error` | `src/kemp/filters.py` |
 | K4 | Active-site packing (CA within 12 Å of the base) | `check_base_burial` | `src/kemp/structure.py` |
-| K5 | Pose consistency across replicate predictions | **missing** — see below | — |
+| K5 | Pose consistency: spread of the metrics across Boltz-2 seeds | `scripts/36_score_v2_weighted.py` | measured, jobs 81/82 |
 
 K1 and K2 together outweigh everything else combined.
 
@@ -76,6 +76,116 @@ binding constraint switches to the donor distance. Approach geometry is therefor
 where the remaining headroom is, and the `select_hbond_*` variant (jobs 78–80) was
 the first attempt at it.
 
+## Scorer v2: what the precised criteria changed
+
+The organizers' restatement (2026-11-22) named three things v1 got wrong and made
+the fifth criterion measurable. All four are fixed in
+`scripts/36_score_v2_weighted.py`.
+
+### 1. The two contacts have different target distances
+
+> scored against a target taken from crystal structures of working Kemp eliminases
+> and from textbook hydrogen-bond geometry, which agree
+
+So the target is measurable, not a matter of taste. Measured in 7K4U by
+`scripts/37_measure_crystal_reference.py`:
+
+| contact | crystal | textbook N-H···O | agree? |
+|---|---|---|---|
+| base Asp127 OD2···N3 | **2.535 Å** | 2.8–3.0 Å | **no, 0.27 Å shorter** |
+| donor Gln50 NE2···N1 | **3.197 Å** | 2.8–3.0 Å | yes, within 0.2 Å |
+
+v1 used a single 2.9 Å optimum for both contacts. That was wrong twice over: the
+two targets differ by 0.66 Å from each other, and neither equals 2.9.
+
+**This is an open question for the organizers.** The brief says crystal and
+textbook agree; for the base they do not. 2.535 Å is a short, strong hydrogen
+bond — chemically plausible for a catalytic base against a TS analogue — but it
+is outside the textbook range. The choice matters: scoring `vA_s2`'s base contact
+of 3.65 Å against 2.535 Å gives 0.42, against 2.9 Å it gives 0.68.
+
+### 2. A real dihedral, and a bug it exposed
+
+> distance, angle and dihedral measurements
+
+v1 had only an SVD plane deviation. v2 measures the proper torsion
+contact–ring_atom–nb1–nb2, and the two agree on the crystal (nearly in-plane),
+which cross-validates both.
+
+**The first implementation was wrong.** It compared *signed* dihedrals against the
+crystal's +166.8° (base) and −164.0° (donor). The sign only says which side of the
+plane the contact leans to, and both sides are chemically equivalent, so a
+mirror-image approach was punished by ~330°. That drove `s_approach` to 0.000 for
+14 of 16 designs. The correct planarity measure is **180 − |dihedral|**, which
+makes the crystal reference 13.2° (base) and 16.0° (donor). After the fix, `vA_s2`
+moved from 70° to 58° worst deviation and `chris_seedsweep_s4` from 124° to 92°.
+
+### 3. Weights, not a bare product
+
+> Geometry — items 1 and 2 together — outweighs everything else combined
+
+A bare product cannot express that. v2 uses a **weighted geometric mean**, so
+weights become exponents:
+
+| term | weight |
+|---|---|
+| contact distances | 0.33 |
+| approach geometry | 0.22 |
+| iPDE | 0.15 |
+| base burial | 0.15 |
+| pose consistency | 0.15 |
+
+Geometry sums to 0.55 against 0.45 for everything else, and distances carry more
+than approach, as the brief states. Multiplicative behaviour is kept — a zero in
+any term still collapses the score.
+
+### 4. Pose consistency, measured at last
+
+> how well metrics are reproduced across multiple Boltz-2 seeds, serves as a proxy
+> for preorganization
+
+So K5 is the **spread of the metrics**, not a ligand RMSD. Jobs 81/82 refolded one
+fixed sequence with five Boltz-2 seeds each (`results/criteria/consistency.json`):
+
+| design | base contact across 5 seeds | std | donor contact | std | K5 |
+|---|---|---|---|---|---|
+| `zonghu_vA_s2` | 2.48, 3.65, 3.65, 2.73, 2.82 | 0.55 Å | 4.61, 3.00, 3.37, 3.56, 4.94 | 0.83 Å | 0.290 |
+| `zonghu_vA_s3` | 5.59, 10.84, 5.83, 4.87, 7.98 | 2.43 Å | 10.52, 14.01, 7.26, 6.98, 9.27 | 2.86 Å | 0.000 |
+
+**This is the most consequential result of the session, and it is bad news for our
+own headline number.** The single prediction we had been quoting for `vA_s2` was
+base 3.65 / donor 3.00. Across five seeds the donor ranges 3.00–4.94 Å with a mean
+of 3.90: **the 3.00 Å we celebrated was the best of five draws, not a property of
+the design.** The base 3.65 Å was, conversely, the worst of its five. Neither
+number was representative, and reporting a single seed overstated the design.
+
+`vA_s3` is simply not reproducible — the ligand lands anywhere from 4.9 to 14.0 Å
+from the base. It led on K2 and K3 in v1, which now looks like an artefact of one
+lucky draw. Any design ranked on a single Boltz-2 prediction is ranked on noise.
+
+### v2 ranking
+
+| Rank | Design | Total | weakest term | K2 worst |
+|---|---|---|---|---|
+| 1 | **`zonghu_vA_s2`** | **0.3090** | approach 0.064 | donor angle 58° |
+| 2 | `chris_seedsweep_s4` | 0.1363 | approach 0.001 | donor ring plane 92° |
+| 3 | `zonghu_ms_s1` | 0.0053 | approach 0.000 | donor ring plane 129° |
+| 4 | `zonghu_vA_s3` | 0.0002 | **consistency 0.000** | donor angle 115° |
+
+Everything below is numerically zero. **Only two designs are non-negligible**, and
+both are limited by approach geometry on the **donor** — the same contact the
+rigid-indole experiment in zonghu-03 showed to be the fragile one.
+
+### Two corrections to earlier conclusions
+
+- **Dropping the MSA to gain throughput is off the table.** The brief states
+  designs are folded *with* MSAs, so screening without one would measure a
+  different quantity than the organizers score. `wiki/scoring.md` previously
+  listed this as one of two remaining throughput levers; it is not one.
+- **The brief says "Four criteria" and then lists five.** The grouping in the same
+  paragraph ("Geometry — items 1 and 2 together") resolves it: geometry is one
+  criterion with two parts. v2's weights follow that reading.
+
 ## The criteria are not redundant
 
 Checked because five correlated metrics would be one metric with extra steps.
@@ -104,11 +214,11 @@ with better contacts. Physically sensible, and in the right direction.
   The organizers' functional forms are unknown. **The ranking is robust** —
   `vA_s2` leads under any sensible parametrisation — but the absolute products are
   not the organizers' points and should not be quoted as a score.
-- **K5 has never been measured.** Pose consistency needs several Boltz-2
-  predictions of the *same* sequence; the pipeline makes exactly one
-  (`diffusion_samples 1`, one seed) while the organizers use 5 replicates. It is
-  deliberately **not** set to 1.0 in the product, so the score is not flattered by
-  a missing term. Replicate runs for `vA_s2` and `vA_s3` are jobs 81/82.
+- **K5 is now measured for two designs only** (`vA_s2`, `vA_s3`), because each
+  one costs five Boltz-2 runs. For every other design the term is left out of the
+  weighted mean rather than set to 1.0, so an unmeasured design is neither
+  rewarded nor punished for it — but it also means the other 14 totals are not
+  directly comparable to the two that carry a K5 term.
 - **Thresholds are empirical.** iPDE 2.0 and burial 45 CA come from the observed
   split across 16 designs, not from physics or from the organizers.
 
@@ -126,8 +236,11 @@ to each other (RoG 16.1–17.0 Å, helix 0.42–0.54) while the outcomes range f
 inside LigandMPNN and Boltz-2**, downstream of everything we can measure cheaply.
 
 Consequence: stage-1 gating is a **defect filter**, not a quality filter. It saves
-23 min on broken backbones and does nothing else. The only throughput levers left
-are dropping the MSA (untested) and folding more sequences per backbone.
+23 min on broken backbones and does nothing else.
+
+The one throughput lever left is folding more sequences per backbone. Dropping the
+MSA, considered earlier, is **not** available: the brief states designs are folded
+with MSAs, so a screen without one would not measure what is scored.
 
 ## Related
 
