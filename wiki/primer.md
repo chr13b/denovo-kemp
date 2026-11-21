@@ -678,7 +678,35 @@ the contested claim, while the *steering* use is a research question we should n
 
 ---
 
-## 7. The three ideas we commit to (supersedes §6)
+## 7. The three ideas we commit to (supersedes §6) — **all three are now running**
+
+Status as of 2026-11-21, built and launched. Tooling lives in `cluster/`; experiment pages
+`chris-04` (A), `chris-05` (B) and `chris-06` (C) carry the pre-registered decision rules,
+written before any result existed.
+
+| | what it does | job | cost |
+|---|---|---|---|
+| **A** | 72 sequences on seed 4's existing backbone | **27** | ~25 min, no RFD3 |
+| **B** | 72 sequences on zonghu's Trp44 backbone | **28** | ~25 min, no RFD3 |
+| **C** | RFD3 on 4 family motifs, each chaining into its own sweep | **30** | ~48 min + 4 sweeps |
+| controls | 4BS0 / 3NYD / 7K4U folded in every batch | (bundled) | 19 s each |
+
+Two things had to be fixed to make this possible, and both are worth knowing:
+
+- **`boltz predict <directory>` parses every file it finds** and dies on the first one it does
+  not recognise (`RuntimeError: Unable to parse filetype .a3m`). The alignments now live in a
+  sibling directory and are referenced by absolute path.
+- **The organizers' template pins `--constraint=g6.2xlarge --mem=30G`.** Only one node on the
+  cluster satisfies that, so every job of ours serialised behind it while two `l4small` nodes
+  sat idle. The 30 GB exists for the MMseqs2 index — which these jobs never load. Relaxing it
+  to `--constraint="l4small|l4" --mem=14G` is what actually delivers the parallelism chris-03
+  predicted. (`l4big` stays excluded; it is reserved.)
+
+One batched `boltz predict` call also matters more than it sounds: folding 75 structures in
+one call loads the model once. Seventy-five separate calls would pay the model-load cost 75
+times and turn a 25-minute job into hours.
+
+
 
 §6 was written before finding (d2). Once you know RFD3 already hits the crystal window on every run and
 the entire loss is in the refold, the ranking changes completely. These three are ordered by expected
