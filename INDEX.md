@@ -49,6 +49,9 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/experiments/chris-01_reference-pipeline-baseline.md](wiki/experiments/chris-01_reference-pipeline-baseline.md) — baseline: pipeline verified, RFD3 → Boltz-2 contact drift
 - [wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md](wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md) — seed sweep (jobs 2–5): is that drift systematic? decides where GPU time goes
 - [wiki/experiments/chris-03_msa-free-boltz-screen.md](wiki/experiments/chris-03_msa-free-boltz-screen.md) — **the MSA stage is a no-op**: bit-identical output without it, ~3–4× throughput
+- [wiki/experiments/chris-04_sequence-oversampling-fixed-backbone.md](wiki/experiments/chris-04_sequence-oversampling-fixed-backbone.md) — **Idea A**: 72 sequences on one fixed backbone; is the base drift sequence-level or backbone-level?
+- [wiki/experiments/chris-05_trp44-three-anchor-retested.md](wiki/experiments/chris-05_trp44-three-anchor-retested.md) — **Idea B**: zonghu's Trp44 theozyme, retested with 72 sequences instead of 1
+- [wiki/experiments/chris-06_motif-library-kemp-family.md](wiki/experiments/chris-06_motif-library-kemp-family.md) — **Idea C**: four RFD3 motifs from the family's own crystal structures
 - [wiki/data.md](wiki/data.md) — dataset registry: source, version, sha256, how to fetch
 - [wiki/decisions.md](wiki/decisions.md) — decision records (append-only, dated): what we chose, why, alternatives
 - [wiki/pitch.md](wiki/pitch.md) — the story for the final presentation, kept current
@@ -82,6 +85,16 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [configs/](configs/) — reusable run configs, `<handle>-NN.json`, referenced from experiment pages
 - [envs/](envs/) — pinned environments for external tools with their own deps (`<tool>.yml` / `<tool>.Dockerfile`)
 - [tests/](tests/) — pytest suite (config, runs, data, submission rules, cross-check vs the organizers' validator, tools, index)
+
+- [cluster/](cluster/) — the two-stage pipeline we run on the GPU cluster (design once, sample sequences many times)
+- [cluster/oversample.sbatch](cluster/oversample.sbatch) — **Idea A**: many LigandMPNN sequences on one existing backbone, folded and measured
+- [cluster/design_backbones.sbatch](cluster/design_backbones.sbatch) — stage 1: RFD3 backbones only, one per motif, no MMseqs2 and no Boltz-2
+- [cluster/launch_oversample.sh](cluster/launch_oversample.sh) — deploy + submit an oversampling job from a finished run's `bridge/`
+- [cluster/launch_design.sh](cluster/launch_design.sh) — deploy + submit the RFD3 design stage over a directory of motifs
+- [cluster/build_boltz_queries.py](cluster/build_boltz_queries.py) — many sequences → one Boltz-2 query directory, with query-only alignments
+- [cluster/measure_boltz_outputs.py](cluster/measure_boltz_outputs.py) — catalytic geometry for a whole batch: the pinned contacts plus a numbering-agnostic scan
+- [cluster/build_family_motifs.py](cluster/build_family_motifs.py) — **Idea C**: RFD3 motifs from the family's own crystal structures, farthest-point selected
+- [cluster/build_control_fasta.py](cluster/build_control_fasta.py) — natural-enzyme control sequences for the instrument check, taken from the deposited structures
 
 ## Artifacts
 - [data/](data/) — bulk inputs, gitignored; registry in `wiki/data.md`
