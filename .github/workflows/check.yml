@@ -1,0 +1,18 @@
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync
+      - name: INDEX.md covers every file, no dead links
+        run: uv run python tools/check_index.py
+      - run: uv run ruff check .
+      - run: uv run pytest

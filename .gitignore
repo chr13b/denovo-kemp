@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Secrets & local settings
+.env
+.claude/settings.local.json
+.vscode/
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*:Zone.Identifier
+
+# Data & outputs: reproducible, not versioned (see CLAUDE.md)
+data/*
+!data/.gitkeep
+runs/*
+!runs/.gitkeep
+
+# Large binaries (model weights etc.): link them from the wiki instead
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.h5

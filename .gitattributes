@@ -1,0 +1,8 @@
+# Same line endings for everyone (Windows / WSL / macOS / Linux)
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.gz binary
+*.zip binary
