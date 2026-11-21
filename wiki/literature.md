@@ -35,6 +35,12 @@ Other Kemp structures downloaded for the novelty check (in `/mnt/work/tools/pdb_
 | **van Kempen et al. 2023**, *Nat Biotech*, [10.1038/s41587-023-01773-0](https://doi.org/10.1038/s41587-023-01773-0) — Foldseek | The TM-score search we use for the novelty gate. | ✅ |
 | **Boltz-2** (2025) | The cofolding model that produces the structure we are scored on, and `complex_ipde`. | not yet fetched |
 
+## Our own prior work
+
+| Paper | Why it matters here | Have it? |
+|---|---|---|
+| **Bertsch**, *Confidence is not competence: reading and steering protein binding with the inverse-folding mixed derivative* (preprint, ETH Zürich) | An inverse-folding model's **confidence** is a within-state scalar of the bound distribution and is blind to binding by construction; the binding signal is the **mixed derivative** — the response to ablating the partner. In our pipeline that ablation is one existing flag (`--ligand_mpnn_use_atom_context 0/1`), making **ligand leverage** a ~6 s feature. The paper's own caveat applies directly to us: the steering effect "vanishes on fully de-novo backbones", and ours are fully de novo — so use it as a **diagnostic**, not a steering knob. See [primer.md §6c](primer.md). | local, unpublished — not committed |
+
 ## Recent de novo enzyme design
 
 | Paper | Why it matters | Have it? |
