@@ -110,7 +110,7 @@ diversity across the whole set at the end with `tools/self_diversity.sh`.
 |---|---|
 | Designs ready | 0 of max 20 |
 | Last upload | never |
-| Deadline | **TODO: ask an organiser** |
+| Deadline | **believed 2026-11-22 10:00, timezone presumably Paris/Basel (= 09:00 UTC); told to us by a teammate, NOT confirmed — ask an organiser** |
 
 ## Validator status (2026-11-21)
 

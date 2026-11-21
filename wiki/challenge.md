@@ -147,8 +147,14 @@ we rank. We do not yet know *how* those 5 are nominated — see the open questio
 
 ## Open questions (ask the organisers)
 
-- [ ] **What is the exact submission deadline (date, time, timezone)?** ← the only one with a hard
+- [ ] **What is the exact submission deadline (date, time, timezone)?** *(believed 2026-11-22 10:00 Paris/Basel = 09:00 UTC; unconfirmed)* ← the only one with a hard
       consequence: after it, S3 refuses uploads and there is no grace period.
+- [ ] **Is the base contact measured to OD2 only, or to the nearer of the two carboxylate oxygens?** They are
+      chemically equivalent and a prediction can place either one near the ligand. The reference pipeline's
+      `verify_boltz.py` measures OD2 specifically. It changes our ranking: s042 (job 27) has its nearest oxygen
+      at 2.45 Å but OD2 at 3.73 Å.
+- [ ] **How is a team scored from its (up to 20) designs** — best design, mean, or sum? This decides whether a weak
+      design in a free slot is harmless or costly. Until known, submit only designs we would defend.
 - [ ] **How are the 5 lab-validation designs chosen** — do we nominate them, or do they take our top 5?
       This decides whether we reserve submission slots for interesting-but-risky designs.
 - [ ] **Which TM-score normalisation defines the novelty gate** — by the designed protein, by the

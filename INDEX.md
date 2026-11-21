@@ -95,6 +95,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [cluster/oversample.sbatch](cluster/oversample.sbatch) — **Idea A**: many LigandMPNN sequences on one existing backbone, folded and measured
 - [cluster/design_backbones.sbatch](cluster/design_backbones.sbatch) — stage 1: RFD3 backbones only, one per motif, no MMseqs2 and no Boltz-2
 - [cluster/replicate_seeds.sbatch](cluster/replicate_seeds.sbatch) — fold the same sequences at 5 Boltz-2 seeds: the scored consistency term, and the noise floor
+- [cluster/geometry_vs_crystal.py](cluster/geometry_vs_crystal.py) — distances, approach angle and in-plane angle of every design vs the 25 crystal copies
 - [cluster/launch_oversample.sh](cluster/launch_oversample.sh) — deploy + submit an oversampling job from a finished run's `bridge/`
 - [cluster/launch_design.sh](cluster/launch_design.sh) — deploy + submit the RFD3 design stage over a directory of motifs
 - [cluster/build_boltz_queries.py](cluster/build_boltz_queries.py) — many sequences → one Boltz-2 query directory, with query-only alignments
@@ -117,7 +118,9 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/oversample_rescue_s3_job39.tsv](results/oversample_rescue_s3_job39.tsv) — chris-07: seed 3 is encodable (1.53 Å) but yields no in-window hits
 - [results/screen_4bs0a_s12_job59.tsv](results/screen_4bs0a_s12_job59.tsv) — 16-sequence designability screen of a fresh 4BS0 backbone (seed 12)
 - [results/screen_4bs0a_s13_job60.tsv](results/screen_4bs0a_s13_job60.tsv) — 16-sequence designability screen of a fresh 4BS0 backbone (seed 13)
+- [results/screen_4bs0a_s11_job58.tsv](results/screen_4bs0a_s11_job58.tsv) — 16-sequence designability screen of a fresh 4BS0 backbone (seed 11): median CA RMSD 3.13, poor
 - [results/replication_job47_pinned.tsv](results/replication_job47_pinned.tsv) — job 47: 6 sequences × 5 Boltz seeds, scorer-pinned and scan measurements side by side
+- [results/geometry_full_crystal_vs_designs.tsv](results/geometry_full_crystal_vs_designs.tsv) — 367 structures (352 swept designs + the 5-seed replicates), 13 geometric quantities each
 - [results/oversample_a_seed4_job27_contact_vs_rmsd.png](results/oversample_a_seed4_job27_contact_vs_rmsd.png) — **the figure**: the fold is reproduced, the catalytic contact is not
 - [results/reference_kemp-1_summary.json](results/reference_kemp-1_summary.json) — verified reference run (cluster job 1); the baseline we must beat
 - [results/kemp_family_geometry.tsv](results/kemp_family_geometry.tsv) — **the geometry target**: 43 ligand copies from 23 crystal structures

@@ -574,6 +574,43 @@ never below 3.82 Å) though it looked identical to s024 in one fold. A single-fo
 right half the time. Measure at the *declared* positions, not by scan: a nearest-atom scan can only read
 equal or shorter, and for the donor it latched onto other Gln/Asn residues and made s059 look fine.
 
+### (g8) We had only been checking distances; the scorer also judges approach angle and in-plane geometry
+
+The organizers state that "distance alone is not enough: each contact is also judged on the angle it
+approaches the ring at and on whether it lies in the ring plane", that the two do not average ("the worse
+decides"), and that geometry outweighs everything else combined. We measured neither until now
+(`cluster/geometry_vs_crystal.py`, `results/geometry_full_crystal_vs_designs.tsv`; atom definitions are our
+stand-ins, the scorer's are unpublished). Crystal ranges over 25 engaged copies: base approach angle
+167–176°, base out-of-plane 1–12°, donor approach 162–173°, donor out-of-plane 1–16°.
+
+| over 352 swept designs | count |
+|---|---|
+| both distances in window | 3 (by nearest-oxygen; 2 by OD2) |
+| base approach **and** in-plane in range | 7 |
+| donor approach **and** in-plane in range | 3 |
+| all four approach/in-plane quantities | **0** |
+| all six (distances + approach + in-plane) | **0** |
+
+**s024, 5 seeds** (base d / donor d, base approach / out-of-plane, donor approach / out-of-plane):
+2.51/3.52, 129°/25°, 177°/2° · 2.48/3.57, 144°/22°, 165°/15° · 3.78/5.53, 74°/47°, 66°/32° ·
+2.56/3.84, 133°/22°, 164°/16° · 2.50/3.59, 138°/15°, 164°/15°. So **the donor geometry is crystal-like in
+four seeds, the base is not**: approach about 30° short of the crystal and 10–15° beyond its in-plane range.
+**s059 is the mirror image**: base approach/in-plane crystal-like (161–175°, 1–9°), donor end-on (71–93°,
+51–72° out of plane), which the organizers say "scores poorly even at a perfect distance".
+
+On a continuous proxy D (overshoot beyond the crystal range in tolerance units, too-short distances double;
+our invention, not the scorer's), s024's five seeds give D = 4.8, 3.5, 29.6, 5.3, 3.5 against a median of
+**53.7** over all 352 single-fold designs: in four of five seeds it sits in the extreme tail of everything
+we have made. The pipeline's own sequence averages D = 24.3, s059 17.6.
+
+The other two terms do not separate anything: burial (CA atoms within 12 Å) is 48 for s024 and 45–48 for the
+natural enzymes and the other designs, and s024 has the lowest iPDE of everything measured (1.20, against
+1.62 for the pipeline's sequence, 1.80 for s059 and 1.53–3.00 for the natural enzymes).
+
+**Why this matters for the plan.** 15 of the 20 best single-fold designs by D sit on seed 4's backbone
+(which is 72 of 352), so the backbone effect is real, and the existing 352 contain candidates that the
+distance-only filter never flagged and never replicated (s042, s004, s006, s019).
+
 ### (g6) Motif variety: one alternative arrangement looked worse than 4BS0 (weak evidence)
 
 > **Evidence grade, corrected:** one backbone per motif. Within the 4BS0 motif alone, RFD3 seeds give
