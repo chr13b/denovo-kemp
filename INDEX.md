@@ -108,6 +108,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/](results/) — curated tracked outputs (figures, tables, the submission); each entry names its run
 - [results/designs.jsonl.template](results/designs.jsonl.template) — copy to `results/designs.jsonl`: our submission candidates
 - [results/designs.jsonl](results/designs.jsonl) — **our submission candidates**; rebuild the FASTA with `make submission`
+- [results/designs.fasta](results/designs.fasta) — the submission file itself, rebuilt by `make submission`; never hand-edited
 - [results/oversample_a_seed4_job27.tsv](results/oversample_a_seed4_job27.tsv) — chris-04: 72 sequences on seed 4's backbone + 3 natural controls, fully measured
 - [results/oversample_b_trp44_job31.tsv](results/oversample_b_trp44_job31.tsv) — chris-05: 72 sequences on zonghu's Trp44 backbone; refutes the three-anchor motif
 - [results/oversample_rescue_s5_job40.tsv](results/oversample_rescue_s5_job40.tsv) — chris-07: seed 5 is not rescuable (0/48 refolded under 2 Å)
