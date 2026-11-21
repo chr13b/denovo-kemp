@@ -443,3 +443,131 @@ def check_ligand_contacts(
         if not (lo <= d <= hi):
             bad.append(f"{res_token}:{p_atom}->{l_atom} {d:.2f} A outside [{lo}, {hi}]")
     return _ok("ligand_contacts", measured, {c[0]: (c[3], c[4]) for c in contacts}, not bad, "; ".join(bad))
+
+
+# ---------------------------------------------------- Kriterium 2: Anflug-Geometrie
+
+# 7K4U, in dieser Session zweimal unabhaengig gemessen (siehe wiki/experiments/zonghu-03).
+CRYSTAL_APPROACH = {
+    "base": {"angle": 133.1, "out_of_plane": -6.7},
+    "donor": {"angle": 140.8, "out_of_plane": -10.4},
+}
+TRIAZOLE = ("N1", "N2", "N3", "C3A", "C7A")
+
+
+def angle_between(a, b, c) -> float:
+    """Angle a-b-c in degrees."""
+    v1, v2 = np.asarray(a) - np.asarray(b), np.asarray(c) - np.asarray(b)
+    cos = float(np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2)))
+    return float(np.degrees(np.arccos(max(-1.0, min(1.0, cos)))))
+
+
+def out_of_plane_angle(point, ring_coords) -> float:
+    """Degrees out of the best-fit plane of `ring_coords`, seen from its centroid.
+
+    0 means the atom lies in the ring plane. The N3-H of the TS analogue lies IN
+    that plane, so a base approaching from the ring FACE is not on the proton
+    transfer axis however good its distance looks.
+    """
+    ring = np.asarray(ring_coords)
+    centre = ring.mean(axis=0)
+    normal = np.linalg.svd(ring - centre)[2][2]
+    v = np.asarray(point) - centre
+    return float(np.degrees(np.arcsin(max(-1.0, min(1.0, float(np.dot(v / np.linalg.norm(v), normal)))))))
+
+
+def check_approach_geometry(
+    atoms: AtomArray,
+    contacts: list[tuple[str, str, str, str]],
+    max_deviation: float = 30.0,
+    ligand_resname: str | None = None,
+) -> FilterResult:
+    """Criterion 2: angle AND in-plane, **the worse of the two decides**.
+
+    `contacts` is (label, residue_token, root_atom, contact_atom): the angle is
+    root-contact...ligand_atom, e.g. ("base", "A127", "CG", "OD2").
+
+    The organizers are explicit: "The angle and the in-plane terms do not average -
+    the worse of the two decides." So this reports a max of deviations, never a mean.
+    """
+    lig = ligand_heavy(atoms, ligand_resname)
+    ring = [lig[lig.atom_name == n].coord[0] for n in TRIAZOLE if len(lig[lig.atom_name == n]) == 1]
+    if len(ring) < 3:
+        return unevaluated("approach_geometry", "ligand ring atoms not found", max_deviation)
+
+    measured, worst, worst_what = {}, 0.0, ""
+    for label, res_token, root, contact in contacts:
+        ref = CRYSTAL_APPROACH.get(label)
+        try:
+            chain, resid = split_residue_id(res_token)
+        except ValueError as exc:
+            return unevaluated("approach_geometry", str(exc), max_deviation)
+        a_root = select_atoms(atoms, chain, resid, (root,))
+        a_cont = select_atoms(atoms, chain, resid, (contact,))
+        target = "N3" if label == "base" else "N1"
+        a_lig = lig[lig.atom_name == target]
+        if len(a_root) != 1 or len(a_cont) != 1 or len(a_lig) != 1:
+            return unevaluated(
+                "approach_geometry",
+                f"cannot measure {label} ({res_token}:{root}/{contact} -> {target})",
+                max_deviation,
+            )
+        ang = angle_between(a_root.coord[0], a_cont.coord[0], a_lig.coord[0])
+        oop = out_of_plane_angle(a_cont.coord[0], ring)
+        d_ang = abs(ang - ref["angle"]) if ref else 0.0
+        d_oop = abs(oop - ref["out_of_plane"]) if ref else 0.0
+        measured[label] = {
+            "angle": round(ang, 1),
+            "out_of_plane": round(oop, 1),
+            "d_angle": round(d_ang, 1),
+            "d_out_of_plane": round(d_oop, 1),
+        }
+        for d, what in ((d_ang, f"{label} angle"), (d_oop, f"{label} out-of-plane")):
+            if d > worst:
+                worst, worst_what = d, what
+    passed = worst <= max_deviation
+    return _ok(
+        "approach_geometry",
+        measured,
+        max_deviation,
+        passed,
+        "" if passed else f"worst deviation {worst:.0f} deg ({worst_what})",
+        worst_deviation=round(worst, 1),
+        rule="max, not mean - the worse decides",
+    )
+
+
+# ------------------------------------------------- Kriterium 4: Active-site packing
+
+
+def base_burial(atoms: AtomArray, residue: str, atom_name: str = "OD2", radius: float = 12.0) -> int:
+    """CA atoms within `radius` of the catalytic base - the organizers' exact definition.
+
+    challenge.md: "number of CA atoms close to the catalytic base (up to 12 A)".
+    """
+    chain, resid = split_residue_id(residue)
+    sel = select_atoms(atoms, chain, resid, (atom_name,))
+    if len(sel) != 1:
+        raise ValueError(f"{residue}:{atom_name} not found")
+    ca = atoms[(~atoms.hetero) & (atoms.atom_name == "CA")]
+    return int((np.linalg.norm(ca.coord - sel.coord[0], axis=1) <= radius).sum())
+
+
+def check_base_burial(atoms: AtomArray, residue: str, min_ca: int = 45) -> FilterResult:
+    """Criterion 4: is the base enclosed rather than solvent-exposed?
+
+    Default 45 from the observed spread (20-55 over 14 designs): the collapsed or
+    surface-exposed ones sit at 20-29, folded ones at 44-55. Empirical, not physics.
+    """
+    try:
+        n = base_burial(atoms, residue)
+    except ValueError as exc:
+        return unevaluated("base_burial", str(exc), min_ca)
+    passed = n >= min_ca
+    return _ok(
+        "base_burial",
+        n,
+        min_ca,
+        passed,
+        "" if passed else f"only {n} CA within 12 A of the base (solvent-exposed)",
+    )

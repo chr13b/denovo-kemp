@@ -311,8 +311,41 @@ def _as_plddt_percent(value: float) -> float:
     return value * 100.0 if value <= 1.0 else value
 
 
+def check_interface_error(confidence: dict, max_ipde: float = 2.0) -> FilterResult:
+    """Criterion 3 of the organizers' five: **iPDE**, lower is better.
+
+    This is THE confidence term that is actually scored:
+
+        "Interface confidence (iPDE). The mean predicted distance error over the
+         protein-ligand interface of the cofolded complex. Lower is better."
+
+    pLDDT and ipTM are NOT on the organizers' list, and they disagree with iPDE in
+    practice: zonghu-03's `vA_s2` scores pLDDT 86.1 (comfortably "good") while its
+    iPDE is 2.42, which ranks 10th of 14 designs. Gate on this, not on pLDDT.
+
+    Default 2.0 comes from the observed split: designs whose ligand stayed in the
+    site cluster at 1.39-1.75, collapsed ones at 3.3-6.7.
+    """
+    ipde = confidence.get("complex_ipde")
+    if ipde is None:
+        return unevaluated("interface_error_ipde", "complex_ipde missing", max_ipde)
+    ipde = float(ipde)
+    passed = ipde <= max_ipde
+    return _ok(
+        "interface_error_ipde",
+        round(ipde, 4),
+        max_ipde,
+        passed,
+        "" if passed else f"iPDE {ipde:.3f} > {max_ipde} (interface poorly determined)",
+    )
+
+
 def check_boltz_confidence(confidence: dict, min_plddt: float = 85.0, min_iptm: float = 0.6) -> FilterResult:
-    """Gate on mean pLDDT and ipTM from a Boltz-2 confidence JSON."""
+    """Gate on mean pLDDT and ipTM. **Not a scored criterion** - see check_interface_error.
+
+    Kept because fold quality is still worth knowing, but it must not be the gate:
+    neither pLDDT nor ipTM appears in the organizers' five criteria.
+    """
     plddt = confidence.get("complex_plddt")
     iptm = confidence.get("iptm", confidence.get("ligand_iptm"))
     if plddt is None:
