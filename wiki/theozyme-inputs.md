@@ -20,7 +20,7 @@ Per design:
 | Input CIF | motif residues renumbered 1..n in chain A (polymer), the 6NT as chain B residue 1; coordinates unchanged from the candidate PDB (checked by the script) |
 | Scaffold | `contig: "EX1:160-240, A1-n, /0, B1"`: one expandable segment of 160–240 residues, so designs are 160+n … 240+n long (organizers' limit: 260) |
 | `C_CRD` (fixed coordinates) | all 6NT atoms; for each motif residue CA + side chain, or N,CA,C,O for the N–H donors |
-| `C_SEQ` (fixed identity) | residues whose side chain is fixed; backbone-only donors (Met237, Gly97 N–H) stay free |
+| `C_SEQ` (fixed identity) | residues whose side chain is fixed, and the 6NT (RFD4 rejects fixed non-backbone coordinates without a known identity); backbone-only donors (Met237, Gly97 N–H) stay free |
 | `C_IDX: false` (unindexed) | every motif residue, one index group each: the model chooses where in the chain it sits |
 
 Which atoms are fixed follows each candidate's own `fix atoms for motif scaffolding` remark: side chain + CA by

@@ -63,7 +63,11 @@ def test_build_writes_spec_and_cifs(mod, tmp_path):
     yaml = pytest.importorskip("yaml")
     design = yaml.safe_load(entries[0])["A_top_observed__V00001"]
     # YAML 1.1 reads the keys `true:` / `false:` as booleans; the spec's own examples are written that way
-    assert design["conditions"]["C_SEQ"][True][0]["select"] == "sel('A/*/[1,2,4]')"  # MET (3) stays free
+    seq = [e["select"] for e in design["conditions"]["C_SEQ"][True]]
+    assert seq == [
+        "sel('A/*/[1,2,4]')",
+        "sel('B')",
+    ]  # MET (3) stays free; the fixed 6NT needs its identity too
     assert {e["group"] for e in design["conditions"]["C_IDX"][False]} == {"res1", "res2", "res3", "res4"}
 
 

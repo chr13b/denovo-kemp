@@ -188,6 +188,7 @@ def design_entry(key: str, cif_name: str, motif: list[Residue], remarks: dict[st
             "    C_SEQ:",
             "      true:",
             f"        - select: \"sel('{PROTEIN_CHAIN}/*/[{','.join(kept)}]')\"",
+            f"        - select: \"sel('{LIGAND_CHAIN}')\"   # 6NT: fixed coordinates imply a known identity",
             "    C_IDX:",
             "      false:",
             *unindexed,
