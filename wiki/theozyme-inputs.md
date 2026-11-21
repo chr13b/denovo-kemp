@@ -38,9 +38,10 @@ fixes that residue's identity as well ([conditioning concepts](https://github.co
 - **Not conditioned**: `C_HB` (donor/acceptor roles on 6NT), `C_PISTACK` on the stacker rings, `C_RAS` (burial of the
   6NT). They would reinforce the contacts but are extra levers; add them once the plain inputs run.
 - **Formal charges are written explicitly** (`pdbx_formal_charge`, no `?`): 6NT as in its CCD entry (nitro N +1, O21 −1,
-  the rest 0), −1 on one carboxylate oxygen of the base (Asp OD2 / Glu OE2) and of the dyad Asp, 0 elsewhere. RFD4
-  embeds the charge of atomized tokens (the 6NT); for a canonical residue the benefit is unclear, and the CCD form of
-  Asp/Glu is the neutral acid, so `--base_charge=0` writes that instead. See "How RFD4 uses charges" below.
+  the rest 0), and 0 on the protein atoms, including the base carboxylate: the CCD form of Asp/Glu is the neutral acid.
+  RFD4 embeds the charge of atomized tokens (the 6NT); for a canonical residue the benefit of a charge is unclear.
+  `--base_charge=-1` writes −1 on one carboxylate oxygen of the base (Asp OD2 / Glu OE2) and of the dyad Asp instead.
+  See "How RFD4 uses charges" below.
 - **Bond orders and aromaticity of the 6NT** are left to RFD4's parser, which should take them from the CCD entry `6NT`.
   RFD4 reads a bond left as aromatic as a single bond, so check the kekulized bonds on Euler.
 
@@ -54,8 +55,8 @@ Read from its code and docs on 2026-11-21:
   mix of known and unknown) because that hides the difference from neutral. The benchmark CIFs leave most atoms `?`
   and write only Lys NZ and Arg NH2 (+1), the CCD values.
 - No training definition for charges is documented, and the CCD form of Asp/Glu is the neutral acid. A −1 carboxylate
-  may therefore lie outside what the model saw for a canonical residue. Whether the explicit charge helps is untested;
-  compare designs with `--base_charge=-1` and `0` if it matters.
+  may therefore lie outside what the model saw for a canonical residue, which is why the default is 0. Whether a
+  charged base helps is untested; compare designs with `--base_charge=0` and `-1` if it matters.
 
 ## Check it on Euler before spending GPU time
 From the RFD4-Proteina checkout, with its venv active (a CPU job is enough; not on a login node for anything long):

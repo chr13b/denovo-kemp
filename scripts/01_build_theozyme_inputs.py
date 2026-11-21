@@ -54,9 +54,9 @@ class Config:
     slots: str = RECOMMENDED  # comma-separated candidate slots (the part of the file name before "__")
     seg_min: int = 160  # designed scaffold length range; with the motif residues the design must stay <= 260
     seg_max: int = 240
-    # charge on one carboxylate O of the base and dyad Asp: -1 = deprotonated; 0 = neutral acid, as in the CCD
-    # entries of ASP/GLU (and what RFD4 reads from an unknown charge)
-    base_charge: int = -1
+    # charge on one carboxylate O of the base and dyad Asp: 0 = neutral acid, as in the CCD entries of ASP/GLU
+    # (default, and what RFD4 reads from an unknown charge); -1 = deprotonated
+    base_charge: int = 0
 
 
 Atom = tuple[str, str, float, float, float]  # name, element, x, y, z
@@ -122,9 +122,7 @@ def formal_charge(res: Residue | None, atom_name: str, base_charge: int) -> int:
     return 0
 
 
-def write_cif(
-    path: Path, title: str, ligand: list[Atom], motif: list[Residue], base_charge: int = -1
-) -> None:
+def write_cif(path: Path, title: str, ligand: list[Atom], motif: list[Residue], base_charge: int = 0) -> None:
     """A plain mmCIF: motif residues renumbered 1..n in chain A (polymer), 6NT as chain B residue 1."""
     rows: list[str] = []
     fmt = "{} {} {} {} . {} {} {} {} ? {:.3f} {:.3f} {:.3f} 1.00 0.00 {} {} {} {} {} 1"
