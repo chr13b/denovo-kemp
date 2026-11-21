@@ -78,6 +78,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [scripts/32_kemp_family_geometry.py](scripts/32_kemp_family_geometry.py) — measures catalytic geometry across all 97 PDB 'kemp eliminase' entries
 - [scripts/33_analyze_oversampling.py](scripts/33_analyze_oversampling.py) — reads a sweep's `geometry.tsv`: instrument check, sequence-vs-backbone verdict, what predicts the base contact
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
+- [scripts/91_bank_from_sweep.py](scripts/91_bank_from_sweep.py) — promote a sweep's best designs into `results/designs.jsonl`, verifying the base/donor residue at each index
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)
 - [tools/fetch_papers.sh](tools/fetch_papers.sh) — download the open-access literature into `data/papers/` (gitignored)
