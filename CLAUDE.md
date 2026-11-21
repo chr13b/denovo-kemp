@@ -95,7 +95,7 @@ Everyone works on their own `<handle>/<topic>` branch. The full playbook is in `
 
 ## Commands
 
-`make setup` · `make status` · `make smoke` · `make test` · `make lint` · `make fmt` · `make index` · `make check` · `make sync` · `make submission` · `make lock` · `make reproduce`
+`make onboard` (new teammate: everything at once) · `make setup` · `make status` · `make smoke` · `make test` · `make lint` · `make fmt` · `make index` · `make check` · `make sync` · `make submission` · `make lock` · `make reproduce`
 Without make, each target is one or more `uv run ...` lines in the Makefile.
 
 ## Don't
@@ -107,4 +107,6 @@ Without make, each target is one or more `uv run ...` lines in the Makefile.
 - Hardcode paths
 - Claim a result without a run directory behind it
 - Force-push `main`, or bypass the hooks with `--no-verify`
-- Commit the cluster key or any credential, or paste key contents into chat
+- Commit the cluster key or any credential, or paste key contents into chat. Name secrets by **path**
+  (`~/.ssh/pdh-team-01.pem`) and let scripts read them; see `AGENTS.md` rule 8 for why this also keeps
+  sessions from stalling

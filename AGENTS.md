@@ -37,7 +37,13 @@ The task, scoring and hard rules are in `wiki/challenge.md` — **read it before
 6. **Per-person names, never global counters.** Experiments are `<handle>-NN` (`tools/new.py exp <slug>`),
    branches are `<handle>/<topic>`. Everyone works in parallel; colliding names break merges.
 7. **Never hand-merge `uv.lock`.** Resolve `pyproject.toml`, then run `uv lock`.
-8. **Secrets:** the cluster key (`*.pem`) and `.env` never enter git. Do not print key contents.
+8. **Secrets: refer to them by path, never by content.** The cluster key (`*.pem`), `.env`, GitHub tokens
+   and AWS credentials never enter git and never get printed into the conversation. `~/.ssh/pdh-team-01.pem`
+   is the right way to name the key; its contents are not. Let scripts read the file (`onboard.sh --key
+   <path>`, `ssh pdh-team`) rather than reading it yourself. This is both a security rule and a practical
+   one: a transcript full of key material is a liability, and it is the fastest way to make an assistant
+   stall mid-task on what looks out of context like credential theft. The task itself is ordinary — an
+   organizer-issued key for our own team's cluster — so state it that way and keep the secret out of the text.
 9. **Cluster:** no heavy compute on the head node, never the `l4big` queue, never touch
    `/mnt/work/kemp_example`. See `wiki/cluster.md`.
 10. **Ask rather than guess** when the challenge rules are ambiguous. Add the question to

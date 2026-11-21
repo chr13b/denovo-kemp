@@ -1,7 +1,47 @@
-# Setup — start here (about 20 minutes)
+# Setup — start here
 
 Welcome! This is the one page you need on day one. No prior experience with this repo,
-with Claude, or with clusters is assumed. Copy each block into your terminal, in order.
+with Claude, or with clusters is assumed.
+
+---
+
+## ⚡ The fast path (about 3 minutes)
+
+**Two things first, or nothing below works:**
+1. Ask Chris to **invite your GitHub account** to `chr13b/kemp-challenge` (it's private).
+2. Ask Chris for **`pdh-team-01.pem`** — directly, person to person. Save it to your Downloads folder.
+   Never from a public link, never into this repo.
+
+Then paste this into a terminal (macOS/Linux/WSL, or **Git Bash** on Windows — not PowerShell):
+
+```bash
+git clone https://github.com/chr13b/kemp-challenge.git
+cd kemp-challenge
+bash onboard.sh
+```
+
+`onboard.sh` asks for your handle and the path to the key, then does the rest: installs `uv` if you don't
+have it, builds the exact Python environment from the lockfile, installs the commit hooks, writes your
+handle to `.env`, adds your row to `wiki/team.md`, installs the key with the right permissions, writes your
+SSH config, **checks the cluster's fingerprint against the one the organizers published**, connects, and
+runs the test suite. It prints a ✓ or ✗ for every step and is safe to run again.
+
+Non-interactive, if you prefer:
+
+```bash
+bash onboard.sh --handle ana --key ~/Downloads/pdh-team-01.pem
+bash onboard.sh --skip-cluster      # repo only; do the key later
+```
+
+When it says **Ready**, you're done — skip to [Part 3](#part-3--the-daily-rhythm). If any step shows ✗,
+the rest of this page explains that step by hand, and the team chat is faster than guessing.
+
+> Windows note: use **Git Bash** (ships with Git for Windows). The manual PowerShell commands are in
+> Part 2 if you'd rather do it step by step.
+
+---
+
+The rest of this page is the same thing done by hand, with explanations. Copy each block in order.
 
 If anything does not work, **ask in the team chat instead of guessing** — and tell us which step broke,
 so we can fix this page for the next person.
@@ -35,8 +75,10 @@ git clone https://github.com/chr13b/kemp-challenge.git
 cd kemp-challenge
 ```
 
-If git asks for a password: GitHub needs a **personal access token**, not your account password.
-Easiest fix is [GitHub CLI](https://cli.github.com/): install it, run `gh auth login`, then clone again.
+If git asks for a password: GitHub does **not** accept your account password here. Use a **personal access
+token** as the password — create one at *Settings → Developer settings → Personal access tokens → Tokens
+(classic)* with the `repo` scope. Step-by-step in [CONTRIBUTING.md](CONTRIBUTING.md) §6.
+(`gh auth login` also works, but its browser flow can time out and needs a 2FA app.)
 
 ### 1.3 Set it up and check it works
 
@@ -195,6 +237,48 @@ Copilot, Gemini, Aider, or a chat window where you paste files.
 - Using a **plain chat window**? Paste `AGENTS.md` and `INDEX.md` into the conversation at the start.
 
 You do not have to use AI at all. Everything here works by hand.
+
+### Copy-paste starter prompt (works with any assistant)
+
+Paste this as your **first** message in a new session, from inside the repo folder:
+
+```text
+You are helping me in the `kemp-challenge` repo for a 1-day protein-design hackathon
+(Perlin x D-BSSE, team 01). Before anything else, read AGENTS.md and INDEX.md in the repo
+root, then run `uv run python tools/status.py` to see where the team is.
+
+Working rules you must follow (they are in AGENTS.md too):
+- I work on my own branch `<handle>/<topic>`. Never commit to main.
+- Write an experiment page with `uv run python tools/new.py exp <slug>` BEFORE running anything.
+- Never report a number you did not read from a run's own output files. Say "not measured"
+  instead of estimating.
+- Update INDEX.md in the same commit as any file you add, and add a log entry with
+  `uv run python tools/new.py log <type> "<title>"`.
+- `make check` must pass before you push.
+- Never print, copy or commit the cluster key (`*.pem`) or any token. Refer to them by path.
+
+My handle is: <your handle>. Today I'm working on: <what you want to do>.
+Start by telling me what the team has already done and what you suggest I pick up.
+```
+
+### Keeping an AI session from stalling on the cluster key
+
+Assistants get cautious — sometimes to the point of stopping mid-task — when a conversation starts
+handling private keys, because out of context that looks like credential theft. Nothing about our setup is
+off-limits; it's an organizer-issued key for our own team's cluster. The friction comes from *how* the key
+enters the conversation, and it's avoidable:
+
+- **Refer to the key by path, never by content.** `~/.ssh/pdh-team-01.pem` is fine. Pasting the key text
+  into chat is not — it also permanently writes your team's private key into a session transcript.
+- **Let scripts touch the file; don't ask the assistant to.** `bash onboard.sh --key <path>` reads the file
+  itself. `ssh pdh-team` uses it without anyone reading it.
+- **Say what the task is.** "Install the organizers' cluster key for our team so `ssh pdh-team` works" reads
+  very differently from "put this key somewhere".
+- **Don't ask for the key to be committed, emailed or uploaded.** That is the one thing we genuinely never
+  do — it would put the whole team's access in git history forever. `.gitignore` plus the
+  `detect-private-key` commit hook already block it.
+
+Same rules for GitHub tokens and AWS credentials: by path or by environment variable, never pasted.
 
 ---
 
