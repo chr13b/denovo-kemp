@@ -63,9 +63,60 @@ Stage 2 is chris-04's oversampling job, pointed at each `bridge/` this produces.
 A per-motif sanity check applies first: RFD3 must reproduce each motif to ≤0.05 Å
 (`fixed_pair_distance_max_deviation_angstrom`). A motif it cannot satisfy tells us nothing about refolding.
 
-## Result
+## Result (partial — 4BS0_A done, 8USL_B queued as job 36)
 
-TODO — read from each `design-29/*/bridge/motif.json`, then the oversampling runs built on them.
+### Design stage: clean, both motifs
+
+Job 34, 0 failures. Both crystal arrangements gave in-window backbones, and RFD3 satisfied each to
+well under the 0.05 Å tolerance:
+
+| motif | RFD3 base | RFD3 donor | deviation |
+|---|---|---|---|
+| 4BS0_A | 2.53 Å | 3.09 Å | 0.0129 Å |
+| 8USL_B | 2.56 Å | 3.24 Å | 0.0157 Å |
+
+So a motif lifted from an arbitrary family member is as satisfiable as the one the pipeline ships
+with. The extraction and renumbering in `cluster/build_family_motifs.py` works.
+
+### 4BS0_A, fresh backbone: designable, but 0 of 32 in window
+
+`results/oversample_c_4bs0a_job35.tsv`. 32 sequences at T = 0.1 / 0.2.
+
+| | seed 4 (same motif, different RFD3 seed) | **4BS0_A fresh** |
+|---|---|---|
+| median CA RMSD | 0.77 Å | **1.33 Å** — designable |
+| refolded < 2 Å | 70/72 (97 %) | 27/32 (84 %) |
+| best base contact | 2.38 Å | 2.90 Å |
+| in window | 2/72 | **0/32** |
+
+**This is weak evidence, and should be read as such.** At seed 4's measured hit rate of ~3 %, 32
+sequences give an expected 1 hit, and seeing 0 has probability ≈0.38 under the *same* rate. So 0/32
+does not show this backbone is worse — it shows 32 sequences is too few to tell. The informative
+number is the designability, 1.33 Å, which puts it well inside the usable range.
+
+Practical consequence for the sweeps: **32 sequences is under-powered.** Use 72+ per backbone, or
+accept that a 0 result carries almost no information.
+
+### The controls moved again, and now there are four measurements
+
+Same 4BS0 sequence, same `--seed 1`, four different batches:
+
+| batch | rows | base | donor |
+|---|---|---|---|
+| job 27 | 75 | 2.493 | 6.077 |
+| job 31 | 75 | 2.493 | 6.077 |
+| job 40 | 51 | 2.072 | 4.845 |
+| job 35 | 35 | 2.065 | 5.468 |
+| **crystal** | — | **2.53** | **3.10** |
+
+Base readings cluster into two groups by batch size and span **0.43 Å**, against a window 0.28 Å
+wide. The donor is wrong in every batch — 4.8 to 6.1 Å against a crystal 3.10 Å.
+
+Note what this does to the target: Boltz-2's readings for a *real, working* enzyme average ≈2.28 Å,
+**below** the crystal window of 2.41–2.69. If that holds up under proper replication, the window we
+have been scoring against is not where Boltz-2 puts a good enzyme, and our candidates should be
+ranked against the model's own reading of the natural enzymes instead. Job **47** settles it: all
+three natural enzymes and all three of our candidates, 5 seeds each, one measurement protocol.
 
 ## Verdict and next step
 
