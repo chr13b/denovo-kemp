@@ -1,0 +1,101 @@
+pdb_id,tier,title,protein,resolution_A,ligands,doi,year
+29SB,extended,Solution structure of inhibitor (6-NBT)-bound de novo designed Kemp eliminase KABLE2.5.,KABLE2.5,,6NT,,
+2RKX,core,"The 3D structure of chain D, cyclase subunit of imidazoleglycerol_evolvedcerolphosphate synthase",Cyclase subunit of imidazoleglycerol_evolvedcerolphosphate synthase,2.25,,10.1038/nature06879,2008
+3NPU,extended,Optimization of the in silico designed Kemp eliminase KE70 by computational design and directed evolution,deoxyribose phosphate aldolase,2.25,,10.1016/j.jmb.2011.01.041,2011
+3NPV,core,Optimization of the in silico designed Kemp eliminase KE70 by computational design and directed evolution,deoxyribose phosphate aldolase,1.48,,10.1016/j.jmb.2011.01.041,2011
+3NPW,extended,In silico designed of an improved Kemp eliminase KE70 mutant by computational design and directed evolution,deoxyribose phosphate aldolase,2.14,,10.1016/j.jmb.2011.01.041,2011
+3NPX,extended,Optimization of the in silico designed Kemp eliminase KE70 by computational design and directed evolution,deoxyribose phosphate aldolase,1.79,,10.1016/j.jmb.2011.01.041,2011
+3NQ2,extended,Optimization of the in silico designed Kemp eliminase KE70 by computational design and directed evolution R2 3/5G,deoxyribose phosphate aldolase,2.02,IMD,10.1016/j.jmb.2011.01.041,2011
+3NQ8,extended,Optimization of the in silico designed Kemp eliminase KE70 by computational design and directed evolution R4 8/5A,deoxyribose phosphate aldolase,1.4,NO3;BEN,10.1016/j.jmb.2011.01.041,2011
+3NQV,extended,Optimization of the in silico designed Kemp eliminase KE70 by computational design and directed evolution R5 7/4A,deoxyribose phosphate aldolase,1.7,BEN,10.1016/j.jmb.2011.01.041,2011
+3NR0,extended,Optimization of the in silico designed Kemp eliminase KE70 by computational design and directed evolution R6 6/10A,deoxyribose phosphate aldolase,2.19,,10.1016/j.jmb.2011.01.041,2011
+3NYD,core,Crystal Structure of Kemp Eliminase HG-2 Complexed with Transition State Analog 5-Nitro Benzotriazole,"Endo-1,4-beta-xylanase",1.23,ACT;SO4;3NY,10.1073/pnas.1118082108,2012
+3NYZ,core,Crystal Structure of Kemp Elimination Catalyst 1A53-2,Indole-3-glycerol phosphate synthase,1.514,SO4,10.1073/pnas.1118082108,2012
+3NZ1,core,Crystal Structure of Kemp Elimination Catalyst 1A53-2 Complexed with Transition State Analog 5-Nitro Benzotriazole,Indole-3-glycerol phosphate synthase,1.56,3NY;SO4;TLA,10.1073/pnas.1118082108,2012
+3O2L,core,Crystal Structure of an Inactive Kemp Elimination Design HG-1,"Endo-1,4-beta-xylanase",2.0,,10.1073/pnas.1118082108,2012
+3Q2D,core,Optimization of the in silico designed Kemp eliminase KE70 by computational design and directed evolution,Deoxyribose phosphate aldolase,2.19,3NY,10.1016/j.jmb.2011.01.041,2011
+3UXA,core,Designed protein KE59 R1 7/10H,Kemp eliminase KE59 R1 7/10H,2.5,PO4,10.1073/pnas.1121063109,2012
+3UXD,core,Designed protein KE59 R1 7/10H with dichlorobenzotriazole (DBT),Kemp eliminase KE59 R1 7/10H,1.8,PO4;0CU,10.1073/pnas.1121063109,2012
+3UY7,extended,Designed protein KE59 R1 7/10H with G130S mutation,Kemp eliminase KE59 R1 7/10H,1.45,NA;SO4,10.1073/pnas.1121063109,2012
+3UY8,extended,Designed protein KE59 R5_11/5F,Kemp eliminase KE59 R5_11/5F,2.41,SO4,10.1073/pnas.1121063109,2012
+3UYC,extended,Designed protein KE59 R8_2/7A,Kemp eliminase KE59 R8_2/7A,2.2,PO4,10.1073/pnas.1121063109,2012
+3UZ5,extended,Designed protein KE59 R13 3/11H,Kemp eliminase KE59 R13 3/11H,1.9,NA;PO4;0CU,10.1073/pnas.1121063109,2012
+3UZJ,core,Designed protein KE59 R13 3/11H with benzotriazole,Kemp eliminase KE59 R13 3/11H,1.69,0CT;PO4,10.1073/pnas.1121063109,2012
+4BS0,core,"Crystal Structure of Kemp Eliminase HG3.17 E47N,N300D Complexed with Transition State Analog 6-Nitrobenzotriazole",KEMP ELIMINASE HG3.17,1.09,SO4;6NT,10.1038/NATURE12623,2013
+4Z08,core,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 1 KE07 design,de novo designed kemp eliminase KE07,1.8,,,
+5D2T,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 3 Wild Type,De novo designed kemp eliminase KE07,1.87,6VP,,
+5D2V,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 4 Wild Type,De novo designed kemp eliminase KE07,2.02,,,
+5D2W,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 5 Wild Type,De novo designed kemp eliminase KE07,1.66,6VP,,
+5D2X,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 6 Round5,De novo desinged kemp eliminase KE07,1.76,MPD,,
+5D2Y,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 7 Round 5,De novo designed kemp eliminase KE07,1.984,,,
+5D30,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 9 Round 5,De novo kemp eliminase KE07 round 5,1.69,,,
+5D32,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 11 round 6,De novo kemp eliminase KE07 round 6,2.1,,,
+5D33,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 12 round 7,de novo kemp eliminase KE07 round 7,1.59,,,
+5D37,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 16 round 7,De novo kemp eliminase KE07 round 7,2.04,,,
+5D38,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 17 round 7-2,De novo kemp eliminase KE07 round 7-2,1.427,,,
+5RG4,extended,"Crystal Structure of Kemp Eliminase HG3 in unbound state, 277K",Kemp Eliminase HG3,1.99,SO4;ACT,10.1038/s41467-020-18619-x,2020
+5RG5,extended,"Crystal Structure of Kemp Eliminase HG3.3b in unbound state, 277K",Kemp Eliminase HG3,1.62,SO4;ACT,10.1038/s41467-020-18619-x,2020
+5RG6,extended,"Crystal Structure of Kemp Eliminase HG3.7 in unbound state, 277K",Kemp Eliminase HG3,1.35,SO4,10.1038/s41467-020-18619-x,2020
+5RG7,extended,"Crystal Structure of Kemp Eliminase HG3.14 in unbound state, 277K",Kemp Eliminase HG3,1.47,SO4,10.1038/s41467-020-18619-x,2020
+5RG8,extended,"Crystal Structure of Kemp Eliminase HG3.17 in unbound state, 277K",Kemp Eliminase HG3,1.73,ACT,10.1038/s41467-020-18619-x,2020
+5RG9,extended,"Crystal Structure of Kemp Eliminase HG4 in unbound state, 277K",Kemp Eliminase HG4,1.47,ACT;SO4,10.1038/s41467-020-18619-x,2020
+5RGA,core,"Crystal Structure of Kemp Eliminase HG3 with bound transition state analogue, 277K",Kemp Eliminase HG3,1.86,SO4;6NT,10.1038/s41467-020-18619-x,2020
+5RGB,extended,"Crystal Structure of Kemp Eliminase HG3.3b with bound transition state analogue, 277K",Kemp Eliminase HG3.3b,1.42,SO4;6NT,10.1038/s41467-020-18619-x,2020
+5RGC,extended,"Crystal Structure of Kemp Eliminase HG3.7 with bound transition state analogue, 277K",Kemp Eliminase HG3,1.39,6NT;SO4,10.1038/s41467-020-18619-x,2020
+5RGD,extended,"Crystal Structure of Kemp Eliminase HG3.14 with bound transition state analogue, 277K",Kemp Eliminase HG3.14,1.6,SO4;6NT,10.1038/s41467-020-18619-x,2020
+5RGE,extended,"Crystal Structure of Kemp Eliminase HG3.17 with bound transition state analog, 277K",Kemp Eliminase HG3,1.77,6NT,10.1038/s41467-020-18619-x,2020
+5RGF,extended,"Crystal Structure of Kemp Eliminase HG4 with bound transition state analogue, 277K",Kemp Eliminase HG3,1.46,6NT;SO4,10.1038/s41467-020-18619-x,2020
+6C7H,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 18 Design Trp50Ala mutant,Kemp eliminase KE07,2.43,,10.1038/s41467-018-06305-y,2018
+6C7M,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 19 round 5,Kemp Eliminase KE07,1.45,MPD,10.1038/s41467-018-06305-y,2018
+6C7T,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 20 round 5,Kemp Eliminase KE07,1.83,,10.1038/s41467-018-06305-y,2018
+6C7V,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 22 round 5,Kemp eliminase KE07,1.64,,10.1038/s41467-018-06305-y,2018
+6C8B,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 23 round 6,Kemp eliminase KE07,1.61,,10.1038/s41467-018-06305-y,2018
+6CAI,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 24 round 7,Kemp Eliminase KE07,1.82,TRS,10.1038/s41467-018-06305-y,2018
+6CT3,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 27 round 7-2,Kemp eliminase,1.9,GOL;6VP;SO4,10.1038/s41467-018-06305-y,2018
+6DC1,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 25 round 7,Kemp eliminase KE07,2.68,B3P;PEG;TRS;6VP,10.1038/s41467-018-06305-y,2018
+6DKV,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 21 round 5,Kemp eliminase KE07,1.89,6VP;PEG,10.1038/s41467-018-06305-y,2018
+6DNJ,extended,Directed evolutionary changes in Kemp Eliminase KE07 - Crystal 28 round 5,Kemp eliminase KE07,1.65,MPD;H5J,10.1038/s41467-018-06305-y,2018
+6NW4,core,Evolution of a computationally designed Kemp eliminase,Indole-3-glycerol phosphate synthase,3.0,6NT;SO4,10.1021/jacs.9b02731,2019
+6SRW,extended,"Kemp Eliminase HG3.17 mutant Q50F, E47N, N300D Complexed with Transition State Analog 6-Nitrobenzotriazole",Kemp Eliminase HG3.17 Q50F,1.45,6NT;GOL,10.1021/acscatal.0c00575,2020
+6SRY,extended,"Kemp Eliminase HG3.17 mutant Q50S, E47N, N300D Complexed with Transition State Analog 6-Nitrobenzotriazole","Kemp Eliminase HG3.17 Q50S, E47N,N300D",0.95,SO4;6NT,10.1021/acscatal.0c00575,2020
+6SRZ,extended,"Kemp Eliminase HG3.17 mutant Q50H, E47N, N300D Complexed with Transition State Analog 6-Nitrobenzotriazole","Kemp Eliminase HG3.17 Q50H, E47N, N300D Complexed with Transition State Analog 6-Nitrobenzotriazole",1.4,6NT;GOL,10.1021/acscatal.0c00575,2020
+6SS1,extended,"Kemp Eliminase HG3.17 mutant Q50A, E47N, N300D Complexed with Transition State Analog 6-Nitrobenzotriazole","Kemp Eliminase HG3.17 Q50A, E47N,N300D Complexed with Transition State Analog 6-Nitrobenzotriazole",1.1,6NT;SO4,10.1021/acscatal.0c00575,2020
+6SS3,extended,"Kemp Eliminase HG3.17 mutant Q50K, E47N, N300D Complexed with Transition State Analog 6-Nitrobenzotriazole","Kemp Eliminase HG3.17 Q50K, E47N, N300D",1.15,SO4;GOL;6NT,10.1021/acscatal.0c00575,2020
+6TU6,extended,"Kemp Eliminase HG3.17 mutant Q50M, E47N, N300D Complexed with Transition State Analog 6-Nitrobenzotriazole","Kemp Eliminase HG3.17 mutant Q50M, E47N, N300D Complexed with Transition State Analog 6-Nitrobenzotriazole",1.05,6NT;SO4,10.1021/acscatal.0c00575,2020
+7K4P,extended,Crystal structure of Kemp Eliminase HG3,"Endo-1,4-beta-xylanase",1.08,,10.1126/science.abd3623,2020
+7K4Q,core,Crystal structure of Kemp Eliminase HG3 in complex with the transition state analog 6-nitrobenzotriazole,"Endo-1,4-beta-xylanase",1.28,6NT;SO4,10.1126/science.abd3623,2020
+7K4R,extended,Crystal structure of Kemp Eliminase HG3 K50Q,"Endo-1,4-beta-xylanase",1.57,,10.1126/science.abd3623,2020
+7K4S,extended,Crystal structure of Kemp Eliminase HG3.7,"Endo-1,4-beta-xylanase",2.0,SO4,10.1126/science.abd3623,2020
+7K4T,core,Crystal structure of Kemp Eliminase HG3.17,"Endo-1,4-beta-xylanase",0.999,,10.1126/science.abd3623,2020
+7K4U,extended,Crystal structure of Kemp Eliminase HG3 K50Q in complex with the transition state analog 6-nitrobenzotriazole,"Endo-1,4-beta-xylanase",1.3,6NT,10.1126/science.abd3623,2020
+7K4V,extended,Crystal structure of Kemp Eliminase HG3.17,"Endo-1,4-beta-xylanase",1.3,PG4,10.1126/science.abd3623,2020
+7K4W,extended,Crystal structure of Kemp Eliminase HG3.17 in the inactive state,"Endo-1,4-beta-xylanase",1.9,CA,10.1126/science.abd3623,2020
+7K4X,extended,Crystal structure of Kemp Eliminase HG3.7 in complex with the transition state analog 6-nitrobenzotriazole,"Endo-1,4-beta-xylanase",1.6,6NT;ACT;SO4,10.1126/science.abd3623,2020
+7K4Y,extended,Crystal structure of Kemp Eliminase HG3.17 at 343 K,"Endo-1,4-beta-xylanase",1.8,,10.1126/science.abd3623,2020
+7K4Z,core,Crystal structure of Kemp Eliminase HG3.17 in complex with the transition state analog 6-nitrobenzotriazole,"Endo-1,4-beta-xylanase",1.08,6NT;1PE,10.1126/science.abd3623,2020
+8FMC,extended,Crystal Structure of Kemp Eliminase 1A53-core in unbound state,Kemp Eliminase 1A53-core,2.36,PO4;MES,,
+8FMD,extended,Crystal Structure of Kemp Eliminase KE70-core in unbound state,Kemp Eliminase KE70-core,2.2,,,
+8FME,extended,Crystal Structure of Kemp Eliminase HG3-shell in unbound state,Kemp Eliminase HG3-shell,1.44,,,
+8FOQ,core,Crystal Structure of Kemp Eliminase 1A53-core with bound transition state analogue,Kemp Eliminase 1A53-core,1.6,3NY;PO4,,
+8FOR,core,Crystal Structure of Kemp Eliminase KE70-core with bound transition state analogue,Kemp Eliminase KE70-core,2.2,6NT,,
+8FOS,core,Crystal Structure of Kemp Eliminase HG3-shell with bound transition state analogue,Kemp Eliminase HG3-shell,1.56,PG4;6NT,,
+8KH3,extended,Crystal Structure of Kemp Eliminase HG3.17 in complexed with 5-cyanobenzotriazole,Kemp Eliminase HG3.17,2.0,SO4;VWF,,
+8RD5,core,Crystal structure of Kemp Eliminase HG3.R5 with bound transition state analog 6-nitrobenzotriazole,"Endo-1,4-beta-xylanase",1.5,ACT;GOL;6NT,10.1038/s41589-024-01712-3,2024
+8USE,extended,"Crystal Structure of Kemp Eliminase HG649 in unbound state, 280 K",Kemp eliminase,1.55,,10.1021/jacs.4c00677,2024
+8USF,core,"Crystal Structure of Kemp Eliminase HG649 with bound transition state analogue, 280 K",Kemp eliminase,1.45,6NT,10.1021/jacs.4c00677,2024
+8USG,extended,"Crystal Structure of Kemp Eliminase HG630 in unbound state, 280 K",Kemp eliminase,1.37,SO4,10.1021/jacs.4c00677,2024
+8USH,extended,"Crystal Structure of Kemp Eliminase HG630 with bound transition state analogue, 280 K",Kemp eliminase,1.32,6NT,10.1021/jacs.4c00677,2024
+8USI,extended,"Crystal Structure of Kemp Eliminase HG198 in unbound state, 280 K",Kemp eliminase,1.9,,10.1021/jacs.4c00677,2024
+8USJ,extended,"Crystal Structure of Kemp Eliminase HG198 with bound transition state analogue, 280 K",Kemp eliminase,1.6,6NT,10.1021/jacs.4c00677,2024
+8USK,extended,"Crystal Structure of Kemp Eliminase HG185 in unbound state, 280 K",Kemp eliminase,1.6,,10.1021/jacs.4c00677,2024
+8USL,extended,"Crystal Structure of Kemp Eliminase HG185 with bound transition state analogue, 280 K",Kemp eliminase,1.55,6NT,10.1021/jacs.4c00677,2024
+9HVB,core,High-efficiency Kemp eliminases by complete computational design,Kemp eliminase,2.0,SO4,10.1038/s41586-025-09136-2,2025
+9HVG,core,High-efficiency Kemp eliminases by complete computational design,Kemp Elimination,1.901,,10.1038/s41586-025-09136-2,2025
+9HVH,core,High-efficiency Kemp eliminases by complete computational design,KEMP Eliminase,2.1,,10.1038/s41586-025-09136-2,2025
+9N0I,extended,"Crystal structure of KABLE double mutant (Lys14Pro, Leu20Trp)",De novo designed KABLE protein,2.15,CL,,
+9N0J,core,"Crystal structure of KABLE double mutant (Lys14Pro, Leu20Trp) in complex with 6-nitrobenzotriazole",De novo designed KABLE protein,1.54,3NY;CAC;ZN,,
+9N0K,extended,"Crystal structure of KABLE triple mutant (Ile12Phe, Lys14Pro, Leu20Trp)",De novo designed KABLE protein,2.08,,,
+9QKX,core,De novo TIM barrel with Kemp eliminase activity - KempTIM4,Chains: A,2.3,GOL,10.1038/s41589-026-02250-w,2026
+9SMT,extended,Solution structure of de novo designed Kemp eliminase KABLE2.5,KABLE2.5,,,,
+9TZD,core,De novo TIM barrel with Kemp eliminase activity - KempTIM1 with bound transition state analogue,KempTIM1,1.2,PG0;EDO;6NT,10.1038/s41589-026-02250-w,2026
+9U01,core,De novo TIM barrel with Kemp eliminase activity - KempTIM1 (apo),KempTIM1,1.25,EDO,10.1038/s41589-026-02250-w,2026

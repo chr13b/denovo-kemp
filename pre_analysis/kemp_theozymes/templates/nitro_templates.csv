@@ -1,0 +1,89 @@
+id,residue,contact_type,partner_atom,placement,src,resid,family,resolution,arom_source_nitro,src_d,src_ang,src_angX,src_elev,d,ang,elev,nitro_rmsd,n_equivalent,members
+N001,ALA,bb_NH,N,on_O11,1Z44,A43,Other ene-reductase / flavin reductase,1.4,True,3.33,95.0,111.0,60.0,3.36,95.8,58.4,0.072,1,1Z44
+N002,ALA,bb_NH,N,on_O21,1Z44,A43,Other ene-reductase / flavin reductase,1.4,True,3.33,95.0,111.0,60.0,3.32,92.9,61.9,0.089,1,1Z44
+N003,ASN,bb+sidechain,N,on_O11,3D9D,A402,Nitroalkane oxidase,2.1,False,2.75,100.0,122.0,67.0,2.88,112.3,40.2,0.095,2,3D9D 3D9E
+N004,ASN,bb+sidechain,N,on_O11,3FCJ,A402,Nitroalkane oxidase,2.4,False,3.3,144.0,150.0,9.0,3.31,148.6,8.5,0.105,1,3FCJ
+N005,ASN,bb+sidechain,N,on_O21,3D9D,A402,Nitroalkane oxidase,2.1,False,2.75,100.0,122.0,67.0,2.77,111.4,39.7,0.075,2,3D9D 3D9E
+N006,ASN,bb+sidechain,N,on_O21,1YKI,A71,Nitroreductase,1.7,False,3.19,77.0,122.0,74.0,3.31,116.7,49.0,0.055,1,1YKI
+N007,ASN,bb+sidechain,N,on_O21,3FCJ,A402,Nitroalkane oxidase,2.4,False,3.3,144.0,150.0,9.0,3.21,144.7,8.8,0.064,1,3FCJ
+N008,ASN,sidechain,ND2,on_O11,2BMR,A258,Nitroarene dioxygenase,1.5,True,3.08,104.0,131.0,32.0,3.12,103.3,29.9,0.092,2,2BMQ 2BMR
+N009,ASN,sidechain,ND2,on_O11,5K1W,A185,Other ene-reductase / flavin reductase,1.6,True,3.02,171.0,122.0,1.0,3.04,169.5,1.1,0.035,1,5K1W
+N010,ASN,sidechain,ND2,on_O11,6X7L,A216,Nitronate-CoA analog complexes,1.77,False,2.7,98.0,127.0,74.0,2.72,98.9,74.4,0.08,1,6X7L
+N011,ASN,sidechain,ND2,on_O21,2BMR,A258,Nitroarene dioxygenase,1.5,True,3.08,104.0,131.0,32.0,3.04,101.0,33.1,0.077,2,2BMQ 2BMR
+N012,ASN,sidechain,ND2,on_O21,5K1W,A185,Other ene-reductase / flavin reductase,1.6,True,3.02,171.0,122.0,1.0,2.91,166.6,2.0,0.116,1,5K1W
+N013,ASN,sidechain,ND2,on_O21,6X7L,A216,Nitronate-CoA analog complexes,1.77,False,2.7,98.0,127.0,74.0,2.68,97.0,74.9,0.068,1,6X7L
+N014,ASP,bb+sidechain,N,on_O11,3D9F,A402,Nitroalkane oxidase,2.2,False,2.82,103.0,145.0,77.0,2.83,101.3,78.7,0.088,1,3D9F
+N015,ASP,bb+sidechain,N,on_O21,3D9F,A402,Nitroalkane oxidase,2.2,False,2.82,103.0,145.0,77.0,2.8,99.4,80.6,0.085,1,3D9F
+N016,ASP,sidechain,OD2,on_O11,2C0U,A402,Nitroalkane oxidase,2.2,False,3.26,107.0,143.0,56.0,3.33,109.3,54.9,0.115,1,2C0U
+N017,ASP,sidechain,OD2,on_O21,2C0U,A402,Nitroalkane oxidase,2.2,False,3.26,107.0,143.0,56.0,3.24,108.3,54.6,0.118,1,2C0U
+N018,GLN,sidechain,NE2,on_O11,6WFI,A60,Nitronate-CoA analog complexes,1.37,False,2.86,101.0,106.0,79.0,2.88,99.9,80.0,0.118,1,6WFI
+N019,GLN,sidechain,NE2,on_O11,6XBR,A60,Nitronate-CoA analog complexes,1.55,False,3.06,89.0,100.0,77.0,3.08,89.0,75.7,0.112,1,6XBR
+N020,GLN,sidechain,NE2,on_O21,6WFI,A60,Nitronate-CoA analog complexes,1.37,False,2.86,101.0,106.0,79.0,2.84,98.0,81.8,0.093,1,6WFI
+N021,GLN,sidechain,NE2,on_O21,6XBR,A60,Nitronate-CoA analog complexes,1.55,False,3.06,89.0,100.0,77.0,3.06,87.5,74.8,0.063,1,6XBR
+N022,GLU,sidechain,OE1,on_O11,6WFI,A134,Nitronate-CoA analog complexes,1.37,False,3.08,121.0,96.0,53.0,3.09,134.8,41.6,0.118,1,6WFI
+N023,GLU,sidechain,OE1,on_O21,6WFI,A134,Nitronate-CoA analog complexes,1.37,False,3.08,121.0,96.0,53.0,3.01,130.8,43.5,0.093,1,6WFI
+N024,GLY,bb_NH,N,on_O11,9TZD,A97,Kemp eliminase (designed),1.2,True,2.93,102.0,128.0,17.0,2.96,104.3,14.9,0.09,1,9TZD
+N025,GLY,bb_NH,N,on_O21,9TZD,A97,Kemp eliminase (designed),1.2,True,2.93,102.0,128.0,17.0,2.87,102.8,13.1,0.08,1,9TZD
+N026,HIS,sidechain,ND1,on_O11,1GVO,A184,PETN reductase (OYE family),1.38,True,2.85,114.0,116.0,66.0,2.87,110.7,69.2,0.093,2,1GVO 1GVS
+N027,HIS,sidechain,NE2,on_O11,1VYR,A181,PETN reductase (OYE family),0.9,True,2.79,148.0,164.0,25.0,2.79,148.7,24.9,0.092,1,1VYR
+N028,HIS,sidechain,NE2,on_O11,3P7Y,A184,PETN reductase (OYE family),1.2,False,3.37,145.0,91.0,28.0,3.47,148.6,26.4,0.09,1,3P7Y
+N029,HIS,sidechain,NE2,on_O11,3F03,K181,PETN reductase (OYE family),1.34,True,3.16,116.0,137.0,4.0,3.21,115.5,2.0,0.087,1,3F03
+N030,HIS,sidechain,ND1,on_O11,3F03,K184,PETN reductase (OYE family),1.34,True,2.7,166.0,134.0,8.0,2.77,165.3,4.8,0.08,1,3F03
+N031,HIS,sidechain,NE2,on_O11,6WFI,A7,Nitronate-CoA analog complexes,1.37,False,3.19,167.0,146.0,11.0,3.24,167.2,12.7,0.118,1,6WFI
+N032,HIS,sidechain,NE2,on_O11,1GVR,A181,PETN reductase (OYE family),1.38,True,3.13,119.0,138.0,58.0,3.15,118.1,59.7,0.067,1,1GVR
+N033,HIS,sidechain,ND1,on_O11,1GVR,A184,PETN reductase (OYE family),1.38,True,2.99,128.0,101.0,49.0,2.99,128.8,48.7,0.086,1,1GVR
+N034,HIS,sidechain,NE2,on_O11,1GVS,A181,PETN reductase (OYE family),1.38,True,2.67,167.0,157.0,1.0,2.67,168.6,3.2,0.092,1,1GVS
+N035,HIS,sidechain,NE2,on_O11,4AB4,A173,Other ene-reductase / flavin reductase,1.5,True,3.46,155.0,142.0,20.0,3.55,153.7,20.1,0.097,1,4AB4
+N036,HIS,sidechain,NE2,on_O11,4AB4,A233,Other ene-reductase / flavin reductase,1.5,True,3.29,95.0,113.0,75.0,3.3,95.7,73.6,0.052,1,4AB4
+N037,HIS,sidechain,NE2,on_O11,6XBR,A7,Nitronate-CoA analog complexes,1.55,False,3.28,155.0,149.0,25.0,3.37,155.3,24.2,0.112,1,6XBR
+N038,HIS,sidechain,NE2,on_O11,5K1U,A182,Other ene-reductase / flavin reductase,1.551,True,2.82,152.0,166.0,12.0,2.86,156.0,11.3,0.103,1,5K1U
+N039,HIS,sidechain,NE2,on_O11,5K1W,A182,Other ene-reductase / flavin reductase,1.6,True,3.02,103.0,132.0,8.0,3.02,105.1,8.0,0.035,1,5K1W
+N040,HIS,sidechain,NE2,on_O11,3BW3,A298,Nitronate monooxygenase / 2-nitropropane dioxygenase,2.2,False,3.15,121.0,154.0,17.0,3.11,123.7,17.4,0.088,1,3BW3
+N041,HIS,sidechain,NE2,on_O11,2F3M,B107,Glutathione S-transferase (Meisenheimer / nitroaryl),2.7,True,3.45,151.0,135.0,1.0,3.43,152.3,1.0,0.079,1,2F3M
+N042,HIS,sidechain,NE2,on_O21,3P7Y,A184,PETN reductase (OYE family),1.2,False,3.37,145.0,91.0,28.0,3.36,145.3,27.8,0.086,1,3P7Y
+N043,HIS,sidechain,NE2,on_O21,3F03,K181,PETN reductase (OYE family),1.34,True,3.16,116.0,137.0,4.0,3.09,114.3,0.3,0.08,1,3F03
+N044,HIS,sidechain,ND1,on_O21,3F03,K184,PETN reductase (OYE family),1.34,True,2.7,166.0,134.0,8.0,2.61,166.9,3.6,0.087,1,3F03
+N045,HIS,sidechain,NE2,on_O21,6WFI,A7,Nitronate-CoA analog complexes,1.37,False,3.19,167.0,146.0,11.0,3.09,167.8,12.1,0.093,1,6WFI
+N046,HIS,sidechain,NE2,on_O21,1GVR,A181,PETN reductase (OYE family),1.38,True,3.13,119.0,138.0,58.0,3.06,117.1,60.6,0.097,1,1GVR
+N047,HIS,sidechain,ND1,on_O21,1GVR,A184,PETN reductase (OYE family),1.38,True,2.99,128.0,101.0,49.0,2.92,124.8,50.9,0.078,1,1GVR
+N048,HIS,sidechain,ND1,on_O21,1GVS,A184,PETN reductase (OYE family),1.38,True,2.92,111.0,116.0,69.0,2.89,106.7,73.3,0.088,1,1GVS
+N049,HIS,sidechain,NE2,on_O21,4AB4,A173,Other ene-reductase / flavin reductase,1.5,True,3.46,155.0,142.0,20.0,3.4,152.9,22.7,0.05,1,4AB4
+N050,HIS,sidechain,NE2,on_O21,4AB4,A233,Other ene-reductase / flavin reductase,1.5,True,3.29,95.0,113.0,75.0,3.28,92.2,77.6,0.098,1,4AB4
+N051,HIS,sidechain,NE2,on_O21,6XBR,A7,Nitronate-CoA analog complexes,1.55,False,3.28,155.0,149.0,25.0,3.22,155.7,24.1,0.063,1,6XBR
+N052,HIS,sidechain,NE2,on_O21,5K1W,A182,Other ene-reductase / flavin reductase,1.6,True,3.02,103.0,132.0,8.0,2.92,103.3,10.6,0.116,1,5K1W
+N053,HIS,sidechain,NE2,on_O21,3BW3,A298,Nitronate monooxygenase / 2-nitropropane dioxygenase,2.2,False,3.15,121.0,154.0,17.0,3.09,119.1,16.7,0.079,1,3BW3
+N054,HIS,sidechain,NE2,on_O21,2F3M,B107,Glutathione S-transferase (Meisenheimer / nitroaryl),2.7,True,3.45,151.0,135.0,1.0,3.33,148.9,1.1,0.091,1,2F3M
+N055,MET,bb_NH,N,on_O11,6SRY,A237,Kemp eliminase (designed),0.95,True,2.82,106.0,117.0,47.0,2.86,102.4,51.5,0.072,7,3NYD 4BS0 5RGE 6SRY 7K4Z 8FOS 8RD5
+N056,MET,bb_NH,N,on_O21,6SRY,A237,Kemp eliminase (designed),0.95,True,2.82,106.0,117.0,47.0,2.79,101.1,51.1,0.093,5,3NYD 4BS0 6SRY 7K4Z 8RD5
+N057,PHE,bb_NH,N,on_O11,6X7L,A223,Nitronate-CoA analog complexes,1.77,False,2.91,127.0,128.0,52.0,2.95,128.9,50.6,0.08,1,6X7L
+N058,PHE,bb_NH,N,on_O21,1YKI,A70,Nitroreductase,1.7,False,3.16,163.0,129.0,5.0,3.16,161.9,5.5,0.055,1,1YKI
+N059,PHE,bb_NH,N,on_O21,6X7L,A223,Nitronate-CoA analog complexes,1.77,False,2.91,127.0,128.0,52.0,2.87,125.1,53.5,0.068,1,6X7L
+N060,SER,bb+sidechain,N,on_O11,6WFI,A115,Nitronate-CoA analog complexes,1.37,False,2.81,158.0,128.0,22.0,2.83,158.1,21.7,0.093,1,6WFI
+N061,SER,bb+sidechain,N,on_O11,6XBR,A115,Nitronate-CoA analog complexes,1.55,False,2.72,179.0,117.0,1.0,2.75,176.7,2.6,0.063,1,6XBR
+N062,SER,bb+sidechain,N,on_O21,6WFI,A115,Nitronate-CoA analog complexes,1.37,False,2.81,158.0,128.0,22.0,2.68,155.9,24.1,0.118,1,6WFI
+N063,SER,bb+sidechain,N,on_O21,6XBR,A115,Nitronate-CoA analog complexes,1.55,False,2.72,179.0,117.0,1.0,2.59,178.5,1.4,0.112,1,6XBR
+N064,SER,bb_NH,N,on_O11,4QIT,A183,Nitronate monooxygenase / 2-nitropropane dioxygenase,1.4,False,2.79,114.0,126.0,39.0,2.84,108.7,51.6,0.071,1,4QIT
+N065,SER,bb_NH,N,on_O21,4QIT,A183,Nitronate monooxygenase / 2-nitropropane dioxygenase,1.4,False,2.79,114.0,126.0,39.0,2.75,107.7,51.4,0.119,1,4QIT
+N066,SER,sidechain,OG,on_O11,2C0U,A276,Nitroalkane oxidase,2.2,False,3.37,143.0,153.0,15.0,3.54,143.8,15.4,0.115,1,2C0U
+N067,SER,sidechain,OG,on_O21,2C0U,A276,Nitroalkane oxidase,2.2,False,3.37,143.0,153.0,15.0,3.38,144.3,14.0,0.118,1,2C0U
+N068,THR,bb_NH,N,on_O11,5J8G,A41,Nitroreductase,1.9,True,2.71,134.0,143.0,40.0,2.73,134.3,39.6,0.079,1,5J8G
+N069,THR,bb_NH,N,on_O11,1OON,A41,Nitroreductase,2.49,True,3.12,113.0,152.0,39.0,3.15,114.6,35.8,0.08,1,1OON
+N070,THR,bb_NH,N,on_O21,5J8G,A41,Nitroreductase,1.9,True,2.71,134.0,143.0,40.0,2.64,132.0,40.9,0.079,1,5J8G
+N071,THR,bb_NH,N,on_O21,1OON,A41,Nitroreductase,2.49,True,3.12,113.0,152.0,39.0,3.05,112.4,39.6,0.085,1,1OON
+N072,THR,sidechain,OG1,on_O11,1GVS,A26,PETN reductase (OYE family),1.38,True,2.56,127.0,144.0,45.0,2.58,124.1,44.5,0.099,1,1GVS
+N073,THR,sidechain,OG1,on_O11,5K1U,A35,Other ene-reductase / flavin reductase,1.551,True,3.07,110.0,134.0,62.0,3.06,111.1,62.5,0.052,1,5K1U
+N074,THR,sidechain,OG1,on_O21,1GVS,A26,PETN reductase (OYE family),1.38,True,2.56,127.0,144.0,45.0,2.53,119.3,44.8,0.092,1,1GVS
+N075,THR,sidechain,OG1,on_O21,5K1U,A35,Other ene-reductase / flavin reductase,1.551,True,3.07,110.0,134.0,62.0,3.04,106.8,63.1,0.103,1,5K1U
+N076,TRP,sidechain,NE1,on_O11,4QIT,A325,Nitronate monooxygenase / 2-nitropropane dioxygenase,1.4,False,2.73,143.0,90.0,29.0,2.81,150.6,25.5,0.119,1,4QIT
+N077,TRP,sidechain,NE1,on_O11,3BW3,A320,Nitronate monooxygenase / 2-nitropropane dioxygenase,2.2,False,3.39,106.0,142.0,56.0,3.42,105.6,55.1,0.079,1,3BW3
+N078,TRP,sidechain,NE1,on_O21,3BW3,A320,Nitronate monooxygenase / 2-nitropropane dioxygenase,2.2,False,3.39,106.0,142.0,56.0,3.35,102.9,59.3,0.088,1,3BW3
+N079,TYR,sidechain,OH,on_O11,1GVO,A351,PETN reductase (OYE family),1.38,True,3.29,102.0,100.0,78.0,3.28,108.2,68.3,0.093,2,1GVO 1GVR
+N080,TYR,sidechain,OH,on_O11,4AB4,A178,Other ene-reductase / flavin reductase,1.5,True,2.83,118.0,116.0,61.0,2.86,117.2,62.2,0.05,2,4AB4 4AEO
+N081,TYR,sidechain,OH,on_O11,1GVS,A351,PETN reductase (OYE family),1.38,True,3.15,82.0,102.0,82.0,3.12,89.1,77.4,0.11,1,1GVS
+N082,TYR,sidechain,OH,on_O11,1AQX,A7,Glutathione S-transferase (Meisenheimer / nitroaryl),2.0,False,2.77,83.0,163.0,67.0,2.78,84.1,65.4,0.074,1,1AQX
+N083,TYR,sidechain,OH,on_O11,2F3M,B115,Glutathione S-transferase (Meisenheimer / nitroaryl),2.7,True,2.85,107.0,139.0,60.0,2.84,108.1,60.9,0.091,1,2F3M
+N084,TYR,sidechain,OH,on_O21,1GVO,A351,PETN reductase (OYE family),1.38,True,3.29,102.0,100.0,78.0,3.23,104.5,73.2,0.091,2,1GVO 1GVR
+N085,TYR,sidechain,OH,on_O21,4AB4,A178,Other ene-reductase / flavin reductase,1.5,True,2.83,118.0,116.0,61.0,2.78,115.7,63.6,0.097,2,4AB4 4AEO
+N086,TYR,sidechain,OH,on_O21,1GVS,A351,PETN reductase (OYE family),1.38,True,3.15,82.0,102.0,82.0,3.13,85.2,79.3,0.094,1,1GVS
+N087,TYR,sidechain,OH,on_O21,1AQX,A7,Glutathione S-transferase (Meisenheimer / nitroaryl),2.0,False,2.77,83.0,163.0,67.0,2.79,80.3,67.1,0.078,1,1AQX
+N088,TYR,sidechain,OH,on_O21,2F3M,B115,Glutathione S-transferase (Meisenheimer / nitroaryl),2.7,True,2.85,107.0,139.0,60.0,2.83,103.4,60.5,0.079,1,2F3M

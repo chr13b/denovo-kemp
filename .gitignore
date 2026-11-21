@@ -45,3 +45,12 @@ credentials
 # Organizers' tools: fetched per machine with aws s3 cp (see wiki/submission.md), not ours to version
 validate-submission.py
 submit-designs.sh
+
+# pre_analysis/: bulk downloads and regenerable intermediates (re-created by its scripts, see pre_analysis/README.md)
+pre_analysis/**/structures/**/*.cif
+pre_analysis/**/structures/**/*.pdb
+pre_analysis/**/*.pkl
+pre_analysis/**/*.pse
+pre_analysis/kemp_eliminase/code/
+pre_analysis/kemp_eliminase/theozyme/rosetta_denovoKemp/
+pre_analysis/kemp_theozymes_v2/candidates_v2.csv

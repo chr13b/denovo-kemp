@@ -1,0 +1,56 @@
+{
+ "default": {
+  "base": 0.28,
+  "pi": 0.2,
+  "subs": 0.12,
+  "fit": 0.08,
+  "evidence": 0.17,
+  "hb": 0.05,
+  "lg": 0.05
+ },
+ "geometry_only": {
+  "base": 0.35,
+  "pi": 0.25,
+  "subs": 0.12,
+  "fit": 0.1,
+  "evidence": 0.0,
+  "hb": 0.06,
+  "lg": 0.06
+ },
+ "evidence_heavy": {
+  "base": 0.18,
+  "pi": 0.12,
+  "subs": 0.08,
+  "fit": 0.05,
+  "evidence": 0.45,
+  "hb": 0.05,
+  "lg": 0.05
+ },
+ "base_first": {
+  "base": 0.5,
+  "pi": 0.12,
+  "subs": 0.1,
+  "fit": 0.05,
+  "evidence": 0.1,
+  "hb": 0.04,
+  "lg": 0.04
+ },
+ "substrate_heavy": {
+  "base": 0.2,
+  "pi": 0.15,
+  "subs": 0.32,
+  "fit": 0.06,
+  "evidence": 0.12,
+  "hb": 0.05,
+  "lg": 0.05
+ },
+ "ignore_optional": {
+  "base": 0.3,
+  "pi": 0.22,
+  "subs": 0.13,
+  "fit": 0.08,
+  "evidence": 0.18,
+  "hb": 0.0,
+  "lg": 0.0
+ }
+}

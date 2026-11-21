@@ -1,0 +1,47 @@
+pdb,chain,ligand,kind,method,rmsd_A (ligand atoms or protein CA),n_atoms,nearest_Asp/Glu,its_O_to_N3_A,note
+7K4Q,A,6NT,direct,reference,0.0,10,ASP127A,2.25,-
+3NYD,A,3NY,direct,ligand fit (10 atoms),0.041,10,ASP127A,2.44,-
+3NZ1,A,3NY,direct,ligand fit (10 atoms),0.037,10,GLU178A,4.61,-
+3Q2D,A,3NY,direct,ligand fit (10 atoms),0.056,10,GLU143A,9.26,-
+3UXD,A,0CU,direct,ligand fit (9 atoms),0.064,9,GLU231A,2.55,-
+3UZJ,A,0CT,direct,ligand fit (9 atoms),0.062,9,GLU231A,2.7,-
+4BS0,A,6NT,direct,ligand fit (10 atoms),0.046,10,ASP127A,2.53,-
+5RGA,A,6NT,direct,ligand fit (10 atoms),0.015,10,ASP127A,2.47,-
+6NW4,A,6NT,direct,ligand fit (10 atoms),0.055,10,GLU178A,4.5,-
+7K4Z,A,6NT,direct,ligand fit (10 atoms),0.018,10,ASP127A,2.51,-
+8FOQ,A,3NY,direct,ligand fit (10 atoms),0.016,10,GLU178A,4.62,-
+8FOR,A,6NT,direct,ligand fit (10 atoms),0.013,10,ASP45A,7.67,-
+8FOS,A,6NT,direct,ligand fit (10 atoms),0.02,10,ASP127A,2.61,-
+8RD5,A,6NT,direct,ligand fit (10 atoms),0.047,10,ASP127A,2.57,-
+8USF,A,6NT,direct,ligand fit (10 atoms),0.022,10,ASP127A,2.47,-
+9N0J,A,3NY,direct,ligand fit (10 atoms),0.053,10,ASP49A,2.47,-
+9TZD,A,6NT,direct,ligand fit (10 atoms),0.054,10,ASP24A,4.68,-
+Des27.7_sub,-,MOL (5-nitrobenzisoxazole),direct,substrate fit (10 atoms),0.055,10,ASP162,2.71,"MD starting model (Listov 2025 Zenodo), modelled pose"
+Des27_sub,-,MOL (5-nitrobenzisoxazole),direct,substrate fit (10 atoms),0.055,10,ASP162,2.72,"MD starting model (Listov 2025 Zenodo), modelled pose"
+29SB,A,6NT,direct (extended),ligand fit (10 atoms),0.055,10,ASP49A,2.65,1 ligand copies in entry; used 6NT A201
+3UZ5,A,0CU,direct (extended),ligand fit (9 atoms),0.052,9,GLU231A,2.63,2 ligand copies in entry; used 0CU A291
+5RGB,A,6NT,direct (extended),ligand fit (10 atoms),0.021,10,ASP127A,2.56,2 ligand copies in entry; used 6NT A401
+5RGC,A,6NT,direct (extended),ligand fit (10 atoms),0.032,10,ASP127A,2.5,2 ligand copies in entry; used 6NT A401
+5RGD,A,6NT,direct (extended),ligand fit (10 atoms),0.015,10,ASP127A,2.48,2 ligand copies in entry; used 6NT A401
+5RGE,A,6NT,direct (extended),ligand fit (10 atoms),0.015,10,ASP127A,2.5,1 ligand copies in entry; used 6NT A500
+5RGF,A,6NT,direct (extended),ligand fit (10 atoms),0.02,10,ASP127A,2.51,2 ligand copies in entry; used 6NT A401
+6SRW,A,6NT,direct (extended),ligand fit (10 atoms),0.024,10,ASP127A,2.37,2 ligand copies in entry; used 6NT A402
+6SRY,A,6NT,direct (extended),ligand fit (10 atoms),0.037,10,ASP127A,2.57,2 ligand copies in entry; used 6NT A401
+6SRZ,A,6NT,direct (extended),ligand fit (10 atoms),0.03,10,ASP127A,2.4,2 ligand copies in entry; used 6NT A402
+6SS1,A,6NT,direct (extended),ligand fit (10 atoms),0.043,10,ASP127A,2.61,2 ligand copies in entry; used 6NT A401
+6SS3,A,6NT,direct (extended),ligand fit (10 atoms),0.024,10,ASP127A,2.52,2 ligand copies in entry; used 6NT A401
+6TU6,P,6NT,direct (extended),ligand fit (10 atoms),0.025,10,ASP127P,2.51,16 ligand copies in entry; used 6NT P401
+7K4U,A,6NT,direct (extended),ligand fit (10 atoms),0.014,10,ASP127A,2.54,1 ligand copies in entry; used 6NT A401
+7K4X,A,6NT,direct (extended),ligand fit (10 atoms),0.01,10,ASP127A,2.49,2 ligand copies in entry; used 6NT A401
+8KH3,A,VWF,direct (extended),ligand fit (10 atoms),0.064,10,ASP127A,2.65,1 ligand copies in entry; used VWF A401
+8USH,A,6NT,direct (extended),ligand fit (10 atoms),0.014,10,ASP127A,2.44,2 ligand copies in entry; used 6NT A401
+8USJ,A,6NT,direct (extended),ligand fit (10 atoms),0.014,10,ASP127A,2.47,3 ligand copies in entry; used 6NT A401
+8USL,A,6NT,direct (extended),ligand fit (10 atoms),0.011,10,ASP127A,2.5,2 ligand copies in entry; used 6NT A500
+3NPV,A,-,transferred,align onto 3Q2D_A,0.381,200,GLU142A,9.45,frame inherited from homolog; check base-to-N3 distance
+3UXA,A,-,transferred,align onto 3UXD_A,0.268,238,GLU231A,2.17,frame inherited from homolog; check base-to-N3 distance
+3NYZ,A,-,transferred,align onto 3NZ1_A,0.439,220,GLU178A,6.65,frame inherited from homolog; check base-to-N3 distance
+3O2L,A,-,transferred,align onto 3NYD_A,0.303,282,ASP127A,2.16,frame inherited from homolog; check base-to-N3 distance
+9U01,A,-,transferred,align onto 9TZD_A,0.28,180,ASP24A,4.6,frame inherited from homolog; check base-to-N3 distance
+9HVB,A,-,transferred,cealign onto Des27.7_sub,2.23,208,ASP162A,2.5,frame inherited from homolog; check base-to-N3 distance
+9HVG,A,-,transferred,cealign onto Des27.7_sub,2.809,240,GLU183A,2.65,frame inherited from homolog; check base-to-N3 distance
+9HVH,A,-,transferred,cealign onto Des27.7_sub,3.391,240,GLU168A,4.11,frame inherited from homolog; check base-to-N3 distance

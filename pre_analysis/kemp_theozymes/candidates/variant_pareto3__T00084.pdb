@@ -1,0 +1,41 @@
+REMARK Kemp theozyme T00084  rank 84 of 16650  total 0.833  [pareto3]
+REMARK components: base ASP  162 (Des27.7_sub), pi TRP A110 (3UZJ), stabiliser none ()
+REMARK scores: base 0.948 pi 0.969 nitro - compat 1.0 evidence 0.378
+REMARK geometry: base d=2.69A angA=130 torA=-180 angB=113 torB=-179; pi d=3.76A tilt=16.4 lat=1.37
+REMARK chains: A=6NT TSA, B=base (C=dyad Asp), D=pi stacker, E=nitro stabiliser
+REMARK fix atoms (motif scaffolding): base/dyad/pi = side chain + CA; no stabiliser
+HETATM    1  N1  6NT A   1      -4.350  30.894   2.795  1.00  0.00           N
+HETATM    2  N2  6NT A   1      -4.171  29.769   2.044  1.00  0.00           N
+HETATM    3  C3A 6NT A   1      -6.311  29.981   2.428  1.00  0.00           C
+HETATM    4  N3  6NT A   1      -5.395  29.209   1.824  1.00  0.00           N
+HETATM    5  C4  6NT A   1      -7.703  29.874   2.520  1.00  0.00           C
+HETATM    6  C5  6NT A   1      -8.409  30.830   3.227  1.00  0.00           C
+HETATM    7  C6  6NT A   1      -7.766  31.899   3.837  1.00  0.00           C
+HETATM    8  C7  6NT A   1      -6.385  32.006   3.749  1.00  0.00           C
+HETATM    9  C7A 6NT A   1      -5.661  31.035   3.037  1.00  0.00           C
+HETATM   10  O11 6NT A   1     -10.464  31.644   3.619  1.00  0.00           O
+HETATM   11  O21 6NT A   1     -10.471  29.509   2.938  1.00  0.00           O
+HETATM   12  NO1 6NT A   1      -9.841  30.709   3.293  1.00  0.00           N
+ATOM     13  N   ASP B   1      -4.613  25.109  -1.957  1.00  0.00           N
+ATOM     14  CA  ASP B   1      -5.800  24.737  -1.197  1.00  0.00           C
+ATOM     15  C   ASP B   1      -6.364  23.406  -1.671  1.00  0.00           C
+ATOM     16  O   ASP B   1      -6.728  23.256  -2.838  1.00  0.00           O
+ATOM     17  CB  ASP B   1      -6.870  25.822  -1.309  1.00  0.00           C
+ATOM     18  CG  ASP B   1      -6.574  27.040  -0.445  1.00  0.00           C
+ATOM     19  OD1 ASP B   1      -5.709  26.952   0.397  1.00  0.00           O
+ATOM     20  OD2 ASP B   1      -7.213  28.047  -0.633  1.00  0.00           O
+ATOM     21  N   TRP D   1     -12.777  32.587   0.442  1.00  0.00           N
+ATOM     22  CA  TRP D   1     -11.443  32.902   0.794  1.00  0.00           C
+ATOM     23  C   TRP D   1     -11.410  34.364   1.093  1.00  0.00           C
+ATOM     24  O   TRP D   1     -11.600  35.157   0.210  1.00  0.00           O
+ATOM     25  CB  TRP D   1     -10.583  32.614  -0.418  1.00  0.00           C
+ATOM     26  CG  TRP D   1      -9.117  32.357  -0.239  1.00  0.00           C
+ATOM     27  CD1 TRP D   1      -8.407  31.250  -0.629  1.00  0.00           C
+ATOM     28  CD2 TRP D   1      -8.107  33.276   0.258  1.00  0.00           C
+ATOM     29  CE2 TRP D   1      -6.813  32.565   0.159  1.00  0.00           C
+ATOM     30  CE3 TRP D   1      -8.131  34.535   0.775  1.00  0.00           C
+ATOM     31  NE1 TRP D   1      -7.064  31.386  -0.372  1.00  0.00           N
+ATOM     32  CZ2 TRP D   1      -5.651  33.128   0.565  1.00  0.00           C
+ATOM     33  CZ3 TRP D   1      -6.941  35.078   1.196  1.00  0.00           C
+ATOM     34  CH2 TRP D   1      -5.721  34.386   1.081  1.00  0.00           C
+END

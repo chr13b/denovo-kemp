@@ -1,0 +1,31 @@
+{
+ "rho": -0.10000000000000009,
+ "n": 5,
+ "table": [
+  {
+   "lineage": "HG / xylanase 1GOR",
+   "geometry_only": 0.715,
+   "kcat_KM": 230000.0
+  },
+  {
+   "lineage": "KE59 / IGPS",
+   "geometry_only": 0.911,
+   "kcat_KM": 60430
+  },
+  {
+   "lineage": "KE70 / DERA",
+   "geometry_only": 0.802,
+   "kcat_KM": 55000
+  },
+  {
+   "lineage": "Des27 / IGPS chimera",
+   "geometry_only": 0.911,
+   "kcat_KM": 12700
+  },
+  {
+   "lineage": "1A53-2 / IGPS",
+   "geometry_only": 0.76,
+   "kcat_KM": 64.2
+  }
+ ]
+}

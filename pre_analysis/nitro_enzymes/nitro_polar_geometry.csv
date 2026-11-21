@@ -1,0 +1,378 @@
+pdb_id,family,nitro_ligand,nitro_group,contact,resname,resnum,atom,category,nitro_O,d_O_X,ang_N_O_X,ang_X,elev_deg
+3NYD,Kemp eliminase (designed),A:3NY317,1,A:MET237,MET,237,N,Backbone N-H,O21,3.106,103.257,122.701,49.833
+3NYD,Kemp eliminase (designed),A:3NY317,1,A:HOH879,HOH,879,O,Water,O11,1.432,105.025,,7.049
+3NYD,Kemp eliminase (designed),B:3NY317,2,B:MET237,MET,237,N,Backbone N-H,O21,3.073,100.634,121.689,55.818
+4BS0,Kemp eliminase (designed),A:6NT1305,1,A:MET237,MET,237,N,Backbone N-H,O21,2.883,103.67,118.584,46.13
+4BS0,Kemp eliminase (designed),B:6NT1305,2,B:MET237,MET,237,N,Backbone N-H,O21,2.939,101.586,116.955,51.098
+7K4Z,Kemp eliminase (designed),A:6NT402,1,A:MET237,MET,237,N,Backbone N-H,O11,2.994,104.157,116.238,44.85
+5RGE,Kemp eliminase (designed),A:6NT500,1,A:MET237,MET,237,N,Backbone N-H,O11,3.193,100.415,116.175,53.862
+9TZD,Kemp eliminase (designed),A:6NT300,1,A:GLY97,GLY,97,N,Backbone N-H,O21,2.934,102.14,127.884,17.1
+9TZD,Kemp eliminase (designed),A:6NT300,1,A:VAL71,VAL,71,O,Acceptor O,O21,3.372,138.493,94.955,23.321
+8FOS,Kemp eliminase (designed),A:6NT502,1,A:MET237,MET,237,N,Backbone N-H,O11,3.033,102.731,117.071,52.459
+6SRY,Kemp eliminase (designed),A:6NT401,1,A:MET237,MET,237,N,Backbone N-H,O21,2.82,105.635,117.316,46.971
+6SRY,Kemp eliminase (designed),B:6NT401,2,B:MET237,MET,237,N,Backbone N-H,O21,2.799,104.585,118.63,51.266
+8RD5,Kemp eliminase (designed),A:6NT401,1,A:MET237,MET,237,N,Backbone N-H,O11,2.895,105.537,121.091,44.153
+8RD5,Kemp eliminase (designed),B:6NT401,2,B:MET237,MET,237,N,Backbone N-H,O21,2.883,104.668,120.385,43.82
+1GVR,PETN reductase (OYE family),A:TNL500,1,A:THR26,THR,26,OG1,Ser/Thr/Tyr OH,O21,2.78,125.376,148.97,0.907
+1GVR,PETN reductase (OYE family),A:TNL500,1,A:TYR186,TYR,186,OH,Ser/Thr/Tyr OH,O22,3.229,95.9,64.465,39.979
+1GVR,PETN reductase (OYE family),A:TNL500,1,A:FMN401,FMN,401,O4,Cofactor / other ligand,O21,3.143,114.066,104.034,54.095
+1GVR,PETN reductase (OYE family),A:TNL500,1,A:HIS181,HIS,181,NE2,His N,O22,3.135,119.303,137.607,58.361
+1GVR,PETN reductase (OYE family),A:TNL500,2,A:TYR351,TYR,351,OH,Ser/Thr/Tyr OH,O41,2.753,102.598,98.756,76.943
+1GVR,PETN reductase (OYE family),A:TNL500,2,A:HOH2136,HOH,2136,O,Water,O41,3.129,99.299,,7.725
+1GVR,PETN reductase (OYE family),A:TNL500,3,A:HIS184,HIS,184,ND1,His N,O62,2.988,127.949,101.428,49.128
+1GVR,PETN reductase (OYE family),A:TNL500,3,A:FMN401,FMN,401,N10,Cofactor / other ligand,O61,3.009,101.355,109.111,74.722
+1GVR,PETN reductase (OYE family),A:TNL500,3,A:HOH2291,HOH,2291,O,Water,O62,2.499,115.153,,5.929
+1GVO,PETN reductase (OYE family),A:DNF500,1,A:HIS184,HIS,184,ND1,His N,O21,2.852,113.64,115.806,65.911
+1GVO,PETN reductase (OYE family),A:DNF500,1,A:FMN401,FMN,401,N10,Cofactor / other ligand,O22,3.26,111.893,100.471,53.205
+1GVO,PETN reductase (OYE family),A:DNF500,1,A:HOH2818,HOH,2818,O,Water,O21,2.879,138.86,,31.283
+1GVO,PETN reductase (OYE family),A:DNF500,1,A:HOH2817,HOH,2817,O,Water,O21,3.132,108.29,,2.27
+1GVO,PETN reductase (OYE family),A:DNF500,2,A:HOH2816,HOH,2816,O,Water,O41,3.114,101.598,,5.165
+1GVO,PETN reductase (OYE family),A:DNF500,2,A:TYR351,TYR,351,OH,Ser/Thr/Tyr OH,O41,3.291,101.891,100.271,78.095
+1GVO,PETN reductase (OYE family),A:DNF500,2,A:HOH2478,HOH,2478,O,Water,O41,2.749,148.931,,10.555
+1GVO,PETN reductase (OYE family),A:DNF500,2,A:HOH2783,HOH,2783,O,Water,O41,3.439,141.747,,27.876
+1GVS,PETN reductase (OYE family),A:TNF500,1,A:TYR351,TYR,351,OH,Ser/Thr/Tyr OH,O41,3.152,81.744,102.076,81.709
+1GVS,PETN reductase (OYE family),A:TNF500,1,A:HOH2293,HOH,2293,O,Water,O41,3.211,109.707,,10.345
+1GVS,PETN reductase (OYE family),A:TNF500,2,A:HIS184,HIS,184,ND1,His N,O22,2.922,110.789,116.101,68.921
+1GVS,PETN reductase (OYE family),A:TNF500,2,A:FMN401,FMN,401,N10,Cofactor / other ligand,O21,3.202,108.506,106.018,55.673
+1GVS,PETN reductase (OYE family),A:TNF500,2,A:HOH2567,HOH,2567,O,Water,O22,2.752,138.923,,24.967
+1GVS,PETN reductase (OYE family),A:TNF500,2,A:HOH2565,HOH,2565,O,Water,O21,3.056,81.417,,81.051
+1GVS,PETN reductase (OYE family),A:TNF500,2,A:HOH2566,HOH,2566,O,Water,O21,3.257,110.279,,10.25
+1GVS,PETN reductase (OYE family),A:TNF500,3,A:THR26,THR,26,OG1,Ser/Thr/Tyr OH,O61,2.562,127.282,144.157,45.007
+1GVS,PETN reductase (OYE family),A:TNF500,3,A:HIS181,HIS,181,NE2,His N,O62,2.672,167.405,156.707,1.284
+1GVS,PETN reductase (OYE family),A:TNF500,3,A:FMN401,FMN,401,N3,Cofactor / other ligand,O62,3.15,104.292,109.103,75.618
+1GVS,PETN reductase (OYE family),A:TNF500,3,A:FMN401,FMN,401,O4,Cofactor / other ligand,O61,3.189,88.277,102.788,74.047
+1VYR,PETN reductase (OYE family),A:TNF1402,1,A:TYR351,TYR,351,OH,Ser/Thr/Tyr OH,O42,2.258,152.767,104.045,25.02
+1VYR,PETN reductase (OYE family),A:TNF1402,1,A:HOH2749,HOH,2749,O,Water,O42,2.807,124.659,,12.961
+1VYR,PETN reductase (OYE family),A:TNF1402,2,A:TYR186,TYR,186,OH,Ser/Thr/Tyr OH,O22,3.42,81.284,82.209,59.485
+1VYR,PETN reductase (OYE family),A:TNF1402,2,A:HIS181,HIS,181,NE2,His N,O21,2.79,148.177,163.696,24.625
+1VYR,PETN reductase (OYE family),A:TNF1402,2,A:FMN1401,FMN,1401,N3,Cofactor / other ligand,O21,3.288,109.853,112.535,37.185
+1VYR,PETN reductase (OYE family),A:TNF1402,2,A:FMN1401,FMN,1401,O4,Cofactor / other ligand,O21,3.458,82.539,75.238,67.771
+1VYR,PETN reductase (OYE family),A:TNF1402,3,A:HIS184,HIS,184,ND1,His N,O62,1.836,176.637,109.948,2.326
+1VYR,PETN reductase (OYE family),A:TNF1402,3,A:FMN1401,FMN,1401,N1,Cofactor / other ligand,O62,3.253,93.649,107.39,70.059
+1VYR,PETN reductase (OYE family),A:TNF1402,3,A:HIS184,HIS,184,NE2,His N,O62,3.408,146.035,81.238,6.356
+3F03,PETN reductase (OYE family),K:NYH600,1,K:TYR186,TYR,186,OH,Ser/Thr/Tyr OH,O1N,3.275,76.404,85.966,67.706
+3F03,PETN reductase (OYE family),K:NYH600,1,K:HIS181,HIS,181,NE2,His N,O1N,3.16,116.011,137.32,4.283
+3F03,PETN reductase (OYE family),K:NYH600,1,K:FMN1401,FMN,1401,N3,Cofactor / other ligand,O1N,3.319,94.401,98.762,69.484
+3F03,PETN reductase (OYE family),K:NYH600,1,K:HIS184,HIS,184,ND1,His N,O2N,2.704,165.541,134.219,7.753
+3F03,PETN reductase (OYE family),K:NYH600,1,K:FMN1401,FMN,1401,N1,Cofactor / other ligand,O2N,3.24,101.747,86.758,77.14
+3P7Y,PETN reductase (OYE family),A:P7Y402,1,A:HOH701,HOH,701,O,Water,O2,2.917,113.51,,62.175
+3P7Y,PETN reductase (OYE family),A:P7Y402,1,A:HOH1053,HOH,1053,O,Water,O1,3.397,118.192,,61.707
+3P7Y,PETN reductase (OYE family),A:P7Y402,1,A:HIS184,HIS,184,NE2,His N,O2,3.374,145.13,90.715,27.616
+3P7Y,PETN reductase (OYE family),A:P7Y402,1,A:HOH398,HOH,398,O,Water,O2,2.774,97.721,,59.157
+3P80,PETN reductase (OYE family),A:P80402,1,A:HOH781,HOH,781,O,Water,O1,1.865,146.929,,29.53
+3P80,PETN reductase (OYE family),A:P80402,1,A:TYR351,TYR,351,OH,Ser/Thr/Tyr OH,O1,2.629,98.679,142.602,14.96
+3P80,PETN reductase (OYE family),A:P80402,1,A:HOH408,HOH,408,O,Water,O1,3.006,95.993,,68.541
+3P80,PETN reductase (OYE family),A:P80402,1,A:HOH1003,HOH,1003,O,Water,O1,3.244,157.337,,17.991
+3P80,PETN reductase (OYE family),A:P80402,1,A:HOH398,HOH,398,O,Water,O2,3.0,108.639,,71.33
+3P80,PETN reductase (OYE family),A:P80403,2,A:GLN241,GLN,241,OE1,Acceptor O,O2,3.396,74.094,74.44,64.602
+3P80,PETN reductase (OYE family),A:P80403,2,A:GLN241,GLN,241,NE2,Asn/Gln NH2,O1,2.897,82.588,107.177,81.982
+3P80,PETN reductase (OYE family),A:P80403,2,A:HOH548,HOH,548,O,Water,O2,3.054,166.029,,13.427
+3P80,PETN reductase (OYE family),A:P80403,2,A:HOH769,HOH,769,O,Water,O2,3.472,132.322,,11.665
+3P80,PETN reductase (OYE family),A:P80403,2,A:HOH924,HOH,924,O,Water,O1,2.626,111.292,,20.55
+3P81,PETN reductase (OYE family),A:P81402,1,A:TYR351,TYR,351,OH,Ser/Thr/Tyr OH,O1,2.938,101.879,75.626,60.075
+3P81,PETN reductase (OYE family),A:P81402,1,A:HOH443,HOH,443,O,Water,O1,2.771,104.656,,0.545
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,2,A:FMN401,FMN,401,N1,Cofactor / other ligand,O22,3.227,116.322,89.729,63.262
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,2,A:FMN401,FMN,401,O2,Cofactor / other ligand,O22,3.46,122.581,57.859,40.314
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,2,A:FMN401,FMN,401,N3,Cofactor / other ligand,O22,3.106,84.764,90.851,62.109
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,2,A:ASN185,ASN,185,ND2,Asn/Gln NH2,O22,3.021,171.045,121.935,1.067
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,2,A:HIS182,HIS,182,NE2,His N,O22,3.024,103.241,131.538,7.822
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,2,A:FMN401,FMN,401,O4,Cofactor / other ligand,O21,3.297,91.09,78.022,80.944
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,1,A:TNF402,TNF,402,O41,Cofactor / other ligand,O42,3.349,124.821,,26.684
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,2,A:FMN400,FMN,400,N3,Cofactor / other ligand,O21,3.103,99.524,108.807,58.783
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,2,A:FMN400,FMN,400,O4,Cofactor / other ligand,O21,3.479,71.481,74.631,71.382
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,2,A:HIS182,HIS,182,NE2,His N,O21,2.82,151.871,166.166,11.697
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,2,A:THR35,THR,35,OG1,Ser/Thr/Tyr OH,O22,3.074,109.88,134.273,62.091
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,3,A:ASN185,ASN,185,ND2,Asn/Gln NH2,O62,2.754,107.639,81.76,72.313
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,3,A:FMN400,FMN,400,N10,Cofactor / other ligand,O61,3.158,102.359,107.08,39.795
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,3,A:HOH653,HOH,653,O,Water,O61,2.945,126.649,,27.093
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,3,A:TNF402,TNF,402,N4,Cofactor / other ligand,O61,2.934,133.24,,43.156
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,3,A:TNF402,TNF,402,O41,Cofactor / other ligand,O61,3.207,123.289,,34.038
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,3,A:TNF402,TNF,402,O42,Cofactor / other ligand,O61,2.466,154.193,,25.802
+5K1U,Other ene-reductase / flavin reductase,A:TNF402,4,A:HOH653,HOH,653,O,Water,O42,3.123,161.567,,18.225
+5K1U,Other ene-reductase / flavin reductase,A:TNF402,4,A:TNF401,TNF,401,O42,Cofactor / other ligand,O41,3.349,135.311,,34.978
+5K1U,Other ene-reductase / flavin reductase,A:TNF402,4,A:TNF401,TNF,401,O61,Cofactor / other ligand,O42,2.466,99.971,,64.437
+5K1U,Other ene-reductase / flavin reductase,A:TNF402,6,A:HOH700,HOH,700,O,Water,O61,2.816,101.013,,67.132
+5K1U,Other ene-reductase / flavin reductase,A:TNF402,6,A:HOH790,HOH,790,O,Water,O62,2.942,119.805,,22.972
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,1,A:HOH2387,HOH,2387,O,Water,O22,2.585,143.521,,23.518
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,1,A:ARG262,ARG,262,NE,Arg/Lys N+,O21,3.01,99.322,139.193,79.282
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,1,A:FMN1351,FMN,1351,O3',Cofactor / other ligand,O21,2.842,140.983,103.592,19.113
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,1,A:HOH2277,HOH,2277,O,Water,O21,3.122,156.279,,6.615
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,1,A:HOH2448,HOH,2448,O,Water,O22,3.134,117.781,,40.35
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,2,A:HOH2432,HOH,2432,O,Water,O42,2.958,116.88,,49.051
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,2,A:ASN176,ASN,176,ND2,Asn/Gln NH2,O41,2.912,110.727,121.714,14.651
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,2,A:FMN1351,FMN,1351,N1,Cofactor / other ligand,O41,3.27,117.768,83.377,49.948
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,2,A:FMN1351,FMN,1351,N3,Cofactor / other ligand,O41,3.386,135.86,83.597,41.358
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,2,A:HIS173,HIS,173,NE2,His N,O41,3.458,155.052,142.071,20.299
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,2,A:TYR178,TYR,178,OH,Ser/Thr/Tyr OH,O42,2.835,118.467,116.372,60.814
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,2,A:HOH2186,HOH,2186,O,Water,O41,2.468,110.762,,0.141
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,3,A:HOH2334,HOH,2334,O,Water,O61,2.746,121.76,,3.382
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,3,A:HIS233,HIS,233,NE2,His N,O62,3.291,95.125,113.182,75.229
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,4,B:HOH2376,HOH,2376,O,Water,O22,2.574,112.231,,62.183
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,4,B:FMN1351,FMN,1351,O3',Cofactor / other ligand,O21,2.974,169.711,92.956,4.187
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,4,B:HOH2313,HOH,2313,O,Water,O22,2.566,126.299,,23.015
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,4,B:ARG262,ARG,262,NE,Arg/Lys N+,O21,3.406,94.081,131.838,78.304
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,5,B:HOH2360,HOH,2360,O,Water,O42,2.822,121.206,,43.613
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,5,B:ASN176,ASN,176,ND2,Asn/Gln NH2,O41,2.882,106.743,122.045,8.973
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,5,B:TYR178,TYR,178,OH,Ser/Thr/Tyr OH,O42,2.962,114.635,112.489,65.212
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,5,B:HIS173,HIS,173,NE2,His N,O41,3.234,158.643,141.5,17.218
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,5,B:FMN1351,FMN,1351,N1,Cofactor / other ligand,O41,3.321,110.343,86.192,58.33
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,5,B:FMN1351,FMN,1351,N3,Cofactor / other ligand,O41,3.358,128.561,87.12,47.477
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,6,B:HIS233,HIS,233,ND1,His N,O61,2.367,120.171,101.324,58.971
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,6,B:HIS233,HIS,233,NE2,His N,O61,3.257,88.225,86.111,70.366
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,6,B:HOH2260,HOH,2260,O,Water,O62,3.123,112.841,,14.107
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,6,B:HIS233,HIS,233,N,Backbone N-H,O61,3.24,139.181,112.567,11.542
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,1,A:HIS233,HIS,233,NE2,His N,O21,2.78,116.356,122.014,62.461
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,1,A:HOH2310,HOH,2310,O,Water,O22,2.75,133.805,,10.619
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,2,A:HOH2040,HOH,2040,O,Water,O42,2.674,153.072,,20.281
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,2,A:TYR178,TYR,178,OH,Ser/Thr/Tyr OH,O42,2.881,116.347,116.368,63.651
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,2,A:HOH2175,HOH,2175,O,Water,O41,2.565,104.5,,12.634
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,2,A:FMN1351,FMN,1351,N1,Cofactor / other ligand,O41,3.167,121.561,81.563,46.72
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,2,A:FMN1351,FMN,1351,N3,Cofactor / other ligand,O41,3.267,140.374,81.282,35.913
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,2,A:HOH2403,HOH,2403,O,Water,O42,2.769,113.923,,53.316
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,2,A:ASN176,ASN,176,ND2,Asn/Gln NH2,O41,3.083,110.942,122.704,17.564
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,3,A:ARG262,ARG,262,NE,Arg/Lys N+,O62,2.936,106.468,137.346,73.53
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,3,A:FMN1351,FMN,1351,O3',Cofactor / other ligand,O62,3.051,133.913,101.368,20.401
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,3,A:HOH2255,HOH,2255,O,Water,O62,3.14,159.763,,14.303
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,3,A:HOH2362,HOH,2362,O,Water,O61,2.902,142.931,,25.064
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,4,B:HIS233,HIS,233,ND1,His N,O21,2.771,137.495,114.566,14.407
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,4,B:HIS233,HIS,233,NE2,His N,O21,3.025,126.8,107.775,28.26
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,5,B:FMN1351,FMN,1351,N1,Cofactor / other ligand,O41,2.888,106.948,86.695,71.911
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,5,B:FMN1351,FMN,1351,O2,Cofactor / other ligand,O41,3.055,111.716,47.543,44.882
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,5,B:FMN1351,FMN,1351,N3,Cofactor / other ligand,O41,2.212,158.058,86.104,20.117
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,5,B:ASN176,ASN,176,ND2,Asn/Gln NH2,O42,2.517,100.1,99.849,77.225
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,5,B:HIS173,HIS,173,NE2,His N,O42,2.569,102.587,162.094,16.579
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,5,B:FMN1351,FMN,1351,O4,Cofactor / other ligand,O41,3.233,154.267,45.202,9.938
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,6,B:TYR336,TYR,336,OH,Ser/Thr/Tyr OH,O62,2.601,170.668,110.193,9.194
+4JIQ,Other ene-reductase / flavin reductase,A:1L5402,1,A:FMN401,FMN,401,N10,Cofactor / other ligand,O1,3.401,122.499,117.707,52.081
+4JIQ,Other ene-reductase / flavin reductase,A:1L5402,1,A:ASN181,ASN,181,ND2,Asn/Gln NH2,O1,2.41,119.044,134.063,28.371
+4JIQ,Other ene-reductase / flavin reductase,A:1L5402,1,A:FMN401,FMN,401,N1,Cofactor / other ligand,O1,2.977,116.53,99.326,51.443
+4JIQ,Other ene-reductase / flavin reductase,A:1L5402,1,A:FMN401,FMN,401,N3,Cofactor / other ligand,O,3.481,95.84,88.82,64.474
+1Z44,Other ene-reductase / flavin reductase,A:NPO1506,1,A:TYR28,TYR,28,OH,Ser/Thr/Tyr OH,O3,1.807,149.138,131.848,19.487
+1Z44,Other ene-reductase / flavin reductase,A:NPO1506,1,B:ARG336,ARG,336,NH1,Arg/Lys N+,O2,2.773,153.536,136.919,24.035
+1Z44,Other ene-reductase / flavin reductase,B:NPO1505,2,B:TYR28,TYR,28,OH,Ser/Thr/Tyr OH,O2,1.6,165.167,148.715,3.234
+1Z44,Other ene-reductase / flavin reductase,B:NPO1505,2,A:ARG336,ARG,336,NH1,Arg/Lys N+,O3,3.018,158.282,146.399,19.77
+1Z44,Other ene-reductase / flavin reductase,B:NPO1507,3,A:ALA43,ALA,43,N,Backbone N-H,O3,3.333,95.453,111.428,60.412
+1Z44,Other ene-reductase / flavin reductase,B:NPO1507,3,B:ALA43,ALA,43,N,Backbone N-H,O2,3.298,90.563,114.086,60.535
+1YKI,Nitroreductase,A:NFZ1219,1,A:PHE70,PHE,70,N,Backbone N-H,O1,3.16,162.624,129.245,5.158
+1YKI,Nitroreductase,A:NFZ1219,1,A:TYR68,TYR,68,O,Acceptor O,O1,3.136,127.754,76.549,38.742
+1YKI,Nitroreductase,A:NFZ1219,1,A:ASN71,ASN,71,N,Backbone N-H,O1,3.303,117.644,124.822,49.672
+1YKI,Nitroreductase,A:NFZ1219,1,A:ASN71,ASN,71,ND2,Asn/Gln NH2,O2,3.186,77.045,122.227,73.635
+1YKI,Nitroreductase,A:NFZ1219,1,A:HOH1421,HOH,1421,O,Water,O1,2.857,125.23,,54.521
+1YKI,Nitroreductase,A:NFZ1219,1,A:ASN67,ASN,67,O,Acceptor O,O1,3.363,99.599,120.948,44.711
+1YKI,Nitroreductase,B:NFZ2219,2,B:ASN71,ASN,71,ND2,Asn/Gln NH2,O2,3.222,76.76,121.412,73.305
+1YKI,Nitroreductase,B:NFZ2219,2,B:ASN67,ASN,67,O,Acceptor O,O1,3.486,97.835,123.132,39.884
+1YKI,Nitroreductase,B:NFZ2219,2,B:TYR68,TYR,68,O,Acceptor O,O1,3.253,126.649,77.814,39.126
+1YKI,Nitroreductase,B:NFZ2219,2,B:PHE70,PHE,70,N,Backbone N-H,O1,3.17,165.838,131.358,5.561
+1YKI,Nitroreductase,B:NFZ2219,2,B:ASN71,ASN,71,N,Backbone N-H,O1,3.311,118.806,125.789,50.487
+1YKI,Nitroreductase,B:NFZ2219,2,B:HOH2342,HOH,2342,O,Water,O1,2.716,125.689,,53.013
+1YKI,Nitroreductase,C:NFZ3219,3,C:ASN67,ASN,67,O,Acceptor O,O1,3.456,99.245,120.951,42.514
+1YKI,Nitroreductase,C:NFZ3219,3,C:TYR68,TYR,68,O,Acceptor O,O1,3.121,134.057,79.504,35.759
+1YKI,Nitroreductase,C:NFZ3219,3,C:PHE70,PHE,70,N,Backbone N-H,O1,3.288,162.414,127.936,0.886
+1YKI,Nitroreductase,C:NFZ3219,3,C:HOH4289,HOH,4289,O,Water,O1,2.851,122.001,,57.273
+1YKI,Nitroreductase,C:NFZ3219,3,C:ASN71,ASN,71,N,Backbone N-H,O1,3.237,121.927,122.378,43.758
+1YKI,Nitroreductase,C:NFZ3219,3,C:ASN71,ASN,71,ND2,Asn/Gln NH2,O2,3.28,74.412,120.75,72.583
+1YKI,Nitroreductase,D:NFZ4219,4,D:ASN67,ASN,67,O,Acceptor O,O1,3.419,93.075,119.205,43.253
+1YKI,Nitroreductase,D:NFZ4219,4,D:ASN71,ASN,71,ND2,Asn/Gln NH2,O2,3.323,71.091,124.258,69.899
+1YKI,Nitroreductase,D:NFZ4219,4,D:TYR68,TYR,68,O,Acceptor O,O1,3.141,133.224,76.254,34.638
+1YKI,Nitroreductase,D:NFZ4219,4,D:PHE70,PHE,70,N,Backbone N-H,O1,3.188,163.224,128.385,2.759
+1YKI,Nitroreductase,D:NFZ4219,4,D:HOH4281,HOH,4281,O,Water,O1,2.86,117.6,,61.751
+1YKI,Nitroreductase,D:NFZ4219,4,D:ASN71,ASN,71,N,Backbone N-H,O1,3.265,123.789,124.341,42.634
+1IDT,Nitroreductase,A:CB11219,1,B:FMN2218,FMN,2218,N1,Cofactor / other ligand,O2,3.225,123.915,89.235,54.425
+1IDT,Nitroreductase,A:CB11219,1,B:FMN2218,FMN,2218,O2',Cofactor / other ligand,O2,3.181,169.274,124.7,10.72
+1IDT,Nitroreductase,A:CB11219,2,B:HOH2290,HOH,2290,O,Water,O3,2.83,129.999,,20.031
+1IDT,Nitroreductase,A:CB12219,3,A:HOH2227,HOH,2227,O,Water,O1,3.426,139.649,,4.892
+1IDT,Nitroreductase,A:CB12219,3,B:HOH2256,HOH,2256,O,Water,O2,3.055,111.582,,66.699
+1IDT,Nitroreductase,A:CB12219,3,B:HOH2235,HOH,2235,O,Water,O2,3.438,151.741,,1.623
+1IDT,Nitroreductase,A:CB12219,3,A:FMN1218,FMN,1218,O2',Cofactor / other ligand,O1,3.224,104.275,127.949,54.506
+1IDT,Nitroreductase,A:CB12219,3,A:LYS14,LYS,14,NZ,Arg/Lys N+,O1,2.599,93.885,103.354,55.774
+1IDT,Nitroreductase,A:CB12219,4,A:FMN1218,FMN,1218,N10,Cofactor / other ligand,O3,3.202,113.612,103.227,65.422
+1IDT,Nitroreductase,A:CB12219,4,A:FMN1218,FMN,1218,O2',Cofactor / other ligand,O3,2.746,127.662,107.176,8.47
+1IDT,Nitroreductase,A:CB12219,4,B:THR41,THR,41,N,Backbone N-H,O3,2.654,132.723,141.041,40.835
+1OO6,Nitroreductase,A:SN2219,1,B:FMN220,FMN,220,O2',Cofactor / other ligand,O3,3.036,162.067,112.069,13.755
+1OO6,Nitroreductase,A:SN2219,1,A:THR41,THR,41,N,Backbone N-H,O3,3.29,123.261,154.231,27.712
+1OO6,Nitroreductase,A:SN2219,2,B:LYS14,LYS,14,NZ,Arg/Lys N+,O5,3.046,118.689,77.598,58.986
+1OO6,Nitroreductase,A:SN2219,2,B:FMN220,FMN,220,O2,Cofactor / other ligand,O5,3.001,123.17,122.269,26.413
+1OO6,Nitroreductase,A:SN2221,3,A:HOH315,HOH,315,O,Water,O3,2.662,114.071,,57.974
+1OO6,Nitroreductase,A:SN2221,3,B:HOH290,HOH,290,O,Water,O3,3.244,120.387,,2.162
+1OO6,Nitroreductase,A:SN2221,3,A:HOH301,HOH,301,O,Water,O1,3.095,112.675,,49.612
+1OO6,Nitroreductase,A:SN2221,4,A:FMN218,FMN,218,O2,Cofactor / other ligand,O5,2.799,89.056,125.131,71.375
+1OO6,Nitroreductase,A:SN2221,4,A:LYS74,LYS,74,NZ,Arg/Lys N+,O5,3.132,164.322,105.81,1.959
+1OO6,Nitroreductase,A:SN2221,4,A:ASN71,ASN,71,OD1,Acceptor O,O5,3.43,130.61,143.171,25.932
+1OON,Nitroreductase,A:BEL362,1,A:HOH439,HOH,439,O,Water,O1,2.763,134.394,,7.386
+1OON,Nitroreductase,A:BEL362,2,B:FMN361,FMN,361,O2',Cofactor / other ligand,O7,2.74,162.628,113.749,12.816
+1OON,Nitroreductase,A:BEL362,2,A:THR41,THR,41,N,Backbone N-H,O7,3.117,113.493,151.725,38.608
+5J8G,Nitroreductase,A:4NB302,1,B:FMN301,FMN,301,O2',Cofactor / other ligand,O2',2.735,123.031,100.217,12.632
+5J8G,Nitroreductase,A:4NB302,1,B:FMN301,FMN,301,N1,Cofactor / other ligand,O1',3.476,82.371,87.532,72.229
+5J8G,Nitroreductase,A:4NB302,1,B:FMN301,FMN,301,N10,Cofactor / other ligand,O2',3.075,111.405,100.741,68.591
+5J8G,Nitroreductase,A:4NB302,1,A:THR41,THR,41,N,Backbone N-H,O2',2.714,134.336,143.294,39.605
+5J8G,Nitroreductase,B:4NB302,2,B:THR41,THR,41,N,Backbone N-H,O2',2.76,134.248,143.413,38.091
+5J8G,Nitroreductase,B:4NB302,2,A:FMN301,FMN,301,N1,Cofactor / other ligand,O1',3.425,84.823,86.484,71.951
+5J8G,Nitroreductase,B:4NB302,2,A:FMN301,FMN,301,N10,Cofactor / other ligand,O2',3.081,110.456,100.278,69.377
+5J8G,Nitroreductase,B:4NB302,2,A:FMN301,FMN,301,O2',Cofactor / other ligand,O2',2.716,124.797,101.779,10.696
+5J8G,Nitroreductase,C:4NB302,3,C:THR41,THR,41,N,Backbone N-H,O2',2.73,135.069,144.259,37.026
+5J8G,Nitroreductase,C:4NB302,3,D:FMN301,FMN,301,N1,Cofactor / other ligand,O1',3.402,83.866,88.142,71.899
+5J8G,Nitroreductase,C:4NB302,3,D:FMN301,FMN,301,N10,Cofactor / other ligand,O2',3.08,110.905,101.724,69.012
+5J8G,Nitroreductase,C:4NB302,3,D:FMN301,FMN,301,O2',Cofactor / other ligand,O2',2.755,125.283,100.641,10.99
+5J8G,Nitroreductase,D:4NB302,4,C:FMN301,FMN,301,N1,Cofactor / other ligand,O1',3.452,82.335,87.936,72.705
+5J8G,Nitroreductase,D:4NB302,4,C:FMN301,FMN,301,O2',Cofactor / other ligand,O2',2.602,129.526,104.057,13.887
+5J8G,Nitroreductase,D:4NB302,4,C:FMN301,FMN,301,N10,Cofactor / other ligand,O2',3.107,108.743,103.573,70.999
+5J8G,Nitroreductase,D:4NB302,4,D:THR41,THR,41,N,Backbone N-H,O2',2.814,133.8,146.698,34.133
+4BN6,Nitroreductase,A:CLM1203,1,A:FMN504,FMN,504,N5,Cofactor / other ligand,O9A,3.225,109.179,90.58,46.061
+4BN6,Nitroreductase,A:CLM1203,1,A:FMN504,FMN,504,N10,Cofactor / other ligand,O9A,3.481,97.864,119.618,77.476
+4BN6,Nitroreductase,A:CLM1203,1,A:FMN504,FMN,504,O2',Cofactor / other ligand,O9B,3.08,109.171,138.808,39.459
+2C0U,Nitroalkane oxidase,A:NBT1433,1,A:ASP402,ASP,402,OD2,Acceptor O,O16,3.256,106.845,143.149,55.691
+2C0U,Nitroalkane oxidase,A:NBT1433,1,A:SER276,SER,276,OG,Ser/Thr/Tyr OH,O16,3.372,142.786,152.884,15.332
+2C0U,Nitroalkane oxidase,B:NBT1433,2,B:ASP402,ASP,402,OD1,Acceptor O,O16,3.393,124.022,126.964,55.417
+2C0U,Nitroalkane oxidase,D:NBT1433,4,D:ASP402,ASP,402,OD2,Acceptor O,O16,3.131,103.712,148.433,58.124
+3FCJ,Nitroalkane oxidase,A:NIE600,1,A:ASN402,ASN,402,N,Backbone N-H,O4,3.303,144.052,149.576,8.611
+3FCJ,Nitroalkane oxidase,A:NIE600,1,A:FAD500,FAD,500,N5,Cofactor / other ligand,O5,2.383,98.352,130.875,55.806
+3FCJ,Nitroalkane oxidase,A:NIE600,1,A:ASN402,ASN,402,ND2,Asn/Gln NH2,O4,3.328,103.137,103.556,69.276
+3FCJ,Nitroalkane oxidase,A:NIE600,1,A:FAD500,FAD,500,O4,Cofactor / other ligand,O5,2.697,150.98,95.328,3.625
+3FCJ,Nitroalkane oxidase,B:NIE600,2,B:FAD500,FAD,500,N5,Cofactor / other ligand,O4,2.175,121.167,94.829,58.719
+3FCJ,Nitroalkane oxidase,B:NIE600,2,B:FAD500,FAD,500,N10,Cofactor / other ligand,O4,3.325,140.832,121.609,13.064
+3FCJ,Nitroalkane oxidase,B:NIE600,2,B:ASN402,ASN,402,ND2,Asn/Gln NH2,O5,2.461,111.525,124.818,35.928
+3FCJ,Nitroalkane oxidase,C:NIE600,3,C:FAD500,FAD,500,O2',Cofactor / other ligand,O4,3.267,141.8,101.702,11.548
+3FCJ,Nitroalkane oxidase,C:NIE600,3,C:ASN402,ASN,402,ND2,Asn/Gln NH2,O5,2.855,101.789,140.281,74.63
+3FCJ,Nitroalkane oxidase,C:NIE600,3,C:ASN402,ASN,402,N,Backbone N-H,O4,2.993,137.687,148.868,41.97
+3FCJ,Nitroalkane oxidase,C:NIE600,3,C:FAD500,FAD,500,N5,Cofactor / other ligand,O4,2.902,73.69,88.87,67.666
+3FCJ,Nitroalkane oxidase,C:NIE600,3,C:FAD500,FAD,500,N10,Cofactor / other ligand,O4,3.339,122.335,114.777,57.483
+3FCJ,Nitroalkane oxidase,D:NIE600,4,D:ASN402,ASN,402,N,Backbone N-H,O5,3.106,102.265,142.708,59.996
+3FCJ,Nitroalkane oxidase,D:NIE600,4,D:FAD500,FAD,500,N5,Cofactor / other ligand,O5,2.556,93.347,104.432,85.858
+3FCJ,Nitroalkane oxidase,D:NIE600,4,D:ASN402,ASN,402,ND2,Asn/Gln NH2,O4,2.869,95.843,118.221,50.222
+3FCJ,Nitroalkane oxidase,D:NIE600,4,D:FAD500,FAD,500,N10,Cofactor / other ligand,O5,3.47,117.156,119.077,34.163
+3FCJ,Nitroalkane oxidase,D:NIE600,4,D:FAD500,FAD,500,O2',Cofactor / other ligand,O4,3.359,111.472,130.984,8.676
+3D9D,Nitroalkane oxidase,A:N6C600,1,A:ASN402,ASN,402,N,Backbone N-H,O2,2.811,114.357,138.513,40.755
+3D9D,Nitroalkane oxidase,A:N6C600,1,A:FAD500,FAD,500,N5,Cofactor / other ligand,O2,2.793,73.179,102.195,65.325
+3D9D,Nitroalkane oxidase,A:N6C600,1,A:ASN402,ASN,402,ND2,Asn/Gln NH2,O1,2.753,99.508,121.52,67.141
+3D9D,Nitroalkane oxidase,A:N6C600,1,A:FAD500,FAD,500,N10,Cofactor / other ligand,O2,3.435,98.93,114.378,62.482
+3D9D,Nitroalkane oxidase,A:N6C600,1,A:FAD500,FAD,500,O2',Cofactor / other ligand,O1,2.986,107.572,133.852,16.259
+3D9D,Nitroalkane oxidase,B:N6C600,2,B:ASN402,ASN,402,N,Backbone N-H,O2,2.858,105.843,140.157,71.181
+3D9D,Nitroalkane oxidase,B:N6C600,2,B:FAD500,FAD,500,N5,Cofactor / other ligand,O2,2.643,85.814,94.353,85.112
+3D9D,Nitroalkane oxidase,B:N6C600,2,B:FAD500,FAD,500,N10,Cofactor / other ligand,O2,3.073,123.847,110.003,38.156
+3D9D,Nitroalkane oxidase,B:N6C600,2,B:FAD500,FAD,500,O2',Cofactor / other ligand,O2,3.099,109.269,91.718,14.112
+3D9D,Nitroalkane oxidase,B:N6C600,2,B:ASN402,ASN,402,ND2,Asn/Gln NH2,O1,2.835,98.863,128.149,56.437
+3D9D,Nitroalkane oxidase,C:N6C600,3,C:FAD500,FAD,500,O2',Cofactor / other ligand,O2,2.93,114.19,125.468,9.875
+3D9D,Nitroalkane oxidase,C:N6C600,3,C:ASN402,ASN,402,ND2,Asn/Gln NH2,O2,3.023,91.359,116.026,63.997
+3D9D,Nitroalkane oxidase,C:N6C600,3,C:ASN402,ASN,402,N,Backbone N-H,O1,2.801,109.923,138.497,44.772
+3D9D,Nitroalkane oxidase,C:N6C600,3,C:FAD500,FAD,500,N5,Cofactor / other ligand,O1,2.889,73.956,99.129,66.647
+3D9D,Nitroalkane oxidase,C:N6C600,3,C:FAD500,FAD,500,N10,Cofactor / other ligand,O1,3.273,97.083,114.112,59.442
+3D9D,Nitroalkane oxidase,D:N6C600,4,D:ASN402,ASN,402,N,Backbone N-H,O2,2.947,105.749,142.986,48.458
+3D9D,Nitroalkane oxidase,D:N6C600,4,D:FAD500,FAD,500,N5,Cofactor / other ligand,O2,2.665,85.828,98.523,69.68
+3D9D,Nitroalkane oxidase,D:N6C600,4,D:ASN402,ASN,402,ND2,Asn/Gln NH2,O1,2.526,102.942,123.126,55.559
+3D9D,Nitroalkane oxidase,D:N6C600,4,D:FAD500,FAD,500,N10,Cofactor / other ligand,O2,3.252,112.263,113.44,54.69
+3D9D,Nitroalkane oxidase,D:N6C600,4,D:FAD500,FAD,500,O2',Cofactor / other ligand,O1,3.161,106.35,128.628,10.971
+3D9E,Nitroalkane oxidase,A:N8C600,1,A:ASN402,ASN,402,N,Backbone N-H,O2,2.868,112.263,135.36,44.976
+3D9E,Nitroalkane oxidase,A:N8C600,1,A:FAD500,FAD,500,N5,Cofactor / other ligand,O2,3.096,77.38,90.507,70.275
+3D9E,Nitroalkane oxidase,A:N8C600,1,A:ASN402,ASN,402,ND2,Asn/Gln NH2,O1,2.872,93.985,124.592,67.693
+3D9E,Nitroalkane oxidase,A:N8C600,1,A:FAD500,FAD,500,N10,Cofactor / other ligand,O2,3.476,102.787,102.678,59.168
+3D9E,Nitroalkane oxidase,A:N8C600,1,A:FAD500,FAD,500,O2',Cofactor / other ligand,O1,2.901,108.644,130.219,8.746
+3D9E,Nitroalkane oxidase,B:N8C600,2,B:ASN402,ASN,402,N,Backbone N-H,O1,2.917,105.509,138.644,50.278
+3D9E,Nitroalkane oxidase,B:N8C600,2,B:FAD500,FAD,500,N5,Cofactor / other ligand,O1,2.91,89.451,86.161,64.42
+3D9E,Nitroalkane oxidase,B:N8C600,2,B:FAD500,FAD,500,N10,Cofactor / other ligand,O1,3.324,115.878,100.286,56.859
+3D9E,Nitroalkane oxidase,B:N8C600,2,B:FAD500,FAD,500,O2',Cofactor / other ligand,O2,3.041,102.0,130.67,7.971
+3D9E,Nitroalkane oxidase,B:N8C600,2,B:ASN402,ASN,402,ND2,Asn/Gln NH2,O2,2.589,104.842,120.116,54.075
+3D9E,Nitroalkane oxidase,C:N8C600,3,C:FAD500,FAD,500,O2',Cofactor / other ligand,O2,2.88,118.755,125.902,10.422
+3D9E,Nitroalkane oxidase,C:N8C600,3,C:FAD500,FAD,500,N5,Cofactor / other ligand,O1,3.132,79.001,93.663,72.313
+3D9E,Nitroalkane oxidase,C:N8C600,3,C:ASN402,ASN,402,ND2,Asn/Gln NH2,O2,2.96,88.316,119.045,64.765
+3D9E,Nitroalkane oxidase,C:N8C600,3,C:ASN402,ASN,402,N,Backbone N-H,O1,2.911,108.309,139.678,42.551
+3D9E,Nitroalkane oxidase,D:N8C600,4,D:ASN402,ASN,402,N,Backbone N-H,O2,2.921,106.4,138.431,42.245
+3D9E,Nitroalkane oxidase,D:N8C600,4,D:FAD500,FAD,500,N5,Cofactor / other ligand,O2,3.055,79.282,94.452,67.996
+3D9E,Nitroalkane oxidase,D:N8C600,4,D:ASN402,ASN,402,ND2,Asn/Gln NH2,O1,2.914,101.578,118.364,62.761
+3D9E,Nitroalkane oxidase,D:N8C600,4,D:FAD500,FAD,500,O2',Cofactor / other ligand,O1,2.916,113.091,125.539,15.33
+3D9F,Nitroalkane oxidase,A:N6C600,1,A:ASP402,ASP,402,N,Backbone N-H,O2,2.818,102.891,144.723,77.037
+3D9F,Nitroalkane oxidase,A:N6C600,1,A:FAD500,FAD,500,N5,Cofactor / other ligand,O2,2.976,93.272,83.46,75.979
+3D9F,Nitroalkane oxidase,A:N6C600,1,A:ASP402,ASP,402,OD1,Acceptor O,O1,3.163,104.523,117.114,57.473
+3D9F,Nitroalkane oxidase,A:N6C600,1,A:FAD500,FAD,500,O2',Cofactor / other ligand,O2,2.676,125.307,99.533,12.84
+3D9F,Nitroalkane oxidase,A:N6C600,1,A:FAD500,FAD,500,N10,Cofactor / other ligand,O2,3.056,140.143,105.32,36.823
+3D9F,Nitroalkane oxidase,B:N6C600,2,B:ASP402,ASP,402,N,Backbone N-H,O2,2.856,115.769,148.216,48.887
+3D9F,Nitroalkane oxidase,B:N6C600,2,B:FAD500,FAD,500,N5,Cofactor / other ligand,O2,2.891,87.915,87.771,43.281
+3D9F,Nitroalkane oxidase,B:N6C600,2,B:FAD500,FAD,500,N10,Cofactor / other ligand,O2,3.194,131.889,105.406,46.496
+3D9F,Nitroalkane oxidase,B:N6C600,2,B:FAD500,FAD,500,O2',Cofactor / other ligand,O2,3.008,126.49,93.072,19.785
+3D9F,Nitroalkane oxidase,B:N6C600,2,B:ASP402,ASP,402,OD1,Acceptor O,O1,2.602,132.072,120.113,47.64
+3D9F,Nitroalkane oxidase,C:N6C600,3,C:FAD500,FAD,500,O2',Cofactor / other ligand,O1,2.783,142.341,100.158,6.287
+3D9F,Nitroalkane oxidase,C:N6C600,3,C:FAD500,FAD,500,N5,Cofactor / other ligand,O1,3.148,83.582,83.798,55.228
+3D9F,Nitroalkane oxidase,C:N6C600,3,C:ASP402,ASP,402,OD1,Acceptor O,O2,2.887,125.404,117.135,54.466
+3D9F,Nitroalkane oxidase,C:N6C600,3,C:ASP402,ASP,402,N,Backbone N-H,O1,2.794,114.018,148.974,62.795
+3D9F,Nitroalkane oxidase,C:N6C600,3,C:FAD500,FAD,500,N10,Cofactor / other ligand,O1,3.009,134.434,107.939,43.241
+3D9F,Nitroalkane oxidase,D:N6C600,4,D:ASP402,ASP,402,N,Backbone N-H,O2,2.809,102.703,145.875,72.74
+3D9F,Nitroalkane oxidase,D:N6C600,4,D:FAD500,FAD,500,N5,Cofactor / other ligand,O2,3.001,87.638,82.942,60.538
+3D9F,Nitroalkane oxidase,D:N6C600,4,D:ASP402,ASP,402,OD1,Acceptor O,O1,2.95,123.952,111.49,50.878
+3D9F,Nitroalkane oxidase,D:N6C600,4,D:FAD500,FAD,500,N10,Cofactor / other ligand,O2,2.976,138.056,100.658,41.814
+3D9F,Nitroalkane oxidase,D:N6C600,4,D:FAD500,FAD,500,O2',Cofactor / other ligand,O2,2.612,129.309,93.175,0.442
+2GJN,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIS500,1,A:HOH2128,HOH,2128,O,Water,O6,2.489,106.501,,70.165
+2GJN,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIS500,1,A:HIS152,HIS,152,ND1,His N,O6,3.235,56.74,172.37,31.018
+2GJN,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIS500,1,A:HOH1939,HOH,1939,O,Water,O5,2.724,116.102,,59.204
+2GJN,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIS500,1,A:SER288,SER,288,OG,Ser/Thr/Tyr OH,O5,3.236,147.733,127.389,7.213
+2GJN,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIS500,1,A:HOH2067,HOH,2067,O,Water,O6,3.299,121.318,,47.358
+2GJN,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIS500,1,A:HOH2118,HOH,2118,O,Water,O6,3.286,133.938,,40.17
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE402,1,A:FMN401,FMN,401,N5,Cofactor / other ligand,O4,3.115,95.635,89.081,50.352
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE402,1,A:SER183,SER,183,N,Backbone N-H,O4,2.79,114.447,126.256,38.554
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE402,1,A:TRP325,TRP,325,NE1,Other,O5,2.73,143.475,89.871,28.521
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,B:NIE402,2,B:SER183,SER,183,N,Backbone N-H,O4,2.755,115.319,126.315,24.256
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,B:NIE402,2,B:FMN401,FMN,401,N5,Cofactor / other ligand,O4,3.083,97.916,95.958,26.579
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,B:NIE402,2,B:SER183,SER,183,OG,Ser/Thr/Tyr OH,O5,3.337,86.928,117.399,70.741
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,B:NIE402,2,B:TRP325,TRP,325,NE1,Other,O5,2.739,125.643,91.832,42.706
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:N1P402,1,A:TRP325,TRP,325,NE1,Other,O2,3.165,109.601,133.398,22.827
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:N1P402,1,A:HOH908,HOH,908,O,Water,O1,2.787,86.285,,79.462
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,B:N1P402,2,B:TRP325,TRP,325,NE1,Other,O2,2.911,132.172,132.162,34.219
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,B:N1P402,2,B:HOH877,HOH,877,O,Water,O1,3.164,72.838,,69.353
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE371,1,A:HIS298,HIS,298,NE2,His N,O5,3.149,120.923,154.346,16.633
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE371,1,A:HOH463,HOH,463,O,Water,O4,3.459,136.826,,26.263
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE371,1,A:TRP320,TRP,320,NE1,Other,O4,3.387,105.704,141.891,56.463
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE371,1,A:HOH395,HOH,395,O,Water,O5,2.919,138.959,,17.95
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE371,1,A:HOH444,HOH,444,O,Water,O4,3.095,114.81,,23.488
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE371,1,A:ARG305,ARG,305,NH2,Arg/Lys N+,O5,2.845,104.908,122.256,42.299
+6N92,Nitronate-CoA analog complexes,F:KFV301,5,F:PRO133,PRO,133,N,Backbone N-H,OS4,3.409,130.903,105.756,48.15
+6WFI,Nitronate-CoA analog complexes,A:KFV206,1,A:HIS7,HIS,7,NE2,His N,OS4,3.19,166.687,146.498,11.446
+6WFI,Nitronate-CoA analog complexes,A:KFV206,1,A:GLN60,GLN,60,OE1,Acceptor O,OS4,3.285,110.831,87.682,43.708
+6WFI,Nitronate-CoA analog complexes,A:KFV206,1,A:GLN60,GLN,60,NE2,Asn/Gln NH2,OS4,2.857,100.521,105.85,79.45
+6WFI,Nitronate-CoA analog complexes,A:KFV206,1,A:GLU134,GLU,134,OE1,Acceptor O,OS4,3.09,129.417,95.861,42.234
+6WFI,Nitronate-CoA analog complexes,A:KFV206,1,A:SER115,SER,115,N,Backbone N-H,OS5,2.813,158.345,127.553,21.54
+6WFI,Nitronate-CoA analog complexes,A:KFV206,1,A:SER115,SER,115,OG,Ser/Thr/Tyr OH,OS5,3.123,105.374,114.738,65.071
+6WFI,Nitronate-CoA analog complexes,A:KFV206,1,A:GLU134,GLU,134,OE2,Acceptor O,OS4,3.08,120.967,95.877,52.86
+6WFI,Nitronate-CoA analog complexes,A:KFV206,1,A:HOH463,HOH,463,O,Water,OS5,2.956,107.37,,6.618
+6X7L,Nitronate-CoA analog complexes,A:KFV402,1,A:ASN216,ASN,216,ND2,Asn/Gln NH2,OS5,2.701,97.844,126.91,74.123
+6X7L,Nitronate-CoA analog complexes,A:KFV402,1,A:PHE223,PHE,223,N,Backbone N-H,OS5,2.908,127.137,128.335,52.24
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,A:SER115,SER,115,OG,Ser/Thr/Tyr OH,OS5,2.769,119.421,109.145,58.729
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,A:HIS7,HIS,7,NE2,His N,OS4,3.284,155.291,148.713,24.594
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,A:GLN60,GLN,60,OE1,Acceptor O,OS4,3.239,99.587,93.415,59.996
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,A:GLN60,GLN,60,NE2,Asn/Gln NH2,OS4,3.058,88.916,99.785,77.187
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,A:GLU134,GLU,134,OE1,Acceptor O,OS4,3.093,137.538,89.609,24.947
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,A:SER115,SER,115,N,Backbone N-H,OS5,2.724,178.556,117.012,1.433
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,A:GLU134,GLU,134,OE2,Acceptor O,OS4,2.737,121.464,107.589,58.534
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,A:HOH435,HOH,435,O,Water,OS5,2.996,102.383,,10.72
+2BMQ,Nitroarene dioxygenase,A:NBZ1442,1,A:ASN258,ASN,258,ND2,Asn/Gln NH2,O1,3.056,114.002,131.522,31.794
+2BMQ,Nitroarene dioxygenase,A:NBZ1442,1,A:HOH2401,HOH,2401,O,Water,O1,2.683,116.695,,51.228
+2BMR,Nitroarene dioxygenase,A:3NT1442,1,A:ASN258,ASN,258,ND2,Asn/Gln NH2,O2N,3.079,104.171,131.376,31.871
+2BMR,Nitroarene dioxygenase,A:3NT1442,1,A:HOH2422,HOH,2422,O,Water,O2N,2.599,128.118,,37.191
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD2101,1,A:HOH3228,HOH,3228,O,Water,O21,2.302,156.776,,15.323
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD2101,3,A:TYR7,TYR,7,OH,Ser/Thr/Tyr OH,O61,2.772,83.183,163.357,66.654
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2201,5,B:HOH3164,HOH,3164,O,Water,O41,3.22,155.829,,15.689
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2201,6,B:TYR108,TYR,108,OH,Ser/Thr/Tyr OH,O61,3.466,72.895,133.482,64.493
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2201,6,B:HOH3241,HOH,3241,O,Water,O61,3.391,143.06,,7.764
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2201,6,B:TYR7,TYR,7,OH,Ser/Thr/Tyr OH,O61,2.802,92.308,139.792,67.337
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD2301,7,C:HOH3270,HOH,3270,O,Water,O21,3.05,150.898,,1.328
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD2301,9,C:TYR108,TYR,108,OH,Ser/Thr/Tyr OH,O62,3.077,76.346,135.155,69.278
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD2401,11,D:GLY205,GLY,205,O,Acceptor O,O41,3.459,114.824,98.636,64.07
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD2401,12,D:TYR7,TYR,7,OH,Ser/Thr/Tyr OH,O61,2.334,130.985,124.928,29.837
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GDN210,1,A:HOH490,HOH,490,O,Water,O2A,2.793,177.885,,1.151
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GDN210,3,B:HOH405,HOH,405,O,Water,O2B,3.362,155.184,,16.171
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GDN210,3,B:HOH420,HOH,420,O,Water,O2B,3.145,133.011,,26.718
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GDN210,4,B:HOH420,HOH,420,O,Water,O4A,3.138,128.447,,13.622
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GDN210,4,B:HOH374,HOH,374,O,Water,O4B,2.888,119.796,,4.175
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD1218,1,A:TYR115,TYR,115,OH,Ser/Thr/Tyr OH,O21,2.829,98.244,142.103,67.23
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD1218,3,A:HOH1221,HOH,1221,O,Water,O61,3.215,131.296,,41.836
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD1218,3,A:HOH1219,HOH,1219,O,Water,O61,2.654,94.366,,79.196
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2218,4,B:TYR115,TYR,115,OH,Ser/Thr/Tyr OH,O21,2.854,106.684,139.009,60.199
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2218,4,B:HIS107,HIS,107,NE2,His N,O22,3.449,151.269,134.781,1.137
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD3218,7,C:TYR6,TYR,6,OH,Ser/Thr/Tyr OH,O21,3.404,80.613,141.515,77.896
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD3218,7,C:TYR115,TYR,115,OH,Ser/Thr/Tyr OH,O21,3.059,106.394,147.55,56.211
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD4218,10,D:TYR6,TYR,6,OH,Ser/Thr/Tyr OH,O21,3.444,86.53,140.189,76.148
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD4218,10,D:TYR115,TYR,115,OH,Ser/Thr/Tyr OH,O21,2.973,100.544,148.524,61.458
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD4218,12,D:HOH4219,HOH,4219,O,Water,O61,3.487,73.5,,73.5
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),E:GTD5218,13,E:HIS107,HIS,107,NE2,His N,O22,3.426,143.135,135.698,13.038
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),E:GTD5218,13,E:TYR115,TYR,115,OH,Ser/Thr/Tyr OH,O21,2.747,108.163,134.005,59.058
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),E:GTD5218,15,E:HOH5219,HOH,5219,O,Water,O61,3.043,118.2,,60.595
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),F:GTD6218,16,F:HIS107,HIS,107,NE2,His N,O22,2.985,164.559,127.71,0.437
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),F:GTD6218,16,F:TYR115,TYR,115,OH,Ser/Thr/Tyr OH,O21,3.11,110.308,129.994,51.129
+6C17,Ketosteroid isomerase (nitrophenol analog),A:DNX202,2,A:HOH367,HOH,367,O,Water,O42,2.879,107.474,,3.728

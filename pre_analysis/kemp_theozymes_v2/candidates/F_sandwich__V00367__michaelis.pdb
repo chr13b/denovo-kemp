@@ -1,0 +1,67 @@
+REMARK Kemp theozyme V00367  default rank 367 of 84,271  total 0.896  [F_sandwich]
+REMARK components: base:ASPA127[6SRY]; ring:PHEA49[3Q2D]; npi:TRPB44~[3NYD]; lg:GLNA50~[7K4Z]
+REMARK scores: base=0.84 pi=0.99 fit=1.00 evidence=0.77 lg=0.99 subs=0.95
+REMARK real-substrate check: H3...O 1.48 A, C3-H...O 160 deg, retraction needed 0.52 A, proton-transfer score 0.91
+REMARK * grid-sampled (no crystal precedent), ~ small perturbation of an observed template
+REMARK chains: A=6NT (or S=substrate) B=base C=dyad Asp D/E=stackers F=nitro donor G=leaving-group donor
+REMARK fix atoms for motif scaffolding: PHE: side chain + CA; TRP: side chain + CA; GLN: side chain + CA
+REMARK MICHAELIS MODEL: real substrate; base retracted 0.52 A along C3->O
+HETATM    1  O51 5NB S   1     -10.477  29.800   2.785  1.00  0.00           O
+HETATM    2  N5  5NB S   1      -9.896  30.727   3.321  1.00  0.00           N
+HETATM    3  O52 5NB S   1     -10.527  31.564   3.942  1.00  0.00           O
+HETATM    4  C5  5NB S   1      -8.423  30.833   3.222  1.00  0.00           C
+HETATM    5  C4  5NB S   1      -7.720  29.888   2.529  1.00  0.00           C
+HETATM    6  C3A 5NB S   1      -6.330  29.988   2.434  1.00  0.00           C
+HETATM    7  C3  5NB S   1      -5.298  29.173   1.788  1.00  0.00           C
+HETATM    8  N2  5NB S   1      -4.153  29.737   2.024  1.00  0.00           N
+HETATM    9  O1  5NB S   1      -4.347  30.902   2.802  1.00  0.00           O
+HETATM   10  C7A 5NB S   1      -5.662  31.057   3.052  1.00  0.00           C
+HETATM   11  C7  5NB S   1      -6.396  32.007   3.753  1.00  0.00           C
+HETATM   12  C6  5NB S   1      -7.767  31.894   3.830  1.00  0.00           C
+HETATM   13  H4  5NB S   1      -8.238  29.067   2.055  1.00  0.00           H
+HETATM   14  H3  5NB S   1      -5.460  28.269   1.219  1.00  0.00           H
+HETATM   15  H7  5NB S   1      -5.893  32.835   4.233  1.00  0.00           H
+HETATM   16  H6  5NB S   1      -8.336  32.635   4.371  1.00  0.00           H
+ATOM     17  N   ASP B   1      -3.275  24.022   0.696  1.00  0.00           N
+ATOM     18  CA  ASP B   1      -3.292  24.763  -0.533  1.00  0.00           C
+ATOM     19  C   ASP B   1      -1.839  24.981  -0.908  1.00  0.00           C
+ATOM     20  O   ASP B   1      -1.140  25.814  -0.349  1.00  0.00           O
+ATOM     21  CB  ASP B   1      -4.085  26.052  -0.374  1.00  0.00           C
+ATOM     22  CG  ASP B   1      -5.553  25.782  -0.152  1.00  0.00           C
+ATOM     23  OD1 ASP B   1      -6.067  24.800  -0.647  1.00  0.00           O
+ATOM     24  OD2 ASP B   1      -6.191  26.516   0.605  1.00  0.00           O
+ATOM     25  N   PHE D   1      -3.750  31.303   9.156  1.00  0.00           N
+ATOM     26  CA  PHE D   1      -4.084  30.132   8.394  1.00  0.00           C
+ATOM     27  C   PHE D   1      -3.211  28.965   8.832  1.00  0.00           C
+ATOM     28  O   PHE D   1      -1.999  28.963   8.594  1.00  0.00           O
+ATOM     29  CB  PHE D   1      -3.895  30.411   6.908  1.00  0.00           C
+ATOM     30  CG  PHE D   1      -4.164  29.242   6.056  1.00  0.00           C
+ATOM     31  CD1 PHE D   1      -3.096  28.539   5.483  1.00  0.00           C
+ATOM     32  CD2 PHE D   1      -5.484  28.816   5.815  1.00  0.00           C
+ATOM     33  CE1 PHE D   1      -3.314  27.398   4.647  1.00  0.00           C
+ATOM     34  CE2 PHE D   1      -5.735  27.715   4.988  1.00  0.00           C
+ATOM     35  CZ  PHE D   1      -4.647  26.979   4.395  1.00  0.00           C
+ATOM     36  N   TRP E   1      -9.324  31.478  -2.539  1.00  0.00           N
+ATOM     37  CA  TRP E   1      -8.129  31.496  -1.734  1.00  0.00           C
+ATOM     38  C   TRP E   1      -7.339  30.236  -2.074  1.00  0.00           C
+ATOM     39  O   TRP E   1      -7.900  29.208  -2.320  1.00  0.00           O
+ATOM     40  CB  TRP E   1      -8.477  31.417  -0.258  1.00  0.00           C
+ATOM     41  CG  TRP E   1      -9.442  32.602   0.200  1.00  0.00           C
+ATOM     42  CD1 TRP E   1     -10.844  32.636   0.058  1.00  0.00           C
+ATOM     43  CD2 TRP E   1      -9.074  33.786   0.834  1.00  0.00           C
+ATOM     44  NE1 TRP E   1     -11.328  33.782   0.554  1.00  0.00           N
+ATOM     45  CE2 TRP E   1     -10.262  34.509   1.051  1.00  0.00           C
+ATOM     46  CE3 TRP E   1      -7.855  34.332   1.272  1.00  0.00           C
+ATOM     47  CZ2 TRP E   1     -10.284  35.709   1.685  1.00  0.00           C
+ATOM     48  CZ3 TRP E   1      -7.828  35.621   1.838  1.00  0.00           C
+ATOM     49  CH2 TRP E   1      -9.070  36.281   2.041  1.00  0.00           C
+ATOM     50  N   GLN G   1       1.512  32.170   5.671  1.00  0.00           N
+ATOM     51  CA  GLN G   1       1.903  32.747   4.403  1.00  0.00           C
+ATOM     52  C   GLN G   1       3.428  32.904   4.367  1.00  0.00           C
+ATOM     53  O   GLN G   1       4.120  32.804   5.397  1.00  0.00           O
+ATOM     54  CB  GLN G   1       1.235  34.097   4.175  1.00  0.00           C
+ATOM     55  CG  GLN G   1      -0.283  34.109   4.359  1.00  0.00           C
+ATOM     56  CD  GLN G   1      -1.031  33.261   3.347  1.00  0.00           C
+ATOM     57  NE2 GLN G   1      -2.325  33.098   3.563  1.00  0.00           N
+ATOM     58  OE1 GLN G   1      -0.454  32.788   2.365  1.00  0.00           O
+END

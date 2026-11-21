@@ -51,6 +51,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/pitch.md](wiki/pitch.md) — the story for the final presentation, kept current
 - [wiki/team.md](wiki/team.md) — handles, owners, branches, working agreements, division of labour
 - [wiki/glossary.md](wiki/glossary.md) — domain and project terms
+- [wiki/theozyme-preanalysis.md](wiki/theozyme-preanalysis.md) — pointer page for the pre-analysis: what it is, where the results are, how it relates to the scored contacts, caveats
 
 ## Sources: raw/ (immutable, added by humans)
 - [raw/20261121_organizers_start-here.md](raw/20261121_organizers_start-here.md) — organizers' one-page start (2 GPUs, novelty rule)
@@ -74,6 +75,11 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [configs/](configs/) — reusable run configs, `<handle>-NN.json`, referenced from experiment pages
 - [envs/](envs/) — pinned environments for external tools with their own deps (`<tool>.yml` / `<tool>.Dockerfile`)
 - [tests/](tests/) — pytest suite (config, runs, data, submission rules, cross-check vs the organizers' validator, tools, index)
+
+## Pre-analysis: published Kemp structures and theozyme building
+- [pre_analysis/](pre_analysis/) — standalone analysis done before the design runs (own scripts, not in the nano-style, outside `uv`); bulk downloads are gitignored and re-created by script
+- [pre_analysis/README.md](pre_analysis/README.md) — layout of its four folders, what is not in git and how to get it back, run order, status
+- [pre_analysis/kemp_theozymes_v2/report/index.html](pre_analysis/kemp_theozymes_v2/report/index.html) — **current theozyme recommendations** (open in a browser): variants, risks, methods
 
 ## Artifacts
 - [data/](data/) — bulk inputs, gitignored; registry in `wiki/data.md`

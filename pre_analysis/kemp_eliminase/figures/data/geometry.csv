@@ -1,0 +1,11 @@
+structure,variant,kcat_KM,base_res,base_dist,base_contacts,pi_res,pi_dist,pi_angle,source,caveat
+7K4Q_A,HG3 + 6NT,125,Asp127,2.25,N3,Trp44,5.13,7,JACS 2024 abstract (HG3),
+5RGA_A,HG3 + 6NT (277 K),125,Asp127,2.47,N3,Trp44,5.14,32,JACS 2024 abstract (HG3),
+3NYD_A,HG-2 + 3NY,123.2,Asp127,2.44,N3,Trp44,5.08,71,Privett 2012 Table 1,
+7K4Z_A,HG3.17 + 6NT,230000.0,Asp127,2.51,N3,Trp44,6.32,26,web-search summary of Blomberg 2013 (not read directly),value not verified in the paper text
+5RGE_A,HG3.17 + 6NT (277 K),230000.0,Asp127,2.5,N3,Trp44,6.36,37,web-search summary of Blomberg 2013 (not read directly),value not verified in the paper text
+3NZ1_A,1A53-2 + 3NY,64.2,Glu178,2.59,N1,Trp110,3.68,60,Privett 2012 Table 1,
+3UZ5_A,KE59 R13-3/11H + 0CU,60430,Glu231,2.63,N3,Trp110,3.63,13,Khersonsky 2012 Table 1 (5-nitrobenzisoxazole),
+3UZJ_A,KE59 R13-3/11H + 0CT,60430,Glu231,2.7,N3,Trp110,3.8,19,Khersonsky 2012 Table 1 (5-nitrobenzisoxazole),
+Des27.7_sub,Des27.7 + substrate (model),12700,Asp162,2.71,C3 (reactive C),Phe113,3.92,11,Listov 2025,"modelled MD starting pose, not a crystal"
+Des27_sub,Des27 + substrate (model),130,Asp162,2.72,C3 (reactive C),Phe113,3.96,8,Listov 2025,"modelled MD starting pose, not a crystal"

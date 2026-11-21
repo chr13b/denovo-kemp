@@ -1,0 +1,40 @@
+{
+ "n_valid": 16650,
+ "schemes": {
+  "default": {
+   "base": 0.35,
+   "pi": 0.25,
+   "compat": 0.1,
+   "evidence": 0.2,
+   "nitro": 0.1
+  },
+  "geometry_only": {
+   "base": 0.45,
+   "pi": 0.3,
+   "compat": 0.15,
+   "evidence": 0.0,
+   "nitro": 0.1
+  },
+  "evidence_heavy": {
+   "base": 0.25,
+   "pi": 0.15,
+   "compat": 0.05,
+   "evidence": 0.45,
+   "nitro": 0.1
+  },
+  "base_first": {
+   "base": 0.6,
+   "pi": 0.15,
+   "compat": 0.05,
+   "evidence": 0.1,
+   "nitro": 0.1
+  },
+  "ignore_nitro": {
+   "base": 0.35,
+   "pi": 0.25,
+   "compat": 0.1,
+   "evidence": 0.2,
+   "nitro": 0.0
+  }
+ }
+}

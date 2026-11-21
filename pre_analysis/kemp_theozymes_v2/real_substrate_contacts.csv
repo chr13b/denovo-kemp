@@ -1,0 +1,4 @@
+pdb,enzyme,copy,fit_rmsd,nearest_base,pi_rings,nitro_contacts,o1_contacts
+6DNJ,KE07 round 5 (designed Kemp eliminase),A302,0.094,none within 5 A,TRP50A 5.81A tilt 63 | over nitro z 1.86 lat 3.87; TYR128A 6.02A tilt 70 | over nitro z 2.77 lat 7.2; TRP50A 6.03A tilt 63 | over nitro z 3.73 lat 3.61,GLY81A:N..O51 3.17; GLY80A:O..O51 3.37,ASN103A:ND2 3.29
+7EPO,ketosteroid isomerase,A201,0.032,GLU127A:OE1 C3...O 3.36 H...O 4.05 C-H...O 45deg; GLU127A:OE2 C3...O 4.44 H...O 5.41 C-H...O 27deg,TRP48A 4.79A tilt 89 | over nitro z 3.76 lat 5.77; HIS61A 5.46A tilt 51 | over nitro z 4.04 lat 2.13; TRP48A 6.24A tilt 89 | over nitro z 4.65 lat 6.99,HIS123A:NE2..O51 2.75,GLU127A:OE2 2.75; TRP48A:NE1 2.8; GLU127A:OE1 2.9
+7Y9J,P450 BM3-TMK,B502,0.107,none within 5 A,TYR76B 5.28A tilt 11 | over nitro z 3.72 lat 6.43,ALA265B:O..O52 2.89; LYS439B:NZ..O51 3.17,none

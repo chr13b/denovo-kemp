@@ -1,0 +1,14 @@
+REMARK Central TSA: 6-nitrobenzotriazole from 7K4Q chain A (HG3), kemp_eliminase substrate-aligned frame
+HETATM    1  N1  6NT A   1      -4.350  30.894   2.795  1.00  0.00           N
+HETATM    2  N2  6NT A   1      -4.171  29.769   2.044  1.00  0.00           N
+HETATM    3  C3A 6NT A   1      -6.311  29.981   2.428  1.00  0.00           C
+HETATM    4  N3  6NT A   1      -5.395  29.209   1.824  1.00  0.00           N
+HETATM    5  C4  6NT A   1      -7.703  29.874   2.520  1.00  0.00           C
+HETATM    6  C5  6NT A   1      -8.409  30.830   3.227  1.00  0.00           C
+HETATM    7  C6  6NT A   1      -7.766  31.899   3.837  1.00  0.00           C
+HETATM    8  C7  6NT A   1      -6.385  32.006   3.749  1.00  0.00           C
+HETATM    9  C7A 6NT A   1      -5.661  31.035   3.037  1.00  0.00           C
+HETATM   10  O11 6NT A   1     -10.464  31.644   3.619  1.00  0.00           O
+HETATM   11  O21 6NT A   1     -10.471  29.509   2.938  1.00  0.00           O
+HETATM   12  NO1 6NT A   1      -9.841  30.709   3.293  1.00  0.00           N
+END

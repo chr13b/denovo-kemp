@@ -1,0 +1,64 @@
+REMARK Kemp theozyme V11428  default rank 11,428 of 84,271  total 0.878  [P03_pareto]
+REMARK components: base:ASP 162[Des27.7_sub]; npi:TRPB44~[3NYD]; hb:META237~[6SRY]; lg:GLNA50~[7K4Z]
+REMARK scores: base=0.95 pi=0.96 fit=1.00 evidence=0.53 hb=0.80 lg=0.99 subs=0.98
+REMARK real-substrate check: H3...O 1.57 A, C3-H...O 179 deg, retraction needed 0.43 A, proton-transfer score 0.97
+REMARK * grid-sampled (no crystal precedent), ~ small perturbation of an observed template
+REMARK chains: A=6NT (or S=substrate) B=base C=dyad Asp D/E=stackers F=nitro donor G=leaving-group donor
+REMARK fix atoms for motif scaffolding: TRP: side chain + CA; MET: backbone N,CA,C,O; GLN: side chain + CA
+REMARK MICHAELIS MODEL: real substrate; base retracted 0.43 A along C3->O
+HETATM    1  O51 5NB S   1     -10.477  29.800   2.785  1.00  0.00           O
+HETATM    2  N5  5NB S   1      -9.896  30.727   3.321  1.00  0.00           N
+HETATM    3  O52 5NB S   1     -10.527  31.564   3.942  1.00  0.00           O
+HETATM    4  C5  5NB S   1      -8.423  30.833   3.222  1.00  0.00           C
+HETATM    5  C4  5NB S   1      -7.720  29.888   2.529  1.00  0.00           C
+HETATM    6  C3A 5NB S   1      -6.330  29.988   2.434  1.00  0.00           C
+HETATM    7  C3  5NB S   1      -5.298  29.173   1.788  1.00  0.00           C
+HETATM    8  N2  5NB S   1      -4.153  29.737   2.024  1.00  0.00           N
+HETATM    9  O1  5NB S   1      -4.347  30.902   2.802  1.00  0.00           O
+HETATM   10  C7A 5NB S   1      -5.662  31.057   3.052  1.00  0.00           C
+HETATM   11  C7  5NB S   1      -6.396  32.007   3.753  1.00  0.00           C
+HETATM   12  C6  5NB S   1      -7.767  31.894   3.830  1.00  0.00           C
+HETATM   13  H4  5NB S   1      -8.238  29.067   2.055  1.00  0.00           H
+HETATM   14  H3  5NB S   1      -5.460  28.269   1.219  1.00  0.00           H
+HETATM   15  H7  5NB S   1      -5.893  32.835   4.233  1.00  0.00           H
+HETATM   16  H6  5NB S   1      -8.336  32.635   4.371  1.00  0.00           H
+ATOM     17  N   ASP B   1      -4.679  24.751  -2.181  1.00  0.00           N
+ATOM     18  CA  ASP B   1      -5.866  24.379  -1.421  1.00  0.00           C
+ATOM     19  C   ASP B   1      -6.430  23.048  -1.895  1.00  0.00           C
+ATOM     20  O   ASP B   1      -6.794  22.898  -3.062  1.00  0.00           O
+ATOM     21  CB  ASP B   1      -6.936  25.464  -1.533  1.00  0.00           C
+ATOM     22  CG  ASP B   1      -6.640  26.682  -0.669  1.00  0.00           C
+ATOM     23  OD1 ASP B   1      -5.775  26.594   0.173  1.00  0.00           O
+ATOM     24  OD2 ASP B   1      -7.279  27.689  -0.857  1.00  0.00           O
+ATOM     25  N   TRP D   1      -9.075  29.780   9.024  1.00  0.00           N
+ATOM     26  CA  TRP D   1      -7.938  30.212   8.252  1.00  0.00           C
+ATOM     27  C   TRP D   1      -7.611  31.636   8.691  1.00  0.00           C
+ATOM     28  O   TRP D   1      -8.484  32.402   8.985  1.00  0.00           O
+ATOM     29  CB  TRP D   1      -8.285  30.271   6.775  1.00  0.00           C
+ATOM     30  CG  TRP D   1      -8.800  28.867   6.218  1.00  0.00           C
+ATOM     31  CD1 TRP D   1     -10.112  28.363   6.319  1.00  0.00           C
+ATOM     32  CD2 TRP D   1      -8.057  27.917   5.522  1.00  0.00           C
+ATOM     33  NE1 TRP D   1     -10.186  27.157   5.740  1.00  0.00           N
+ATOM     34  CE2 TRP D   1      -8.936  26.859   5.229  1.00  0.00           C
+ATOM     35  CE3 TRP D   1      -6.723  27.836   5.084  1.00  0.00           C
+ATOM     36  CZ2 TRP D   1      -8.556  25.765   4.521  1.00  0.00           C
+ATOM     37  CZ3 TRP D   1      -6.267  26.670   4.441  1.00  0.00           C
+ATOM     38  CH2 TRP D   1      -7.219  25.651   4.163  1.00  0.00           C
+ATOM     39  N   MET F   1     -12.480  30.154   1.040  1.00  0.00           N
+ATOM     40  CA  MET F   1     -12.653  31.544   0.693  1.00  0.00           C
+ATOM     41  C   MET F   1     -14.072  31.830   0.237  1.00  0.00           C
+ATOM     42  O   MET F   1     -14.295  32.670  -0.624  1.00  0.00           O
+ATOM     43  CB  MET F   1     -11.638  31.982  -0.356  1.00  0.00           C
+ATOM     44  CG  MET F   1     -10.186  31.808   0.112  1.00  0.00           C
+ATOM     45  SD  MET F   1      -9.099  32.187  -1.218  1.00  0.00           S
+ATOM     46  CE  MET F   1      -7.582  31.528  -0.575  1.00  0.00           C
+ATOM     47  N   GLN G   1       1.512  32.170   5.671  1.00  0.00           N
+ATOM     48  CA  GLN G   1       1.903  32.747   4.403  1.00  0.00           C
+ATOM     49  C   GLN G   1       3.428  32.904   4.367  1.00  0.00           C
+ATOM     50  O   GLN G   1       4.120  32.804   5.397  1.00  0.00           O
+ATOM     51  CB  GLN G   1       1.235  34.097   4.175  1.00  0.00           C
+ATOM     52  CG  GLN G   1      -0.283  34.109   4.359  1.00  0.00           C
+ATOM     53  CD  GLN G   1      -1.031  33.261   3.347  1.00  0.00           C
+ATOM     54  NE2 GLN G   1      -2.325  33.098   3.563  1.00  0.00           N
+ATOM     55  OE1 GLN G   1      -0.454  32.788   2.365  1.00  0.00           O
+END

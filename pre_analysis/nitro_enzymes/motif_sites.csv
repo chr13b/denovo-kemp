@@ -1,0 +1,49 @@
+pdb_id,family,resolution_A,nitro_ligand_site,n_motif,n_hbond,n_pi,residues,selection,representative
+3NYD,Kemp eliminase (designed),1.23,B:3NY317,2,1,1,B:TRP44 B:MET237,"B44,B237",False
+4BS0,Kemp eliminase (designed),1.09,A:6NT1305,1,1,0,A:MET237,A237,False
+7K4Z,Kemp eliminase (designed),1.08,A:6NT402,1,1,0,A:MET237,A237,False
+5RGE,Kemp eliminase (designed),1.77,A:6NT500,1,1,0,A:MET237,A237,False
+3NZ1,Kemp eliminase (designed),1.56,A:3NY262,1,0,1,A:TRP110,A110,False
+9TZD,Kemp eliminase (designed),1.2,A:6NT300,2,2,0,A:VAL71 A:GLY97,"A71,A97",True
+8FOQ,Kemp eliminase (designed),1.6,A:3NY502,1,0,1,A:TRP110,A110,False
+8FOR,Kemp eliminase (designed),2.2,A:6NT301,1,0,1,A:PHE48,A48,False
+8FOS,Kemp eliminase (designed),1.56,A:6NT502,2,1,1,A:TRP44 A:MET237,"A44,A237",False
+6SRY,Kemp eliminase (designed),0.95,A:6NT401,1,1,0,A:MET237,A237,False
+8RD5,Kemp eliminase (designed),1.5,A:6NT401,2,1,1,A:TRP44 A:MET237,"A44,A237",False
+1GVR,PETN reductase (OYE family),1.38,A:TNL500,5,5,0,A:THR26 A:HIS181 A:HIS184 A:TYR186 A:TYR351,"A26,A181,A184,A186,A351",True
+1GVO,PETN reductase (OYE family),1.38,A:DNF500,2,2,0,A:HIS184 A:TYR351,"A184,A351",False
+1GVS,PETN reductase (OYE family),1.38,A:TNF500,4,4,0,A:THR26 A:HIS181 A:HIS184 A:TYR351,"A26,A181,A184,A351",False
+1VYR,PETN reductase (OYE family),0.9,A:TNF1402,3,3,1,A:HIS181 A:HIS184 A:TYR186,"A181,A184,A186",False
+3F03,PETN reductase (OYE family),1.34,K:NYH600,3,3,0,K:HIS181 K:HIS184 K:TYR186,"K181,K184,K186",False
+3P7Y,PETN reductase (OYE family),1.2,A:P7Y402,1,1,0,A:HIS184,A184,False
+3P80,PETN reductase (OYE family),1.2,A:P80402,1,1,0,A:TYR351,A351,False
+3P81,PETN reductase (OYE family),1.2,A:P81402,1,1,1,A:TYR351,A351,False
+5K1W,Other ene-reductase / flavin reductase,1.6,A:TNF402,2,2,0,A:HIS182 A:ASN185,"A182,A185",False
+5K1U,Other ene-reductase / flavin reductase,1.551,A:TNF401,4,3,1,A:THR35 A:HIS182 A:ASN185 A:PHE241,"A35,A182,A185,A241",False
+4AB4,Other ene-reductase / flavin reductase,1.5,A:TNL1357,5,5,1,A:HIS173 A:ASN176 A:TYR178 A:HIS233 A:ARG262,"A173,A176,A178,A233,A262",True
+4AEO,Other ene-reductase / flavin reductase,1.7,A:TNL1355,4,4,0,A:ASN176 A:TYR178 A:HIS233 A:ARG262,"A176,A178,A233,A262",False
+4JIQ,Other ene-reductase / flavin reductase,2.49,A:1L5402,1,1,0,A:ASN181,A181,False
+1Z44,Other ene-reductase / flavin reductase,1.4,B:NPO1507,2,2,0,A:ALA43 B:ALA43,"A43,B43",False
+1YKI,Nitroreductase,1.7,A:NFZ1219,4,4,0,A:ASN67 A:TYR68 A:PHE70 A:ASN71,"A67,A68,A70,A71",True
+1IDT,Nitroreductase,2.0,A:CB12219,2,2,0,A:LYS14 B:THR41,"A14,B41",False
+1OO6,Nitroreductase,2.0,A:SN2219,2,2,0,A:THR41 B:LYS14,"A41,B14",False
+1OON,Nitroreductase,2.49,A:BEL362,1,1,0,A:THR41,A41,False
+5J8G,Nitroreductase,1.9,A:4NB302,1,1,0,A:THR41,A41,False
+2C0U,Nitroalkane oxidase,2.2,A:NBT1433,2,2,0,A:SER276 A:ASP402,"A276,A402",True
+3FCJ,Nitroalkane oxidase,2.4,A:NIE600,1,1,0,A:ASN402,A402,False
+3D9D,Nitroalkane oxidase,2.1,A:N6C600,1,1,0,A:ASN402,A402,False
+3D9E,Nitroalkane oxidase,2.2,A:N8C600,1,1,0,A:ASN402,A402,False
+3D9F,Nitroalkane oxidase,2.2,A:N6C600,1,1,0,A:ASP402,A402,False
+2GJN,Nitronate monooxygenase / 2-nitropropane dioxygenase,2.3,A:NIS500,2,2,0,A:HIS152 A:SER288,"A152,A288",False
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,1.4,A:NIE402,2,2,0,A:SER183 A:TRP325,"A183,A325",False
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,1.401,A:N1P402,1,1,0,A:TRP325,A325,False
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,2.2,A:NIE371,3,3,0,A:HIS298 A:ARG305 A:TRP320,"A298,A305,A320",True
+6N92,Nitronate-CoA analog complexes,1.7,B:KFV301,1,0,1,B:HIS66,B66,False
+6WFI,Nitronate-CoA analog complexes,1.37,A:KFV206,4,4,0,A:HIS7 A:GLN60 A:SER115 A:GLU134,"A7,A60,A115,A134",True
+6X7L,Nitronate-CoA analog complexes,1.77,A:KFV402,2,2,0,A:ASN216 A:PHE223,"A216,A223",False
+6XBR,Nitronate-CoA analog complexes,1.55,A:KFV206,4,4,0,A:HIS7 A:GLN60 A:SER115 A:GLU134,"A7,A60,A115,A134",False
+2BMQ,Nitroarene dioxygenase,1.55,A:NBZ1442,1,1,0,A:ASN258,A258,False
+2BMR,Nitroarene dioxygenase,1.5,A:3NT1442,1,1,0,A:ASN258,A258,True
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),2.0,A:GTD2101,3,1,2,A:TYR7 A:PHE8 A:TYR108,"A7,A8,A108",True
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),1.9,A:GDN210,1,0,1,A:TYR108,A108,False
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),2.7,B:GTD2218,2,2,0,B:HIS107 B:TYR115,"B107,B115",False

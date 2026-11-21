@@ -1,0 +1,54 @@
+REMARK Kemp theozyme V15230  default rank 15,230 of 84,271  total 0.871  [P05_pareto]
+REMARK components: base:GLUA231[3UZJ]; npi:PHEA48~[8FOR]; lg:GLNA50~[7K4Z]
+REMARK scores: base=0.84 pi=1.00 fit=1.00 evidence=0.60 lg=0.99 subs=0.98
+REMARK real-substrate check: H3...O 1.58 A, C3-H...O 164 deg, retraction needed 0.42 A, proton-transfer score 0.98
+REMARK * grid-sampled (no crystal precedent), ~ small perturbation of an observed template
+REMARK chains: A=6NT (or S=substrate) B=base C=dyad Asp D/E=stackers F=nitro donor G=leaving-group donor
+REMARK fix atoms for motif scaffolding: PHE: side chain + CA; GLN: side chain + CA
+REMARK MICHAELIS MODEL: real substrate; base retracted 0.42 A along C3->O
+HETATM    1  O51 5NB S   1     -10.477  29.800   2.785  1.00  0.00           O
+HETATM    2  N5  5NB S   1      -9.896  30.727   3.321  1.00  0.00           N
+HETATM    3  O52 5NB S   1     -10.527  31.564   3.942  1.00  0.00           O
+HETATM    4  C5  5NB S   1      -8.423  30.833   3.222  1.00  0.00           C
+HETATM    5  C4  5NB S   1      -7.720  29.888   2.529  1.00  0.00           C
+HETATM    6  C3A 5NB S   1      -6.330  29.988   2.434  1.00  0.00           C
+HETATM    7  C3  5NB S   1      -5.298  29.173   1.788  1.00  0.00           C
+HETATM    8  N2  5NB S   1      -4.153  29.737   2.024  1.00  0.00           N
+HETATM    9  O1  5NB S   1      -4.347  30.902   2.802  1.00  0.00           O
+HETATM   10  C7A 5NB S   1      -5.662  31.057   3.052  1.00  0.00           C
+HETATM   11  C7  5NB S   1      -6.396  32.007   3.753  1.00  0.00           C
+HETATM   12  C6  5NB S   1      -7.767  31.894   3.830  1.00  0.00           C
+HETATM   13  H4  5NB S   1      -8.238  29.067   2.055  1.00  0.00           H
+HETATM   14  H3  5NB S   1      -5.460  28.269   1.219  1.00  0.00           H
+HETATM   15  H7  5NB S   1      -5.893  32.835   4.233  1.00  0.00           H
+HETATM   16  H6  5NB S   1      -8.336  32.635   4.371  1.00  0.00           H
+ATOM     17  N   GLU B   1      -4.469  22.789  -3.021  1.00  0.00           N
+ATOM     18  CA  GLU B   1      -5.033  24.067  -3.384  1.00  0.00           C
+ATOM     19  C   GLU B   1      -4.137  24.596  -4.467  1.00  0.00           C
+ATOM     20  O   GLU B   1      -2.916  24.654  -4.291  1.00  0.00           O
+ATOM     21  CB  GLU B   1      -5.111  24.983  -2.168  1.00  0.00           C
+ATOM     22  CG  GLU B   1      -5.647  26.409  -2.588  1.00  0.00           C
+ATOM     23  CD  GLU B   1      -5.738  27.357  -1.422  1.00  0.00           C
+ATOM     24  OE1 GLU B   1      -5.705  26.914  -0.228  1.00  0.00           O
+ATOM     25  OE2 GLU B   1      -5.741  28.578  -1.662  1.00  0.00           O
+ATOM     26  N   PHE D   1      -8.900  25.499   7.652  1.00  0.00           N
+ATOM     27  CA  PHE D   1      -8.592  26.914   7.833  1.00  0.00           C
+ATOM     28  C   PHE D   1      -9.413  27.430   9.007  1.00  0.00           C
+ATOM     29  O   PHE D   1     -10.646  27.459   8.942  1.00  0.00           O
+ATOM     30  CB  PHE D   1      -8.885  27.706   6.557  1.00  0.00           C
+ATOM     31  CG  PHE D   1      -8.622  29.176   6.681  1.00  0.00           C
+ATOM     32  CD1 PHE D   1      -7.329  29.670   6.647  1.00  0.00           C
+ATOM     33  CD2 PHE D   1      -9.672  30.069   6.826  1.00  0.00           C
+ATOM     34  CE1 PHE D   1      -7.088  31.028   6.761  1.00  0.00           C
+ATOM     35  CE2 PHE D   1      -9.436  31.428   6.938  1.00  0.00           C
+ATOM     36  CZ  PHE D   1      -8.144  31.907   6.905  1.00  0.00           C
+ATOM     37  N   GLN G   1       1.512  32.170   5.671  1.00  0.00           N
+ATOM     38  CA  GLN G   1       1.903  32.747   4.403  1.00  0.00           C
+ATOM     39  C   GLN G   1       3.428  32.904   4.367  1.00  0.00           C
+ATOM     40  O   GLN G   1       4.120  32.804   5.397  1.00  0.00           O
+ATOM     41  CB  GLN G   1       1.235  34.097   4.175  1.00  0.00           C
+ATOM     42  CG  GLN G   1      -0.283  34.109   4.359  1.00  0.00           C
+ATOM     43  CD  GLN G   1      -1.031  33.261   3.347  1.00  0.00           C
+ATOM     44  NE2 GLN G   1      -2.325  33.098   3.563  1.00  0.00           N
+ATOM     45  OE1 GLN G   1      -0.454  32.788   2.365  1.00  0.00           O
+END

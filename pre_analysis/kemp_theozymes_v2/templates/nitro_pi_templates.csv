@@ -1,0 +1,19 @@
+id,residue,resid,source,family,placement,z_A,lateral_A,tilt_deg,src_z,src_lat,src_tilt,n_equivalent,members
+X01,HIS,B66,6N92,Nitronate-CoA analog complexes,A,3.4,2.56,5.0,3.6,2.29,10.0,1,6N92
+X02,HIS,A233,4AB4,Other ene-reductase / flavin reductase,B,3.44,1.4,14.0,3.45,1.35,14.0,1,4AB4
+X03,HIS,A233,4AB4,Other ene-reductase / flavin reductase,A,3.47,1.26,14.4,3.45,1.35,14.0,1,4AB4
+X04,HIS,B66,6N92,Nitronate-CoA analog complexes,B,3.49,2.4,7.1,3.6,2.29,10.0,1,6N92
+X05,PHE,A48,8FOR,Kemp eliminase (designed),A,3.43,1.49,7.5,3.47,1.46,7.0,1,8FOR
+X06,PHE,A48,8FOR,Kemp eliminase (designed),B,3.5,1.4,6.7,3.47,1.46,7.0,1,8FOR
+X07,PHE,A241,5K1U,Other ene-reductase / flavin reductase,A,3.52,2.09,35.9,3.52,2.03,36.0,1,5K1U
+X08,PHE,A241,5K1U,Other ene-reductase / flavin reductase,B,3.52,1.97,36.2,3.52,2.03,36.0,1,5K1U
+X09,PHE,A8,1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),A,4.51,1.56,25.2,4.51,1.58,25.0,1,1AQX
+X10,PHE,A8,1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),B,4.51,1.59,25.8,4.51,1.58,25.0,1,1AQX
+X11,TRP,B44,3NYD,Kemp eliminase (designed),A,3.25,2.27,19.3,3.24,2.22,20.0,1,3NYD
+X12,TRP,B44,3NYD,Kemp eliminase (designed),B,3.27,2.17,17.9,3.24,2.22,20.0,1,3NYD
+X13,TRP,A110,8FOQ,Kemp eliminase (designed),A,3.37,1.61,5.9,3.46,1.45,7.0,1,8FOQ
+X14,TRP,A110,8FOQ,Kemp eliminase (designed),B,3.44,1.5,7.0,3.46,1.45,7.0,1,8FOQ
+X15,TYR,A108,18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),A,3.4,2.49,29.5,3.45,2.44,30.0,1,18GS
+X16,TYR,A108,18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),B,3.47,2.34,30.4,3.45,2.44,30.0,1,18GS
+X17,TYR,A108,1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),B,4.53,1.94,21.5,4.56,1.85,21.0,1,1AQX
+X18,TYR,A108,1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),A,4.61,1.74,19.3,4.56,1.85,21.0,1,1AQX

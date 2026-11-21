@@ -1,0 +1,13 @@
+design,group,scaffold,catalytic_base,start_kcat_KM,start_kind,end_kcat_KM,end_kind,source,note
+HG3 → HG3.17,evo,xylanase (1GOR),Asp127,125,design,230000.0,best,Start: JACS 2024 abstract (HG3 = 125). End: web-search summary of Blomberg 2013; not verified in the paper text.,17 rounds of evolution. HG-3 measured 425 in Privett 2012 under other conditions.
+KE59,evo,IGPS (1A53),Glu230,160,design,60430,best,"Khersonsky 2012 PNAS Table 1 (R13-3/11H, 5-nitrobenzisoxazole).","13 rounds. With the more reactive 5,7-dichlorobenzisoxazole the same variant reaches 573,090."
+KE70,evo,DERA (1JCL),His17–Asp45,126,design,55000,best,"Khersonsky 2011 JMB Table 1 (design 126 ± 4; best listed R6 4/8B 57,300 ± 6,140; text ≈5.5×10⁴).",Computational redesign plus evolution; the text of that paper gives the design as ≈80.
+KE07,evo,HisF (1THF),Glu,12,design,2600,best,Khersonsky 2012 PNAS (12 → 2.6×10³).,Other passages give the design as ≤10.
+Des27.7 + one extra residue,comp,IGPS chimera,Asp162,12700,design,100000.0,lower,Listov 2025 abstract: efficiency 'more than 10⁵' after designing one further residue.,Lower bound. Which residue was changed was not read.
+KempTIM + ensemble redesign,comp,de novo TIM barrel,Asp24,20,derived,32000,best,"CANVAS paper abstract (10.1038/s41589-026-02250-w): >1,600-fold gain to 32,000.","Parent value ≤20 is derived (32,000 ÷ 1,600), not stated."
+HG3 ensemble design,comp,xylanase (1GOR),Asp127,125,design,31250,derived,JACS 2024 abstract: designs improved 100–250-fold over HG3 (125).,"End value derived as 125 × 250, an upper bound; best exact value not read."
+KempTIM best direct design,comp,de novo TIM barrel,Asp24,,none,21000,best,CANVAS paper abstract: most active of nine lid designs.,No parent value.
+KE70 ensemble design,comp,DERA (1JCL),His17–Asp45,57,design,14250,derived,"JACS 2024 abstract: KE70 = 57, designs improved 100–250-fold.","End value derived as 57 × 250, an upper bound."
+Des27 → Des27.7,comp,IGPS chimera,Asp162,130,design,12700,best,"Listov 2025 (full text): 130 → 12,700; kcat 2.85 s⁻¹.",Seven mutations; crystal structure 9HVB.
+Des61 → best redesign,comp,IGPS chimera,base not retrieved,210,design,3600,best,"Listov 2025 (full text): 210 → 3,600; kcat 0.85 s⁻¹.",
+1A53-2 (design only),comp,IGPS (1A53),Glu178,64.2,design,,none,"Privett 2012 PNAS Table 1 (kcat 0.09 s⁻¹, KM 1.4 mM).",No optimised variant in this collection.

@@ -1,0 +1,52 @@
+REMARK Kemp theozyme V00046  default rank 46 of 84,271  total 0.911  [top15_observed]
+REMARK components: base:ASPA127[6SRY]; npi:TRPB44~[3NYD]; lg:HISA50~[5RGB]
+REMARK scores: base=0.84 pi=0.96 fit=1.00 evidence=0.90 lg=0.95 subs=0.95
+REMARK real-substrate check: H3...O 1.48 A, C3-H...O 160 deg, retraction needed 0.52 A, proton-transfer score 0.91
+REMARK * grid-sampled (no crystal precedent), ~ small perturbation of an observed template
+REMARK chains: A=6NT (or S=substrate) B=base C=dyad Asp D/E=stackers F=nitro donor G=leaving-group donor
+REMARK fix atoms for motif scaffolding: TRP: side chain + CA; HIS: side chain + CA
+HETATM    1  N1  6NT A   1      -4.350  30.894   2.795  1.00  0.00           N
+HETATM    2  N2  6NT A   1      -4.171  29.769   2.044  1.00  0.00           N
+HETATM    3  C3A 6NT A   1      -6.311  29.981   2.428  1.00  0.00           C
+HETATM    4  N3  6NT A   1      -5.395  29.209   1.824  1.00  0.00           N
+HETATM    5  C4  6NT A   1      -7.703  29.874   2.520  1.00  0.00           C
+HETATM    6  C5  6NT A   1      -8.409  30.830   3.227  1.00  0.00           C
+HETATM    7  C6  6NT A   1      -7.766  31.899   3.837  1.00  0.00           C
+HETATM    8  C7  6NT A   1      -6.385  32.006   3.749  1.00  0.00           C
+HETATM    9  C7A 6NT A   1      -5.661  31.035   3.037  1.00  0.00           C
+HETATM   10  O11 6NT A   1     -10.464  31.644   3.619  1.00  0.00           O
+HETATM   11  O21 6NT A   1     -10.471  29.509   2.938  1.00  0.00           O
+HETATM   12  NO1 6NT A   1      -9.841  30.709   3.293  1.00  0.00           N
+ATOM     13  N   ASP B   1      -3.122  24.478   0.899  1.00  0.00           N
+ATOM     14  CA  ASP B   1      -3.139  25.219  -0.330  1.00  0.00           C
+ATOM     15  C   ASP B   1      -1.686  25.437  -0.705  1.00  0.00           C
+ATOM     16  O   ASP B   1      -0.987  26.270  -0.146  1.00  0.00           O
+ATOM     17  CB  ASP B   1      -3.932  26.508  -0.171  1.00  0.00           C
+ATOM     18  CG  ASP B   1      -5.400  26.238   0.051  1.00  0.00           C
+ATOM     19  OD1 ASP B   1      -5.914  25.256  -0.444  1.00  0.00           O
+ATOM     20  OD2 ASP B   1      -6.038  26.972   0.808  1.00  0.00           O
+ATOM     21  N   TRP D   1      -9.075  29.780   9.024  1.00  0.00           N
+ATOM     22  CA  TRP D   1      -7.938  30.212   8.252  1.00  0.00           C
+ATOM     23  C   TRP D   1      -7.611  31.636   8.691  1.00  0.00           C
+ATOM     24  O   TRP D   1      -8.484  32.402   8.985  1.00  0.00           O
+ATOM     25  CB  TRP D   1      -8.285  30.271   6.775  1.00  0.00           C
+ATOM     26  CG  TRP D   1      -8.800  28.867   6.218  1.00  0.00           C
+ATOM     27  CD1 TRP D   1     -10.112  28.363   6.319  1.00  0.00           C
+ATOM     28  CD2 TRP D   1      -8.057  27.917   5.522  1.00  0.00           C
+ATOM     29  NE1 TRP D   1     -10.186  27.157   5.740  1.00  0.00           N
+ATOM     30  CE2 TRP D   1      -8.936  26.859   5.229  1.00  0.00           C
+ATOM     31  CE3 TRP D   1      -6.723  27.836   5.084  1.00  0.00           C
+ATOM     32  CZ2 TRP D   1      -8.556  25.765   4.521  1.00  0.00           C
+ATOM     33  CZ3 TRP D   1      -6.267  26.670   4.441  1.00  0.00           C
+ATOM     34  CH2 TRP D   1      -7.219  25.651   4.163  1.00  0.00           C
+ATOM     35  N   HIS G   1       1.439  32.625   5.682  1.00  0.00           N
+ATOM     36  CA  HIS G   1       1.941  33.039   4.380  1.00  0.00           C
+ATOM     37  C   HIS G   1       3.438  33.328   4.478  1.00  0.00           C
+ATOM     38  O   HIS G   1       4.010  33.448   5.565  1.00  0.00           O
+ATOM     39  CB  HIS G   1       1.113  34.200   3.834  1.00  0.00           C
+ATOM     40  CG  HIS G   1      -0.316  33.827   3.568  1.00  0.00           C
+ATOM     41  CD2 HIS G   1      -0.881  32.632   3.254  1.00  0.00           C
+ATOM     42  ND1 HIS G   1      -1.347  34.735   3.634  1.00  0.00           N
+ATOM     43  CE1 HIS G   1      -2.487  34.119   3.362  1.00  0.00           C
+ATOM     44  NE2 HIS G   1      -2.231  32.844   3.125  1.00  0.00           N
+END

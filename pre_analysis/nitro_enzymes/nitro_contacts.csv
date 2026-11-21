@@ -1,0 +1,746 @@
+pdb_id,category,nitro_ligand,nitro_group_no,contact_kind,contact,contact_resname,contact_resnum,min_dist_A(<=4.0),closest_atom_pair,polar_dist_A(<=3.5),polar_atom_pair
+3NYD,Kemp eliminase (designed),A:3NY317,1,water,A:HOH879,HOH,879,1.43,O11...O,1.43,O11...O
+3NYD,Kemp eliminase (designed),A:3NY317,1,protein,A:MET237,MET,237,3.11,O21...N,3.11,O21...N
+3NYD,Kemp eliminase (designed),A:3NY317,1,protein,A:LEU236,LEU,236,3.36,O21...CB,,
+3NYD,Kemp eliminase (designed),A:3NY317,1,protein,A:ALA21,ALA,21,3.44,O11...CB,,
+3NYD,Kemp eliminase (designed),A:3NY317,1,protein,A:SER265,SER,265,3.45,O21...CB,,
+3NYD,Kemp eliminase (designed),A:3NY317,1,protein,A:PHE267,PHE,267,3.68,O11...CD1,,
+3NYD,Kemp eliminase (designed),A:3NY317,1,protein,A:TRP44,TRP,44,3.83,O21...CG,,
+3NYD,Kemp eliminase (designed),A:3NY317,1,protein,A:VAL266,VAL,266,3.91,O11...O,,
+3NYD,Kemp eliminase (designed),B:3NY317,2,protein,B:MET237,MET,237,3.07,O21...N,3.07,O21...N
+3NYD,Kemp eliminase (designed),B:3NY317,2,protein,B:LEU236,LEU,236,3.43,O21...CG,,
+3NYD,Kemp eliminase (designed),B:3NY317,2,protein,B:SER265,SER,265,3.52,O21...CB,,
+3NYD,Kemp eliminase (designed),B:3NY317,2,protein,B:ALA21,ALA,21,3.52,O11...CB,,
+3NYD,Kemp eliminase (designed),B:3NY317,2,protein,B:TRP44,TRP,44,3.64,O21...CD1,,
+3NYD,Kemp eliminase (designed),B:3NY317,2,protein,B:PHE267,PHE,267,3.67,O11...CD2,,
+3NYD,Kemp eliminase (designed),B:3NY317,2,protein,B:VAL266,VAL,266,3.95,O11...O,,
+4BS0,Kemp eliminase (designed),A:6NT1305,1,protein,A:MET237,MET,237,2.11,O21...H,2.88,O21...N
+4BS0,Kemp eliminase (designed),A:6NT1305,1,protein,A:ALA21,ALA,21,2.56,O11...HB3,,
+4BS0,Kemp eliminase (designed),A:6NT1305,1,protein,A:THR265,THR,265,2.74,O21...HG22,,
+4BS0,Kemp eliminase (designed),A:6NT1305,1,protein,A:LEU236,LEU,236,2.74,O21...HB3,,
+4BS0,Kemp eliminase (designed),A:6NT1305,1,protein,A:MET267,MET,267,3.15,O11...HA,,
+4BS0,Kemp eliminase (designed),B:6NT1305,2,protein,B:MET237,MET,237,2.16,O21...H,2.94,O21...N
+4BS0,Kemp eliminase (designed),B:6NT1305,2,protein,B:ALA21,ALA,21,2.63,O11...HB3,,
+4BS0,Kemp eliminase (designed),B:6NT1305,2,protein,B:LEU236,LEU,236,2.76,O21...HD23,,
+4BS0,Kemp eliminase (designed),B:6NT1305,2,protein,B:THR265,THR,265,2.78,O21...HG22,,
+4BS0,Kemp eliminase (designed),B:6NT1305,2,protein,B:MET267,MET,267,3.12,O11...HE1,,
+7K4Z,Kemp eliminase (designed),A:6NT402,1,protein,A:MET237,MET,237,2.24,O11...H,2.99,O11...N
+7K4Z,Kemp eliminase (designed),A:6NT402,1,protein,A:ALA21,ALA,21,2.43,O21...HB2,,
+7K4Z,Kemp eliminase (designed),A:6NT402,1,protein,A:LEU236,LEU,236,2.65,O11...HB3,,
+7K4Z,Kemp eliminase (designed),A:6NT402,1,protein,A:THR265,THR,265,2.83,O11...HG21,,
+7K4Z,Kemp eliminase (designed),A:6NT402,1,protein,A:MET267,MET,267,3.32,O21...SD,,
+7K4Z,Kemp eliminase (designed),A:6NT402,1,protein,A:VAL266,VAL,266,3.94,O21...O,,
+5RGE,Kemp eliminase (designed),A:6NT500,1,protein,A:ALA21,ALA,21,2.41,O21...HB2,,
+5RGE,Kemp eliminase (designed),A:6NT500,1,protein,A:MET237,MET,237,2.44,O11...H,3.19,O11...N
+5RGE,Kemp eliminase (designed),A:6NT500,1,protein,A:LEU236,LEU,236,2.68,O11...HD22,,
+5RGE,Kemp eliminase (designed),A:6NT500,1,protein,A:THR265,THR,265,2.8,O11...HG21,,
+5RGE,Kemp eliminase (designed),A:6NT500,1,protein,A:MET267,MET,267,3.26,O21...SD,,
+3NZ1,Kemp eliminase (designed),A:3NY262,1,protein,A:TRP110,TRP,110,3.28,O11...CB,,
+3NZ1,Kemp eliminase (designed),A:3NY262,1,protein,A:ALA83,ALA,83,3.42,O21...CB,,
+3NZ1,Kemp eliminase (designed),A:3NY262,1,protein,A:LYS53,LYS,53,3.49,O21...CB,,
+3NZ1,Kemp eliminase (designed),A:3NY262,1,protein,A:ALA51,ALA,51,3.56,O11...CB,,
+3NZ1,Kemp eliminase (designed),A:3NY262,1,protein,A:ALA81,ALA,81,3.58,O11...O,,
+9TZD,Kemp eliminase (designed),A:6NT300,1,protein,A:GLY97,GLY,97,2.46,O21...HA3,2.93,O21...N
+9TZD,Kemp eliminase (designed),A:6NT300,1,protein,A:ALA70,ALA,70,2.83,NO1...HB1,,
+9TZD,Kemp eliminase (designed),A:6NT300,1,protein,A:PRO72,PRO,72,3.11,O21...HA,,
+9TZD,Kemp eliminase (designed),A:6NT300,1,protein,A:ALA95,ALA,95,3.12,O11...HB1,,
+9TZD,Kemp eliminase (designed),A:6NT300,1,protein,A:VAL71,VAL,71,3.37,O21...O,3.37,O21...O
+9TZD,Kemp eliminase (designed),A:6NT300,1,protein,A:GLY116,GLY,116,3.49,O11...HA3,,
+9TZD,Kemp eliminase (designed),A:6NT300,1,protein,A:TYR96,TYR,96,3.52,O11...C,,
+9TZD,Kemp eliminase (designed),A:6NT300,1,protein,A:MET173,MET,173,3.73,O11...HE2,,
+9TZD,Kemp eliminase (designed),A:6NT300,1,ligand/other,A:EDO301,EDO,301,3.75,NO1...HO1,,
+8FOQ,Kemp eliminase (designed),A:3NY502,1,protein,A:ALA81,ALA,81,2.66,O21...HB1,,
+8FOQ,Kemp eliminase (designed),A:3NY502,1,protein,A:ALA51,ALA,51,2.75,O21...HB1,,
+8FOQ,Kemp eliminase (designed),A:3NY502,1,protein,A:ALA83,ALA,83,2.96,O11...HB2,,
+8FOQ,Kemp eliminase (designed),A:3NY502,1,protein,A:TRP110,TRP,110,3.01,O21...HB3,,
+8FOQ,Kemp eliminase (designed),A:3NY502,1,protein,A:ARG53,ARG,53,3.51,O11...HG2,,
+8FOQ,Kemp eliminase (designed),A:3NY502,1,protein,A:PHE89,PHE,89,3.72,O11...HE2,,
+8FOQ,Kemp eliminase (designed),A:3NY502,1,protein,A:TRP210,TRP,210,3.96,NO1...HZ2,,
+8FOR,Kemp eliminase (designed),A:6NT301,1,protein,A:VAL204,VAL,204,2.47,O21...HG11,,
+8FOR,Kemp eliminase (designed),A:6NT301,1,protein,A:GLY237,GLY,237,2.75,O11...HA3,,
+8FOR,Kemp eliminase (designed),A:6NT301,1,protein,A:ALA18,ALA,18,2.76,O11...HB2,,
+8FOR,Kemp eliminase (designed),A:6NT301,1,protein,A:PHE48,PHE,48,3.48,O21...HE2,,
+8FOR,Kemp eliminase (designed),A:6NT301,1,protein,A:THR171,THR,171,3.79,O21...O,,
+8FOR,Kemp eliminase (designed),A:6NT301,1,protein,A:ALA238,ALA,238,3.91,O11...N,,
+8FOR,Kemp eliminase (designed),B:6NT301,2,protein,B:VAL204,VAL,204,2.73,O21...HG11,,
+8FOR,Kemp eliminase (designed),B:6NT301,2,protein,B:GLY237,GLY,237,2.79,O11...HA3,,
+8FOR,Kemp eliminase (designed),B:6NT301,2,protein,B:PHE48,PHE,48,3.24,O21...HE2,,
+8FOR,Kemp eliminase (designed),B:6NT301,2,protein,B:ALA18,ALA,18,3.24,O11...HB2,,
+8FOR,Kemp eliminase (designed),B:6NT301,2,protein,B:THR171,THR,171,3.94,O21...O,,
+8FOR,Kemp eliminase (designed),C:6NT301,3,protein,C:VAL204,VAL,204,2.66,O21...HG11,,
+8FOR,Kemp eliminase (designed),C:6NT301,3,protein,C:GLY237,GLY,237,2.92,O11...HA3,,
+8FOR,Kemp eliminase (designed),C:6NT301,3,protein,C:ALA18,ALA,18,2.94,O11...HB2,,
+8FOR,Kemp eliminase (designed),C:6NT301,3,protein,C:PHE48,PHE,48,3.33,O11...HD2,,
+8FOR,Kemp eliminase (designed),C:6NT301,3,protein,C:HIS16,HIS,16,3.81,O11...O,,
+8FOR,Kemp eliminase (designed),C:6NT301,3,protein,C:ALA238,ALA,238,3.93,O11...N,,
+8FOR,Kemp eliminase (designed),D:6NT301,4,protein,D:VAL204,VAL,204,2.67,O21...HG11,,
+8FOR,Kemp eliminase (designed),D:6NT301,4,protein,D:GLY237,GLY,237,2.8,O11...HA3,,
+8FOR,Kemp eliminase (designed),D:6NT301,4,protein,D:ALA18,ALA,18,2.95,O11...HB2,,
+8FOR,Kemp eliminase (designed),D:6NT301,4,protein,D:PHE48,PHE,48,3.38,NO1...CD2,,
+8FOR,Kemp eliminase (designed),D:6NT301,4,protein,D:HIS16,HIS,16,3.87,O11...O,,
+8FOR,Kemp eliminase (designed),D:6NT301,4,protein,D:ALA238,ALA,238,3.88,O11...N,,
+8FOR,Kemp eliminase (designed),E:6NT301,5,protein,E:VAL204,VAL,204,2.4,O21...HG11,,
+8FOR,Kemp eliminase (designed),E:6NT301,5,protein,E:ALA18,ALA,18,2.93,O11...HB2,,
+8FOR,Kemp eliminase (designed),E:6NT301,5,protein,E:GLY237,GLY,237,3.04,O11...HA3,,
+8FOR,Kemp eliminase (designed),E:6NT301,5,protein,E:PHE48,PHE,48,3.3,O11...HD2,,
+8FOR,Kemp eliminase (designed),F:6NT301,6,protein,F:VAL204,VAL,204,2.71,O21...HG11,,
+8FOR,Kemp eliminase (designed),F:6NT301,6,protein,F:GLY237,GLY,237,2.76,O11...HA3,,
+8FOR,Kemp eliminase (designed),F:6NT301,6,protein,F:ALA18,ALA,18,2.77,O11...HB2,,
+8FOR,Kemp eliminase (designed),F:6NT301,6,protein,F:PHE48,PHE,48,3.29,O21...HE2,,
+8FOR,Kemp eliminase (designed),F:6NT301,6,protein,F:ALA238,ALA,238,3.91,O11...N,,
+8FOR,Kemp eliminase (designed),F:6NT301,6,protein,F:HIS16,HIS,16,3.98,O11...O,,
+8FOS,Kemp eliminase (designed),A:6NT502,1,protein,A:ALA21,ALA,21,2.23,O21...HB1,,
+8FOS,Kemp eliminase (designed),A:6NT502,1,protein,A:MET237,MET,237,2.3,O11...H,3.03,O11...N
+8FOS,Kemp eliminase (designed),A:6NT502,1,protein,A:LEU236,LEU,236,2.32,O11...HB2,,
+8FOS,Kemp eliminase (designed),A:6NT502,1,protein,A:THR265,THR,265,2.79,O21...HG22,,
+8FOS,Kemp eliminase (designed),A:6NT502,1,protein,A:PHE267,PHE,267,2.84,O21...HD1,,
+8FOS,Kemp eliminase (designed),A:6NT502,1,water,A:HOH724,HOH,724,3.31,O11...O,3.31,O11...O
+8FOS,Kemp eliminase (designed),A:6NT502,1,protein,A:TRP44,TRP,44,3.57,NO1...HB2,,
+6SRY,Kemp eliminase (designed),A:6NT401,1,protein,A:MET237,MET,237,2.05,O21...H,2.82,O21...N
+6SRY,Kemp eliminase (designed),A:6NT401,1,protein,A:ALA21,ALA,21,2.62,O11...HB2,,
+6SRY,Kemp eliminase (designed),A:6NT401,1,protein,A:THR265,THR,265,2.75,O21...HG21,,
+6SRY,Kemp eliminase (designed),A:6NT401,1,protein,A:LEU236,LEU,236,2.8,O21...HD22,,
+6SRY,Kemp eliminase (designed),A:6NT401,1,protein,A:MET267,MET,267,3.05,O11...HE3,,
+6SRY,Kemp eliminase (designed),A:6NT401,1,protein,A:VAL266,VAL,266,3.78,O11...O,,
+6SRY,Kemp eliminase (designed),B:6NT401,2,protein,B:MET237,MET,237,2.01,O21...H,2.8,O21...N
+6SRY,Kemp eliminase (designed),B:6NT401,2,protein,B:ALA21,ALA,21,2.64,O11...HB2,,
+6SRY,Kemp eliminase (designed),B:6NT401,2,protein,B:THR265,THR,265,2.74,O21...HG21,,
+6SRY,Kemp eliminase (designed),B:6NT401,2,protein,B:LEU236,LEU,236,2.82,O21...HB3,,
+6SRY,Kemp eliminase (designed),B:6NT401,2,protein,B:MET267,MET,267,3.07,O11...HA,,
+6SRY,Kemp eliminase (designed),B:6NT401,2,protein,B:VAL266,VAL,266,3.8,O11...O,,
+8RD5,Kemp eliminase (designed),A:6NT401,1,protein,A:MET237,MET,237,2.07,O11...H,2.89,O11...N
+8RD5,Kemp eliminase (designed),A:6NT401,1,protein,A:ALA21,ALA,21,2.52,O21...HB2,,
+8RD5,Kemp eliminase (designed),A:6NT401,1,protein,A:THR265,THR,265,2.67,O11...HG21,,
+8RD5,Kemp eliminase (designed),A:6NT401,1,protein,A:LEU236,LEU,236,2.77,O11...HD22,,
+8RD5,Kemp eliminase (designed),A:6NT401,1,protein,A:PHE267,PHE,267,2.88,O21...HA,,
+8RD5,Kemp eliminase (designed),A:6NT401,1,protein,A:SER266,SER,266,3.66,O21...O,,
+8RD5,Kemp eliminase (designed),B:6NT401,2,protein,B:MET237,MET,237,2.07,O21...H,2.88,O21...N
+8RD5,Kemp eliminase (designed),B:6NT401,2,protein,B:ALA21,ALA,21,2.58,O11...HB2,,
+8RD5,Kemp eliminase (designed),B:6NT401,2,protein,B:THR265,THR,265,2.68,O21...HG21,,
+8RD5,Kemp eliminase (designed),B:6NT401,2,protein,B:LEU236,LEU,236,2.77,O21...HD22,,
+8RD5,Kemp eliminase (designed),B:6NT401,2,protein,B:PHE267,PHE,267,2.85,O11...HA,,
+8RD5,Kemp eliminase (designed),B:6NT401,2,protein,B:SER266,SER,266,3.68,O11...O,,
+1GVR,PETN reductase (OYE family),A:TNL500,1,protein,A:TRP102,TRP,102,2.27,O22...CZ3,,
+1GVR,PETN reductase (OYE family),A:TNL500,1,protein,A:TYR186,TYR,186,2.69,O22...CE1,3.23,O22...OH
+1GVR,PETN reductase (OYE family),A:TNL500,1,protein,A:THR26,THR,26,2.78,O21...OG1,2.78,O21...OG1
+1GVR,PETN reductase (OYE family),A:TNL500,1,protein,A:ALA58,ALA,58,2.99,O21...CB,,
+1GVR,PETN reductase (OYE family),A:TNL500,1,protein,A:HIS181,HIS,181,3.14,O22...NE2,3.14,O22...NE2
+1GVR,PETN reductase (OYE family),A:TNL500,1,ligand/other,A:FMN401,FMN,401,3.14,O21...O4,3.14,O21...O4
+1GVR,PETN reductase (OYE family),A:TNL500,2,protein,A:TYR351,TYR,351,2.75,O41...OH,2.75,O41...OH
+1GVR,PETN reductase (OYE family),A:TNL500,2,water,A:HOH2136,HOH,2136,3.13,O41...O,3.13,O41...O
+1GVR,PETN reductase (OYE family),A:TNL500,2,protein,A:THR26,THR,26,3.26,O42...CG2,,
+1GVR,PETN reductase (OYE family),A:TNL500,2,protein,A:TYR68,TYR,68,3.37,O42...CE1,,
+1GVR,PETN reductase (OYE family),A:TNL500,3,water,A:HOH2291,HOH,2291,2.5,O62...O,2.5,O62...O
+1GVR,PETN reductase (OYE family),A:TNL500,3,ligand/other,A:FMN401,FMN,401,2.91,O61...C9A,3.01,O61...N10
+1GVR,PETN reductase (OYE family),A:TNL500,3,protein,A:HIS184,HIS,184,2.99,O62...ND1,2.99,O62...ND1
+1GVR,PETN reductase (OYE family),A:TNL500,3,protein,A:LEU275,LEU,275,3.89,O61...CD1,,
+1GVO,PETN reductase (OYE family),A:DNF500,1,protein,A:HIS184,HIS,184,2.85,O21...ND1,2.85,O21...ND1
+1GVO,PETN reductase (OYE family),A:DNF500,1,water,A:HOH2818,HOH,2818,2.88,O21...O,2.88,O21...O
+1GVO,PETN reductase (OYE family),A:DNF500,1,water,A:HOH2817,HOH,2817,3.13,O21...O,3.13,O21...O
+1GVO,PETN reductase (OYE family),A:DNF500,1,ligand/other,A:FMN401,FMN,401,3.26,O22...N10,3.26,O22...N10
+1GVO,PETN reductase (OYE family),A:DNF500,1,water,A:HOH2608,HOH,2608,3.59,O22...O,,
+1GVO,PETN reductase (OYE family),A:DNF500,1,water,A:HOH2671,HOH,2671,3.63,O22...O,,
+1GVO,PETN reductase (OYE family),A:DNF500,1,protein,A:GLN241,GLN,241,3.7,O21...CD,,
+1GVO,PETN reductase (OYE family),A:DNF500,1,water,A:HOH2668,HOH,2668,3.77,O22...O,,
+1GVO,PETN reductase (OYE family),A:DNF500,2,water,A:HOH2478,HOH,2478,2.75,O41...O,2.75,O41...O
+1GVO,PETN reductase (OYE family),A:DNF500,2,water,A:HOH2816,HOH,2816,3.11,O41...O,3.11,O41...O
+1GVO,PETN reductase (OYE family),A:DNF500,2,protein,A:THR26,THR,26,3.29,O42...CG2,,
+1GVO,PETN reductase (OYE family),A:DNF500,2,protein,A:TYR351,TYR,351,3.29,O41...OH,3.29,O41...OH
+1GVO,PETN reductase (OYE family),A:DNF500,2,water,A:HOH2783,HOH,2783,3.44,O41...O,3.44,O41...O
+1GVO,PETN reductase (OYE family),A:DNF500,2,protein,A:TYR68,TYR,68,3.44,O42...CE2,,
+1GVO,PETN reductase (OYE family),A:DNF500,2,water,A:HOH2267,HOH,2267,3.94,O41...O,,
+1GVS,PETN reductase (OYE family),A:TNF500,1,protein,A:TYR351,TYR,351,3.15,O41...OH,3.15,O41...OH
+1GVS,PETN reductase (OYE family),A:TNF500,1,water,A:HOH2293,HOH,2293,3.21,O41...O,3.21,O41...O
+1GVS,PETN reductase (OYE family),A:TNF500,1,protein,A:THR26,THR,26,3.47,O42...CG2,,
+1GVS,PETN reductase (OYE family),A:TNF500,1,protein,A:TYR68,TYR,68,3.72,O42...CE2,,
+1GVS,PETN reductase (OYE family),A:TNF500,1,water,A:HOH2534,HOH,2534,3.74,O41...O,,
+1GVS,PETN reductase (OYE family),A:TNF500,1,water,A:HOH2157,HOH,2157,3.89,O41...O,,
+1GVS,PETN reductase (OYE family),A:TNF500,2,water,A:HOH2567,HOH,2567,2.75,O22...O,2.75,O22...O
+1GVS,PETN reductase (OYE family),A:TNF500,2,protein,A:HIS184,HIS,184,2.92,O22...ND1,2.92,O22...ND1
+1GVS,PETN reductase (OYE family),A:TNF500,2,water,A:HOH2565,HOH,2565,3.06,O21...O,3.06,O21...O
+1GVS,PETN reductase (OYE family),A:TNF500,2,ligand/other,A:FMN401,FMN,401,3.2,O21...N10,3.2,O21...N10
+1GVS,PETN reductase (OYE family),A:TNF500,2,water,A:HOH2566,HOH,2566,3.26,O21...O,3.26,O21...O
+1GVS,PETN reductase (OYE family),A:TNF500,2,protein,A:GLN241,GLN,241,3.6,O22...NE2,,
+1GVS,PETN reductase (OYE family),A:TNF500,3,protein,A:THR26,THR,26,2.56,O61...OG1,2.56,O61...OG1
+1GVS,PETN reductase (OYE family),A:TNF500,3,protein,A:HIS181,HIS,181,2.67,O62...NE2,2.67,O62...NE2
+1GVS,PETN reductase (OYE family),A:TNF500,3,protein,A:TRP102,TRP,102,2.78,O61...CZ3,,
+1GVS,PETN reductase (OYE family),A:TNF500,3,ligand/other,A:FMN401,FMN,401,3.15,O62...N3,3.15,O62...N3
+1GVS,PETN reductase (OYE family),A:TNF500,3,protein,A:ALA58,ALA,58,3.17,O61...CB,,
+1GVS,PETN reductase (OYE family),A:TNF500,3,protein,A:TYR186,TYR,186,3.25,O62...CE2,,
+1VYR,PETN reductase (OYE family),A:TNF1402,1,protein,A:TYR351,TYR,351,2.26,O42...OH,2.26,O42...OH
+1VYR,PETN reductase (OYE family),A:TNF1402,1,protein,A:THR26,THR,26,2.43,O41...HG23,,
+1VYR,PETN reductase (OYE family),A:TNF1402,1,water,A:HOH2749,HOH,2749,2.81,O42...O,2.81,O42...O
+1VYR,PETN reductase (OYE family),A:TNF1402,1,water,A:HOH2395,HOH,2395,3.62,O41...O,,
+1VYR,PETN reductase (OYE family),A:TNF1402,1,protein,A:TYR68,TYR,68,3.62,O41...HE2,,
+1VYR,PETN reductase (OYE family),A:TNF1402,1,ligand/other,A:FMN1401,FMN,1401,3.66,N4...H6,,
+1VYR,PETN reductase (OYE family),A:TNF1402,1,water,A:HOH2417,HOH,2417,3.74,O42...O,,
+1VYR,PETN reductase (OYE family),A:TNF1402,1,water,A:HOH2221,HOH,2221,3.74,O42...O,,
+1VYR,PETN reductase (OYE family),A:TNF1402,2,protein,A:TRP102,TRP,102,1.31,O22...CZ3,,
+1VYR,PETN reductase (OYE family),A:TNF1402,2,protein,A:ALA58,ALA,58,2.72,O21...HB3,,
+1VYR,PETN reductase (OYE family),A:TNF1402,2,protein,A:HIS181,HIS,181,2.79,O21...NE2,2.79,O21...NE2
+1VYR,PETN reductase (OYE family),A:TNF1402,2,protein,A:TYR68,TYR,68,2.97,O22...HE1,,
+1VYR,PETN reductase (OYE family),A:TNF1402,2,protein,A:TYR186,TYR,186,3.12,O21...HE2,3.42,O22...OH
+1VYR,PETN reductase (OYE family),A:TNF1402,2,ligand/other,A:FMN1401,FMN,1401,3.2,O21...HN3,3.29,O21...N3
+1VYR,PETN reductase (OYE family),A:TNF1402,2,protein,A:THR26,THR,26,3.53,O22...OG1,,
+1VYR,PETN reductase (OYE family),A:TNF1402,3,protein,A:HIS184,HIS,184,1.84,O62...ND1,1.84,O62...ND1
+1VYR,PETN reductase (OYE family),A:TNF1402,3,ligand/other,A:FMN1401,FMN,1401,3.25,O62...N1,3.25,O62...N1
+1VYR,PETN reductase (OYE family),A:TNF1402,3,water,A:HOH2628,HOH,2628,3.64,O61...O,,
+1VYR,PETN reductase (OYE family),A:TNF1402,3,water,A:HOH2749,HOH,2749,3.79,O61...O,,
+1VYR,PETN reductase (OYE family),A:TNF1402,3,water,A:HOH2626,HOH,2626,3.85,O61...O,,
+1VYR,PETN reductase (OYE family),A:TNF1402,3,protein,A:TYR186,TYR,186,3.88,O62...HE2,,
+1VYR,PETN reductase (OYE family),A:TNF1402,3,protein,A:LEU275,LEU,275,3.88,O61...HG,,
+1VYR,PETN reductase (OYE family),A:TNF1402,3,water,A:HOH2784,HOH,2784,3.91,O61...O,,
+3F03,PETN reductase (OYE family),K:NYH600,1,protein,K:HIS184,HIS,184,2.7,O2N...ND1,2.7,O2N...ND1
+3F03,PETN reductase (OYE family),K:NYH600,1,protein,K:TYR186,TYR,186,3.03,O1N...CE2,3.23,N1A...OH
+3F03,PETN reductase (OYE family),K:NYH600,1,protein,K:HIS181,HIS,181,3.16,O1N...NE2,3.16,O1N...NE2
+3F03,PETN reductase (OYE family),K:NYH600,1,protein,K:TRP102,TRP,102,3.17,O1N...CZ3,,
+3F03,PETN reductase (OYE family),K:NYH600,1,ligand/other,K:FMN1401,FMN,1401,3.24,O2N...N1,3.24,O2N...N1
+3P7Y,PETN reductase (OYE family),A:P7Y402,1,water,A:HOH398,HOH,398,2.77,O2...O,2.77,O2...O
+3P7Y,PETN reductase (OYE family),A:P7Y402,1,water,A:HOH701,HOH,701,2.92,O2...O,2.92,O2...O
+3P7Y,PETN reductase (OYE family),A:P7Y402,1,protein,A:HIS184,HIS,184,3.31,O2...CE1,3.37,O2...NE2
+3P7Y,PETN reductase (OYE family),A:P7Y402,1,water,A:HOH1053,HOH,1053,3.4,O1...O,3.4,O1...O
+3P7Y,PETN reductase (OYE family),A:P7Y402,1,protein,A:LEU275,LEU,275,3.42,O1...CD2,,
+3P7Y,PETN reductase (OYE family),A:P7Y402,1,ligand/other,A:FMN401,FMN,401,3.59,N1...C1',,
+3P7Y,PETN reductase (OYE family),A:P7Y402,1,protein,A:ASP274,ASP,274,3.94,O1...CA,,
+3P80,PETN reductase (OYE family),A:P80402,1,water,A:HOH781,HOH,781,1.86,O1...O,1.86,O1...O
+3P80,PETN reductase (OYE family),A:P80402,1,protein,A:TYR351,TYR,351,2.63,O1...OH,2.63,O1...OH
+3P80,PETN reductase (OYE family),A:P80402,1,water,A:HOH398,HOH,398,3.0,O2...O,3.0,O2...O
+3P80,PETN reductase (OYE family),A:P80402,1,water,A:HOH408,HOH,408,3.01,O1...O,3.01,O1...O
+3P80,PETN reductase (OYE family),A:P80402,1,water,A:HOH1003,HOH,1003,3.24,O1...O,3.24,O1...O
+3P80,PETN reductase (OYE family),A:P80402,1,protein,A:LEU275,LEU,275,3.31,O2...CG,,
+3P80,PETN reductase (OYE family),A:P80402,1,ligand/other,A:FMN401,FMN,401,3.44,N1...C8,,
+3P80,PETN reductase (OYE family),A:P80402,1,water,A:HOH961,HOH,961,3.79,O2...O,,
+3P80,PETN reductase (OYE family),A:P80403,2,water,A:HOH924,HOH,924,2.63,O1...O,2.63,O1...O
+3P80,PETN reductase (OYE family),A:P80403,2,protein,A:GLN241,GLN,241,2.9,O1...NE2,2.9,O1...NE2
+3P80,PETN reductase (OYE family),A:P80403,2,water,A:HOH548,HOH,548,3.05,O2...O,3.05,O2...O
+3P80,PETN reductase (OYE family),A:P80403,2,ligand/other,A:P80402,P80,402,3.33,O1...C2',,
+3P80,PETN reductase (OYE family),A:P80403,2,water,A:HOH769,HOH,769,3.47,O2...O,3.47,O2...O
+3P80,PETN reductase (OYE family),A:P80403,2,water,A:HOH398,HOH,398,3.54,O2...O,,
+3P80,PETN reductase (OYE family),A:P80403,2,protein,A:HIS184,HIS,184,3.65,O1...CB,,
+3P80,PETN reductase (OYE family),A:P80403,2,water,A:HOH1045,HOH,1045,3.71,O2...O,,
+3P80,PETN reductase (OYE family),A:P80403,2,water,A:HOH961,HOH,961,3.91,O1...O,,
+3P81,PETN reductase (OYE family),A:P81402,1,water,A:HOH443,HOH,443,2.77,O1...O,2.77,O1...O
+3P81,PETN reductase (OYE family),A:P81402,1,protein,A:TYR351,TYR,351,2.92,O1...CZ,2.94,O1...OH
+3P81,PETN reductase (OYE family),A:P81402,1,protein,A:TYR68,TYR,68,3.26,O2...CE2,,
+3P81,PETN reductase (OYE family),A:P81402,1,protein,A:ARG142,ARG,142,3.53,O1...NH1,,
+3P81,PETN reductase (OYE family),A:P81402,1,protein,A:LEU28,LEU,28,3.53,O2...CD1,,
+3P81,PETN reductase (OYE family),A:P81402,1,protein,A:SER132,SER,132,3.84,O2...CB,,
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,1,protein,A:TYR76,TYR,76,3.0,O42...CD1,,
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,1,protein,A:THR35,THR,35,3.22,O42...CG2,,
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,1,protein,A:TRP110,TRP,110,3.56,O42...CH2,,
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,2,ligand/other,A:FMN401,FMN,401,2.99,O22...C2,3.11,O22...N3
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,2,protein,A:ASN185,ASN,185,3.02,O22...ND2,3.02,O22...ND2
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,2,protein,A:HIS182,HIS,182,3.02,O22...NE2,3.02,O22...NE2
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,2,protein,A:TYR187,TYR,187,3.22,N2...CE2,,
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,2,protein,A:TRP110,TRP,110,3.36,O21...CZ2,,
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,2,protein,A:ALA66,ALA,66,3.55,O21...CB,,
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,3,ligand/other,A:8K6403,8K6,403,2.75,O61...C3,,
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,3,protein,A:PHE273,PHE,273,3.32,O61...CZ,,
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,3,protein,A:PHE241,PHE,241,3.48,O62...CE2,,
+5K1W,Other ene-reductase / flavin reductase,A:TNF402,3,ligand/other,A:FMN401,FMN,401,3.78,O61...C9,,
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,1,ligand/other,A:TNF402,TNF,402,3.35,O42...O41,3.35,O42...O41
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,1,protein,A:THR35,THR,35,3.48,O41...CB,,
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,1,ligand/other,A:FMN400,FMN,400,3.62,N4...C6,,
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,2,protein,A:TRP110,TRP,110,2.72,O22...CZ2,,
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,2,protein,A:HIS182,HIS,182,2.82,O21...NE2,2.82,O21...NE2
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,2,protein,A:THR35,THR,35,3.07,O22...OG1,3.07,O22...OG1
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,2,ligand/other,A:FMN400,FMN,400,3.1,O21...N3,3.1,O21...N3
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,2,protein,A:TYR187,TYR,187,3.4,O21...CE2,,
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,2,protein,A:ALA66,ALA,66,3.46,O21...CB,,
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,3,ligand/other,A:TNF402,TNF,402,2.47,O61...O42,2.47,O61...O42
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,3,protein,A:ASN185,ASN,185,2.75,O62...ND2,2.75,O62...ND2
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,3,water,A:HOH653,HOH,653,2.95,O61...O,2.95,O61...O
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,3,ligand/other,A:FMN400,FMN,400,2.96,O61...C1',3.16,O61...N10
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,3,protein,A:PHE241,PHE,241,3.39,O62...CD2,,
+5K1U,Other ene-reductase / flavin reductase,A:TNF401,3,protein,A:TYR240,TYR,240,3.78,O62...OH,,
+5K1U,Other ene-reductase / flavin reductase,A:TNF402,4,ligand/other,A:TNF401,TNF,401,2.32,O41...O1,2.32,O41...O1
+5K1U,Other ene-reductase / flavin reductase,A:TNF402,4,ligand/other,A:FMN400,FMN,400,2.8,O41...C9,,
+5K1U,Other ene-reductase / flavin reductase,A:TNF402,4,protein,A:PHE273,PHE,273,2.85,O42...CD1,,
+5K1U,Other ene-reductase / flavin reductase,A:TNF402,4,water,A:HOH653,HOH,653,3.12,O42...O,3.12,O42...O
+5K1U,Other ene-reductase / flavin reductase,A:TNF402,6,water,A:HOH700,HOH,700,2.82,O61...O,2.82,O61...O
+5K1U,Other ene-reductase / flavin reductase,A:TNF402,6,water,A:HOH790,HOH,790,2.94,O62...O,2.94,O62...O
+5K1U,Other ene-reductase / flavin reductase,A:TNF402,6,protein,A:TYR240,TYR,240,3.37,O62...CD2,,
+5K1U,Other ene-reductase / flavin reductase,A:TNF402,6,protein,A:PHE273,PHE,273,3.47,O62...CB,,
+5K1U,Other ene-reductase / flavin reductase,A:TNF402,6,water,A:HOH888,HOH,888,3.93,O61...O,,
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,1,protein,A:ARG262,ARG,262,2.37,O21...CD,3.01,O21...NE
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,1,ligand/other,A:FMN1351,FMN,1351,2.45,O21...C1',2.84,O21...O3'
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,1,water,A:HOH2387,HOH,2387,2.58,O22...O,2.58,O22...O
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,1,water,A:HOH2277,HOH,2277,3.12,O21...O,3.12,O21...O
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,1,water,A:HOH2448,HOH,2448,3.13,O22...O,3.13,O22...O
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,1,protein,A:ASN176,ASN,176,3.75,O21...ND2,,
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,1,water,A:HOH2444,HOH,2444,3.76,O22...O,,
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,2,water,A:HOH2186,HOH,2186,2.47,O41...O,2.47,O41...O
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,2,protein,A:TYR178,TYR,178,2.84,O42...OH,2.84,O42...OH
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,2,protein,A:ASN176,ASN,176,2.91,O41...ND2,2.91,O41...ND2
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,2,water,A:HOH2432,HOH,2432,2.96,O42...O,2.96,O42...O
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,2,ligand/other,A:FMN1351,FMN,1351,3.24,O41...C2,3.27,O41...N1
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,2,protein,A:HIS173,HIS,173,3.46,O41...NE2,3.46,O41...NE2
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,2,water,A:HOH2128,HOH,2128,3.65,O42...O,,
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,3,protein,A:ALA232,ALA,232,2.39,O61...CB,,
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,3,water,A:HOH2334,HOH,2334,2.75,O61...O,2.75,O61...O
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,3,protein,A:HIS233,HIS,233,3.29,O62...NE2,3.29,O62...NE2
+4AB4,Other ene-reductase / flavin reductase,A:TNL1357,3,water,A:HOH2055,HOH,2055,3.97,O62...O,,
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,4,ligand/other,B:FMN1351,FMN,1351,2.43,O21...C1',2.97,O21...O3'
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,4,water,B:HOH2313,HOH,2313,2.57,O22...O,2.57,O22...O
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,4,water,B:HOH2376,HOH,2376,2.57,O22...O,2.57,O22...O
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,4,protein,B:ARG262,ARG,262,2.68,O21...CD,3.41,O21...NE
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,4,water,B:HOH2210,HOH,2210,3.66,O21...O,,
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,4,water,B:HOH2375,HOH,2375,3.75,O22...O,,
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,5,water,B:HOH2360,HOH,2360,2.82,O42...O,2.82,O42...O
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,5,protein,B:ASN176,ASN,176,2.88,O41...ND2,2.88,O41...ND2
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,5,protein,B:TYR178,TYR,178,2.96,O42...OH,2.96,O42...OH
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,5,ligand/other,B:FMN1351,FMN,1351,3.2,O41...C2,3.32,O41...N1
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,5,protein,B:HIS173,HIS,173,3.23,O41...NE2,3.23,O41...NE2
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,6,protein,B:HIS233,HIS,233,2.37,O61...ND1,2.37,O61...ND1
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,6,protein,B:ALA232,ALA,232,2.39,O61...CB,,
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,6,water,B:HOH2260,HOH,2260,3.12,O62...O,3.12,O62...O
+4AB4,Other ene-reductase / flavin reductase,B:TNL1354,6,protein,B:ASN176,ASN,176,3.86,O61...O,,
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,1,water,A:HOH2310,HOH,2310,2.75,O22...O,2.75,O22...O
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,1,protein,A:HIS233,HIS,233,2.78,O21...NE2,2.78,O21...NE2
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,1,protein,A:ALA232,ALA,232,3.15,O22...CB,,
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,1,water,A:HOH2116,HOH,2116,3.89,O21...O,,
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,2,water,A:HOH2175,HOH,2175,2.56,O41...O,2.56,O41...O
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,2,water,A:HOH2040,HOH,2040,2.67,O42...O,2.67,O42...O
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,2,water,A:HOH2403,HOH,2403,2.77,O42...O,2.77,O42...O
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,2,protein,A:TYR178,TYR,178,2.88,O42...OH,2.88,O42...OH
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,2,protein,A:ASN176,ASN,176,3.08,O41...ND2,3.08,O41...ND2
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,2,ligand/other,A:FMN1351,FMN,1351,3.16,O41...C2,3.17,O41...N1
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,2,protein,A:HIS173,HIS,173,3.52,O41...NE2,,
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,2,water,A:HOH2117,HOH,2117,3.87,O42...O,,
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,3,protein,A:ARG262,ARG,262,2.46,O62...CD,2.94,O62...NE
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,3,ligand/other,A:FMN1351,FMN,1351,2.55,O62...C1',3.05,O62...O3'
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,3,water,A:HOH2362,HOH,2362,2.9,O61...O,2.9,O61...O
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,3,water,A:HOH2255,HOH,2255,3.14,O62...O,3.14,O62...O
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,3,protein,A:ASN176,ASN,176,3.59,O62...ND2,,
+4AEO,Other ene-reductase / flavin reductase,A:TNL1355,3,water,A:HOH2414,HOH,2414,3.77,O61...O,,
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,4,protein,B:HIS233,HIS,233,2.4,O21...CE1,2.77,O21...ND1
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,4,protein,B:ALA232,ALA,232,3.35,O21...CB,,
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,5,ligand/other,B:FMN1351,FMN,1351,2.21,O41...N3,2.21,O41...N3
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,5,protein,B:ASN176,ASN,176,2.52,O42...ND2,2.52,O42...ND2
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,5,protein,B:HIS173,HIS,173,2.57,O42...NE2,2.57,O42...NE2
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,5,protein,B:TYR178,TYR,178,2.8,O42...CE2,,
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,6,protein,B:TYR336,TYR,336,2.6,O62...OH,2.6,O62...OH
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,6,protein,B:THR25,THR,25,3.64,O61...CB,,
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,6,protein,B:TYR66,TYR,66,3.74,O61...CZ,,
+4AEO,Other ene-reductase / flavin reductase,B:TNL1353,6,protein,B:TYR178,TYR,178,3.96,O61...OH,,
+4JIQ,Other ene-reductase / flavin reductase,A:1L5402,1,protein,A:ASN181,ASN,181,2.41,O1...ND2,2.41,O1...ND2
+4JIQ,Other ene-reductase / flavin reductase,A:1L5402,1,ligand/other,A:FMN401,FMN,401,2.97,O1...C10,2.98,O1...N1
+4JIQ,Other ene-reductase / flavin reductase,A:1L5402,1,protein,A:TYR183,TYR,183,3.05,O...CE2,,
+4JIQ,Other ene-reductase / flavin reductase,A:1L5402,1,protein,A:HIS178,HIS,178,3.1,O...CE1,,
+1Z44,Other ene-reductase / flavin reductase,A:NPO1506,1,protein,A:TYR28,TYR,28,1.81,O3...OH,1.81,O3...OH
+1Z44,Other ene-reductase / flavin reductase,A:NPO1506,1,protein,B:ARG336,ARG,336,2.77,O2...NH1,2.77,O2...NH1
+1Z44,Other ene-reductase / flavin reductase,A:NPO1506,1,ligand/other,A:FMN1500,FMN,1500,3.65,N1...C6,,
+1Z44,Other ene-reductase / flavin reductase,A:NPO1506,1,water,B:HOH1706,HOH,1706,3.8,O2...O,,
+1Z44,Other ene-reductase / flavin reductase,A:NPO1506,1,water,A:HOH1724,HOH,1724,3.94,O2...O,,
+1Z44,Other ene-reductase / flavin reductase,B:NPO1505,2,protein,B:TYR28,TYR,28,1.6,O2...OH,1.6,O2...OH
+1Z44,Other ene-reductase / flavin reductase,B:NPO1505,2,protein,A:ARG336,ARG,336,3.02,O3...NH1,3.02,O3...NH1
+1Z44,Other ene-reductase / flavin reductase,B:NPO1505,2,water,A:HOH1698,HOH,1698,3.76,O3...O,,
+1Z44,Other ene-reductase / flavin reductase,B:NPO1505,2,ligand/other,B:FMN1501,FMN,1501,3.83,N1...C5A,,
+1Z44,Other ene-reductase / flavin reductase,B:NPO1507,3,protein,B:ALA43,ALA,43,3.16,O2...CB,3.3,O2...N
+1Z44,Other ene-reductase / flavin reductase,B:NPO1507,3,protein,A:ALA43,ALA,43,3.33,O3...N,3.33,O3...N
+1Z44,Other ene-reductase / flavin reductase,B:NPO1507,3,protein,A:ILE46,ILE,46,3.47,O2...CD1,,
+1Z44,Other ene-reductase / flavin reductase,B:NPO1507,3,protein,A:MSE42,MSE,42,3.51,N1...CB,,
+1Z44,Other ene-reductase / flavin reductase,B:NPO1507,3,protein,B:MSE42,MSE,42,3.52,O3...C,,
+1Z44,Other ene-reductase / flavin reductase,B:NPO1507,3,protein,B:ILE46,ILE,46,3.52,O3...CD1,,
+1Z44,Other ene-reductase / flavin reductase,B:NPO1507,3,protein,A:PRO39,PRO,39,3.75,O3...O,,
+1Z44,Other ene-reductase / flavin reductase,B:NPO1507,3,protein,B:PRO39,PRO,39,3.78,O2...O,,
+1YKI,Nitroreductase,A:NFZ1219,1,water,A:HOH1421,HOH,1421,2.86,O1...O,2.86,O1...O
+1YKI,Nitroreductase,A:NFZ1219,1,protein,A:TYR68,TYR,68,3.09,O1...C,3.14,O1...O
+1YKI,Nitroreductase,A:NFZ1219,1,protein,A:ASN71,ASN,71,3.15,N1...ND2,3.15,N1...ND2
+1YKI,Nitroreductase,A:NFZ1219,1,protein,A:PHE70,PHE,70,3.16,O1...N,3.16,O1...N
+1YKI,Nitroreductase,A:NFZ1219,1,protein,A:ASN67,ASN,67,3.36,O1...O,3.36,O1...O
+1YKI,Nitroreductase,A:NFZ1219,1,protein,B:PHE124,PHE,124,3.61,O2...CZ,,
+1YKI,Nitroreductase,A:NFZ1219,1,protein,A:VAL69,VAL,69,3.74,O1...N,,
+1YKI,Nitroreductase,A:NFZ1219,1,protein,A:GLY166,GLY,166,3.82,O2...CA,,
+1YKI,Nitroreductase,A:NFZ1219,1,water,A:HOH1418,HOH,1418,3.93,O2...O,,
+1YKI,Nitroreductase,B:NFZ2219,2,water,B:HOH2342,HOH,2342,2.72,O1...O,2.72,O1...O
+1YKI,Nitroreductase,B:NFZ2219,2,protein,B:PHE70,PHE,70,3.17,O1...N,3.17,O1...N
+1YKI,Nitroreductase,B:NFZ2219,2,protein,B:ASN71,ASN,71,3.17,N1...ND2,3.17,N1...ND2
+1YKI,Nitroreductase,B:NFZ2219,2,protein,B:TYR68,TYR,68,3.23,O1...C,3.25,O1...O
+1YKI,Nitroreductase,B:NFZ2219,2,protein,B:ASN67,ASN,67,3.49,O1...O,3.49,O1...O
+1YKI,Nitroreductase,B:NFZ2219,2,water,B:HOH2377,HOH,2377,3.7,O1...O,,
+1YKI,Nitroreductase,B:NFZ2219,2,protein,A:PHE124,PHE,124,3.71,O2...CZ,,
+1YKI,Nitroreductase,B:NFZ2219,2,protein,B:GLY166,GLY,166,3.87,O2...CA,,
+1YKI,Nitroreductase,B:NFZ2219,2,water,B:HOH2405,HOH,2405,3.88,O2...O,,
+1YKI,Nitroreductase,B:NFZ2219,2,protein,B:VAL69,VAL,69,3.89,O1...N,,
+1YKI,Nitroreductase,C:NFZ3219,3,water,C:HOH4289,HOH,4289,2.85,O1...O,2.85,O1...O
+1YKI,Nitroreductase,C:NFZ3219,3,protein,C:TYR68,TYR,68,3.12,O1...O,3.12,O1...O
+1YKI,Nitroreductase,C:NFZ3219,3,protein,C:ASN71,ASN,71,3.18,N1...ND2,3.18,N1...ND2
+1YKI,Nitroreductase,C:NFZ3219,3,protein,C:PHE70,PHE,70,3.29,O1...N,3.29,O1...N
+1YKI,Nitroreductase,C:NFZ3219,3,protein,C:ASN67,ASN,67,3.46,O1...O,3.46,O1...O
+1YKI,Nitroreductase,C:NFZ3219,3,protein,D:PHE124,PHE,124,3.56,O2...CZ,,
+1YKI,Nitroreductase,C:NFZ3219,3,water,C:HOH4442,HOH,4442,3.59,O2...O,,
+1YKI,Nitroreductase,C:NFZ3219,3,protein,C:VAL69,VAL,69,3.84,O1...N,,
+1YKI,Nitroreductase,C:NFZ3219,3,protein,C:GLY166,GLY,166,3.96,O2...CA,,
+1YKI,Nitroreductase,D:NFZ4219,4,water,D:HOH4281,HOH,4281,2.86,O1...O,2.86,O1...O
+1YKI,Nitroreductase,D:NFZ4219,4,protein,D:TYR68,TYR,68,3.09,O1...C,3.14,O1...O
+1YKI,Nitroreductase,D:NFZ4219,4,protein,D:ASN71,ASN,71,3.15,N1...ND2,3.15,N1...ND2
+1YKI,Nitroreductase,D:NFZ4219,4,protein,D:PHE70,PHE,70,3.19,O1...N,3.19,O1...N
+1YKI,Nitroreductase,D:NFZ4219,4,protein,D:ASN67,ASN,67,3.42,O1...O,3.42,O1...O
+1YKI,Nitroreductase,D:NFZ4219,4,protein,C:PHE124,PHE,124,3.7,O2...CZ,,
+1YKI,Nitroreductase,D:NFZ4219,4,protein,D:VAL69,VAL,69,3.75,O1...N,,
+1YKI,Nitroreductase,D:NFZ4219,4,protein,D:GLY166,GLY,166,3.89,O2...CA,,
+1IDT,Nitroreductase,A:CB11219,1,ligand/other,B:FMN2218,FMN,2218,3.09,O2...C10,3.18,O2...O2'
+1IDT,Nitroreductase,A:CB11219,1,protein,A:THR41,THR,41,3.31,O1...CG2,,
+1IDT,Nitroreductase,A:CB11219,1,protein,A:PHE124,PHE,124,3.44,O1...CE2,,
+1IDT,Nitroreductase,A:CB11219,2,water,B:HOH2290,HOH,2290,2.83,O3...O,2.83,O3...O
+1IDT,Nitroreductase,A:CB11219,2,protein,B:PHE70,PHE,70,3.01,O3...CZ,,
+1IDT,Nitroreductase,A:CB11219,2,protein,A:PHE124,PHE,124,3.13,O3...CE2,,
+1IDT,Nitroreductase,A:CB12219,3,protein,A:LYS14,LYS,14,2.6,O1...NZ,2.6,O1...NZ
+1IDT,Nitroreductase,A:CB12219,3,water,B:HOH2256,HOH,2256,3.05,O2...O,3.05,O2...O
+1IDT,Nitroreductase,A:CB12219,3,ligand/other,A:FMN1218,FMN,1218,3.22,O1...O2',3.22,O1...O2'
+1IDT,Nitroreductase,A:CB12219,3,water,A:HOH2227,HOH,2227,3.43,O1...O,3.43,O1...O
+1IDT,Nitroreductase,A:CB12219,3,water,B:HOH2235,HOH,2235,3.44,O2...O,3.44,O2...O
+1IDT,Nitroreductase,A:CB12219,3,water,B:HOH2233,HOH,2233,3.56,O2...O,,
+1IDT,Nitroreductase,A:CB12219,3,protein,B:ASN117,ASN,117,3.82,O2...ND2,,
+1IDT,Nitroreductase,A:CB12219,4,protein,B:THR41,THR,41,2.65,O3...N,2.65,O3...N
+1IDT,Nitroreductase,A:CB12219,4,ligand/other,A:FMN1218,FMN,1218,2.75,O3...O2',2.75,O3...O2'
+1IDT,Nitroreductase,A:CB12219,4,protein,B:PHE124,PHE,124,3.67,O4...CE1,,
+1IDT,Nitroreductase,A:CB12219,4,protein,B:SER40,SER,40,3.78,O3...C,,
+1OO6,Nitroreductase,A:SN2219,1,ligand/other,B:FMN220,FMN,220,3.04,O3...O2',3.04,O3...O2'
+1OO6,Nitroreductase,A:SN2219,1,protein,A:THR41,THR,41,3.29,O3...N,3.29,O3...N
+1OO6,Nitroreductase,A:SN2219,2,ligand/other,B:FMN220,FMN,220,3.0,O5...O2,3.0,O5...O2
+1OO6,Nitroreductase,A:SN2219,2,protein,B:LYS14,LYS,14,3.05,O5...NZ,3.05,O5...NZ
+1OO6,Nitroreductase,A:SN2221,3,water,A:HOH315,HOH,315,2.66,O3...O,2.66,O3...O
+1OO6,Nitroreductase,A:SN2221,3,water,A:HOH301,HOH,301,3.1,O1...O,3.1,O1...O
+1OO6,Nitroreductase,A:SN2221,3,water,B:HOH290,HOH,290,3.24,O3...O,3.24,O3...O
+1OO6,Nitroreductase,A:SN2221,3,water,B:HOH262,HOH,262,3.68,O3...O,,
+1OO6,Nitroreductase,A:SN2221,3,protein,A:LYS14,LYS,14,3.71,N1...NZ,,
+1OO6,Nitroreductase,A:SN2221,3,protein,B:ASN117,ASN,117,3.97,O1...ND2,,
+1OO6,Nitroreductase,A:SN2221,4,protein,A:PHE70,PHE,70,2.79,O2...CE1,,
+1OO6,Nitroreductase,A:SN2221,4,ligand/other,A:FMN218,FMN,218,2.8,O5...O2,2.8,O5...O2
+1OO6,Nitroreductase,A:SN2221,4,protein,A:LYS74,LYS,74,3.13,O5...NZ,3.13,O5...NZ
+1OO6,Nitroreductase,A:SN2221,4,protein,A:ASN71,ASN,71,3.43,O5...OD1,3.43,O5...OD1
+1OON,Nitroreductase,A:BEL362,1,water,A:HOH439,HOH,439,2.76,O1...O,2.76,O1...O
+1OON,Nitroreductase,A:BEL362,1,protein,B:PHE70,PHE,70,3.02,O2...CE1,,
+1OON,Nitroreductase,A:BEL362,1,protein,A:PHE124,PHE,124,3.17,O2...CE2,,
+1OON,Nitroreductase,A:BEL362,1,protein,A:GLY120,GLY,120,3.99,O1...O,,
+1OON,Nitroreductase,A:BEL362,2,ligand/other,B:FMN361,FMN,361,2.74,O7...O2',2.74,O7...O2'
+1OON,Nitroreductase,A:BEL362,2,protein,A:THR41,THR,41,3.12,O7...N,3.12,O7...N
+1OON,Nitroreductase,A:BEL362,2,water,A:HOH440,HOH,440,3.93,O7...O,,
+1OON,Nitroreductase,A:BEL362,2,protein,A:PHE124,PHE,124,3.96,O6...CZ,,
+5J8G,Nitroreductase,A:4NB302,1,protein,A:THR41,THR,41,2.71,O2'...N,2.71,O2'...N
+5J8G,Nitroreductase,A:4NB302,1,ligand/other,B:FMN301,FMN,301,2.73,O2'...O2',2.73,O2'...O2'
+5J8G,Nitroreductase,A:4NB302,1,protein,A:SER40,SER,40,3.87,O2'...C,,
+5J8G,Nitroreductase,B:4NB302,2,ligand/other,A:FMN301,FMN,301,2.72,O2'...O2',2.72,O2'...O2'
+5J8G,Nitroreductase,B:4NB302,2,protein,B:THR41,THR,41,2.76,O2'...N,2.76,O2'...N
+5J8G,Nitroreductase,B:4NB302,2,protein,B:SER40,SER,40,3.92,O2'...C,,
+5J8G,Nitroreductase,C:4NB302,3,protein,C:THR41,THR,41,2.73,O2'...N,2.73,O2'...N
+5J8G,Nitroreductase,C:4NB302,3,ligand/other,D:FMN301,FMN,301,2.75,O2'...O2',2.75,O2'...O2'
+5J8G,Nitroreductase,C:4NB302,3,protein,C:SER40,SER,40,3.9,O2'...C,,
+5J8G,Nitroreductase,D:4NB302,4,ligand/other,C:FMN301,FMN,301,2.6,O2'...O2',2.6,O2'...O2'
+5J8G,Nitroreductase,D:4NB302,4,protein,D:THR41,THR,41,2.81,O2'...N,2.81,O2'...N
+5J8G,Nitroreductase,D:4NB302,4,protein,D:SER40,SER,40,4.0,O2'...C,,
+4BN6,Nitroreductase,A:CLM1203,1,ligand/other,A:FMN504,FMN,504,2.34,O9B...HO2',3.08,O9B...O2'
+4BN6,Nitroreductase,A:CLM1203,1,water,A:HOH2057,HOH,2057,3.79,O9B...O,,
+4BN8,Nitroreductase,A:NPO505,1,ligand/other,A:FMN504,FMN,504,3.88,N1...HN3,,
+2C0U,Nitroalkane oxidase,A:NBT1433,1,protein,A:PHE401,PHE,401,3.05,O15...CE1,,
+2C0U,Nitroalkane oxidase,A:NBT1433,1,protein,A:ASP402,ASP,402,3.26,O16...OD2,3.26,O16...OD2
+2C0U,Nitroalkane oxidase,A:NBT1433,1,protein,A:SER276,SER,276,3.37,O16...OG,3.37,O16...OG
+2C0U,Nitroalkane oxidase,A:NBT1433,1,protein,A:LEU99,LEU,99,3.41,O16...CD1,,
+2C0U,Nitroalkane oxidase,A:NBT1433,1,protein,A:VAL95,VAL,95,3.44,O15...CG1,,
+2C0U,Nitroalkane oxidase,A:NBT1433,1,ligand/other,A:FAD1432,FAD,1432,3.76,NCG...N5,,
+2C0U,Nitroalkane oxidase,A:NBT1433,1,protein,A:ILE92,ILE,92,3.86,O15...CD1,,
+2C0U,Nitroalkane oxidase,B:NBT1433,2,protein,B:PHE401,PHE,401,3.16,O15...CE1,,
+2C0U,Nitroalkane oxidase,B:NBT1433,2,protein,B:VAL95,VAL,95,3.26,O15...CG1,,
+2C0U,Nitroalkane oxidase,B:NBT1433,2,protein,B:LEU99,LEU,99,3.37,O16...CD1,,
+2C0U,Nitroalkane oxidase,B:NBT1433,2,protein,B:ASP402,ASP,402,3.39,O16...OD1,3.39,O16...OD1
+2C0U,Nitroalkane oxidase,B:NBT1433,2,protein,B:ILE92,ILE,92,3.56,O15...CD1,,
+2C0U,Nitroalkane oxidase,B:NBT1433,2,ligand/other,B:FAD1432,FAD,1432,3.76,NCG...N5,,
+2C0U,Nitroalkane oxidase,B:NBT1433,2,protein,B:MSE283,MSE,283,3.81,O15...CE,,
+2C0U,Nitroalkane oxidase,C:NBT1433,3,protein,C:PHE401,PHE,401,3.09,O16...CE1,,
+2C0U,Nitroalkane oxidase,C:NBT1433,3,protein,C:LEU99,LEU,99,3.27,O15...CD1,,
+2C0U,Nitroalkane oxidase,C:NBT1433,3,protein,C:SER276,SER,276,3.6,O15...OG,,
+2C0U,Nitroalkane oxidase,C:NBT1433,3,protein,C:VAL95,VAL,95,3.66,O16...CG2,,
+2C0U,Nitroalkane oxidase,C:NBT1433,3,ligand/other,C:FAD1432,FAD,1432,3.75,NCG...N5,,
+2C0U,Nitroalkane oxidase,C:NBT1433,3,protein,C:ASP402,ASP,402,3.83,O15...OD1,,
+2C0U,Nitroalkane oxidase,D:NBT1433,4,protein,D:ASP402,ASP,402,3.13,O16...OD2,3.13,O16...OD2
+2C0U,Nitroalkane oxidase,D:NBT1433,4,protein,D:LEU99,LEU,99,3.23,O16...CD1,,
+2C0U,Nitroalkane oxidase,D:NBT1433,4,protein,D:PHE401,PHE,401,3.34,O15...CE1,,
+2C0U,Nitroalkane oxidase,D:NBT1433,4,protein,D:VAL95,VAL,95,3.54,O15...CG2,,
+2C0U,Nitroalkane oxidase,D:NBT1433,4,ligand/other,D:FAD1432,FAD,1432,3.75,NCG...N5,,
+3FCJ,Nitroalkane oxidase,A:NIE600,1,ligand/other,A:FAD500,FAD,500,2.38,O5...N5,2.38,O5...N5
+3FCJ,Nitroalkane oxidase,A:NIE600,1,protein,A:ASN402,ASN,402,3.27,O4...CA,3.3,O4...N
+3FCJ,Nitroalkane oxidase,A:NIE600,1,protein,A:LEU99,LEU,99,3.87,O5...CD1,,
+3FCJ,Nitroalkane oxidase,B:NIE600,2,ligand/other,B:FAD500,FAD,500,2.17,O4...N5,2.17,O4...N5
+3FCJ,Nitroalkane oxidase,B:NIE600,2,protein,B:ASN402,ASN,402,2.46,O5...ND2,2.46,O5...ND2
+3FCJ,Nitroalkane oxidase,B:NIE600,2,protein,B:LEU99,LEU,99,3.81,O5...CD1,,
+3FCJ,Nitroalkane oxidase,B:NIE600,2,protein,B:PHE273,PHE,273,3.83,O5...CE2,,
+3FCJ,Nitroalkane oxidase,B:NIE600,2,protein,B:PHE401,PHE,401,3.85,O4...CD1,,
+3FCJ,Nitroalkane oxidase,C:NIE600,3,ligand/other,C:FAD500,FAD,500,2.82,N3...N5,2.82,N3...N5
+3FCJ,Nitroalkane oxidase,C:NIE600,3,protein,C:ASN402,ASN,402,2.85,O5...ND2,2.85,O5...ND2
+3FCJ,Nitroalkane oxidase,C:NIE600,3,protein,C:LEU99,LEU,99,3.31,O5...CD1,,
+3FCJ,Nitroalkane oxidase,C:NIE600,3,protein,C:PHE401,PHE,401,3.75,O4...CD1,,
+3FCJ,Nitroalkane oxidase,D:NIE600,4,ligand/other,D:FAD500,FAD,500,2.56,O5...N5,2.56,O5...N5
+3FCJ,Nitroalkane oxidase,D:NIE600,4,protein,D:ASN402,ASN,402,2.87,O4...ND2,2.87,O4...ND2
+3FCJ,Nitroalkane oxidase,D:NIE600,4,protein,D:PHE401,PHE,401,3.31,O5...CD1,,
+3FCJ,Nitroalkane oxidase,D:NIE600,4,protein,D:LEU99,LEU,99,3.69,O4...CD1,,
+3FCJ,Nitroalkane oxidase,D:NIE600,4,protein,D:PHE273,PHE,273,3.7,O4...CE2,,
+3D9D,Nitroalkane oxidase,A:N6C600,1,ligand/other,A:FAD500,FAD,500,2.71,N1...N5,2.71,N1...N5
+3D9D,Nitroalkane oxidase,A:N6C600,1,protein,A:ASN402,ASN,402,2.75,O1...ND2,2.75,O1...ND2
+3D9D,Nitroalkane oxidase,A:N6C600,1,protein,A:PHE401,PHE,401,3.34,O2...CD1,,
+3D9D,Nitroalkane oxidase,A:N6C600,1,protein,A:PHE273,PHE,273,3.75,O1...CE2,,
+3D9D,Nitroalkane oxidase,A:N6C600,1,protein,A:LEU99,LEU,99,3.99,O1...CD1,,
+3D9D,Nitroalkane oxidase,B:N6C600,2,ligand/other,B:FAD500,FAD,500,2.64,O2...N5,2.64,O2...N5
+3D9D,Nitroalkane oxidase,B:N6C600,2,protein,B:ASN402,ASN,402,2.83,O1...ND2,2.83,O1...ND2
+3D9D,Nitroalkane oxidase,B:N6C600,2,protein,B:LEU99,LEU,99,3.66,O1...CD2,,
+3D9D,Nitroalkane oxidase,B:N6C600,2,protein,B:PHE401,PHE,401,3.69,O2...CD1,,
+3D9D,Nitroalkane oxidase,B:N6C600,2,protein,B:PHE273,PHE,273,3.7,O1...CE2,,
+3D9D,Nitroalkane oxidase,C:N6C600,3,protein,C:ASN402,ASN,402,2.8,O1...N,2.8,O1...N
+3D9D,Nitroalkane oxidase,C:N6C600,3,ligand/other,C:FAD500,FAD,500,2.81,N1...N5,2.81,N1...N5
+3D9D,Nitroalkane oxidase,C:N6C600,3,protein,C:PHE401,PHE,401,3.27,O1...CD1,,
+3D9D,Nitroalkane oxidase,C:N6C600,3,protein,C:PHE273,PHE,273,3.68,O2...CE2,,
+3D9D,Nitroalkane oxidase,D:N6C600,4,protein,D:ASN402,ASN,402,2.53,O1...ND2,2.53,O1...ND2
+3D9D,Nitroalkane oxidase,D:N6C600,4,ligand/other,D:FAD500,FAD,500,2.67,O2...N5,2.67,O2...N5
+3D9D,Nitroalkane oxidase,D:N6C600,4,protein,D:PHE401,PHE,401,3.4,O2...CD1,,
+3D9D,Nitroalkane oxidase,D:N6C600,4,protein,D:PHE273,PHE,273,3.61,O1...CE2,,
+3D9E,Nitroalkane oxidase,A:N8C600,1,protein,A:ASN402,ASN,402,2.87,O2...N,2.87,O2...N
+3D9E,Nitroalkane oxidase,A:N8C600,1,ligand/other,A:FAD500,FAD,500,2.9,O1...O2',2.9,O1...O2'
+3D9E,Nitroalkane oxidase,A:N8C600,1,protein,A:PHE401,PHE,401,3.27,O2...CD1,,
+3D9E,Nitroalkane oxidase,A:N8C600,1,protein,A:PHE273,PHE,273,3.64,O1...CE2,,
+3D9E,Nitroalkane oxidase,A:N8C600,1,protein,A:LEU99,LEU,99,3.92,O1...CD2,,
+3D9E,Nitroalkane oxidase,B:N8C600,2,protein,B:ASN402,ASN,402,2.59,O2...ND2,2.59,O2...ND2
+3D9E,Nitroalkane oxidase,B:N8C600,2,ligand/other,B:FAD500,FAD,500,2.91,O1...N5,2.91,O1...N5
+3D9E,Nitroalkane oxidase,B:N8C600,2,protein,B:PHE273,PHE,273,3.45,O2...CE2,,
+3D9E,Nitroalkane oxidase,B:N8C600,2,protein,B:PHE401,PHE,401,3.66,O1...CD1,,
+3D9E,Nitroalkane oxidase,B:N8C600,2,protein,B:LEU99,LEU,99,3.85,O2...CD2,,
+3D9E,Nitroalkane oxidase,C:N8C600,3,ligand/other,C:FAD500,FAD,500,2.88,O2...O2',2.88,O2...O2'
+3D9E,Nitroalkane oxidase,C:N8C600,3,protein,C:ASN402,ASN,402,2.91,O1...N,2.91,O1...N
+3D9E,Nitroalkane oxidase,C:N8C600,3,protein,C:PHE401,PHE,401,3.25,O1...CD1,,
+3D9E,Nitroalkane oxidase,C:N8C600,3,protein,C:PHE273,PHE,273,3.63,O2...CE2,,
+3D9E,Nitroalkane oxidase,D:N8C600,4,protein,D:ASN402,ASN,402,2.91,O1...ND2,2.91,O1...ND2
+3D9E,Nitroalkane oxidase,D:N8C600,4,ligand/other,D:FAD500,FAD,500,2.92,O1...O2',2.92,O1...O2'
+3D9E,Nitroalkane oxidase,D:N8C600,4,protein,D:PHE401,PHE,401,3.21,O2...CD1,,
+3D9E,Nitroalkane oxidase,D:N8C600,4,protein,D:PHE273,PHE,273,3.7,O1...CE2,,
+3D9F,Nitroalkane oxidase,A:N6C600,1,ligand/other,A:FAD500,FAD,500,2.68,O2...O2',2.68,O2...O2'
+3D9F,Nitroalkane oxidase,A:N6C600,1,protein,A:ASP402,ASP,402,2.82,O2...N,2.82,O2...N
+3D9F,Nitroalkane oxidase,A:N6C600,1,protein,A:LEU99,LEU,99,3.4,O1...CD2,,
+3D9F,Nitroalkane oxidase,A:N6C600,1,protein,A:PHE273,PHE,273,3.42,O1...CE2,,
+3D9F,Nitroalkane oxidase,A:N6C600,1,protein,A:PHE401,PHE,401,3.72,O2...CD1,,
+3D9F,Nitroalkane oxidase,B:N6C600,2,protein,B:ASP402,ASP,402,2.6,O1...OD1,2.6,O1...OD1
+3D9F,Nitroalkane oxidase,B:N6C600,2,ligand/other,B:FAD500,FAD,500,2.89,O2...N5,2.89,O2...N5
+3D9F,Nitroalkane oxidase,B:N6C600,2,protein,B:PHE273,PHE,273,3.4,O1...CE2,,
+3D9F,Nitroalkane oxidase,B:N6C600,2,protein,B:LEU99,LEU,99,3.52,O1...CD2,,
+3D9F,Nitroalkane oxidase,B:N6C600,2,protein,B:PHE401,PHE,401,3.78,O2...CD1,,
+3D9F,Nitroalkane oxidase,C:N6C600,3,ligand/other,C:FAD500,FAD,500,2.78,O1...O2',2.78,O1...O2'
+3D9F,Nitroalkane oxidase,C:N6C600,3,protein,C:ASP402,ASP,402,2.79,O1...N,2.79,O1...N
+3D9F,Nitroalkane oxidase,C:N6C600,3,protein,C:LEU99,LEU,99,3.3,O2...CD2,,
+3D9F,Nitroalkane oxidase,C:N6C600,3,protein,C:PHE273,PHE,273,3.53,O2...CE2,,
+3D9F,Nitroalkane oxidase,C:N6C600,3,protein,C:PHE401,PHE,401,3.92,O1...CD1,,
+3D9F,Nitroalkane oxidase,D:N6C600,4,ligand/other,D:FAD500,FAD,500,2.61,O2...O2',2.61,O2...O2'
+3D9F,Nitroalkane oxidase,D:N6C600,4,protein,D:ASP402,ASP,402,2.81,O2...N,2.81,O2...N
+3D9F,Nitroalkane oxidase,D:N6C600,4,protein,D:LEU99,LEU,99,3.58,O1...CD2,,
+3D9F,Nitroalkane oxidase,D:N6C600,4,protein,D:PHE273,PHE,273,3.61,O1...CE2,,
+3D9F,Nitroalkane oxidase,D:N6C600,4,protein,D:PHE401,PHE,401,3.75,O2...CD1,,
+2GJN,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIS500,1,water,A:HOH2128,HOH,2128,2.49,O6...O,2.49,O6...O
+2GJN,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIS500,1,protein,A:HIS152,HIS,152,2.72,N3...ND1,2.72,N3...ND1
+2GJN,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIS500,1,water,A:HOH1939,HOH,1939,2.72,O5...O,2.72,O5...O
+2GJN,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIS500,1,protein,A:GLY151,GLY,151,2.89,O5...CA,,
+2GJN,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIS500,1,protein,A:SER288,SER,288,3.24,O5...OG,3.24,O5...OG
+2GJN,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIS500,1,water,A:HOH2118,HOH,2118,3.29,O6...O,3.29,O6...O
+2GJN,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIS500,1,water,A:HOH2067,HOH,2067,3.3,O6...O,3.3,O6...O
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE402,1,protein,A:TRP325,TRP,325,2.73,O5...NE1,2.73,O5...NE1
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE402,1,protein,A:SER183,SER,183,2.79,O4...N,2.79,O4...N
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE402,1,ligand/other,A:FMN401,FMN,401,3.12,O4...N5,3.12,O4...N5
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE402,1,protein,A:GLY182,GLY,182,3.33,O4...CA,,
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE402,1,water,A:HOH852,HOH,852,3.78,O5...O,,
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,B:NIE402,2,protein,B:TRP325,TRP,325,2.74,O5...NE1,2.74,O5...NE1
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,B:NIE402,2,protein,B:SER183,SER,183,2.75,O4...N,2.75,O4...N
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,B:NIE402,2,ligand/other,B:FMN401,FMN,401,3.0,O4...C5A,3.08,O4...N5
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,B:NIE402,2,protein,B:GLY182,GLY,182,3.28,O4...CA,,
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:N1P402,1,water,A:HOH908,HOH,908,2.79,O1...O,2.79,O1...O
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:N1P402,1,protein,A:TRP325,TRP,325,3.16,O2...NE1,3.16,O2...NE1
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:N1P402,1,protein,A:TYR109,TYR,109,3.64,O1...CE2,,
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:N1P402,1,protein,A:TYR303,TYR,303,3.69,O2...OH,,
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:N1P402,1,protein,A:LEU21,LEU,21,3.95,O1...CD2,,
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:N1P402,1,protein,A:PHE71,PHE,71,3.96,O1...CZ,,
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,B:N1P402,2,protein,B:TRP325,TRP,325,2.91,O2...NE1,2.91,O2...NE1
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,B:N1P402,2,water,B:HOH877,HOH,877,3.04,N1...O,3.04,N1...O
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,B:N1P402,2,protein,B:TYR303,TYR,303,3.51,O1...CE2,,
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,B:N1P402,2,protein,B:TYR109,TYR,109,3.58,O1...OH,,
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,B:N1P402,2,protein,B:CYS183,CYS,183,3.84,O2...SG,,
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,B:N1P402,2,protein,B:LEU21,LEU,21,3.99,O1...CD2,,
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE371,1,protein,A:ARG305,ARG,305,2.85,O5...NH2,2.85,O5...NH2
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE371,1,water,A:HOH395,HOH,395,2.92,O5...O,2.92,O5...O
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE371,1,water,A:HOH444,HOH,444,3.09,O4...O,3.09,O4...O
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE371,1,protein,A:HIS298,HIS,298,3.15,O5...NE2,3.15,O5...NE2
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE371,1,protein,A:TRP320,TRP,320,3.39,O4...NE1,3.39,O4...NE1
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE371,1,protein,A:TYR44,TYR,44,3.39,O5...CE2,,
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE371,1,water,A:HOH463,HOH,463,3.46,O4...O,3.46,O4...O
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE371,1,protein,A:ALA19,ALA,19,3.67,O4...C,,
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,A:NIE371,1,protein,A:GLY20,GLY,20,3.68,O4...N,,
+6N92,Nitronate-CoA analog complexes,A:KFV301,1,protein,A:TYR140,TYR,140,3.11,OS4...CE1,,
+6N92,Nitronate-CoA analog complexes,A:KFV301,1,protein,A:VAL138,VAL,138,3.34,OS4...CG1,,
+6N92,Nitronate-CoA analog complexes,A:KFV301,1,protein,A:PRO133,PRO,133,3.67,OS5...CA,,
+6N92,Nitronate-CoA analog complexes,A:KFV301,1,protein,A:LEU79,LEU,79,3.8,OS4...CD1,,
+6N92,Nitronate-CoA analog complexes,A:KFV301,1,protein,A:LEU136,LEU,136,3.98,OS5...CD1,,
+6N92,Nitronate-CoA analog complexes,B:KFV301,2,protein,B:TYR140,TYR,140,3.28,OS5...CE1,,
+6N92,Nitronate-CoA analog complexes,B:KFV301,2,water,B:HOH548,HOH,548,3.53,OS4...O,,
+6N92,Nitronate-CoA analog complexes,B:KFV301,2,protein,B:HIS66,HIS,66,3.66,NS4...ND1,,
+6N92,Nitronate-CoA analog complexes,B:KFV301,2,protein,B:VAL138,VAL,138,3.71,OS5...CG1,,
+6N92,Nitronate-CoA analog complexes,B:KFV301,2,protein,B:PRO133,PRO,133,3.83,OS4...CA,,
+6N92,Nitronate-CoA analog complexes,C:KFV301,3,protein,C:TYR140,TYR,140,3.33,OS5...CE1,,
+6N92,Nitronate-CoA analog complexes,C:KFV301,3,protein,C:VAL138,VAL,138,3.44,OS5...CG1,,
+6N92,Nitronate-CoA analog complexes,C:KFV301,3,water,C:HOH561,HOH,561,3.65,OS4...O,,
+6N92,Nitronate-CoA analog complexes,C:KFV301,3,protein,C:HIS66,HIS,66,3.67,NS4...ND1,,
+6N92,Nitronate-CoA analog complexes,C:KFV301,3,protein,C:PRO133,PRO,133,3.74,OS4...CA,,
+6N92,Nitronate-CoA analog complexes,E:KFV301,4,protein,E:PRO133,PRO,133,3.2,OS4...CA,,
+6N92,Nitronate-CoA analog complexes,E:KFV301,4,protein,E:VAL138,VAL,138,3.46,OS5...CG1,,
+6N92,Nitronate-CoA analog complexes,E:KFV301,4,protein,E:TYR140,TYR,140,3.87,OS5...CE1,,
+6N92,Nitronate-CoA analog complexes,E:KFV301,4,protein,E:THR132,THR,132,3.97,OS4...C,,
+6N92,Nitronate-CoA analog complexes,F:KFV301,5,protein,F:PRO133,PRO,133,3.09,OS4...CA,3.41,OS4...N
+6N92,Nitronate-CoA analog complexes,F:KFV301,5,protein,F:TYR140,TYR,140,3.13,OS5...CE1,,
+6N92,Nitronate-CoA analog complexes,F:KFV301,5,protein,F:VAL138,VAL,138,3.5,OS5...CG1,,
+6N92,Nitronate-CoA analog complexes,F:KFV301,5,protein,F:THR132,THR,132,4.0,OS4...C,,
+6WFI,Nitronate-CoA analog complexes,A:KFV206,1,ligand/other,A:CO201,CO,201,2.2,OS4...CO,,
+6WFI,Nitronate-CoA analog complexes,A:KFV206,1,protein,A:GLU134,GLU,134,2.71,OS4...OE2,2.71,OS4...OE2
+6WFI,Nitronate-CoA analog complexes,A:KFV206,1,protein,A:SER115,SER,115,2.81,OS5...N,2.81,OS5...N
+6WFI,Nitronate-CoA analog complexes,A:KFV206,1,protein,A:GLN60,GLN,60,2.86,OS4...NE2,2.86,OS4...NE2
+6WFI,Nitronate-CoA analog complexes,A:KFV206,1,water,A:HOH463,HOH,463,2.96,OS5...O,2.96,OS5...O
+6WFI,Nitronate-CoA analog complexes,A:KFV206,1,protein,A:GLY114,GLY,114,3.01,OS5...CA,,
+6WFI,Nitronate-CoA analog complexes,A:KFV206,1,protein,A:HIS7,HIS,7,3.19,OS4...NE2,3.19,OS4...NE2
+6WFI,Nitronate-CoA analog complexes,A:KFV206,1,protein,A:ILE120,ILE,120,3.66,OS5...CD1,,
+6X7L,Nitronate-CoA analog complexes,A:KFV402,1,protein,A:ASN216,ASN,216,2.7,OS5...ND2,2.7,OS5...ND2
+6X7L,Nitronate-CoA analog complexes,A:KFV402,1,protein,A:PHE223,PHE,223,2.91,OS5...N,2.91,OS5...N
+6X7L,Nitronate-CoA analog complexes,A:KFV402,1,protein,A:TYR222,TYR,222,3.27,OS5...CA,,
+6X7L,Nitronate-CoA analog complexes,A:KFV402,1,protein,A:LEU221,LEU,221,3.78,OS5...O,,
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,ligand/other,A:CO201,CO,201,2.23,OS4...CO,,
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,protein,A:SER115,SER,115,2.72,OS5...N,2.72,OS5...N
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,protein,A:GLU134,GLU,134,2.74,OS4...OE2,2.74,OS4...OE2
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,water,A:HOH435,HOH,435,3.0,OS5...O,3.0,OS5...O
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,protein,A:GLN60,GLN,60,3.06,OS4...NE2,3.06,OS4...NE2
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,protein,A:GLY114,GLY,114,3.22,OS5...CA,,
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,protein,A:HIS7,HIS,7,3.28,OS4...NE2,3.28,OS4...NE2
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,water,A:HOH316,HOH,316,3.77,OS5...O,,
+6XBR,Nitronate-CoA analog complexes,A:KFV206,1,protein,A:ILE120,ILE,120,3.93,NS4...CD1,,
+2BMQ,Nitroarene dioxygenase,A:NBZ1442,1,water,A:HOH2401,HOH,2401,2.68,O1...O,2.68,O1...O
+2BMQ,Nitroarene dioxygenase,A:NBZ1442,1,protein,A:ASN258,ASN,258,3.06,O1...ND2,3.06,O1...ND2
+2BMQ,Nitroarene dioxygenase,A:NBZ1442,1,protein,A:PHE293,PHE,293,3.5,O2...CZ,,
+2BMQ,Nitroarene dioxygenase,A:NBZ1442,1,protein,A:LEU305,LEU,305,3.69,O1...CD1,,
+2BMQ,Nitroarene dioxygenase,A:NBZ1442,1,protein,A:TRP356,TRP,356,3.82,O2...CZ3,,
+2BMR,Nitroarene dioxygenase,A:3NT1442,1,water,A:HOH2422,HOH,2422,2.6,O2N...O,2.6,O2N...O
+2BMR,Nitroarene dioxygenase,A:3NT1442,1,protein,A:ASN258,ASN,258,3.08,O2N...ND2,3.08,O2N...ND2
+2BMR,Nitroarene dioxygenase,A:3NT1442,1,protein,A:PHE293,PHE,293,3.5,O1N...CZ,,
+2BMR,Nitroarene dioxygenase,A:3NT1442,1,protein,A:LEU305,LEU,305,3.8,N3...CD1,,
+2BMR,Nitroarene dioxygenase,A:3NT1442,1,protein,A:TRP356,TRP,356,3.9,O2N...CE3,,
+2BMR,Nitroarene dioxygenase,A:3NT1442,1,protein,A:ILE350,ILE,350,3.92,O2N...CG2,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD2101,1,water,A:HOH3228,HOH,3228,2.3,O21...O,2.3,O21...O
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD2101,3,protein,A:VAL10,VAL,10,2.68,O62...CG2,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD2101,3,protein,A:TYR7,TYR,7,2.77,O61...OH,2.77,O61...OH
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD2101,3,protein,A:GLY12,GLY,12,3.43,O61...CA,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD2101,3,protein,A:TYR108,TYR,108,3.56,N6'...OH,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2201,4,water,B:HOH3212,HOH,3212,3.75,O21...O,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2201,5,water,B:HOH3164,HOH,3164,3.22,O41...O,3.22,O41...O
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2201,5,protein,B:GLY205,GLY,205,3.91,O41...CA,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2201,5,protein,B:PHE8,PHE,8,3.93,O41...CG,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2201,6,protein,B:VAL10,VAL,10,2.67,O62...CG2,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2201,6,protein,B:TYR7,TYR,7,2.8,O61...OH,2.8,O61...OH
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2201,6,protein,B:GLY12,GLY,12,2.99,O61...CA,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2201,6,protein,B:TYR108,TYR,108,3.32,N6'...OH,3.32,N6'...OH
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2201,6,water,B:HOH3241,HOH,3241,3.39,O61...O,3.39,O61...O
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2201,6,protein,B:ARG13,ARG,13,3.65,O61...N,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD2301,7,water,C:HOH3270,HOH,3270,3.05,O21...O,3.05,O21...O
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD2301,8,protein,C:GLY205,GLY,205,3.75,O41...CA,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD2301,9,protein,C:TYR108,TYR,108,3.03,N6'...OH,3.03,N6'...OH
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD2301,9,protein,C:GLY205,GLY,205,3.54,O62...N,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD2301,9,protein,C:VAL10,VAL,10,3.58,O62...CG2,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD2301,9,protein,C:TYR7,TYR,7,3.9,O62...OH,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD2301,9,protein,C:ASN204,ASN,204,3.92,O62...C,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD2401,11,protein,D:GLY205,GLY,205,3.46,O41...O,3.46,O41...O
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD2401,12,protein,D:TYR7,TYR,7,2.33,O61...OH,2.33,O61...OH
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD2401,12,protein,D:VAL10,VAL,10,2.62,O62...CG2,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD2401,12,protein,D:GLY12,GLY,12,3.49,O61...CA,,
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD2401,12,protein,D:TYR108,TYR,108,3.8,N6'...OH,,
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GDN210,1,water,A:HOH490,HOH,490,2.79,O2A...O,2.79,O2A...O
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GDN210,1,protein,A:TYR108,TYR,108,3.32,O2B...CD1,,
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GDN210,1,water,A:HOH433,HOH,433,3.53,O2B...O,,
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GDN210,1,water,A:HOH334,HOH,334,3.59,N2'...O,,
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GDN210,1,water,A:HOH467,HOH,467,3.93,O2B...O,,
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GDN210,2,protein,A:TYR108,TYR,108,3.26,O4A...CB,,
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GDN210,2,protein,A:ILE104,ILE,104,3.32,O4B...CG2,,
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GDN210,2,water,A:HOH357,HOH,357,3.71,O4B...O,,
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GDN210,3,water,B:HOH420,HOH,420,3.14,O2B...O,3.14,O2B...O
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GDN210,3,protein,B:TYR108,TYR,108,3.2,O2B...CD1,,
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GDN210,3,water,B:HOH405,HOH,405,3.36,O2B...O,3.36,O2B...O
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GDN210,3,water,B:HOH484,HOH,484,3.77,O2A...O,,
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GDN210,3,water,B:HOH423,HOH,423,3.92,N2'...O,,
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GDN210,4,water,B:HOH374,HOH,374,2.89,O4B...O,2.89,O4B...O
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GDN210,4,protein,B:ILE104,ILE,104,3.08,O4B...CG2,,
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GDN210,4,water,B:HOH420,HOH,420,3.14,O4A...O,3.14,O4A...O
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GDN210,4,protein,B:TYR108,TYR,108,3.17,O4A...CB,,
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GDN210,4,water,B:HOH363,HOH,363,3.58,O4B...O,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD1218,1,protein,A:TYR115,TYR,115,2.83,O21...OH,2.83,O21...OH
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD1218,1,protein,A:PHE208,PHE,208,3.36,O22...CD1,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD1218,1,protein,A:TYR6,TYR,6,3.59,O21...OH,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD1218,1,protein,A:GLY11,GLY,11,3.69,O22...CA,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD1218,1,protein,A:HIS107,HIS,107,3.81,O22...NE2,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD1218,1,protein,A:ILE9,ILE,9,3.82,O21...CD1,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD1218,2,protein,A:MET108,MET,108,3.91,O41...CA,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD1218,2,water,A:HOH1219,HOH,1219,3.96,O42...O,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD1218,3,water,A:HOH1219,HOH,1219,2.65,O61...O,2.65,O61...O
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),A:GTD1218,3,water,A:HOH1221,HOH,1221,3.21,O61...O,3.21,O61...O
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2218,4,protein,B:TYR115,TYR,115,2.85,O21...OH,2.85,O21...OH
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2218,4,protein,B:PHE208,PHE,208,3.39,O22...CD1,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2218,4,protein,B:HIS107,HIS,107,3.45,O22...NE2,3.45,O22...NE2
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2218,4,protein,B:TYR6,TYR,6,3.69,O21...OH,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2218,4,protein,B:GLY11,GLY,11,3.77,O22...CA,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2218,4,protein,B:ILE9,ILE,9,3.85,O21...CD1,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2218,5,protein,B:MET108,MET,108,2.42,O41...CE,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2218,5,water,B:HOH2219,HOH,2219,3.8,N4'...O,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),B:GTD2218,5,protein,B:GLY111,GLY,111,3.99,O41...CA,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD3218,7,protein,C:GLY11,GLY,11,3.01,O22...CA,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD3218,7,protein,C:TYR115,TYR,115,3.06,O21...OH,3.06,O21...OH
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD3218,7,protein,C:ILE9,ILE,9,3.39,O21...CD1,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD3218,7,protein,C:TYR6,TYR,6,3.4,O21...OH,3.4,O21...OH
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD3218,7,protein,C:PHE208,PHE,208,3.63,O22...CD1,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD3218,7,protein,C:LEU12,LEU,12,3.72,O22...N,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD3218,7,protein,C:HIS107,HIS,107,3.76,O22...NE2,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD3218,7,protein,C:SER209,SER,209,4.0,O21...N,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD3218,8,protein,C:HIS107,HIS,107,3.67,O41...CD2,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),C:GTD3218,8,protein,C:GLY111,GLY,111,3.92,O41...CA,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD4218,10,protein,D:TYR115,TYR,115,2.97,O21...OH,2.97,O21...OH
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD4218,10,protein,D:GLY11,GLY,11,3.14,O22...CA,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD4218,10,protein,D:ILE9,ILE,9,3.43,O21...CD1,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD4218,10,protein,D:TYR6,TYR,6,3.44,O21...OH,3.44,O21...OH
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD4218,10,protein,D:PHE208,PHE,208,3.49,O22...CD1,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD4218,10,protein,D:HIS107,HIS,107,3.86,O22...NE2,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD4218,10,protein,D:LEU12,LEU,12,3.93,O22...N,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD4218,11,protein,D:MET108,MET,108,3.26,O41...SD,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD4218,11,protein,D:GLY111,GLY,111,3.51,O41...CA,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD4218,11,water,D:HOH4219,HOH,4219,3.77,O42...O,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD4218,11,protein,D:HIS107,HIS,107,3.95,O41...CD2,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),D:GTD4218,12,water,D:HOH4219,HOH,4219,3.35,N6'...O,3.35,N6'...O
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),E:GTD5218,13,protein,E:TYR115,TYR,115,2.75,O21...OH,2.75,O21...OH
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),E:GTD5218,13,protein,E:PHE208,PHE,208,3.05,O22...CD1,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),E:GTD5218,13,protein,E:HIS107,HIS,107,3.43,O22...NE2,3.43,O22...NE2
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),E:GTD5218,13,protein,E:TYR6,TYR,6,3.88,O21...OH,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),E:GTD5218,13,protein,E:GLY11,GLY,11,3.91,O22...CA,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),E:GTD5218,14,protein,E:MET108,MET,108,2.96,O41...CE,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),E:GTD5218,14,protein,E:GLY111,GLY,111,3.8,O42...O,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),E:GTD5218,15,water,E:HOH5219,HOH,5219,3.04,O61...O,3.04,O61...O
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),E:GTD5218,15,water,E:HOH5223,HOH,5223,3.55,O61...O,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),F:GTD6218,16,protein,F:HIS107,HIS,107,2.99,O22...NE2,2.99,O22...NE2
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),F:GTD6218,16,protein,F:TYR115,TYR,115,3.11,O21...OH,3.11,O21...OH
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),F:GTD6218,16,protein,F:PHE208,PHE,208,3.65,O22...CD1,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),F:GTD6218,16,protein,F:TYR6,TYR,6,3.73,O21...OH,,
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),F:GTD6218,17,protein,F:MET108,MET,108,3.61,O41...SD,,
+6C17,Ketosteroid isomerase (nitrophenol analog),A:DNX202,1,protein,A:LEU61,LEU,61,2.8,O32...HD21,,
+6C17,Ketosteroid isomerase (nitrophenol analog),A:DNX202,1,protein,A:TYR57,TYR,57,3.13,O32...HE1,,
+6C17,Ketosteroid isomerase (nitrophenol analog),A:DNX202,1,protein,A:VAL88,VAL,88,3.26,O31...HG11,,
+6C17,Ketosteroid isomerase (nitrophenol analog),A:DNX202,1,protein,A:VAL20,VAL,20,3.43,O32...HG13,,
+6C17,Ketosteroid isomerase (nitrophenol analog),A:DNX202,1,protein,A:VAL66,VAL,66,3.8,O31...HG11,,
+6C17,Ketosteroid isomerase (nitrophenol analog),A:DNX202,2,water,A:HOH367,HOH,367,2.88,O42...O,2.88,O42...O
+6C17,Ketosteroid isomerase (nitrophenol analog),A:DNX202,2,protein,A:ASN40,ASN,40,3.0,O42...HD21,,
+6C17,Ketosteroid isomerase (nitrophenol analog),A:DNX202,2,protein,A:LEU99,LEU,99,3.26,O41...HD23,,
+6C17,Ketosteroid isomerase (nitrophenol analog),A:DNX202,2,protein,A:VAL88,VAL,88,3.3,O41...HG21,,
+6C17,Ketosteroid isomerase (nitrophenol analog),A:DNX202,2,protein,A:PHE56,PHE,56,3.57,O42...HZ,,
+6C17,Ketosteroid isomerase (nitrophenol analog),A:DNX202,2,water,A:HOH404,HOH,404,3.83,O42...O,,
+6C1J,Ketosteroid isomerase (nitrophenol analog),A:DNX204,1,protein,A:LEU61,LEU,61,2.81,O31...HD21,,
+6C1J,Ketosteroid isomerase (nitrophenol analog),A:DNX204,1,protein,A:PHE57,PHE,57,3.0,O31...HE1,,
+6C1J,Ketosteroid isomerase (nitrophenol analog),A:DNX204,1,protein,A:PHE56,PHE,56,3.24,O31...HE2,,
+6C1J,Ketosteroid isomerase (nitrophenol analog),A:DNX204,1,protein,A:VAL20,VAL,20,3.49,O31...HG13,,
+6C1J,Ketosteroid isomerase (nitrophenol analog),A:DNX204,1,protein,A:VAL88,VAL,88,3.62,O32...HG11,,
+6C1J,Ketosteroid isomerase (nitrophenol analog),A:DNX204,2,protein,A:ASN40,ASN,40,2.59,N4...HD21,3.44,N4...ND2
+6C1J,Ketosteroid isomerase (nitrophenol analog),A:DNX204,2,protein,A:PHE56,PHE,56,2.89,O41...HZ,,
+6C1J,Ketosteroid isomerase (nitrophenol analog),A:DNX204,2,protein,A:TRP120,TRP,120,3.5,O42...HE1,,
+6C1J,Ketosteroid isomerase (nitrophenol analog),A:DNX204,2,protein,A:LEU99,LEU,99,3.6,O42...HD23,,

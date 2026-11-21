@@ -1,0 +1,97 @@
+pdb_id,family,resolution_A,nitro_ligand_site,nitro_group,chain,resnum,resname,role,contact_type,contact_atoms,d_O_X,ang_N_O_X,ang_X,elev_deg,pi_z_lat_ang,suggested_fix_atoms,representative
+3NYD,Kemp eliminase (designed),1.23,B:3NY317,2,B,44,TRP,pi,sidechain,,,,,,3.24/2.22/20.0,"CA,CB,CG,CD1,CD2,NE1,CE2,CE3,CZ2,CZ3,CH2",False
+3NYD,Kemp eliminase (designed),1.23,B:3NY317,2,B,237,MET,hbond,bb_NH,N-O21,3.07,101.0,122.0,56.0,,"N,CA,C,O",False
+4BS0,Kemp eliminase (designed),1.09,A:6NT1305,1,A,237,MET,hbond,bb_NH,N-O21,2.88,104.0,119.0,46.0,,"N,CA,C,O",False
+7K4Z,Kemp eliminase (designed),1.08,A:6NT402,1,A,237,MET,hbond,bb_NH,N-O11,2.99,104.0,116.0,45.0,,"N,CA,C,O",False
+5RGE,Kemp eliminase (designed),1.77,A:6NT500,1,A,237,MET,hbond,bb_NH,N-O11,3.19,100.0,116.0,54.0,,"N,CA,C,O",False
+3NZ1,Kemp eliminase (designed),1.56,A:3NY262,1,A,110,TRP,pi,sidechain,,,,,,3.31/1.86/13.0,"CA,CB,CG,CD1,CD2,NE1,CE2,CE3,CZ2,CZ3,CH2",False
+9TZD,Kemp eliminase (designed),1.2,A:6NT300,1,A,71,VAL,hbond,bb_O,O-O21,3.37,138.0,95.0,23.0,,"N,CA,C,O",True
+9TZD,Kemp eliminase (designed),1.2,A:6NT300,1,A,97,GLY,hbond,bb_NH,N-O21,2.93,102.0,128.0,17.0,,"N,CA,C,O",True
+8FOQ,Kemp eliminase (designed),1.6,A:3NY502,1,A,110,TRP,pi,sidechain,,,,,,3.46/1.45/7.0,"CA,CB,CG,CD1,CD2,NE1,CE2,CE3,CZ2,CZ3,CH2",False
+8FOR,Kemp eliminase (designed),2.2,A:6NT301,1,A,48,PHE,pi,sidechain,,,,,,3.47/1.46/7.0,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ",False
+8FOS,Kemp eliminase (designed),1.56,A:6NT502,1,A,44,TRP,pi,sidechain,,,,,,4.03/1.99/16.0,"CA,CB,CG,CD1,CD2,NE1,CE2,CE3,CZ2,CZ3,CH2",False
+8FOS,Kemp eliminase (designed),1.56,A:6NT502,1,A,237,MET,hbond,bb_NH,N-O11,3.03,103.0,117.0,52.0,,"N,CA,C,O",False
+6SRY,Kemp eliminase (designed),0.95,A:6NT401,1,A,237,MET,hbond,bb_NH,N-O21,2.82,106.0,117.0,47.0,,"N,CA,C,O",False
+8RD5,Kemp eliminase (designed),1.5,A:6NT401,1,A,44,TRP,pi,sidechain,,,,,,3.78/2.47/31.0,"CA,CB,CG,CD1,CD2,NE1,CE2,CE3,CZ2,CZ3,CH2",False
+8RD5,Kemp eliminase (designed),1.5,A:6NT401,1,A,237,MET,hbond,bb_NH,N-O11,2.9,106.0,121.0,44.0,,"N,CA,C,O",False
+1GVR,PETN reductase (OYE family),1.38,A:TNL500,1,A,26,THR,hbond,sidechain,OG1-O21,2.78,125.0,149.0,1.0,,"CA,CB,OG1,CG2",True
+1GVR,PETN reductase (OYE family),1.38,A:TNL500,1,A,181,HIS,hbond,sidechain,NE2-O22,3.13,119.0,138.0,58.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",True
+1GVR,PETN reductase (OYE family),1.38,A:TNL500,3,A,184,HIS,hbond,sidechain,ND1-O62,2.99,128.0,101.0,49.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",True
+1GVR,PETN reductase (OYE family),1.38,A:TNL500,1,A,186,TYR,hbond,sidechain,OH-O22,3.23,96.0,64.0,40.0,,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ,OH",True
+1GVR,PETN reductase (OYE family),1.38,A:TNL500,2,A,351,TYR,hbond,sidechain,OH-O41,2.75,103.0,99.0,77.0,,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ,OH",True
+1GVO,PETN reductase (OYE family),1.38,A:DNF500,1,A,184,HIS,hbond,sidechain,ND1-O21,2.85,114.0,116.0,66.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",False
+1GVO,PETN reductase (OYE family),1.38,A:DNF500,2,A,351,TYR,hbond,sidechain,OH-O41,3.29,102.0,100.0,78.0,,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ,OH",False
+1GVS,PETN reductase (OYE family),1.38,A:TNF500,3,A,26,THR,hbond,sidechain,OG1-O61,2.56,127.0,144.0,45.0,,"CA,CB,OG1,CG2",False
+1GVS,PETN reductase (OYE family),1.38,A:TNF500,3,A,181,HIS,hbond,sidechain,NE2-O62,2.67,167.0,157.0,1.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",False
+1GVS,PETN reductase (OYE family),1.38,A:TNF500,2,A,184,HIS,hbond,sidechain,ND1-O22,2.92,111.0,116.0,69.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",False
+1GVS,PETN reductase (OYE family),1.38,A:TNF500,1,A,351,TYR,hbond,sidechain,OH-O41,3.15,82.0,102.0,82.0,,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ,OH",False
+1VYR,PETN reductase (OYE family),0.9,A:TNF1402,2,A,181,HIS,hbond,sidechain,NE2-O21,2.79,148.0,164.0,25.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",False
+1VYR,PETN reductase (OYE family),0.9,A:TNF1402,3,A,184,HIS,hbond,sidechain,NE2-O62,3.41,146.0,81.0,6.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",False
+1VYR,PETN reductase (OYE family),0.9,A:TNF1402,2,A,186,TYR,hbond+pi,sidechain,OH-O22,3.42,81.0,82.0,59.0,3.97/1.11/30.0,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ,OH",False
+3F03,PETN reductase (OYE family),1.34,K:NYH600,1,K,181,HIS,hbond,sidechain,NE2-O1N,3.16,116.0,137.0,4.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",False
+3F03,PETN reductase (OYE family),1.34,K:NYH600,1,K,184,HIS,hbond,sidechain,ND1-O2N,2.7,166.0,134.0,8.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",False
+3F03,PETN reductase (OYE family),1.34,K:NYH600,1,K,186,TYR,hbond,sidechain,OH-O1N,3.27,76.0,86.0,68.0,,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ,OH",False
+3P7Y,PETN reductase (OYE family),1.2,A:P7Y402,1,A,184,HIS,hbond,sidechain,NE2-O2,3.37,145.0,91.0,28.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",False
+3P80,PETN reductase (OYE family),1.2,A:P80402,1,A,351,TYR,hbond,sidechain,OH-O1,2.63,99.0,143.0,15.0,,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ,OH",False
+3P81,PETN reductase (OYE family),1.2,A:P81402,1,A,351,TYR,hbond+pi,sidechain,OH-O1,2.94,102.0,76.0,60.0,3.24/1.84/14.0,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ,OH",False
+5K1W,Other ene-reductase / flavin reductase,1.6,A:TNF402,2,A,182,HIS,hbond,sidechain,NE2-O22,3.02,103.0,132.0,8.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",False
+5K1W,Other ene-reductase / flavin reductase,1.6,A:TNF402,2,A,185,ASN,hbond,sidechain,ND2-O22,3.02,171.0,122.0,1.0,,"CA,CB,CG,OD1,ND2",False
+5K1U,Other ene-reductase / flavin reductase,1.551,A:TNF401,2,A,35,THR,hbond,sidechain,OG1-O22,3.07,110.0,134.0,62.0,,"CA,CB,OG1,CG2",False
+5K1U,Other ene-reductase / flavin reductase,1.551,A:TNF401,2,A,182,HIS,hbond,sidechain,NE2-O21,2.82,152.0,166.0,12.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",False
+5K1U,Other ene-reductase / flavin reductase,1.551,A:TNF401,3,A,185,ASN,hbond,sidechain,ND2-O62,2.75,108.0,82.0,72.0,,"CA,CB,CG,OD1,ND2",False
+5K1U,Other ene-reductase / flavin reductase,1.551,A:TNF401,3,A,241,PHE,pi,sidechain,,,,,,3.52/2.03/36.0,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ",False
+4AB4,Other ene-reductase / flavin reductase,1.5,A:TNL1357,2,A,173,HIS,hbond,sidechain,NE2-O41,3.46,155.0,142.0,20.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",True
+4AB4,Other ene-reductase / flavin reductase,1.5,A:TNL1357,2,A,176,ASN,hbond,sidechain,ND2-O41,2.91,111.0,122.0,15.0,,"CA,CB,CG,OD1,ND2",True
+4AB4,Other ene-reductase / flavin reductase,1.5,A:TNL1357,2,A,178,TYR,hbond,sidechain,OH-O42,2.83,118.0,116.0,61.0,,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ,OH",True
+4AB4,Other ene-reductase / flavin reductase,1.5,A:TNL1357,3,A,233,HIS,hbond+pi,sidechain,NE2-O62,3.29,95.0,113.0,75.0,3.45/1.35/14.0,"CA,CB,CG,ND1,CD2,CE1,NE2",True
+4AB4,Other ene-reductase / flavin reductase,1.5,A:TNL1357,1,A,262,ARG,hbond,sidechain,NE-O21,3.01,99.0,139.0,79.0,,"CA,CB,CG,CD,NE,CZ,NH1,NH2",True
+4AEO,Other ene-reductase / flavin reductase,1.7,A:TNL1355,2,A,176,ASN,hbond,sidechain,ND2-O41,3.08,111.0,123.0,18.0,,"CA,CB,CG,OD1,ND2",False
+4AEO,Other ene-reductase / flavin reductase,1.7,A:TNL1355,2,A,178,TYR,hbond,sidechain,OH-O42,2.88,116.0,116.0,64.0,,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ,OH",False
+4AEO,Other ene-reductase / flavin reductase,1.7,A:TNL1355,1,A,233,HIS,hbond,sidechain,NE2-O21,2.78,116.0,122.0,62.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",False
+4AEO,Other ene-reductase / flavin reductase,1.7,A:TNL1355,3,A,262,ARG,hbond,sidechain,NE-O62,2.94,106.0,137.0,74.0,,"CA,CB,CG,CD,NE,CZ,NH1,NH2",False
+4JIQ,Other ene-reductase / flavin reductase,2.49,A:1L5402,1,A,181,ASN,hbond,sidechain,ND2-O1,2.41,119.0,134.0,28.0,,"CA,CB,CG,OD1,ND2",False
+1Z44,Other ene-reductase / flavin reductase,1.4,B:NPO1507,3,A,43,ALA,hbond,bb_NH,N-O3,3.33,95.0,111.0,60.0,,"N,CA,C,O",False
+1Z44,Other ene-reductase / flavin reductase,1.4,B:NPO1507,3,B,43,ALA,hbond,bb_NH,N-O2,3.3,91.0,114.0,61.0,,"N,CA,C,O",False
+1YKI,Nitroreductase,1.7,A:NFZ1219,1,A,67,ASN,hbond,bb_O,O-O1,3.36,100.0,121.0,45.0,,"N,CA,C,O",True
+1YKI,Nitroreductase,1.7,A:NFZ1219,1,A,68,TYR,hbond,bb_O,O-O1,3.14,128.0,77.0,39.0,,"N,CA,C,O",True
+1YKI,Nitroreductase,1.7,A:NFZ1219,1,A,70,PHE,hbond,bb_NH,N-O1,3.16,163.0,129.0,5.0,,"N,CA,C,O",True
+1YKI,Nitroreductase,1.7,A:NFZ1219,1,A,71,ASN,hbond,bb+sidechain,N-O1; ND2-O2,3.19,77.0,122.0,74.0,,"N,CA,C,O,CB,CG,OD1,ND2",True
+1IDT,Nitroreductase,2.0,A:CB12219,3,A,14,LYS,hbond,sidechain,NZ-O1,2.6,94.0,103.0,56.0,,"CA,CB,CG,CD,CE,NZ",False
+1IDT,Nitroreductase,2.0,A:CB12219,4,B,41,THR,hbond,bb_NH,N-O3,2.65,133.0,141.0,41.0,,"N,CA,C,O",False
+1OO6,Nitroreductase,2.0,A:SN2219,1,A,41,THR,hbond,bb_NH,N-O3,3.29,123.0,154.0,28.0,,"N,CA,C,O",False
+1OO6,Nitroreductase,2.0,A:SN2219,2,B,14,LYS,hbond,sidechain,NZ-O5,3.05,119.0,78.0,59.0,,"CA,CB,CG,CD,CE,NZ",False
+1OON,Nitroreductase,2.49,A:BEL362,2,A,41,THR,hbond,bb_NH,N-O7,3.12,113.0,152.0,39.0,,"N,CA,C,O",False
+5J8G,Nitroreductase,1.9,A:4NB302,1,A,41,THR,hbond,bb_NH,N-O2',2.71,134.0,143.0,40.0,,"N,CA,C,O",False
+2C0U,Nitroalkane oxidase,2.2,A:NBT1433,1,A,276,SER,hbond,sidechain,OG-O16,3.37,143.0,153.0,15.0,,"CA,CB,OG",True
+2C0U,Nitroalkane oxidase,2.2,A:NBT1433,1,A,402,ASP,hbond,sidechain,OD2-O16,3.26,107.0,143.0,56.0,,"CA,CB,CG,OD1,OD2",True
+3FCJ,Nitroalkane oxidase,2.4,A:NIE600,1,A,402,ASN,hbond,bb+sidechain,N-O4; ND2-O4,3.3,144.0,150.0,9.0,,"N,CA,C,O,CB,CG,OD1,ND2",False
+3D9D,Nitroalkane oxidase,2.1,A:N6C600,1,A,402,ASN,hbond,bb+sidechain,N-O2; ND2-O1,2.75,100.0,122.0,67.0,,"N,CA,C,O,CB,CG,OD1,ND2",False
+3D9E,Nitroalkane oxidase,2.2,A:N8C600,1,A,402,ASN,hbond,bb+sidechain,N-O2; ND2-O1,2.87,112.0,135.0,45.0,,"N,CA,C,O,CB,CG,OD1,ND2",False
+3D9F,Nitroalkane oxidase,2.2,A:N6C600,1,A,402,ASP,hbond,bb+sidechain,N-O2; OD1-O1,2.82,103.0,145.0,77.0,,"N,CA,C,O,CB,CG,OD1,OD2",False
+2GJN,Nitronate monooxygenase / 2-nitropropane dioxygenase,2.3,A:NIS500,1,A,152,HIS,hbond,sidechain,ND1-O6,3.23,57.0,172.0,31.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",False
+2GJN,Nitronate monooxygenase / 2-nitropropane dioxygenase,2.3,A:NIS500,1,A,288,SER,hbond,sidechain,OG-O5,3.24,148.0,127.0,7.0,,"CA,CB,OG",False
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,1.4,A:NIE402,1,A,183,SER,hbond,bb_NH,N-O4,2.79,114.0,126.0,39.0,,"N,CA,C,O",False
+4QIT,Nitronate monooxygenase / 2-nitropropane dioxygenase,1.4,A:NIE402,1,A,325,TRP,hbond,sidechain,NE1-O5,2.73,143.0,90.0,29.0,,"CA,CB,CG,CD1,CD2,NE1,CE2,CE3,CZ2,CZ3,CH2",False
+4QIU,Nitronate monooxygenase / 2-nitropropane dioxygenase,1.401,A:N1P402,1,A,325,TRP,hbond,sidechain,NE1-O2,3.17,110.0,133.0,23.0,,"CA,CB,CG,CD1,CD2,NE1,CE2,CE3,CZ2,CZ3,CH2",False
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,2.2,A:NIE371,1,A,298,HIS,hbond,sidechain,NE2-O5,3.15,121.0,154.0,17.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",True
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,2.2,A:NIE371,1,A,305,ARG,hbond,sidechain,NH2-O5,2.85,105.0,122.0,42.0,,"CA,CB,CG,CD,NE,CZ,NH1,NH2",True
+3BW3,Nitronate monooxygenase / 2-nitropropane dioxygenase,2.2,A:NIE371,1,A,320,TRP,hbond,sidechain,NE1-O4,3.39,106.0,142.0,56.0,,"CA,CB,CG,CD1,CD2,NE1,CE2,CE3,CZ2,CZ3,CH2",True
+6N92,Nitronate-CoA analog complexes,1.7,B:KFV301,2,B,66,HIS,pi,sidechain,,,,,,3.6/2.29/10.0,"CA,CB,CG,ND1,CD2,CE1,NE2",False
+6WFI,Nitronate-CoA analog complexes,1.37,A:KFV206,1,A,7,HIS,hbond,sidechain,NE2-OS4,3.19,167.0,146.0,11.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",True
+6WFI,Nitronate-CoA analog complexes,1.37,A:KFV206,1,A,60,GLN,hbond,sidechain,NE2-OS4; OE1-OS4,2.86,101.0,106.0,79.0,,"CA,CB,CG,CD,OE1,NE2",True
+6WFI,Nitronate-CoA analog complexes,1.37,A:KFV206,1,A,115,SER,hbond,bb+sidechain,N-OS5; OG-OS5,2.81,158.0,128.0,22.0,,"N,CA,C,O,CB,OG",True
+6WFI,Nitronate-CoA analog complexes,1.37,A:KFV206,1,A,134,GLU,hbond,sidechain,OE1-OS4; OE2-OS4,3.08,121.0,96.0,53.0,,"CA,CB,CG,CD,OE1,OE2",True
+6X7L,Nitronate-CoA analog complexes,1.77,A:KFV402,1,A,216,ASN,hbond,sidechain,ND2-OS5,2.7,98.0,127.0,74.0,,"CA,CB,CG,OD1,ND2",False
+6X7L,Nitronate-CoA analog complexes,1.77,A:KFV402,1,A,223,PHE,hbond,bb_NH,N-OS5,2.91,127.0,128.0,52.0,,"N,CA,C,O",False
+6XBR,Nitronate-CoA analog complexes,1.55,A:KFV206,1,A,7,HIS,hbond,sidechain,NE2-OS4,3.28,155.0,149.0,25.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",False
+6XBR,Nitronate-CoA analog complexes,1.55,A:KFV206,1,A,60,GLN,hbond,sidechain,NE2-OS4; OE1-OS4,3.06,89.0,100.0,77.0,,"CA,CB,CG,CD,OE1,NE2",False
+6XBR,Nitronate-CoA analog complexes,1.55,A:KFV206,1,A,115,SER,hbond,bb+sidechain,N-OS5; OG-OS5,2.72,179.0,117.0,1.0,,"N,CA,C,O,CB,OG",False
+6XBR,Nitronate-CoA analog complexes,1.55,A:KFV206,1,A,134,GLU,hbond,sidechain,OE1-OS4; OE2-OS4,2.74,121.0,108.0,59.0,,"CA,CB,CG,CD,OE1,OE2",False
+2BMQ,Nitroarene dioxygenase,1.55,A:NBZ1442,1,A,258,ASN,hbond,sidechain,ND2-O1,3.06,114.0,132.0,32.0,,"CA,CB,CG,OD1,ND2",False
+2BMR,Nitroarene dioxygenase,1.5,A:3NT1442,1,A,258,ASN,hbond,sidechain,ND2-O2N,3.08,104.0,131.0,32.0,,"CA,CB,CG,OD1,ND2",True
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),2.0,A:GTD2101,3,A,7,TYR,hbond,sidechain,OH-O61,2.77,83.0,163.0,67.0,,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ,OH",True
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),2.0,A:GTD2101,2,A,8,PHE,pi,sidechain,,,,,,4.51/1.58/25.0,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ",True
+1AQX,Glutathione S-transferase (Meisenheimer / nitroaryl),2.0,A:GTD2101,1,A,108,TYR,pi,sidechain,,,,,,4.56/1.85/21.0,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ,OH",True
+18GS,Glutathione S-transferase (Meisenheimer / nitroaryl),1.9,A:GDN210,1,A,108,TYR,pi,sidechain,,,,,,3.45/2.44/30.0,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ,OH",False
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),2.7,B:GTD2218,4,B,107,HIS,hbond,sidechain,NE2-O22,3.45,151.0,135.0,1.0,,"CA,CB,CG,ND1,CD2,CE1,NE2",False
+2F3M,Glutathione S-transferase (Meisenheimer / nitroaryl),2.7,B:GTD2218,4,B,115,TYR,hbond,sidechain,OH-O21,2.85,107.0,139.0,60.0,,"CA,CB,CG,CD1,CD2,CE1,CE2,CZ,OH",False

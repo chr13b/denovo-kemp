@@ -1,0 +1,16 @@
+id,kind,residue,resid,source,source_family,resolution_A,modelled,n_equivalent_structures,families,members,side,partner
+B01,carboxylate,ASP,A24,9TZD,KempTIM,1.2,False,1,KempTIM,9TZD,N1,
+B02,carboxylate,ASP,A127,6SRY,HG / xylanase 1GOR,0.95,False,20,HG / xylanase 1GOR,4BS0 5RGB 5RGC 5RGD 5RGE 5RGF 6SRY 6SRZ 6SS1 6SS3 6TU6 7K4U 7K4Z 8FOS 8KH3 8RD5 8USF 8USH 8USJ 8USL,N3,
+B03,carboxylate,ASP,A127,7K4Q,HG / xylanase 1GOR,1.28,False,2,HG / xylanase 1GOR,5RGA 7K4Q,N3,
+B04,carboxylate,ASP, 162,Des27.7_sub,Des27 / IGPS chimera,,True,2,Des27 / IGPS chimera,Des27.7_sub Des27_sub,N3,
+B05,carboxylate,ASP,A127,3NYD,HG / xylanase 1GOR,1.23,False,1,HG / xylanase 1GOR,3NYD,N3,
+B06,carboxylate,ASP,A127,6SRW,HG / xylanase 1GOR,1.45,False,1,HG / xylanase 1GOR,6SRW,N3,
+B07,carboxylate,ASP,A49,9N0J,KABLE,1.54,False,1,KABLE,9N0J,N3,
+B08,carboxylate,ASP,A127,7K4X,HG / xylanase 1GOR,1.6,False,1,HG / xylanase 1GOR,7K4X,N3,
+B09,carboxylate,ASP,A49,29SB,KABLE,,False,1,KABLE,29SB,N3,
+B10,carboxylate,GLU,A178,3NZ1,1A53-2 / IGPS,1.56,False,1,1A53-2 / IGPS,3NZ1,N1,
+B11,carboxylate,GLU,A178,8FOQ,1A53-2 / IGPS,1.6,False,1,1A53-2 / IGPS,8FOQ,N1,
+B12,carboxylate,GLU,A178,6NW4,1A53-2 / IGPS,3.0,False,1,1A53-2 / IGPS,6NW4,N1,
+B13,carboxylate,GLU,A231,3UZJ,KE59 / IGPS,1.69,False,2,KE59 / IGPS,3UZ5 3UZJ,N3,
+B14,carboxylate,GLU,A231,3UXD,KE59 / IGPS,1.8,False,1,KE59 / IGPS,3UXD,N3,
+B15,dyad,HIS+ASP,A16+A45,8FOR,KE70 / DERA,2.2,False,1,KE70 / DERA,8FOR,N3,ASP45A

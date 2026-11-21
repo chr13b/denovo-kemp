@@ -1,0 +1,30 @@
+{
+ "6DNJ_A302": {
+  "pdb": "6DNJ",
+  "base": [],
+  "pi": [
+   "TRP50A",
+   "TYR128A",
+   "TRP50A"
+  ]
+ },
+ "7EPO_A201": {
+  "pdb": "7EPO",
+  "base": [
+   "GLU127A:OE1",
+   "GLU127A:OE2"
+  ],
+  "pi": [
+   "TRP48A",
+   "HIS61A",
+   "TRP48A"
+  ]
+ },
+ "7Y9J_B502": {
+  "pdb": "7Y9J",
+  "base": [],
+  "pi": [
+   "TYR76B"
+  ]
+ }
+}
