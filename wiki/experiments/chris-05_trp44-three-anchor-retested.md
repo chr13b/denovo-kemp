@@ -2,7 +2,7 @@
 
 - **Owner:** chris (motif by **zonghu**, job 7)
 - **Date:** 2026-11-21
-- **Status:** done: refuted
+- **Status:** done: inconclusive (leans negative; one backbone per condition)
 - **Question:** zonghu's 7K4U-derived theozyme adds a third anchor, **Trp44**, whose indole stacks on
   the ligand ring at 3.86 Å in 4BS0. Their run refolded badly (CA RMSD 4.26 Å, ligand 26 Å from the
   donor) and the motif looked refuted. **Was it the motif, or the one sequence it was tested with?**
@@ -54,7 +54,16 @@ the fraction of sequences landing in the 2.41–2.69 Å window.
 | comparable fractions | the anchor is neutral here | prefer our 2-residue motif: fewer constraints, more scaffold freedom |
 | chris-05 clearly worse | 3 anchors over-constrain a 260-residue scaffold | record and drop; tell zonghu before they spend more on it |
 
-## Result — **refuted.** The third anchor makes things worse on every axis.
+## Result — inconclusive, leaning negative
+
+> **Correction (added later the same day).** I originally headed this "refuted". That overstated it.
+> Each condition is **one** RFD3 backbone, and the plain two-anchor motif's own seeds span median CA
+> RMSD 0.77 / 1.33 / 1.53 / 1.91 / 1.92 / 10.67 Å — so Trp44's 2.02 Å lies inside the range the
+> *minimal* motif produces on its own. The comparison below is against seed 4, which was selected
+> because it was the best backbone, so it is biased against Trp44. The one number that stands apart is
+> the median donor contact (18.92 Å vs 4.7–11.9 Å for all seven other backbones). Reading: **no
+> evidence the third anchor helps; weak, unreplicated evidence that it hurts the donor.** Using the
+> minimal motif is still the sensible default, but as a cost decision, not a finding.
 
 75 of 75 measured. Full table: `results/oversample_b_trp44_job31.tsv`. Tested properly this time —
 72 sequences, not one — against chris-04 on the identical protocol.
@@ -103,7 +112,7 @@ instrument check is deterministic and the two sweeps are directly comparable.
 
 ## Verdict and next step
 
-**Drop the three-anchor motif.** The pre-registered rule for "chris-05 clearly worse" was: record it,
+**Deprioritise the three-anchor motif (a cost decision, not a proof — see the correction above).** The pre-registered rule for "chris-05 clearly worse" was: record it,
 stop, and tell zonghu before they spend more on it. Both are done — the note is in `wiki/team.md`.
 
 What it teaches, which is worth more than the motif would have been:

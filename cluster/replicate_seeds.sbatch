@@ -19,7 +19,9 @@
 #   RS_SEEDS        space-separated Boltz seeds, default "1 2 3 4 5"
 #SBATCH --job-name=kemp-replicate
 #SBATCH --partition=gpu
-#SBATCH --constraint="l4small|l4"
+# Pinned to the working node on purpose: allowing the dead l4small nodes made Slurm allocate to
+# them, fail the power-up and requeue this very job six times without it ever running.
+#SBATCH --constraint=g6.2xlarge
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4

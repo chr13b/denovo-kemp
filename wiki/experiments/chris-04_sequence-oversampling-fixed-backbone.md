@@ -167,3 +167,24 @@ Next, in order:
 4. **Redo the controls with pocket conditioning** (`pocket_force: true`, 5 Å) before trusting any
    donor-contact number, ours or the natural enzymes'.
 5. Stop reporting CA RMSD as a quality filter for sequences on a fixed backbone. It has r = +0.12.
+
+## How strong is the evidence? (added after eight backbones were swept)
+
+Across 8 backbones and 336 designs (controls excluded) there are **3 in the base window and 2 in both
+windows, all on seed 4's backbone**, which was chosen *before* sampling because its single sequence
+refolded best. If hits were spread uniformly over designs, the chance that all of them land in seed
+4's 72 is **p = 0.0095** for the base window and **p = 0.045** for both windows (hypergeometric, exact).
+So: suggestive that this backbone is better, not conclusive — and each hit is a single noisy draw
+(primer g5b: the same real enzyme reads 2.45–3.78 Å across batches).
+
+## Pre-registered rule for job 47 (written before it has run)
+
+Job 47 folds s024, s059, seed 4's original sequence and the three natural enzymes at Boltz seeds 1–5.
+The scorer uses 5 replicates, so a candidate's value is its **replicated** geometry, not one draw.
+
+| Observation | Reading | Action |
+|---|---|---|
+| base **and** donor inside their windows in ≥ 3 of 5 seeds | confirmed | keep as a submission candidate |
+| mean base ≤ 3.0 Å but < 3 of 5 seeds inside | plausible, noisy | keep as a lower-ranked candidate |
+| mean base > 3.0 Å | it was a lucky draw | drop; the Idea A headline weakens to "a backbone that occasionally lands near the window" |
+| the natural enzymes are themselves in-window in < 3 of 5 seeds | the *instrument* cannot hit the window reliably | recalibrate the target to the natural enzymes' replicated mean, and ask the organizers what the scorer's reference values are |

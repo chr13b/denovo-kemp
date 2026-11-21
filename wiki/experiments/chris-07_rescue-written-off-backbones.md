@@ -104,14 +104,14 @@ Six backbones have now been swept under one protocol. Ranked by designability:
 
 | relationship | statistic |
 |---|---|
-| **across backbones**: median CA RMSD vs **median** base contact | **Spearman ρ = +0.943** (n=6) |
+| **across backbones**: median CA RMSD vs **median** base contact | Spearman ρ = +0.943 (n=6); **+0.857 once seeds 12 and 13 are added (n=8)** |
 | across backbones: median CA RMSD vs *best* base contact | ρ = +0.486 — **confounded, do not use** |
 | **within** seed 4 (n=72): a sequence's CA RMSD vs its base contact | **r = +0.122** |
 
 Two things worth separating carefully:
 
 1. **The two correlations are not in conflict, and the distinction is the whole point.** How
-   designable a *backbone* is almost perfectly rank-orders how close its ligand ends up (ρ = 0.94).
+   designable a *backbone* is almost perfectly rank-orders how close its ligand ends up (ρ = 0.94 at n = 6; 0.86 at n = 8).
    How well an individual *sequence* refolds tells you essentially nothing about its own contact
    (r = 0.12). So: **screen backbones on designability, then sample sequences blind.** There is no
    useful per-sequence filter, and folding is 19 s, so that is fine.
@@ -127,6 +127,6 @@ under 2 Å) and seed 3, while encodable, sits mid-table with no hits. chris-02's
 as a rough figure — though the right way to state it is **~2 of 5 RFD3 seeds give a backbone worth
 sampling deeply**, judged by median CA RMSD rather than by one sequence's fate.
 
-The experiment paid for itself anyway: it supplied two of the six points that establish ρ = 0.94, and
+The experiment paid for itself anyway: it supplied two of the six points behind that correlation (ρ = 0.86 at n = 8), and
 that is what justifies spending ~16 minutes screening a backbone before spending ~25 minutes sampling
 it.

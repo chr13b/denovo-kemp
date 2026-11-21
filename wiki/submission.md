@@ -111,3 +111,10 @@ diversity across the whole set at the end with `tools/self_diversity.sh`.
 | Designs ready | 0 of max 20 |
 | Last upload | never |
 | Deadline | **TODO: ask an organiser** |
+
+## Validator status (2026-11-21)
+
+The organizers' own `validate-submission.py` (downloaded from the shared bucket, run on the cluster
+with no network) **ACCEPTS** `results/designs.fasta`: 2 designs, 260 residues each, `base=` and `oxy=`
+declared and checked. The uploader `submit-designs.sh` has deliberately **not** been downloaded or run.
+Re-run the validator after every change to the file.

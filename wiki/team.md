@@ -56,8 +56,12 @@ will not resume them. We are not admins, so `scontrol update NodeName=... State=
 `Reason=ReqNodeNotAvail,_UnavailableNodes:gpu-dy-l4small-[1-2]`. zonghu's jobs 32 and 33 are in
 exactly this state as of 2026-11-21 — I have not touched them, since they are yours to requeue.
 
-Use `--constraint="l4small|l4"` instead: it takes a small node if one ever comes back and falls
-through to `gpu-dy-l4-1` otherwise. Never request `l4big` — it is reserved.
+**Use `--constraint=g6.2xlarge`** (the one working node). I previously advised
+`--constraint="l4small|l4"` here and **that was wrong while the small nodes are dead**: Slurm allocates
+the job to a dead node, the power-up fails, and the job is requeued to the back of the line. My own job
+47 was requeued **6 times and never ran** before I found this (`scontrol show job <id> | grep Restarts`
+— anything above 0 means you are in this loop). Switch back only when `sinfo` shows an l4small node
+healthy. Never request `l4big` — it is reserved.
 
 Check your own jobs with:
 
@@ -115,6 +119,16 @@ the l4small nodes.
 Also worth your time: your `aff_*` affinity runs show the TS analogue separating cleanly from substrate
 and product in all three enzymes, but HG3 and HG3.17 score **2.06 vs 2.06** despite ~1000× activity
 difference. Good negative filter, not a ranker. Details in `wiki/primer.md` §5(h).
+
+**CORRECTION to the update above (same day, after checking my own statistics):** "it lost" overstated
+what one backbone can show. Each condition I compared is a **single** RFD3 backbone, and the plain
+two-anchor motif's own seeds range widely: median CA RMSD 0.77, 1.33, 1.53, 1.91, 1.92 and 10.67 Å.
+Your backbone's 2.02 Å sits inside that range — I had compared it against seed 4, which I chose
+*because* it was the best. What does look unusual is the **donor** contact (median 18.92 Å, against
+4.7–11.9 Å for every other backbone, i.e. the ligand leaves the pocket); that may be real, but it is
+still n = 1. So: **no evidence the third anchor helps, and no proof it hurts.** Please don't drop the
+Trp44 line on my say-so — two or three more RFD3 seeds with your motif would show whether the donor
+result repeats, and that is ~12 min each.
 
 ## Division of labour (suggestion for the first hours)
 

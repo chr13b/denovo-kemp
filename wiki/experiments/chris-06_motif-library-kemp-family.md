@@ -2,7 +2,7 @@
 
 - **Owner:** chris
 - **Date:** 2026-11-21
-- **Status:** done: refuted (as a lever; the tooling works)
+- **Status:** done: inconclusive (one backbone per motif; the tooling works)
 - **Question:** Every design we and zonghu have made uses **one** arrangement of base + donor + ligand,
   lifted from 4BS0. The family offers 26 engaged ligand copies across 23 crystal structures. **Does the
   choice of arrangement change how well a de novo backbone holds the base contact through refolding?**
@@ -63,7 +63,13 @@ Stage 2 is chris-04's oversampling job, pointed at each `bridge/` this produces.
 A per-motif sanity check applies first: RFD3 must reproduce each motif to ≤0.05 Å
 (`fixed_pair_distance_max_deviation_angstrom`). A motif it cannot satisfy tells us nothing about refolding.
 
-## Result — arrangement matters, but the incumbent is already the best of the two
+## Result — inconclusive: one backbone per motif cannot separate motif from RFD3 seed
+
+> **Correction (added later the same day).** I originally headed this "arrangement matters". The data
+> cannot say that. 8USL_B and 4BS0_A are each **one** backbone, and the 4BS0 motif's *own* RFD3 seeds
+> give median CA RMSD of 0.77, 1.33, 1.53, 1.91 and 1.92 Å (plus a collapsed 10.67) — a spread as big
+> as the 8USL_B-vs-4BS0_A gap (1.99 vs 1.33). Seed-to-seed variation within one motif is at least as
+> large as motif-to-motif variation here. To test motifs properly, each needs several RFD3 seeds.
 
 ### Design stage: clean, both motifs
 
@@ -137,7 +143,7 @@ reliable than a 0-versus-0 hit comparison.
 
 ## Verdict and next step
 
-**Arrangement matters — and the arrangement the pipeline already ships with is the better one.**
+**Not established either way.** (The 4BS0-is-already-optimised argument below is a plausible prior, not a result.)
 Idea C's hypothesis was that 4BS0's base placement might be unusually hard to realise de novo and
 another family member's might be easier. The opposite held for the one alternative tested: the most
 geometrically distinct member gave less designable backbones.

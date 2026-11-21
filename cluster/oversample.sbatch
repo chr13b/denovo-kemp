@@ -23,14 +23,15 @@
 #   OS_BATCH        sequences per batch                       (default 8)
 #   OS_NBATCHES     batches per temperature                   (default 3)
 #   OS_CONTROLS     FASTA of natural-enzyme controls to fold under identical conditions
-# Node sizing: the organizers' template asks for g6.2xlarge / 30 GB because the MMseqs2 stage
-# loads a 30 GB index. This job does not run MMseqs2 (chris-03: the stage is a no-op), so it
-# fits the 4-CPU / 15.5 GB l4small nodes - which is what lets several of these run at once
-# instead of queueing behind the single g6.2xlarge node. l4big is excluded by the constraint:
-# the organizers reserved it, and we must not take it.
+# Node sizing: this job does not run MMseqs2 (chris-03: the stage is a no-op), so it needs only
+# 4 CPUs / 14 GB and would fit the small l4small nodes. BUT those nodes are currently dead
+# (idle~, "Scheduler health check failed"), and a constraint that ALLOWS them is a trap: Slurm
+# allocates the job to a dead node, the power-up fails, and the job is requeued to the back of the
+# line. Measured: job 47 was requeued 6 times and never ran. Pin to the one working node until
+# `sinfo` shows an l4small node healthy again. l4big is never used: the organizers reserved it.
 #SBATCH --job-name=kemp-oversample
 #SBATCH --partition=gpu
-#SBATCH --constraint="l4small|l4"
+#SBATCH --constraint=g6.2xlarge
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4

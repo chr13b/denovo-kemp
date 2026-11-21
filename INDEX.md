@@ -116,6 +116,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/oversample_c_8usl_job36.tsv](results/oversample_c_8usl_job36.tsv) — chris-06: the most distinct family motif gives less designable backbones
 - [results/oversample_rescue_s3_job39.tsv](results/oversample_rescue_s3_job39.tsv) — chris-07: seed 3 is encodable (1.53 Å) but yields no in-window hits
 - [results/screen_4bs0a_s12_job59.tsv](results/screen_4bs0a_s12_job59.tsv) — 16-sequence designability screen of a fresh 4BS0 backbone (seed 12)
+- [results/screen_4bs0a_s13_job60.tsv](results/screen_4bs0a_s13_job60.tsv) — 16-sequence designability screen of a fresh 4BS0 backbone (seed 13)
 - [results/oversample_a_seed4_job27_contact_vs_rmsd.png](results/oversample_a_seed4_job27_contact_vs_rmsd.png) — **the figure**: the fold is reproduced, the catalytic contact is not
 - [results/reference_kemp-1_summary.json](results/reference_kemp-1_summary.json) — verified reference run (cluster job 1); the baseline we must beat
 - [results/kemp_family_geometry.tsv](results/kemp_family_geometry.tsv) — **the geometry target**: 43 ligand copies from 23 crystal structures

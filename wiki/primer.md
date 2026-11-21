@@ -474,7 +474,12 @@ stripping a 1–3 character suffix turns `..._model_0` into `..._model` and `c_3
 mismatch silently matched nothing and reported "75 structures -> 75 distinct folds" for 75 copies of
 one fold. The script now strips exactly one character and aborts if no edge matches a node.
 
-### (g4) Backbone designability is a real property, and more motif constraints destroy it
+### (g4) Designability varies between backbones; one three-anchor backbone looked worse (weak evidence)
+
+> **Evidence grade, corrected:** one backbone per condition, compared against seed 4 (selected as the
+> best). The two-anchor motif's own seeds span 0.77–10.67 Å median CA RMSD, so Trp44's 2.02 Å is inside
+> that range. Only its donor median (18.92 Å vs 4.7–11.9) stands out, and it is n = 1. Read the table
+> below as "no benefit, possibly a cost", **not** as "anchors destroy designability".
 
 chris-05 ran the identical 72-sequence protocol on zonghu's three-anchor Trp44 backbone:
 
@@ -552,13 +557,21 @@ Three consequences, and the third is uncomfortable:
 
 1. **Absolute single-fold geometry is close to meaningless.** A real enzyme reads anywhere from 2.45
    to 3.78 Å on the contact we are optimising.
-2. **Within one batch, comparisons are still fair** — every design in a sweep shares the same batch
-   RNG. So a sweep's internal ranking, and hit-rate comparisons between backbones, survive.
+2. **Averages over many sequences survive; single values do not.** I first wrote that comparisons
+   within a batch are "fair because the batch shares one RNG" — that was wrong. Each structure in a
+   batch consumes its own part of the random stream, so each design carries its *own* independent
+   noise. Medians and hit rates over dozens of sequences average it out; any one design's contact
+   does not.
 3. **Our 2/72 "hits" are one draw each, and may be partly noise.** A design whose true mean is 4 Å can
    read 2.5 Å once; designs we discarded may be better than they looked. Job 47's 5-seed replication
    is not a nicety — without it we cannot say s024 is a good design, only that it drew a good number.
 
-### (g6) Motif variety is not the lever: 4BS0 is already the best arrangement
+### (g6) Motif variety: one alternative arrangement looked worse than 4BS0 (weak evidence)
+
+> **Evidence grade, corrected:** one backbone per motif. Within the 4BS0 motif alone, RFD3 seeds give
+> 0.77 / 1.33 / 1.53 / 1.91 / 1.92 Å, so the 1.99 vs 1.33 Å gap to 8USL_B is inside seed-to-seed noise.
+> "4BS0 is already the best arrangement" is a plausible prior (it is HG3.17's own structure), not a
+> measured result.
 
 chris-06 took the most geometrically distinct family member (8USL_B, 2.20 Å away from 4BS0 in the
 pinned-atom distance matrix) and ran the identical sweep on a backbone built from each:
@@ -579,7 +592,14 @@ remembering as a mistake.
 So backbone diversity has to come from **more RFD3 seeds on the 4BS0 motif**, which is the cheap axis
 anyway at 12 min each. The motif-extraction tooling still works and stays available.
 
-### (g6b) Designability rank-orders backbones (ρ = 0.94) but says nothing about a sequence (r = 0.12)
+### (g6b) Designability rank-orders backbones (ρ = 0.86, n = 8) but says nothing about a sequence (r = 0.12)
+
+> **Update, n = 8.** The table below is the original six. With the two new screens (seeds 12 and 13)
+> the rank correlation is **ρ = +0.857** (I first reported +0.943 at n = 6), and **+0.829** among the six
+> plain 4BS0-motif backbones (n = 6, not significant at the 5 % level). Still positive, weaker than I said.
+> **Caveats:** both axes are computed from the
+> *same* refolded structures, so part of the link is mechanical — a protein that collapses cannot hold
+> a ligand. It is a good reason to screen cheaply, not proof that designability *causes* good contacts.
 
 Six backbones swept under one protocol, ranked by designability:
 
@@ -594,7 +614,7 @@ Six backbones swept under one protocol, ranked by designability:
 
 | relationship | statistic |
 |---|---|
-| **across backbones**: median CA RMSD vs **median** base contact | **Spearman ρ = +0.943** |
+| **across backbones**: median CA RMSD vs **median** base contact | Spearman ρ = +0.943 at n = 6 → **+0.857 at n = 8** |
 | **within** seed 4 (n=72): a sequence's CA RMSD vs its base contact | **r = +0.122** |
 
 These are not in conflict — the distinction is the point. **A backbone's designability almost
@@ -603,7 +623,7 @@ nothing about its own contact.** Hence the funnel: screen backbones on designabi
 sequences blind, because no per-sequence filter exists and folding costs 19 s anyway.
 
 **A statistic to avoid:** ranking backbones by their *best* contact gives ρ = +0.486 instead of
-+0.943, because best-of-72 beats best-of-32 by construction. When sample sizes differ, compare
++0.943 (at n = 6), because best-of-72 beats best-of-32 by construction. When sample sizes differ, compare
 medians, not minima. I nearly reported the weak number as the result.
 
 ### (g7) The funnel all four experiments point at
@@ -907,8 +927,8 @@ written before any result existed.
 | | what it does | job | outcome |
 |---|---|---|---|
 | **A** | 72 sequences on seed 4's existing backbone | **27** | ✅ **SUPPORTED — 2 designs inside both windows, both novel** |
-| **B** | 72 sequences on zonghu's Trp44 backbone | **31** | ❌ **REFUTED — 0/72 in window, worse on every axis** |
-| **C** | RFD3 on 4BS0_A vs 8USL_B, each chaining a sweep | **34** → 35, 36 | ❌ **REFUTED as a lever — the shipped 4BS0 arrangement is the better one** |
+| **B** | 72 sequences on zonghu's Trp44 backbone | **31** | ⚠️ **inconclusive, leans negative** — 0/72, but n = 1 backbone and the comparison is against our best seed |
+| **C** | RFD3 on 4BS0_A vs 8USL_B, each chaining a sweep | **34** → 35, 36 | ⚠️ **inconclusive** — one backbone per motif; seed-to-seed spread within a motif is as large as the gap |
 | controls | 4BS0 / 3NYD / 7K4U folded in every batch | (bundled) | ✅ base validated, donor not — see (g2) |
 
 **Idea A's headline:** on seed 4's own backbone, where the organizers' single sequence gave base
