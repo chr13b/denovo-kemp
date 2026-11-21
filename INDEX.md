@@ -81,6 +81,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)
 - [tools/fetch_papers.sh](tools/fetch_papers.sh) — download the open-access literature into `data/papers/` (gitignored)
 - [tools/novelty_check.sh](tools/novelty_check.sh) — TM-score a design against published structures; PASS/FAIL against the 0.7 gate
+- [tools/self_diversity.sh](tools/self_diversity.sh) — all-vs-all TM-score over OUR OWN candidates: how many distinct folds are we actually submitting?
 - [tools/status.py](tools/status.py) — overview: experiments table and recent log entries (`make status`)
 - [configs/](configs/) — reusable run configs, `<handle>-NN.json`, referenced from experiment pages
 - [envs/](envs/) — pinned environments for external tools with their own deps (`<tool>.yml` / `<tool>.Dockerfile`)

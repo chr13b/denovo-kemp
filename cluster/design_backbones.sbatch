@@ -77,3 +77,35 @@ echo "=================================================================="
 echo "DESIGN STAGE COMPLETE: $FAILED failures"
 echo "Backbones ready for oversampling:"
 for d in "$ROOT"/*/bridge/kemp.pdb; do [ -s "$d" ] && echo "  $(dirname "$(dirname "$d")")"; done
+
+# ---------------------------------------------------------------- chain into stage 2
+# Submitting from inside the job means the sequence sweeps start the moment a backbone exists,
+# with no human in the loop. Each sweep gets its own results/oversample-<jobid>/ inside this
+# same workspace, so they cannot collide. DS_CHAIN=0 disables it for a design-only run.
+if [ "${DS_CHAIN:-1}" = "1" ] && [ -s "$PROJECT/oversample.sbatch" ]; then
+    echo "=================================================================="
+    echo "Chaining stage 2: one sequence sweep per backbone"
+    for BRIDGE in "$ROOT"/*/bridge/kemp.pdb; do
+        [ -s "$BRIDGE" ] || continue
+        RUN=$(dirname "$(dirname "$BRIDGE")")
+        TAG=$(basename "$RUN")
+        [ -s "$RUN/bridge/fixed_residues.txt" ] || { echo "  skip $TAG: no fixed_residues.txt"; continue; }
+        # The pinned base/donor positions live in sequence.json after a full pipeline run, but
+        # a design-only run has not reached LigandMPNN yet - motif.json carries the same
+        # "fixed" array, so use whichever exists.
+        POSITIONS="$RUN/bridge/sequence.json"
+        [ -s "$POSITIONS" ] || POSITIONS="$RUN/bridge/motif.json"
+        [ -s "$POSITIONS" ] || { echo "  skip $TAG: no pinned-position file"; continue; }
+        JOB=$(OS_BACKBONE="$RUN/bridge/kemp.pdb" \
+              OS_FIXED="$(cat "$RUN/bridge/fixed_residues.txt")" \
+              OS_SEQUENCE="$POSITIONS" \
+              OS_TEMPERATURES="${DS_CHAIN_TEMPERATURES:-0.1 0.2 0.3}" \
+              OS_CONTROLS="${DS_CHAIN_CONTROLS:-}" \
+              sbatch --parsable --chdir="$PDH_WORKSPACE" \
+                     --output="$PDH_WORKSPACE/logs/oversample-%j.log" \
+                     --export=ALL,OS_BACKBONE,OS_FIXED,OS_SEQUENCE,OS_TEMPERATURES,OS_CONTROLS \
+                     --job-name="os-$TAG" \
+                     "$PROJECT/oversample.sbatch" 2>&1)
+        echo "  $TAG -> job $JOB"
+    done
+fi

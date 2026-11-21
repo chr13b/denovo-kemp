@@ -53,17 +53,28 @@ done
 echo "  helpers copied, env written"
 REMOTE_SETUP
 
-echo "=== 2. copying the design job"
-scp -q "$HERE/design_backbones.sbatch" "$HOST:$REMOTE/src/" || exit 1
+echo "=== 2. copying the design job and the stage-2 sweep it chains into"
+scp -q "$HERE/design_backbones.sbatch" "$HERE/oversample.sbatch" \
+       "$HERE/build_boltz_queries.py" "$HERE/measure_boltz_outputs.py" \
+       "$HERE/build_control_fasta.py" "$HOST:$REMOTE/src/" || exit 1
 echo "  ok"
 
-echo "=== 3. submitting"
+echo "=== 3. natural-enzyme controls for the chained sweeps"
+ssh "$HOST" "bash -lc '
+source $REMOTE/env.sh
+\"\$ENV_ROOT/env-rfd3/bin/python\" $REMOTE/src/build_control_fasta.py \
+    /mnt/work/tools/kemp_pdb $REMOTE/inputs/controls.fasta 4BS0 3NYD 7K4U
+'" || echo "  (controls unavailable; sweeps will run without the instrument check)"
+
+echo "=== 4. submitting"
 ssh "$HOST" "bash -lc '
 source $REMOTE/env.sh
 export DS_MOTIFS=\"\$(find $MOTIF_ROOT -mindepth 1 -maxdepth 1 -type d | sort | tr \"\\n\" \" \")\"
 export DS_SEEDS=\"$SEEDS\"
+export DS_CHAIN=1
+[ -s $REMOTE/inputs/controls.fasta ] && export DS_CHAIN_CONTROLS=$REMOTE/inputs/controls.fasta
 sbatch --parsable --chdir=$REMOTE \
     --output=$REMOTE/logs/design-%j.log \
-    --export=ALL \
+    --export=ALL,DS_MOTIFS,DS_SEEDS,DS_CHAIN,DS_CHAIN_CONTROLS \
     $REMOTE/src/design_backbones.sbatch
 '"
