@@ -46,6 +46,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/experiments/_template.md](wiki/experiments/_template.md) — template for experiment pages
 - [wiki/experiments/chris-01_reference-pipeline-baseline.md](wiki/experiments/chris-01_reference-pipeline-baseline.md) — baseline: pipeline verified, RFD3 → Boltz-2 contact drift
 - [wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md](wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md) — seed sweep (jobs 2–5): is that drift systematic? decides where GPU time goes
+- [wiki/experiments/zonghu-01_trp-stack-theozyme-vs-crystal.md](wiki/experiments/zonghu-01_trp-stack-theozyme-vs-crystal.md) — idealised Trp44 π-stack vs the crystal edge-on contact: does a custom theozyme scaffold?
 - [wiki/data.md](wiki/data.md) — dataset registry: source, version, sha256, how to fetch
 - [wiki/decisions.md](wiki/decisions.md) — decision records (append-only, dated): what we chose, why, alternatives
 - [wiki/pitch.md](wiki/pitch.md) — the story for the final presentation, kept current
@@ -81,6 +82,8 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [runs/](runs/) — one directory per execution, gitignored; linked from the experiment pages
 - [results/](results/) — curated tracked outputs (figures, tables, the submission); each entry names its run
 - [results/designs.jsonl.template](results/designs.jsonl.template) — copy to `results/designs.jsonl`: our submission candidates
+- [results/theozyme/theozyme_7k4u_core.pdb](results/theozyme/theozyme_7k4u_core.pdb) — zonghu-01 input: HG3 K50Q motif from 7K4U (TRP44+GLN50+ASP127+6NT), crystal geometry
+- [results/theozyme/theozyme_7k4u_core_trpopt.pdb](results/theozyme/theozyme_7k4u_core_trpopt.pdb) — zonghu-01 input: same motif, TRP44 repositioned to an idealised π-stack; base/donor/ligand unchanged
 - [results/reference_kemp-1_summary.json](results/reference_kemp-1_summary.json) — verified reference run (cluster job 1); the baseline we must beat
 - [results/sweep_kemp-2_summary.json](results/sweep_kemp-2_summary.json) — chris-02 seed 2: collapsed refold (CA RMSD 14.6 Å)
 - [results/sweep_kemp-3_summary.json](results/sweep_kemp-3_summary.json) — chris-02 seed 3: folded, base contact drifted to 8.33 Å
