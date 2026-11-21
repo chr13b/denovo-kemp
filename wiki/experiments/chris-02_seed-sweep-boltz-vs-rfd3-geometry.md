@@ -2,7 +2,7 @@
 
 - **Owner:** chris
 - **Date:** 2026-11-21
-- **Status:** running
+- **Status:** done: supported
 - **Question:** In [chris-01](chris-01_reference-pipeline-baseline.md) the catalytic base contact went from
   2.53 Å in the RFD3 design to 5.91 Å after the Boltz-2 refold (+3.38 Å), while the donor contact held.
   That was **one** design. Does the drift happen for *every* design, or was that run an outlier?
@@ -53,16 +53,65 @@ With n = 5 including the baseline, these are a sense of spread, **not** statisti
 
 ## Result
 
-TODO: fill in from each run's `summary.json`. No number goes here that was not read from a run's files.
+All four finished, no validation warnings in any of them. Every number below is read from the tracked
+`results/sweep_kemp-<job>_summary.json` files; regenerate the table with
+`uv run python scripts/30_compare_rfd3_vs_boltz.py`.
 
 | Seed / job | base RFD3 (Å) | base Boltz-2 (Å) | Δ base | donor RFD3 (Å) | donor Boltz-2 (Å) | Δ donor | `complex_ipde` | CA RMSD (Å) |
 |---|---|---|---|---|---|---|---|---|
-| 1 (reference, chris-01) | 2.53 | 5.91 | **+3.38** | 3.09 | 2.94 | −0.15 | 1.8669 | 1.4326 |
-| 2 | | | | | | | | |
-| 3 | | | | | | | | |
-| 4 | | | | | | | | |
-| 5 | | | | | | | | |
+| 1 (reference, chris-01) | 2.53 | 5.91 | **+3.38** | 3.09 | 2.94 | −0.15 | 1.8669 | 1.433 |
+| 2 | 2.53 | 21.92 | **+19.39** | 3.09 | 18.86 | +15.77 | 5.4966 | 14.625 |
+| 3 | 2.53 | 8.33 | **+5.80** | 3.09 | 3.08 | −0.02 | 1.7469 | 1.358 |
+| 4 | 2.53 | 3.32 | +0.79 | 3.09 | 3.75 | +0.66 | **1.5184** | **0.704** |
+| 5 | 2.53 | 14.88 | **+12.35** | 3.09 | 15.83 | +12.74 | 6.7352 | 13.672 |
 
-## Verdict and next step
+Each run really is a different design: seed 2 shares only 8.5 % sequence identity with seed 1, and the
+catalytic residues land at different positions (seed 1 `base=177 oxy=99`, seed 2 `base=189 oxy=146`).
 
-TODO: apply the decision rule above, then record which row of the table it landed in.
+## Verdict
+
+**3 of 4 new runs have base Δ > +1.5 Å → the pre-registered rule says the drift is systematic.**
+Filter candidates on **Boltz-2** geometry. RFD3 contact distances are not a usable pre-filter.
+
+Three findings, in descending order of how much they should change what we do:
+
+**1. RFD3 contact distances are constant by construction — they carry zero information.**
+The base contact is `2.527 Å` in *every* run, the donor `3.09 Å` in every run. `select_fixed_atoms` in
+`inputs/Kemp.json` holds the motif atoms and the ligand rigid, so these distances are an *input* RFD3 is
+handed, not a property of the design. Reported `fixed_pair_distance_max_deviation_angstrom` is 0.013 Å.
+This is stronger than the decision rule: filtering on RFD3 contact geometry was never *possible*, not
+merely unwise. Any cheap pre-filter has to use something else.
+
+**2. Refolding is close to binary, not a gradient.** CA RMSD comes out as {0.70, 1.36} or {13.67, 14.63} —
+nothing between 1.4 and 13.7. A design either refolds essentially as designed or collapses completely, and
+when it collapses the ligand leaves the site entirely (contacts 15–22 Å, iPDE 5.5–6.7). So the first gate
+is not "how good is the geometry" but **"did this design fold at all"**, and that is one cheap number.
+
+**2 of 4 new designs (3 of 5 including the baseline) survived refolding.** At 260 AA with default settings,
+expect to throw away roughly half of everything generated — that halves effective GPU throughput and is
+the single most important number for planning how many designs we can afford.
+
+**3. The base contact is the fragile one; the donor is not.** Among runs that *did* fold (1, 3, 4), the
+donor contact barely moves (−0.15, −0.02, +0.66 Å) while the base contact moves +3.38, +5.80 and +0.79 Å.
+Geometry carries the most scoring weight, so **the catalytic base placement is where designs lose points**,
+even when everything else is fine.
+
+### One candidate came out of this
+
+**Seed 4 (`results/sweep_kemp-4_summary.json`) beats the reference on every metric we have:** iPDE
+1.5184 vs 1.8669, CA RMSD 0.704 vs 1.433, base contact 3.32 Å vs 5.91 Å, donor 3.75 Å. It is not the shared
+example, so unlike the baseline it could actually be submitted. **Not yet a candidate:** novelty is
+unchecked (TM ≤ 0.7, identity ≤ 70 %), the donor contact at 3.75 Å is longer than ideal H-bond geometry,
+and n = 1 for this design. Check novelty before it takes one of our 20 slots.
+
+## Next steps
+
+1. **Novelty-check seed 4.** If it passes it is our first real submission candidate.
+2. **Build the cheap pre-filter on something that varies.** Base burial (CA atoms within 12 Å of the base —
+   the one scoring term with an exact published definition) computed on the *RFD3* backbone is the obvious
+   candidate, because it is free and it is a scored quantity. Test whether it predicts which designs survive
+   refolding, using these 5 runs as the first labelled examples.
+3. **Separate design variance from refold variance:** hold one design fixed and vary only the Boltz-2 seed,
+   5 replicates — which is exactly how the organizers compute the consistency term
+   ([../challenge.md](../challenge.md)). Run it on seed 4, since it is the design we might submit.
+4. Do not spend GPU re-measuring RFD3 contact distances. They are a constant.

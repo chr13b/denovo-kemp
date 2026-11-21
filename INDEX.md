@@ -67,6 +67,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [src/kemp/data.py](src/kemp/data.py) — `fetch(url, dest, checksum)` and `sha256(path)` for reproducible data
 - [src/kemp/submission.py](src/kemp/submission.py) — `designs.fasta` building and offline rule checking (indices, residue types, limits)
 - [scripts/00_smoke.py](scripts/00_smoke.py) — smoke test for env and run bookkeeping; **template for new scripts**
+- [scripts/30_compare_rfd3_vs_boltz.py](scripts/30_compare_rfd3_vs_boltz.py) — chris-02 table: RFD3 vs Boltz-2 contact drift + the pre-registered decision rule
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)
@@ -81,4 +82,8 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/](results/) — curated tracked outputs (figures, tables, the submission); each entry names its run
 - [results/designs.jsonl.template](results/designs.jsonl.template) — copy to `results/designs.jsonl`: our submission candidates
 - [results/reference_kemp-1_summary.json](results/reference_kemp-1_summary.json) — verified reference run (cluster job 1); the baseline we must beat
+- [results/sweep_kemp-2_summary.json](results/sweep_kemp-2_summary.json) — chris-02 seed 2: collapsed refold (CA RMSD 14.6 Å)
+- [results/sweep_kemp-3_summary.json](results/sweep_kemp-3_summary.json) — chris-02 seed 3: folded, base contact drifted to 8.33 Å
+- [results/sweep_kemp-4_summary.json](results/sweep_kemp-4_summary.json) — chris-02 seed 4: **best design so far**, beats the baseline; novelty unchecked
+- [results/sweep_kemp-5_summary.json](results/sweep_kemp-5_summary.json) — chris-02 seed 5: collapsed refold (CA RMSD 13.7 Å)
 - [notebooks/](notebooks/) — exploration only, one folder per person (`notebooks/<handle>/`); outputs stripped on commit

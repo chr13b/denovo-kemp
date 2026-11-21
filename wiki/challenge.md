@@ -86,10 +86,13 @@ Since iPDE and consistency both depend on folding confidence, **a maximally nove
 novelty in two of the four scoring terms**, while the novelty gate forbids staying close to known enzymes.
 Finding the sweet spot between those is a genuine strategic question, not a settled one.
 
-> **Scoring happens on the Boltz-2 cofold, not on RFD3's output.** In our verified reference run the base
-> contact was 2.53 Å in the RFD3 design but 5.91 Å after refolding, while the donor contact held. One run
-> is not proof, but filter candidates on Boltz-2 geometry rather than RFD3 geometry until we know better:
-> [experiments/chris-01_reference-pipeline-baseline.md](experiments/chris-01_reference-pipeline-baseline.md).
+> **Scoring happens on the Boltz-2 cofold, not on RFD3's output — and RFD3's contact distances tell you
+> nothing.** Measured over 5 runs: the RFD3 base contact is `2.527 Å` in *every* one, because
+> `select_fixed_atoms` holds the motif and ligand rigid. It is an input, not a result. The Boltz-2 base
+> contact over the same runs ranged 3.32–21.92 Å. **Judge candidates only on Boltz-2 geometry**, and expect
+> roughly **half of all designs to fail refolding entirely** (CA RMSD is bimodal: ~0.7–1.4 Å or ~13–15 Å,
+> nothing between). Evidence:
+> [experiments/chris-02…](experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md).
 
 ## Limitations the organizers named (slide 7)
 
