@@ -611,6 +611,31 @@ natural enzymes and the other designs, and s024 has the lowest iPDE of everythin
 (which is 72 of 352), so the backbone effect is real, and the existing 352 contain candidates that the
 distance-only filter never flagged and never replicated (s042, s004, s006, s019).
 
+### (g9) What decides geometry on a good backbone: not the pocket residues, and not similarity to winners
+
+Two read-only checks on seed 4's 72 designs (`cluster/pocket_and_smoothness.py`), with geometry as the
+continuous proxy D from (g8).
+
+- **The pocket is nearly the same in the best and the worst designs.** On the *designed* backbone 13 residues sit
+  within 5 Å of the ligand, 11 of them free. Seven of those 11 are the same residue in the 12 best designs and
+  in the 12 worst (V56, A82, Q116, A213, S214, N217, L243). Class counts at those positions barely relate to D
+  (hydrophobic −0.29, Gly/Pro +0.07, polar +0.13, charged +0.14), and LigandMPNN's own scores say nothing
+  (overall confidence −0.04, ligand confidence +0.01, sequence recovery −0.13).
+- **D is not smooth in sequence space at this range.** Sequence identity to the three best designs, over a
+  56–74 % identity range, correlates with D at −0.07, −0.05 and +0.09. Resampling around a winner at that
+  similarity is no better than blind sampling. Whether it helps at 90–99 % identity (a few point mutations)
+  is untested.
+- **No design has an aromatic residue at any free pocket position** (mean count 0.0 in 72 designs), although the
+  crystal ring is stacked by Trp44 at 3.86 Å. That region of sequence space was never sampled, so the data
+  cannot say whether an aromatic helps; it is the one cheap, mechanistically motivated thing left to test.
+
+A trap, recorded so it is not repeated: defined on the *refolded* structure, Gly/Pro near the ligand correlated
+with worse geometry at +0.68 within seed 4. Defined on the designed backbone it is +0.07. A ligand that lands in
+the wrong place touches different residues, so the refold-defined number was circular.
+
+**Consequence.** My planned "pocket-fixed resampling around s024" would mostly reproduce blind sampling, because
+the pocket is already near-identical in every design. Replaced by three small comparison arms (see the plan).
+
 ### (g6) Motif variety: one alternative arrangement looked worse than 4BS0 (weak evidence)
 
 > **Evidence grade, corrected:** one backbone per motif. Within the 4BS0 motif alone, RFD3 seeds give

@@ -112,6 +112,16 @@ diversity across the whole set at the end with `tools/self_diversity.sh`.
 | Last upload | never |
 | Deadline | **believed 2026-11-22 10:00, timezone presumably Paris/Basel (= 09:00 UTC); told to us by a teammate, NOT confirmed — ask an organiser** |
 
+## Uploading from the cluster (checked read-only 2026-11-21, nothing uploaded yet)
+
+The head node's AWS identity resolves and the shared release prefix is readable (that is how the validator was
+fetched). Listing our own submissions folder returns **AccessDenied**, which the organizers' docs describe as
+expected, so write permission cannot be confirmed without an actual upload. The documented route is the
+organizers' own `submit-designs.sh` (validate, resolve the account id, refuse to upload a rejected file), run on
+the cluster beside `validate-submission.py`. Fallback: upload `results/designs.fasta` through the browser using
+the folder link in the team packet. Each upload replaces the previous one and the file present at the deadline is
+the one scored, so uploading a validated file early and again after every improvement is safe.
+
 ## Validator status (2026-11-21)
 
 The organizers' own `validate-submission.py` (downloaded from the shared bucket, run on the cluster
