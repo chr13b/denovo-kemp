@@ -78,7 +78,29 @@ pulled, or commit with `--no-verify` to skip the hooks.
 
 ## 6. One-time GitHub settings (repo owner)
 
-- Settings → Branches → add a rule for `main`: require a pull request, require the status check `check`,
-  and block force pushes.
-- Settings → General → Pull Requests: allow merge commits. If people keep long-lived personal branches,
-  leave "Automatically delete head branches" **off**.
+Protect `main` so nobody can push to it by accident and so CI must pass first.
+
+**With the GitHub CLI** (`gh auth login` once, then copy-paste):
+
+```bash
+gh api -X PUT repos/chr13b/kemp-challenge/branches/main/protection \
+  -H "Accept: application/vnd.github+json" \
+  -F required_status_checks[strict]=true \
+  -F 'required_status_checks[contexts][]=check' \
+  -F enforce_admins=false \
+  -F required_pull_request_reviews[required_approving_review_count]=0 \
+  -F restrictions=null \
+  -F allow_force_pushes=false \
+  -F allow_deletions=false
+```
+
+**Or in the browser:** Settings → Branches → *Add branch ruleset* / *Add rule* for `main` →
+tick "Require a pull request before merging" (0 approvals is fine for a hackathon),
+"Require status checks to pass" → select `check`, and leave force pushes blocked.
+
+Also under Settings → General → Pull Requests: allow **merge commits**. If people keep long-lived
+personal branches, leave "Automatically delete head branches" **off**.
+
+> On a **private** repo, branch protection needs a paid plan (Pro/Team). If GitHub refuses, it is not
+> worth paying for during a hackathon: CI still runs on every push and PR, and the team rule
+> "never commit to `main` directly, always open a PR" does the rest.
