@@ -22,6 +22,19 @@ MTAYLITGGAGFIGSHLCERLLADGHDVVVLDNLSTGSRANLDPSASLVVGDIRDGALVR
 - **Nothing else in the header.** Free text after the name is rejected. Keep notes in the repo, not the FASTA.
 - **HIS can never be the donor** — the format cannot express the tautomer. Design around it.
 
+## Where the indices come from (worked example)
+
+A pipeline run's `summary.json` hands you both. `rfd3.fixed[].position` values are **1-based indices into
+`ligandmpnn.sequence`**, so no renumbering is needed. From the verified reference run:
+
+```
+rfd3.fixed: A127 -> position 177, amino_acid D     sequence[177] = D   -> base=177
+            A50  -> position  99, amino_acid Q     sequence[ 99] = Q   -> oxy=99
+```
+
+Always print the residue at each index before trusting it — `make submission` does this for you and
+refuses the file if a residue is of the wrong type.
+
 ## Our workflow
 
 1. Collect candidates in `results/designs.jsonl`, one JSON object per line

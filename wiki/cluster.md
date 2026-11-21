@@ -33,19 +33,18 @@ shared by both:  /mnt/ref  = read-only tools, weights, reference data
 - Every GPU is one NVIDIA L4 with 24 GB VRAM.
 - Only the **MSA step (MMseqs2)** needs the big node (~28 GB RAM). RFD3, LigandMPNN and Boltz-2 fit on `g6.xlarge`.
 
-## One-time per team: prepare the example
+## One-time per team: already done ✅
 
-As of 2026-11-21 10:58 `/mnt/work/kemp_example` did **not** exist yet, so this still has to be run once:
+`/mnt/work/kemp_example` is prepared and **verified** (job `1`, 2026-11-21 ~10:38):
+`VERIFIED: three independent GPU smoke tests and the Kemp pipeline passed.`
+Baseline numbers from that run: [experiments/chris-01_reference-pipeline-baseline.md](experiments/chris-01_reference-pipeline-baseline.md).
+
+**Nobody needs to run `setup.sh` again, and nobody should modify `/mnt/work/kemp_example`.**
+To re-check at any time:
 
 ```bash
-bash /mnt/ref/hackathon/setup.sh          # prints a job number; keep the terminal open until it does
-bash /mnt/work/kemp_example/status.sh     # repeat until it says VERIFIED
+bash /mnt/work/kemp_example/status.sh /mnt/work/kemp_example
 ```
-
-Expected success line: `VERIFIED: three independent GPU smoke tests and the Kemp pipeline passed.`
-While it is queued, `status.sh` says verification is incomplete — **wait, don't submit a second job**.
-To watch it: `tail -n 50 /mnt/work/kemp_example/logs/verify-JOB_NUMBER.log`.
-If it fails, keep everything and give the organiser the job number and the last log lines.
 
 ## Each own design run
 
