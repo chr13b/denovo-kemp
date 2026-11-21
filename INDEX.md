@@ -44,6 +44,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/experiments/](wiki/experiments/) — one page per experiment, `<handle>-NN_<slug>.md` (`tools/new.py exp`); table: `make status`
 - [wiki/experiments/_template.md](wiki/experiments/_template.md) — template for experiment pages
 - [wiki/experiments/chris-01_reference-pipeline-baseline.md](wiki/experiments/chris-01_reference-pipeline-baseline.md) — baseline: pipeline verified, RFD3 → Boltz-2 contact drift
+- [wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md](wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md) — seed sweep (jobs 2–5): is that drift systematic? decides where GPU time goes
 - [wiki/data.md](wiki/data.md) — dataset registry: source, version, sha256, how to fetch
 - [wiki/decisions.md](wiki/decisions.md) — decision records (append-only, dated): what we chose, why, alternatives
 - [wiki/pitch.md](wiki/pitch.md) — the story for the final presentation, kept current
