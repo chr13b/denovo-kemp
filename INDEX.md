@@ -40,6 +40,8 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 
 ## Knowledge: wiki/ (maintained mostly by Claude)
 - [wiki/challenge.md](wiki/challenge.md) — the task, rules, scoring, timeline, submission checklist and open questions. **Start here.**
+- [wiki/literature.md](wiki/literature.md) — annotated reading list; `tools/fetch_papers.sh` downloads the open-access PDFs
+- [wiki/primer.md](wiki/primer.md) — **the project explained from scratch**: chemistry, pipeline, what we measured, and 3 candidate strategies
 - [wiki/cluster.md](wiki/cluster.md) — cluster layout, connect, Slurm jobs, project folders, getting results back
 - [wiki/submission.md](wiki/submission.md) — `designs.fasta` format, catalytic annotation, upload, deadline rules, status
 - [wiki/experiments/](wiki/experiments/) — one page per experiment, `<handle>-NN_<slug>.md` (`tools/new.py exp`); table: `make status`
@@ -53,6 +55,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/rfd4-proteina.md](wiki/rfd4-proteina.md) — RFD4-Proteina installed on the cluster and verified on our L4: how to use it, the CUDA-12 constraint, what is and is not verified
 - [wiki/novelty.md](wiki/novelty.md) — the one hard gate: TM <= 0.7 and identity <= 70 %; foldseek method, results, and which design already fails it
 - [wiki/scoring.md](wiki/scoring.md) — the organizers' five criteria, a metric for each, the weighted scorer v2, the seed-luck finding, and why there is no cheap pre-filter
+- [wiki/experiments/chris-03_msa-free-boltz-screen.md](wiki/experiments/chris-03_msa-free-boltz-screen.md) — **the MSA stage is a no-op**: bit-identical output without it, ~3–4× throughput
 - [wiki/data.md](wiki/data.md) — dataset registry: source, version, sha256, how to fetch
 - [wiki/decisions.md](wiki/decisions.md) — decision records (append-only, dated): what we chose, why, alternatives
 - [wiki/pitch.md](wiki/pitch.md) — the story for the final presentation, kept current
@@ -84,9 +87,13 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [scripts/36_score_v2_weighted.py](scripts/36_score_v2_weighted.py) — scorer v2: per-contact crystal targets, real dihedral, weighted geometric mean, and K5 from replicate seeds
 - [scripts/37_measure_crystal_reference.py](scripts/37_measure_crystal_reference.py) — measure the 7K4U reference geometry (distance, angle, dihedral) and check it against textbook H-bond values
 - [scripts/39_validate_scorer.py](scripts/39_validate_scorer.py) — validate the scorer on three cases with known answers (crystal + perturbation, a real enzyme, a collapsed design) and write the report
+- [scripts/31_measure_reference_geometry.py](scripts/31_measure_reference_geometry.py) — catalytic geometry targets measured from PDB 4BS0 (HG3.17 + 6NT)
+- [scripts/32_kemp_family_geometry.py](scripts/32_kemp_family_geometry.py) — measures catalytic geometry across all 97 PDB 'kemp eliminase' entries
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)
+- [tools/fetch_papers.sh](tools/fetch_papers.sh) — download the open-access literature into `data/papers/` (gitignored)
+- [tools/novelty_check.sh](tools/novelty_check.sh) — TM-score a design against published structures; PASS/FAIL against the 0.7 gate
 - [tools/status.py](tools/status.py) — overview: experiments table and recent log entries (`make status`)
 - [configs/](configs/) — reusable run configs, `<handle>-NN.json`, referenced from experiment pages
 - [envs/](envs/) — pinned environments for external tools with their own deps (`<tool>.yml` / `<tool>.Dockerfile`)
@@ -104,6 +111,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/reference_kemp-1_summary.json](results/reference_kemp-1_summary.json) — verified reference run (cluster job 1); the baseline we must beat
 - [results/zonghu-01_trpopt_kemp-7_summary.json](results/zonghu-01_trpopt_kemp-7_summary.json) — zonghu-01 job 7: custom theozyme runs end-to-end, but Boltz-2 put the ligand 12 Å from the base; not a candidate
 - [results/zonghu-01_trpopt_kemp-7_validation-warnings.jsonl](results/zonghu-01_trpopt_kemp-7_validation-warnings.jsonl) — zonghu-01 job 7: the 2 expected launcher warnings from the extended motif
+- [results/kemp_family_geometry.tsv](results/kemp_family_geometry.tsv) — **the geometry target**: 43 ligand copies from 23 crystal structures
 - [results/sweep_kemp-2_summary.json](results/sweep_kemp-2_summary.json) — chris-02 seed 2: collapsed refold (CA RMSD 14.6 Å)
 - [results/sweep_kemp-3_summary.json](results/sweep_kemp-3_summary.json) — chris-02 seed 3: folded, base contact drifted to 8.33 Å
 - [results/sweep_kemp-4_summary.json](results/sweep_kemp-4_summary.json) — chris-02 seed 4: **best design so far**, beats the baseline; novelty unchecked
