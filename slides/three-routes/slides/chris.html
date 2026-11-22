@@ -1,29 +1,42 @@
 <section id="chris" class="s5" data-transition="fade">
   <div class="spectrum"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div><div class="c5 on"></div><div class="c6"></div><div class="c7"></div><div class="c8"></div><div class="c9"></div><div class="c10"></div></div>
   <div class="col g20">
-    <p class="eyebrow">Route two · Chris</p>
+    <p class="eyebrow">Route two</p>
     <h2>Evolutionary: breadth, then replication</h2>
   </div>
-  <div class="row" style="gap:56px">
-    <div class="col g32" style="width:1000px">
+  <div class="row vcenter" style="gap:64px">
+    <div class="col g32 grow">
       <ul>
-        <li>Generator is not the problem: <b>0.013 Å</b> from the crystal</li>
+        <li>Generator is not the problem: <b>0.013 Å</b> off the crystal</li>
         <li>The refold is: <b>84 %</b> lose the ligand</li>
         <li>One fold is noise, <b>0.4 to 1 Å</b> per contact</li>
-        <li>So: one backbone, many sequences, bias toward a proven parent</li>
+        <li>One backbone, many sequences, biased to a proven parent</li>
         <li>Then <b>5 seeds</b> each, rule written before the data</li>
       </ul>
     </div>
-    <div class="col g20 grow">
-      <div class="col g12 ruled">
-        <p class="num sm">11×</p>
-        <p class="small">enrichment from close variants, p = 0.013</p>
-      </div>
-      <div class="col g12 ruled">
-        <p class="num sm">1 of 48</p>
-        <p class="small">replicated designs passes the rule</p>
-      </div>
+    <div class="col g20" style="width:470px">
+      <p class="label">base contact, as designed</p>
+      <div style="height:38px; width:148px; background:#0151E2"></div>
+      <p class="label">base, after the Boltz-2 refold</p>
+      <div style="height:38px; width:346px; background:#E32B06"></div>
+      <p class="label">donor, after the same refold</p>
+      <div style="height:38px; width:172px; background:#0151E2"></div>
+      <p class="small">Bar length is the distance. Target 2.51 Å.</p>
     </div>
   </div>
-  <aside>Route two is evolutionary, and it starts from a measurement. The generator gets the geometry right every time, and the refold destroys it. A single refold is too noisy to rank by. So the method is breadth plus replication: many sequences on one backbone, biased towards a parent that already worked, then five seeds each before anything is believed. The honest tension is that only one design passes the rule we wrote in advance, and four that score better do not.</aside>
+  <div class="row" style="gap:56px">
+    <div class="col g12 grow ruled">
+      <p class="num sm">11×</p>
+      <p class="small">enrichment from close variants, p = 0.013</p>
+    </div>
+    <div class="col g12 grow ruled">
+      <p class="num sm">48</p>
+      <p class="small">designs replicated over five seeds each</p>
+    </div>
+    <div class="col g12 grow ruled">
+      <p class="num sm">1</p>
+      <p class="small">passes the pre-registered rule</p>
+    </div>
+  </div>
+  <aside>Route two is evolutionary, and it starts from a measurement. The generator gets the geometry right every time and the refold destroys it: the bars on the right are the same contact before and after. A single refold is too noisy to rank by. So the method is breadth plus replication, biased towards a parent that already worked. The honest tension is that only one design passes the rule we wrote in advance, and four that score better do not.</aside>
 </section>
