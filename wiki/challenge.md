@@ -86,10 +86,13 @@ Since iPDE and consistency both depend on folding confidence, **a maximally nove
 novelty in two of the four scoring terms**, while the novelty gate forbids staying close to known enzymes.
 Finding the sweet spot between those is a genuine strategic question, not a settled one.
 
-> **Scoring happens on the Boltz-2 cofold, not on RFD3's output.** In our verified reference run the base
-> contact was 2.53 Å in the RFD3 design but 5.91 Å after refolding, while the donor contact held. One run
-> is not proof, but filter candidates on Boltz-2 geometry rather than RFD3 geometry until we know better:
-> [experiments/chris-01_reference-pipeline-baseline.md](experiments/chris-01_reference-pipeline-baseline.md).
+> **Scoring happens on the Boltz-2 cofold, not on RFD3's output — and RFD3's contact distances tell you
+> nothing.** Measured over 5 runs: the RFD3 base contact is `2.527 Å` in *every* one, because
+> `select_fixed_atoms` holds the motif and ligand rigid. It is an input, not a result. The Boltz-2 base
+> contact over the same runs ranged 3.32–21.92 Å. **Judge candidates only on Boltz-2 geometry**, and expect
+> roughly **half of all designs to fail refolding entirely** (CA RMSD is bimodal: ~0.7–1.4 Å or ~13–15 Å,
+> nothing between). Evidence:
+> [experiments/chris-02…](experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md).
 
 ## Limitations the organizers named (slide 7)
 
@@ -148,6 +151,9 @@ we rank. We do not yet know *how* those 5 are nominated — see the open questio
       consequence: after it, S3 refuses uploads and there is no grace period.
 - [ ] **How are the 5 lab-validation designs chosen** — do we nominate them, or do they take our top 5?
       This decides whether we reserve submission slots for interesting-but-risky designs.
+- [ ] **Which TM-score normalisation defines the novelty gate** — by the designed protein, by the
+      matched structure, or by the alignment? For our seed-4 design these give 0.55, 0.80 and 0.82
+      against the same database, i.e. pass or fail depending only on the convention chosen.
 - [ ] Is there a presentation, and how long?
 - [ ] License/IP rules for our code and designs? (decides whether we add a LICENSE file)
 - [ ] What are the *target* values for the geometry term (ideal distance, angle, dihedral)? The slides say

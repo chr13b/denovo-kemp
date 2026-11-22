@@ -40,6 +40,8 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 
 ## Knowledge: wiki/ (maintained mostly by Claude)
 - [wiki/challenge.md](wiki/challenge.md) — the task, rules, scoring, timeline, submission checklist and open questions. **Start here.**
+- [wiki/literature.md](wiki/literature.md) — annotated reading list; `tools/fetch_papers.sh` downloads the open-access PDFs
+- [wiki/primer.md](wiki/primer.md) — **the project explained from scratch**: chemistry, pipeline, what we measured, and 3 candidate strategies
 - [wiki/cluster.md](wiki/cluster.md) — cluster layout, connect, Slurm jobs, project folders, getting results back
 - [wiki/submission.md](wiki/submission.md) — `designs.fasta` format, catalytic annotation, upload, deadline rules, status
 - [wiki/experiments/](wiki/experiments/) — one page per experiment, `<handle>-NN_<slug>.md` (`tools/new.py exp`); table: `make status`
@@ -47,6 +49,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/experiments/chris-01_reference-pipeline-baseline.md](wiki/experiments/chris-01_reference-pipeline-baseline.md) — baseline: pipeline verified, RFD3 → Boltz-2 contact drift
 - [wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md](wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md) — seed sweep (jobs 2–5): is that drift systematic? decides where GPU time goes
 - [wiki/experiments/flavia-01_theozyme-target-geometry.md](wiki/experiments/flavia-01_theozyme-target-geometry.md) — the measured catalytic geometry a working Kemp eliminase holds 6NT in; the target our designs aim at
+- [wiki/experiments/chris-03_msa-free-boltz-screen.md](wiki/experiments/chris-03_msa-free-boltz-screen.md) — **the MSA stage is a no-op**: bit-identical output without it, ~3–4× throughput
 - [wiki/data.md](wiki/data.md) — dataset registry: source, version, sha256, how to fetch
 - [wiki/decisions.md](wiki/decisions.md) — decision records (append-only, dated): what we chose, why, alternatives
 - [wiki/pitch.md](wiki/pitch.md) — the story for the final presentation, kept current
@@ -71,9 +74,14 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [scripts/00_smoke.py](scripts/00_smoke.py) — smoke test for env and run bookkeeping; **template for new scripts**
 - [scripts/30_measure_theozyme_geometry.py](scripts/30_measure_theozyme_geometry.py) — measure the target geometry from PDB 7K4Z → theozyme, numbers, viewer (`flavia-01`)
 - [scripts/assets/](scripts/assets/) — templates used by scripts (the theozyme viewer page)
+- [scripts/30_compare_rfd3_vs_boltz.py](scripts/30_compare_rfd3_vs_boltz.py) — chris-02 table: RFD3 vs Boltz-2 contact drift + the pre-registered decision rule
+- [scripts/31_measure_reference_geometry.py](scripts/31_measure_reference_geometry.py) — catalytic geometry targets measured from PDB 4BS0 (HG3.17 + 6NT)
+- [scripts/32_kemp_family_geometry.py](scripts/32_kemp_family_geometry.py) — measures catalytic geometry across all 97 PDB 'kemp eliminase' entries
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)
+- [tools/fetch_papers.sh](tools/fetch_papers.sh) — download the open-access literature into `data/papers/` (gitignored)
+- [tools/novelty_check.sh](tools/novelty_check.sh) — TM-score a design against published structures; PASS/FAIL against the 0.7 gate
 - [tools/status.py](tools/status.py) — overview: experiments table and recent log entries (`make status`)
 - [configs/](configs/) — reusable run configs, `<handle>-NN.json`, referenced from experiment pages
 - [envs/](envs/) — pinned environments for external tools with their own deps (`<tool>.yml` / `<tool>.Dockerfile`)
@@ -88,4 +96,9 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/theozyme_7k4z.pdb](results/theozyme_7k4z.pdb) — the theozyme: 6NT plus the catalytic base and donor, scaffold stripped (run `flavia-01`)
 - [results/theozyme_7k4z_geometry.json](results/theozyme_7k4z_geometry.json) — the measured target numbers behind `flavia-01`; quote these, not estimates
 - [results/theozyme_viewer.html](results/theozyme_viewer.html) — standalone 3D viewer of the theozyme with the measured contacts labelled (open in a browser)
+- [results/kemp_family_geometry.tsv](results/kemp_family_geometry.tsv) — **the geometry target**: 43 ligand copies from 23 crystal structures
+- [results/sweep_kemp-2_summary.json](results/sweep_kemp-2_summary.json) — chris-02 seed 2: collapsed refold (CA RMSD 14.6 Å)
+- [results/sweep_kemp-3_summary.json](results/sweep_kemp-3_summary.json) — chris-02 seed 3: folded, base contact drifted to 8.33 Å
+- [results/sweep_kemp-4_summary.json](results/sweep_kemp-4_summary.json) — chris-02 seed 4: **best design so far**, beats the baseline; novelty unchecked
+- [results/sweep_kemp-5_summary.json](results/sweep_kemp-5_summary.json) — chris-02 seed 5: collapsed refold (CA RMSD 13.7 Å)
 - [notebooks/](notebooks/) — exploration only, one folder per person (`notebooks/<handle>/`); outputs stripped on commit
