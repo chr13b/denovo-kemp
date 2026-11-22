@@ -1,0 +1,17 @@
+structure	mode	weighted_K1_K5	best_family_qTM	family_hit	best_pdb_qTM	pdb_hit	max_identity_hg_pct	gate
+best__seed4__s042	declared	0.9212	0.298	4BS0_B	0.548	4A01_A	32.7	PASS
+best__seed4__s024	declared	0.8183	0.297	4BS0_A	0.561	4A01_B	34.2	PASS
+replicated__s024__seed2	declared	0.7159	0.301	3NYD_B	0.570	4A01_B	34.2	PASS
+best__seed4__s068	declared	0.6294	0.301	3NYD_B	0.555	4A01_B	33.1	PASS
+best__seed4__s006	declared	0.5936	0.300	4BS0_A	0.559	4A01_A	35.0	PASS
+best__seed4__s004	declared	0.5531	0.299	3NYD_A	0.560	4A01_B	31.9	PASS
+best__seed4__s019	declared	0.4985	0.297	4BS0_B	0.545	4A01_B	32.3	PASS
+best__seed4__s069	declared	0.4981	0.299	4BS0_A	0.557	4A01_B	34.2	PASS
+best__seed12__s001	inferred	0.4936	0.646	3NYD_A	0.691	31LI_C	36.9	PASS
+best__seed4__s025	declared	0.3166	0.302	3NYD_A	0.548	4A01_A	33.8	PASS
+best__seed12__s003	inferred	0.1572	0.647	3NYD_A	0.701	9KCS	40.4	FAIL
+best__seed4__s059	declared	0.1482	0.291	3NYD_B	0.546	4A01_A	36.2	PASS
+replicated__seed4_original__seed4	declared	0.1326	0.300	4BS0_B	0.552	4A01_A	34.2	PASS
+midrange_Trp44__Trp44__s041	inferred	0.1282	0.466	3NYD_A	0.654	3GA7	32.7	PASS
+replicated__s059__seed5	declared	0.1237	0.294	3NYD_B	0.549	4A01_B	36.2	PASS
+midrange_seed3__seed3__s015	inferred	0.1026	0.708	4BS0_B	0.778	2XHY_C	36.5	FAIL

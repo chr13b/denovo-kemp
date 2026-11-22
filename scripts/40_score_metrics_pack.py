@@ -4,7 +4,8 @@
     uv run python scripts/40_score_metrics_pack.py --pack=<dir> --target=family
 
 Every number is measured from the .cif files and combined by `kemp.scoring.weighted_total`.
-K5 (consistency) exists only for sequences replicated over several seeds (`group == replicated_5seeds`);
+K5 (consistency) exists only for sequences replicated over several seeds (manifest column `replicate_of`,
+or `group == replicated_5seeds`);
 for every other structure the formula drops K5 and renormalises, so those totals are not strictly
 comparable to the replicated ones.
 
@@ -146,15 +147,20 @@ def main(cfg: Config) -> None:
 
     res = {}
     for r in rows:
-        declared = r["backbone"] in cfg.declared_backbones
+        # positions: per row from the manifest (`base_position` / `donor_position`) if present,
+        # else the config default for the declared backbones, else inferred
+        base_pos, donor_pos = r.get("base_position"), r.get("donor_position")
+        if base_pos and donor_pos:
+            base_pos, donor_pos = int(base_pos), int(donor_pos)
+        elif r["backbone"] in cfg.declared_backbones:
+            base_pos, donor_pos = cfg.base_position, cfg.donor_position
+        else:
+            base_pos = donor_pos = None
+        declared = base_pos is not None
         if declared:
             seq = r["sequence"]
-            assert seq[cfg.base_position - 1] in "DE" and seq[cfg.donor_position - 1] in "QNSTYKR", r["id"]
-        m = measure(
-            pack / r["structure"],
-            cfg.base_position if declared else None,
-            cfg.donor_position if declared else None,
-        )
+            assert seq[base_pos - 1] in "DE" and seq[donor_pos - 1] in "QNSTYKR", r["id"]
+        m = measure(pack / r["structure"], base_pos, donor_pos)
         if m is None:
             print("not measurable:", r["id"])
             continue
@@ -178,7 +184,9 @@ def main(cfg: Config) -> None:
     # K5: spread of the two contact distances over the seeds of one replicated sequence
     reps: dict[str, list] = {}
     for key, v in res.items():
-        if v["row"]["group"] == "replicated_5seeds":
+        if v["row"].get("replicate_of"):  # one design refolded at several seeds
+            reps.setdefault(v["row"]["replicate_of"], []).append(v)
+        elif v["row"]["group"] == "replicated_5seeds":
             reps.setdefault(key.split("__")[1], []).append(v)
     for vs in reps.values():
         stds = [float(np.std([v["m"][c]["d"] for v in vs], ddof=1)) for c in ("base", "donor")]
