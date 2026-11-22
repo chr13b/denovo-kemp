@@ -7,7 +7,7 @@
   passed between turns. The organizers' text says S3 refuses uploads after the deadline with no grace period. The bucket
   holds the s024-only file uploaded 2026-11-21 23:15 UTC. No upload was attempted this turn: the choice of set was
   deferred to the team lead. An upload attempt is itself the test, since a refusal changes nothing.
-- **Zonghu's scorer compared with ours** ( g14): Spearman -0.97 on 44 shared single folds, same top three
+- **Zonghu's scorer compared with ours** (`wiki/primer.md` g14): Spearman -0.97 on 44 shared single folds, same top three
   and bottom two designs, differences in the oxygen choice (decides s068 and s042), the angle definitions, how terms are
   combined (ours sums the geometry overshoots, which the organizers' "worse of the two decides" contradicts), and
   coverage (we have no K4 burial in the pipeline; he has not scored the close variants).
