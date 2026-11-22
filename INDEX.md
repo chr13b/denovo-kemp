@@ -53,10 +53,12 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/experiments/chris-05_trp44-three-anchor-retested.md](wiki/experiments/chris-05_trp44-three-anchor-retested.md) — **Idea B**: zonghu's Trp44 theozyme, retested with 72 sequences instead of 1
 - [wiki/experiments/chris-06_motif-library-kemp-family.md](wiki/experiments/chris-06_motif-library-kemp-family.md) — **Idea C**: four RFD3 motifs from the family's own crystal structures
 - [wiki/experiments/chris-07_rescue-written-off-backbones.md](wiki/experiments/chris-07_rescue-written-off-backbones.md) — were seeds 2/3/5 ever bad, or did they just draw one bad sequence?
+- [wiki/experiments/chris-08_combined-candidates-refold.md](wiki/experiments/chris-08_combined-candidates-refold.md) — JJ's 10 and Mario's 20 designs, refolded over 5 seeds on our instrument and ranked with ours; requirement check, pre-registered gates
 - [wiki/data.md](wiki/data.md) — dataset registry: source, version, sha256, how to fetch
 - [wiki/decisions.md](wiki/decisions.md) — decision records (append-only, dated): what we chose, why, alternatives
 - [wiki/pitch.md](wiki/pitch.md) — the story for the final presentation, kept current
 - [wiki/approach.md](wiki/approach.md) — **our approach, technically**: pipeline, filters and selection, how the sequence-sampling arms work and were verified, results, limits (written for the talk)
+- [wiki/ranking-combined.md](wiki/ranking-combined.md) — **one ranking for our, Zonghu's, JJ's and Mario's designs** (source marked on every row): requirement check, novelty, refold on seeds 1-5 and on fresh seeds, the combined submission file
 - [wiki/team.md](wiki/team.md) — handles, owners, branches, working agreements, division of labour
 - [wiki/glossary.md](wiki/glossary.md) — domain and project terms
 
@@ -108,6 +110,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [cluster/rank_candidates.py](cluster/rank_candidates.py) — one ranking of every five-seed design on one instrument, keyed by (job, sequence), with the source (Chris, JJ, Mario, Zonghu) on every row and the novelty gate
 - [cluster/assemble_combined.py](cluster/assemble_combined.py) — builds the combined submission file from that ranking (pre-registered rule or top-N), source-prefixed names, runs the validator, never uploads
 - [cluster/zh_score_batch.py](cluster/zh_score_batch.py) — applies Zonghu's K1-K5 scorer (his code, exported unmodified from his branch) to our five-seed refolds; reproduces his published numbers
+- [cluster/format_ranking.py](cluster/format_ranking.py) — markdown tables from the ranking (selection seeds next to fresh seeds, pooled means, source in bold, Zonghu's K1-K5 joined in)
 - [cluster/launch_oversample.sh](cluster/launch_oversample.sh) — deploy + submit an oversampling job from a finished run's `bridge/`
 - [cluster/launch_design.sh](cluster/launch_design.sh) — deploy + submit the RFD3 design stage over a directory of motifs
 - [cluster/build_boltz_queries.py](cluster/build_boltz_queries.py) — many sequences → one Boltz-2 query directory, with query-only alignments
