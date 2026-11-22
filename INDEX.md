@@ -105,6 +105,9 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [cluster/autopilot.py](cluster/autopilot.py) — **unattended pipeline** on the head node: replicate, four arms, main sweep, replicate, rank
 - [cluster/finalize.py](cluster/finalize.py) — the endgame: selection rule, novelty gate, index check and validator on whatever is replicated now; never uploads
 - [cluster/rescore_replicated.py](cluster/rescore_replicated.py) — burial, the "worse of the two decides" score D2 and the angle at the heteroatom for every replicated design
+- [cluster/rank_candidates.py](cluster/rank_candidates.py) — one ranking of every five-seed design on one instrument, keyed by (job, sequence), with the source (Chris, JJ, Mario, Zonghu) on every row and the novelty gate
+- [cluster/assemble_combined.py](cluster/assemble_combined.py) — builds the combined submission file from that ranking (pre-registered rule or top-N), source-prefixed names, runs the validator, never uploads
+- [cluster/zh_score_batch.py](cluster/zh_score_batch.py) — applies Zonghu's K1-K5 scorer (his code, exported unmodified from his branch) to our five-seed refolds; reproduces his published numbers
 - [cluster/launch_oversample.sh](cluster/launch_oversample.sh) — deploy + submit an oversampling job from a finished run's `bridge/`
 - [cluster/launch_design.sh](cluster/launch_design.sh) — deploy + submit the RFD3 design stage over a directory of motifs
 - [cluster/build_boltz_queries.py](cluster/build_boltz_queries.py) — many sequences → one Boltz-2 query directory, with query-only alignments
