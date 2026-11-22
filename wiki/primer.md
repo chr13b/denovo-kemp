@@ -623,8 +623,8 @@ continuous proxy D from (g8).
   (overall confidence −0.04, ligand confidence +0.01, sequence recovery −0.13).
 - **D is not smooth in sequence space at this range.** Sequence identity to the three best designs, over a
   56–74 % identity range, correlates with D at −0.07, −0.05 and +0.09. Resampling around a winner at that
-  similarity is no better than blind sampling. Whether it helps at 90–99 % identity (a few point mutations)
-  is untested.
+  similarity is no better than blind sampling. **Superseded by (g12):** at 86–95 % identity it is far better.
+  This check covered the wrong range, and my conclusion that geometry was a lottery was too strong.
 - **No design has an aromatic residue at any free pocket position** (mean count 0.0 in 72 designs), although the
   crystal ring is stacked by Trp44 at 3.86 Å. That region of sequence space was never sampled, so the data
   cannot say whether an aromatic helps; it is the one cheap, mechanistically motivated thing left to test.
@@ -635,6 +635,38 @@ the wrong place touches different residues, so the refold-defined number was cir
 
 **Consequence.** My planned "pocket-fixed resampling around s024" would mostly reproduce blind sampling, because
 the pocket is already near-identical in every design. Replaced by three small comparison arms (see the plan).
+
+### (g12) Sequences close to a winner beat blind sampling; the polar-down lever does not help
+
+Three 72-sequence arms on seed 4's backbone, T 0.3, scored by geometry D (our proxy; lower is better):
+
+| arm | median D | 25th pct | best D | D ≤ 8.7 | D ≤ 20 | ligand in place | vs baseline |
+|---|---|---|---|---|---|---|---|
+| baseline | 30.5 | 23.3 | 2.7 | 1 | 12 | 22 | — |
+| polar-down at the pocket | 32.1 | 26.5 | 2.5 | 1 | 9 | 15 | p = 0.21 |
+| **close variants of s024 (86–95 % identity)** | **25.2** | **13.2** | 2.8 | **11** | **28** | **34** | **p = 0.013** |
+
+**Close variants win.** Eleven designs with D ≤ 8.7 against one, 34 with the ligand in place against 22, and the
+whole distribution shifts (Mann-Whitney p = 0.013). Several single folds are inside both distance windows, for
+example base/donor 2.62/2.92, 2.84/2.97, 2.57/3.05, 2.63/3.07.
+
+**The pre-registered rule is not formally met**: it needs median D ≤ 24.4 and ≥ 3 designs with D ≤ 8.7, and the
+median is 25.2. The good-design count passes by a wide margin and the effect is large, but the rule as written said
+no, and that is how it is recorded.
+
+**This corrects (g9).** The smoothness check found no relation between identity to a winner and geometry across
+56–74 % identity. Over 86–95 % there is a large one. Geometry is not a lottery near a good sequence; it is only noisy
+between unrelated ones. Combined with (g9)'s finding that the pocket residues are the same in the best and the worst,
+the likely reading is that geometry depends on the scaffold context around the pocket, which the close variants inherit
+from s024 and the blind samples do not.
+
+**Polar-down does not help**, although the crystal analysis motivated it: median D slightly worse and fewer designs in
+place. The crystal pocket is less polar than ours, but pushing the free pocket positions toward fewer polar residues
+did not produce better geometry at this strength. The descriptive finding stands; it is not a design lever.
+
+**Not run:** the aromatic-pocket arm, the checkpoint-005 arm and the 216-sequence main sweep were skipped for time, so
+those hypotheses remain untested. The aromatic arm was cancelled one minute after it started, because the remaining
+80 minutes were worth more spent replicating the best close-variant designs.
 
 ### (g10) Why most designs are 'bad', which are good, and what a free metric can do
 
