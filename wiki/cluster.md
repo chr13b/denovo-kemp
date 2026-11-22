@@ -87,7 +87,14 @@ A driver that runs on the head node under `nohup` and survives a dropped session
 files; all GPU work is submitted with `sbatch`. Stages: `repl1` (replicate the 20 best existing designs by geometry
 D), `arms` (72-sequence arms on seed 4's backbone), `main` (216 more sequences with the winning arm's settings), `repl2` (replicate the best new
 designs), `final` (aggregate, apply the selection rule, write `final_candidates.tsv` and `designs_candidate.fasta`).
-The arms are five: baseline, aromatic pocket, polar-down pocket, close variants of s024, LigandMPNN checkpoint 005.
+The arms are five, run in this order so that cuts fall on the weakest ideas first: baseline (the comparison, always runs),
+polar-down pocket (read off the crystals), close variants of s024, aromatic pocket, LigandMPNN checkpoint 005.
+
+**Time-aware by design.** Before each arm after the first it checks that the arm plus 45 min to replicate its designs still
+fits before `--stop-by`, otherwise it stops adding arms; replication is sized to the time left (about 1.75 min per design
+at 5 seeds) and skipped if fewer than 3 designs fit; a stage that does not fit is skipped without blocking a later,
+cheaper one. The aim is that however late the GPU arrives, the run ends with replicated candidates and not with arms
+nobody had time to confirm.
 
 - Start: `cd /mnt/work/projects/chris_autopilot && nohup setsid python3 src/autopilot.py > autopilot.out 2>&1 &`
 - Rehearse without submitting: `python3 src/autopilot.py --dry-run`. Watch: `tail -f autopilot.log`.

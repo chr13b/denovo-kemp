@@ -54,7 +54,11 @@ EXISTING = {  # label -> results dir holding queries.json and boltz output, for 
 }
 JOB47 = f"{P}/chris_oversample_a/results/replicate-47"
 STOP_BY = datetime(2026, 11, 22, 8, 0, tzinfo=timezone.utc)
-ESTIMATE_MIN = {"repl1": 45, "arms": 125, "main": 75, "repl2": 55}
+ESTIMATE_MIN = {"repl1": 45, "arms": 125, "main": 75, "repl2": 10}
+ARM_MIN = 27  # one 72-sequence arm
+REPLICATION_RESERVE_MIN = 45  # time that must stay free after an arm, so its designs can still be replicated
+MIN_PER_DESIGN = 1.75  # five seeds of one design, measured: 100 folds took about 35 min
+REPLICATION_OVERHEAD_MIN = 8
 PENDING_WARN_MIN = 90
 POLL_SECONDS = 45
 
@@ -343,7 +347,10 @@ def stage_repl1(state, count=20):
     state.set("repl1", status="done" if jid else "failed", finished=now().isoformat(), job=jid)
 
 
-ARMS = ["baseline", "aromatic", "polar", "close", "ckpt005"]
+# Ordered by evidence, so that if time runs short the cuts fall on the weakest ideas first. The baseline is
+# the comparison and always runs; polar-down is read off the crystals; close variants test a stated
+# hypothesis; aromatic and checkpoint 005 are the least supported.
+ARMS = ["baseline", "polar", "close", "aromatic", "ckpt005"]
 
 
 def arm_variables(arm, offset):
@@ -398,6 +405,13 @@ def stage_arms(state):
     state.set("arms", status="running", started=now().isoformat(), jobs=state.get("arms").get("jobs", []))
     jobs = {}
     for i, arm in enumerate(ARMS):
+        known = state.get("arms").get("by_name", {}).get("arm-" + arm)
+        if i > 0 and not known and now() + timedelta(minutes=ARM_MIN + REPLICATION_RESERVE_MIN) > STOP_BY:
+            log(
+                "time guard: skipping arm '%s' and the arms after it, to keep %d min to replicate what exists"
+                % (arm, REPLICATION_RESERVE_MIN)
+            )
+            break
         jid = run_with_retry(
             "arm-" + arm, "oversample.sbatch", arm_variables(arm, 7 + 4 * i), sweep_ok, "arms", state
         )
@@ -455,6 +469,18 @@ def stage_main(state):
 
 def stage_repl2(state, count=25):
     if state.get("repl2").get("status") == "done":
+        return
+    minutes_left = (STOP_BY - now()).total_seconds() / 60 - 10
+    fits = int((minutes_left - REPLICATION_OVERHEAD_MIN) / MIN_PER_DESIGN)
+    if fits < count:
+        log(
+            "repl2: only %d designs fit in the %.0f min left before stop-by (wanted %d)"
+            % (fits, minutes_left, count)
+        )
+    count = max(0, min(count, fits))
+    if count < 3:
+        log("repl2: fewer than 3 designs fit, so replication is skipped")
+        state.set("repl2", status="skipped")
         return
     done = replicated_sequences()
     pool = []
@@ -653,7 +679,7 @@ def main():
         if args.only and args.only != name:
             continue
         if state.get(name).get("status") != "done" and not time_ok(name):
-            break
+            continue  # skip just this stage: a later, cheaper one (replication) may still fit
         try:
             function(state)
         except Exception:
