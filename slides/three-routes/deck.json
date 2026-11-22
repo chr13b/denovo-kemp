@@ -11,7 +11,6 @@
     "janis",
     "chris",
     "mario",
-    "compare",
     "tree",
     "flow",
     "results",
@@ -20,7 +19,7 @@
   "sections": {
     "brief": { "description": "The task, how designs are scored, and the limits we work inside.", "start": "cover" },
     "routes": { "description": "Three independent routes from the same problem: theoretical, evolutionary, combinatorial.", "start": "janis" },
-    "compare": { "description": "The three routes side by side, and what one shared scale says about them.", "start": "compare" },
+    "compare": { "description": "The three routes side by side, and what one shared scale says about them.", "start": "tree" },
     "team": { "description": "The Triad.", "start": "team" }
   },
   "faces": {
