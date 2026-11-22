@@ -89,6 +89,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [scripts/39_validate_scorer.py](scripts/39_validate_scorer.py) — validate the scorer on three cases with known answers (crystal + perturbation, a real enzyme, a collapsed design) and write the report
 - [scripts/31_measure_reference_geometry.py](scripts/31_measure_reference_geometry.py) — catalytic geometry targets measured from PDB 4BS0 (HG3.17 + 6NT)
 - [scripts/32_kemp_family_geometry.py](scripts/32_kemp_family_geometry.py) — measures catalytic geometry across all 97 PDB 'kemp eliminase' entries
+- [scripts/40_score_metrics_pack.py](scripts/40_score_metrics_pack.py) — score a share_metrics_pack (Boltz-2 cifs + manifest) with scorer v2, weighted K1-K5; `--target=family` uses the 23-crystal medians
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)
@@ -117,4 +118,6 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/sweep_kemp-4_summary.json](results/sweep_kemp-4_summary.json) — chris-02 seed 4: **best design so far**, beats the baseline; novelty unchecked
 - [results/sweep_kemp-5_summary.json](results/sweep_kemp-5_summary.json) — chris-02 seed 5: collapsed refold (CA RMSD 13.7 Å)
 - [results/criteria/](results/criteria/) — scorer v2 evidence: the five criteria measured per design, TM-scores vs 7K4U for the novelty gate, seed-replicate consistency, and `scorer_validation.md`
+- [results/criteria/metrics_pack_weighted_v2.tsv](results/criteria/metrics_pack_weighted_v2.tsv) — all 57 pack structures, weighted K1-K5 (7K4U targets)
+- [results/criteria/metrics_pack_weighted_family.tsv](results/criteria/metrics_pack_weighted_family.tsv) — same, with the 23-crystal median distance targets
 - [notebooks/](notebooks/) — exploration only, one folder per person (`notebooks/<handle>/`); outputs stripped on commit
