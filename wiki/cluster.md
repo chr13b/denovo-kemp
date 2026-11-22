@@ -102,7 +102,10 @@ nobody had time to confirm.
   of resubmitting). A job that fails twice is SKIPPED and logged as `STOP:`; later stages continue, so one bad job
   cannot waste the night. A transient `squeue` error is not read as 'finished'. It logs a heartbeat every 10 min, warns
   if a job pends over 90 min, and will not start a stage that cannot finish before `--stop-by` (default 2026-11-22T08:00 UTC).
-- It never uploads and never touches other users' jobs. The novelty gate and the upload stay with a human.
+- It never uploads and never touches other users' jobs. The novelty gate and the upload stay with a human, and
+  `python3 src/finalize.py` does the preparation: it applies the rule to everything replicated so far, runs the novelty
+  gate and the base/oxy index check, writes `designs_final.fasta` and runs the organizers' validator. It can be run at
+  any moment. The upload is then `cd /mnt/work/projects/chris_oversample_a/validator && ./submit-designs.sh <file>`.
 - Selection rule (pre-registered): both distances in window in >= 3/5 seeds, mean D <= 15, the nearest carboxylate
   oxygen is OD2 in >= 4/5 seeds, qTM <= 0.70 (checked separately), the organizers' validator accepts.
 

@@ -102,6 +102,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [cluster/make_arm_inputs.py](cluster/make_arm_inputs.py) — per-residue bias files for the aromatic, polar-down and close-variants arms (calibrated)
 - [cluster/pocket_vs_crystal.py](cluster/pocket_vs_crystal.py) — the ligand's environment in the crystals vs our designs: pocket map, polar/aromatic content, stacking
 - [cluster/autopilot.py](cluster/autopilot.py) — **unattended pipeline** on the head node: replicate, four arms, main sweep, replicate, rank
+- [cluster/finalize.py](cluster/finalize.py) — the endgame: selection rule, novelty gate, index check and validator on whatever is replicated now; never uploads
 - [cluster/launch_oversample.sh](cluster/launch_oversample.sh) — deploy + submit an oversampling job from a finished run's `bridge/`
 - [cluster/launch_design.sh](cluster/launch_design.sh) — deploy + submit the RFD3 design stage over a directory of motifs
 - [cluster/build_boltz_queries.py](cluster/build_boltz_queries.py) — many sequences → one Boltz-2 query directory, with query-only alignments
