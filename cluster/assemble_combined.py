@@ -16,6 +16,10 @@ the residue at base=/oxy= of the right type. On top of it, one gate that finaliz
                   and are printed as OUTSIDE the rule.
     --mode top    the best --n designs by mean D that pass the hard gates (not the 3-of-5 rule): for when the
                   strict window box rejects designs whose mean D is good.
+    --fresh-job J only designs folded again in job J (fresh seeds nobody selected on) are candidates, and
+                  their row from J is the one that counts. This is the rule written down in
+                  wiki/experiments/chris-08 before the fresh seeds existed.
+    --max-d D     with --mode top: take every design whose mean D is at most D instead of a fixed --n.
 
 One row per sequence: a control that was folded twice contributes the row from the newest job (the same batch
 as the new designs). The name in the file is `<source>_<design>`, so the submitted file shows who made what.
@@ -52,11 +56,13 @@ def number(value):
         return float("nan")
 
 
-def gates(row):
+def gates(row, fresh_job=None):
     """The hard gates every design must clear. Returns a list of reasons it fails (empty = passes)."""
     reasons = []
     if int(row["n_seeds"]) < 5:
         reasons.append("fewer than 5 seeds")
+    if fresh_job and row["job"] != fresh_job:
+        reasons.append("no fresh-seed fold")
     if int(row["od2_nearest"]) < ap.RULE["min_od2_nearest"]:
         reasons.append("OD2 not the nearest oxygen in >= %d seeds" % ap.RULE["min_od2_nearest"])
     if row["index_ok"] != "True":
@@ -87,10 +93,18 @@ def main():
     parser.add_argument("--mode", choices=("rule", "top"), default="rule")
     parser.add_argument("--n", type=int, default=10)
     parser.add_argument("--min", type=int, default=5)
+    parser.add_argument("--fresh-job", default=None)
+    parser.add_argument("--max-d", type=float, default=None)
     args = parser.parse_args()
 
+    all_rows = load(args.ranking)
+    fresh_sequences = (
+        {r["sequence"] for r in all_rows if r["job"] == args.fresh_job} if args.fresh_job else set()
+    )
     by_sequence = {}
-    for row in load(args.ranking):
+    for row in all_rows:
+        if row["sequence"] in fresh_sequences and row["job"] != args.fresh_job:
+            continue  # the fresh-seed row replaces every earlier row of that sequence
         old = by_sequence.get(row["sequence"])
         if old is None or newest_job_key(row) > newest_job_key(old):
             by_sequence[row["sequence"]] = row
@@ -98,7 +112,7 @@ def main():
 
     eligible, rejected = [], []
     for row in rows:
-        reasons = gates(row)
+        reasons = gates(row, args.fresh_job)
         (rejected if reasons else eligible).append((row, reasons))
 
     if args.mode == "rule":
@@ -107,7 +121,10 @@ def main():
         while len(chosen) < args.min and fill:
             chosen.append((fill.pop(0), "OUTSIDE the 3-of-5 rule"))
     else:
-        chosen = [(r, "" if passes_rule(r) else "outside the 3-of-5 rule") for r, _ in eligible][: args.n]
+        pool = [r for r, _ in eligible if args.max_d is None or number(r["mean_D"]) <= args.max_d]
+        chosen = [(r, "" if passes_rule(r) else "outside the 3-of-5 rule") for r in pool][
+            : args.n if args.max_d is None else None
+        ]
 
     print(
         "%d unique sequences ranked; %d clear the hard gates; %d chosen (mode %s)"

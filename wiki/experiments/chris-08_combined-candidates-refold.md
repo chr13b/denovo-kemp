@@ -2,7 +2,7 @@
 
 - **Owner:** chris
 - **Date:** 2026-11-22
-- **Status:** running (job 104 = seeds 1-5; job 106 = fresh seeds 6-0; results below are filled in as they land)
+- **Status:** done: supported (the requirement check and the ranking are complete; the file choice is the team's)
 - **Question:** Do the 10 designs JJ sent (`Hackathon_Kemp_JJ_Final`) and the 20 designs Mario sent (`mario_top20`) meet the
   submission rules, and how do they rank against ours when every one of them is folded on the SAME instrument
   (Boltz-2, ligand 6NT, 5 seeds, 200 sampling steps, 3 recycling steps, query-only MSA) and measured by the SAME code?
@@ -48,8 +48,25 @@ Status values: `planned`, `running`, `done: supported`, `done: refuted`, `done: 
 
 ## Result
 
-TODO: only numbers read from the run's files; filled in when job 104 and job 105 are done.
+Full tables, the control comparison and the comparison with the file in the S3 slot are in `wiki/ranking-combined.md`
+section 4; data in `results/ranking_combined_all_seeds.tsv` and `results/zonghu_k1_k5_on_our_refolds.tsv`.
+
+- **Requirements:** all 30 designs (JJ 10, Mario 20) pass every rule; the organizers' validator accepts JJ's file of 10 and
+  Mario's file of 20; each sender's structure matches his FASTA (30 of 30); identity to anything else in the pool is at most 0.43.
+- **Fresh seeds (6, 7, 8, 9, 0), mean D:** Mario s200_62 1.4, s105_553 1.5, s201_38 2.1; our s010 4.2; JJ10 4.3; Mario s200_93 4.8;
+  Zonghu ns4_s018 7.1; Mario s100_446 7.7; JJ7 8.8; our s057 10.4; JJ1 15.4; JJ3 15.4; our s024 16.1; Mario's other 7 re-folded
+  designs 20.4-38.4.
+- **Controls (our own designs, seeds 1-5 first run, same seeds in a new batch, fresh seeds):** s010 3.8, 5.8, 4.2; s057 5.0, 17.1,
+  10.4; s024 9.4, 23.8, 16.1. The batch changes the fold of a given seed, so five-seed means of selected designs are optimistic.
+- **Pre-registered rule on fresh seeds:** no design passes (JJ1 has both contacts in window in 3 of 5 seeds but mean D 15.4).
+- **File:** `results/designs_combined_recommended.fasta`, 8 designs (fresh mean D <= 8.7, OD2 gate, novelty on our refold),
+  validator ACCEPTED. Not uploaded by us: a teammate had already uploaded a 20-design file at 12:16 UTC, which contains four
+  designs that were already poor on seeds 1-5 and lacks JJ10 and s100_446.
 
 ## Verdict and next step
 
-TODO
+Supported: the JJ and Mario designs do add real diversity (unrelated sequences, other folds), but only some survive fresh
+seeds, three of Mario's clearly, JJ10 and Mario s200_93 and s100_446 well enough. The one decision that remains is the team's:
+whether to replace the 20-design upload by the 8-design file or by a 20-design file with the four weakest swapped out. Whether
+a weak design in a slot costs anything depends on how the organizers combine a team's designs into one score, which is not
+known (open question for the organizers).
