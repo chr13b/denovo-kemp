@@ -777,6 +777,32 @@ replicates per sequence), under "sum" they add. **Five is the better bet in most
 it is a judgement, not something the scoring proves.** Weakness: all five are one fold (seed 4's backbone), so a scorer
 definition that disagrees with ours would hit all five together.
 
+### (g16) What the arms taught, and two terms we were missing
+
+Full technical description: `wiki/approach.md` (section 5). New measurements, from `results/rescored_replicated_48.tsv` and
+the arm outputs.
+
+- **The bias worked as built.** Polar residues at the 11 pocket sites fell from 4.0 to 1.7 per design under polar-down, and
+  identity to s024 rose from 63 % to 91 % under close variants, with Asp86 and Gln52 intact in all 216 sequences. The
+  polar-down null is therefore a real null. LigandMPNN samples `softmax((logit + bias) / T)`, so at T = 0.3 a bias of 1.5
+  is a log-odds shift of 5 (a factor of 148).
+- **Dose-response inside the close-variant arm.** Good designs (D <= 8.7) by identity third: 86-91 %, 2 of 24; 91-92 %,
+  3 of 24; 92-95 %, 6 of 24. Closer to the parent is better, but the replicated yield is thinner: 3 of 17 close variants, 1
+  of 4 polar-down, 0 of 4 baseline designs reach a replicated mean D <= 8.7 (small numbers, chosen by single-fold D).
+- **No single mutation is established.** The best candidate, I59M (4 of 11 good designs against 3 of 61), has a raw
+  one-sided p of 0.009 with about 400 candidate residues, and is absent from s010 and s057.
+- **Burial barely varies** (40.0-50.4 CA atoms over all 48 designs), so adding it to our score changes no ranking.
+- **"Worse of the two decides" (D2) keeps the order at the top** (s010 3.2, s057 4.8, s008 5.1, then s068, s060, s024).
+- **The angle at the heteroatom** (Zonghu's K2 definition) lies outside the 25-copy crystal range in all 48 designs: median 40
+  deg, range 10.6-93.2, 12 designs under 30 deg. Our own approach angle looks fine for the same designs. Which definition
+  the organizers use is unknown, and nothing we generated was selected for this one.
+- **His angle targets sit at the upper edge of the crystals**: base 133.1 deg against a crystal range of 125.1-133.1
+  (median 128.4), donor 140.8 against 130.4-145.0 (median 134.0). Using the crystal medians would be fairer.
+- **Zonghu's newest ranking** (K1-K6, 193 designs, 5 seeds each): new:s018 0.775, our s010 0.759, s068 0.718, s057 0.696,
+  s060 0.594, s008 0.566, our s024 0.562. His K6 is an ipTM term that is not on the organizers' list (his own page earlier
+  said gating on ipTM was a mistake), and it is 1.00 for almost every design. His new sequences are 53-69 % identical to
+  s024, so they are independent lineages on the same backbone.
+
 ### (g10) Why most designs are 'bad', which are good, and what a free metric can do
 
 Over all 352 swept designs, geometry D (0 = inside every crystal range; our proxy): 5th percentile 17.3, median

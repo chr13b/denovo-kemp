@@ -56,6 +56,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/data.md](wiki/data.md) — dataset registry: source, version, sha256, how to fetch
 - [wiki/decisions.md](wiki/decisions.md) — decision records (append-only, dated): what we chose, why, alternatives
 - [wiki/pitch.md](wiki/pitch.md) — the story for the final presentation, kept current
+- [wiki/approach.md](wiki/approach.md) — **our approach, technically**: pipeline, filters and selection, how the sequence-sampling arms work and were verified, results, limits (written for the talk)
 - [wiki/team.md](wiki/team.md) — handles, owners, branches, working agreements, division of labour
 - [wiki/glossary.md](wiki/glossary.md) — domain and project terms
 
@@ -103,6 +104,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [cluster/pocket_vs_crystal.py](cluster/pocket_vs_crystal.py) — the ligand's environment in the crystals vs our designs: pocket map, polar/aromatic content, stacking
 - [cluster/autopilot.py](cluster/autopilot.py) — **unattended pipeline** on the head node: replicate, four arms, main sweep, replicate, rank
 - [cluster/finalize.py](cluster/finalize.py) — the endgame: selection rule, novelty gate, index check and validator on whatever is replicated now; never uploads
+- [cluster/rescore_replicated.py](cluster/rescore_replicated.py) — burial, the "worse of the two decides" score D2 and the angle at the heteroatom for every replicated design
 - [cluster/launch_oversample.sh](cluster/launch_oversample.sh) — deploy + submit an oversampling job from a finished run's `bridge/`
 - [cluster/launch_design.sh](cluster/launch_design.sh) — deploy + submit the RFD3 design stage over a directory of motifs
 - [cluster/build_boltz_queries.py](cluster/build_boltz_queries.py) — many sequences → one Boltz-2 query directory, with query-only alignments
@@ -128,6 +130,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/screen_4bs0a_s11_job58.tsv](results/screen_4bs0a_s11_job58.tsv) — 16-sequence designability screen of a fresh 4BS0 backbone (seed 11): median CA RMSD 3.13, poor
 - [results/replication_job47_pinned.tsv](results/replication_job47_pinned.tsv) — job 47: 6 sequences × 5 Boltz seeds, scorer-pinned and scan measurements side by side
 - [results/geometry_full_crystal_vs_designs.tsv](results/geometry_full_crystal_vs_designs.tsv) — 367 structures (352 swept designs + the 5-seed replicates), 13 geometric quantities each
+- [results/rescored_replicated_48.tsv](results/rescored_replicated_48.tsv) — the 48 five-seed designs rescored: D, D2, angle at the heteroatom, burial, and the rank under each
 - [results/oversample_a_seed4_job27_contact_vs_rmsd.png](results/oversample_a_seed4_job27_contact_vs_rmsd.png) — **the figure**: the fold is reproduced, the catalytic contact is not
 - [results/reference_kemp-1_summary.json](results/reference_kemp-1_summary.json) — verified reference run (cluster job 1); the baseline we must beat
 - [results/kemp_family_geometry.tsv](results/kemp_family_geometry.tsv) — **the geometry target**: 43 ligand copies from 23 crystal structures
