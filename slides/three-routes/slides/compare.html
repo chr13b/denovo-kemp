@@ -1,48 +1,9 @@
 <section id="compare" class="s7" data-transition="fade">
   <div class="spectrum"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div><div class="c5"></div><div class="c6"></div><div class="c7 on"></div><div class="c8"></div><div class="c9"></div><div class="c10"></div></div>
   <div class="col g20">
-    <p class="eyebrow">Comparison</p>
-    <h2>Three routes, one shared path</h2>
+    <p class="eyebrow">Comparison · table</p>
+    <h2>Three routes side by side</h2>
   </div>
-
-  <div class="flowhost-sm">
-    <div class="node node-sm" style="left:0; top:0; width:360px; height:80px">
-      <div class="node-bar" style="background:#01FAD5"></div>
-      <p class="node-t">Rational theozyme</p>
-    </div>
-    <div class="node node-sm" style="left:0; top:94px; width:360px; height:80px">
-      <div class="node-bar" style="background:#01EE92"></div>
-      <p class="node-t">Evolutionary</p>
-    </div>
-    <div class="node node-sm" style="left:0; top:188px; width:360px; height:80px">
-      <div class="node-bar" style="background:#01FC1B"></div>
-      <p class="node-t">Combinatorial</p>
-    </div>
-
-    <div class="node node-sm" style="left:460px; top:94px; width:300px; height:80px">
-      <p class="node-t">Scoring</p>
-    </div>
-    <div class="node node-sm" style="left:830px; top:94px; width:240px; height:80px">
-      <p class="node-t">Boltz-2</p>
-    </div>
-    <div class="node node-sm" style="left:1140px; top:94px; width:240px; height:80px">
-      <p class="node-t">Novelty</p>
-    </div>
-    <div class="node node-sm" style="left:1410px; top:94px; width:254px; height:80px">
-      <p class="node-t">Candidates</p>
-    </div>
-
-    <x-connector class="fl" x1="360" y1="40" x2="460" y2="134" route="hv" head="end"></x-connector>
-    <x-connector class="fl" x1="360" y1="134" x2="460" y2="134" route="straight" head="end"></x-connector>
-    <x-connector class="fl" x1="360" y1="228" x2="460" y2="134" route="hv" head="end"></x-connector>
-    <x-connector class="fl" x1="760" y1="134" x2="830" y2="134" route="straight" head="end"></x-connector>
-    <x-connector class="fl" x1="1070" y1="134" x2="1140" y2="134" route="straight" head="end"></x-connector>
-    <x-connector class="fl" x1="1380" y1="134" x2="1410" y2="134" route="straight" head="end"></x-connector>
-    <x-connector class="fl-dash" x1="950" y1="174" x2="610" y2="250" route="vh" head="none"></x-connector>
-    <x-connector class="fl-dash" x1="610" y1="250" x2="610" y2="178" route="straight" head="end"></x-connector>
-    <p class="loop-label" style="left:664px; top:196px; width:320px">re-score every cofold</p>
-  </div>
-
   <div class="col g12">
     <div class="colbar">
       <div style="width:13%"></div>
@@ -52,16 +13,16 @@
     </div>
     <table>
       <tr>
-        <th width="13%" style="padding:14px 18px"></th>
-        <th width="29%">Rational</th>
+        <th width="13%" style="padding:18px 20px"></th>
+        <th width="29%">Theoretical</th>
         <th width="29%">Evolutionary</th>
         <th width="29%">Combinatorial</th>
       </tr>
       <tr>
         <td><b>Idea</b></td>
-        <td>Copy a working site</td>
-        <td>Breed from a proven parent</td>
-        <td>Assemble from many structures</td>
+        <td>Copy a working site faithfully</td>
+        <td>Breed sequences around a proven parent</td>
+        <td>Assemble a site from many structures</td>
       </tr>
       <tr class="band">
         <td><b>Models</b></td>
@@ -70,12 +31,24 @@
         <td>RFD4 → Foldseek → OpenFold3 → Boltz-2</td>
       </tr>
       <tr>
+        <td><b>Pipeline</b></td>
+        <td>2 theozymes · conditioning · gates fixed in code</td>
+        <td>1 backbone · bias arms · 5-seed rule</td>
+        <td>4 campaigns · fold clusters · refold gate</td>
+      </tr>
+      <tr class="band">
         <td><b>Compute</b></td>
-        <td>Modal + Euler · ≈ $29.5</td>
-        <td>Perlin AWS · 2 × L4</td>
-        <td>ETH Euler · Slurm arrays</td>
+        <td>Modal L40S + Euler · ≈ $29.5</td>
+        <td>Perlin AWS · 2 × NVIDIA L4</td>
+        <td>ETH Euler · GPU Slurm arrays</td>
+      </tr>
+      <tr>
+        <td><b>Scale</b></td>
+        <td>3500 made · 2554 scored · 10 picks</td>
+        <td>352 swept · 48 replicated · 1 pass</td>
+        <td>11,000 made · 1312 refolded · 6 stable</td>
       </tr>
     </table>
   </div>
-  <aside>One slide for the whole comparison. The flow across the top: three different starting points, then a shared path. One scoring step, the Boltz-2 cofold the organizers themselves use, a novelty gate, and the candidates. The dashed loop is the part that matters. Every cofold goes back through the scorer, so no design is judged on the structure it was drawn as. The table underneath says where the three differ: what each bets on, which models it chains together, and what it cost. Only the combinatorial route puts a second structure predictor in the middle as a cheap filter.</aside>
+  <aside>Same problem, three different bets. The first bets the literature already holds the right active site and the job is to copy it faithfully. The second bets the site barely matters because geometry dies in the refold, so breadth and replication win. The third bets no single crystal is best, and builds one from contacts across a hundred. Look at the models row: only the combinatorial route puts a second structure predictor in the middle as a cheap filter.</aside>
 </section>
