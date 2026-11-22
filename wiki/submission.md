@@ -109,7 +109,7 @@ diversity across the whole set at the end with `tools/self_diversity.sh`.
 | | |
 |---|---|
 | Designs ready | **1 of max 20** (`chris_osA_01` = s024; replicated 3/5 seeds both contacts in window) |
-| Last upload | **2026-11-21 ~23:20 UTC, from the cluster with `submit-designs.sh`**: 1 design, sha256 prefix `1cf53b55`, S3 version `b43yX__RrxQPzbJd19vsm3Ek2aDIcCkJ`. The script validated the file first, `put-object` returned the version id, so write access is confirmed. Replace it after every improvement. |
+| Last upload | **2026-11-21 23:15:30 UTC (S3's own timestamp), from the cluster with `submit-designs.sh`**: 1 design, sha256 prefix `1cf53b55`, S3 version `b43yX__RrxQPzbJd19vsm3Ek2aDIcCkJ`. **Read back and verified**: `head-object` shows 294 bytes and an ETag equal to the local file's MD5. The script validated the file first, `put-object` returned the version id, so write access is confirmed. Replace it after every improvement. |
 | Deadline | **believed 2026-11-22 10:00, timezone presumably Paris/Basel (= 09:00 UTC); told to us by a teammate, NOT confirmed — ask an organiser** |
 
 ## Uploading from the cluster (done once 2026-11-21; this is how)

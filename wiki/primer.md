@@ -662,6 +662,39 @@ contacts measured at the declared residues, compared with the span of 25 engaged
 for consistency, plus iPDE and burial. It is one model judged against crystals. There is no independent second
 predictor on the cluster and no wet lab, and Boltz-2 itself does not reproduce the natural enzymes' donor contact.
 
+### (g11) What the crystals teach beyond the two contacts: the pocket map, and a pocket that is too polar
+
+`cluster/pocket_vs_crystal.py` describes the ligand's environment (protein atoms within 4.5 Å) in the 25 engaged
+crystal copies and in our 352 designs.
+
+**The pocket map is highly conserved.** Nine residues touch the ligand in all 25 copies: Trp44, Pro45, Glu46, Gln50
+(donor), Gly83, Asp127 (base), Leu236, Met237, Thr265. Ala21 (23/25), Val266 (22/25), Met172 (20/25) and Cys84
+(19/25) follow.
+
+| per structure | residues | aromatic | aliphatic | polar | charged | stacked aromatic |
+|---|---|---|---|---|---|---|
+| 25 crystal copies | 14.4 | 1.9 | 6.3 | **2.1** | 2.0 | 40 % |
+| designs with the ligand roughly in place (34) | 14.1 | 1.2 | 5.8 | **4.5** | 1.9 | 9 % |
+| 15 best designs by D | 13.9 | 1.2 | 6.7 | 3.7 | 1.7 | 7 % |
+| all 352 designs | 13.0 | 1.6 | 4.6 | 3.7 | 1.8 | 18 % |
+
+The size of the pocket and its aromatic content are similar; **the designs' pockets are about twice as polar**
+(4.5 against 2.1, and about 3.5 against 1.1 once the pinned donor and base are removed). That agrees with the
+earlier within-seed-4 signal that more hydrophobic pocket residues go with better geometry (-0.29), and it is
+the one lever here read off the crystals rather than guessed. It became the fifth experiment arm
+(`bias_polar_down.json`, calibrated: baseline 4.1 polar residues at the 11 free pocket positions, push 1.5 gives
+about 1.5).
+
+**On stacking, the data is weak.** Our strict test (ring centroids within 5.0 Å, planes within 35 degrees) passes
+in only 10 of 25 crystal copies although Trp44 touches the ligand in all 25, so 'stacked' is a lower bound. Among
+designs with the ligand roughly in place, 3 have a stacked aromatic and 31 do not (median D 19.4 against 17.7); over
+all designs those with one have a median D of 57.7, no better than the rest. Nothing here supports or refutes the
+aromatic arm; it stays an untested hypothesis.
+
+**What cannot be learned from the crystals.** They are 23 near-identical structures of one protein family, so what
+they define is the HG3.17 pose, not necessarily the best pose for a de novo scaffold. They cannot tell us whether a
+design will be active, and a model trained on 23 such structures would learn the family, not the chemistry.
+
 ### (g6) Motif variety: one alternative arrangement looked worse than 4BS0 (weak evidence)
 
 > **Evidence grade, corrected:** one backbone per motif. Within the 4BS0 motif alone, RFD3 seeds give

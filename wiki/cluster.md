@@ -85,14 +85,16 @@ Use `--no-requeue` on any probe.
 
 A driver that runs on the head node under `nohup` and survives a dropped session. It only polls Slurm and parses TSV
 files; all GPU work is submitted with `sbatch`. Stages: `repl1` (replicate the 20 best existing designs by geometry
-D), `arms` (four 72-sequence arms on seed 4's backbone: baseline, aromatic pocket, close variants of s024, LigandMPNN
-checkpoint 005), `main` (216 more sequences with the winning arm's settings), `repl2` (replicate the best new
+D), `arms` (72-sequence arms on seed 4's backbone), `main` (216 more sequences with the winning arm's settings), `repl2` (replicate the best new
 designs), `final` (aggregate, apply the selection rule, write `final_candidates.tsv` and `designs_candidate.fasta`).
+The arms are five: baseline, aromatic pocket, polar-down pocket, close variants of s024, LigandMPNN checkpoint 005.
 
 - Start: `cd /mnt/work/projects/chris_autopilot && nohup setsid python3 src/autopilot.py > autopilot.out 2>&1 &`
 - Rehearse without submitting: `python3 src/autopilot.py --dry-run`. Watch: `tail -f autopilot.log`.
-- It is resumable (`state.json`), halts if a job fails twice, warns if a job pends over 90 min, and will not start
-  a stage that cannot finish before `--stop-by` (default 2026-11-22T08:00 UTC).
+- Resumable per JOB (`state.json` maps job names to Slurm ids, so a restart reuses running or finished jobs instead
+  of resubmitting). A job that fails twice is SKIPPED and logged as `STOP:`; later stages continue, so one bad job
+  cannot waste the night. A transient `squeue` error is not read as 'finished'. It logs a heartbeat every 10 min, warns
+  if a job pends over 90 min, and will not start a stage that cannot finish before `--stop-by` (default 2026-11-22T08:00 UTC).
 - It never uploads and never touches other users' jobs. The novelty gate and the upload stay with a human.
 - Selection rule (pre-registered): both distances in window in >= 3/5 seeds, mean D <= 15, the nearest carboxylate
   oxygen is OD2 in >= 4/5 seeds, qTM <= 0.70 (checked separately), the organizers' validator accepts.

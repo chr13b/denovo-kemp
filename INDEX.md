@@ -99,7 +99,8 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [cluster/replicate_seeds.sbatch](cluster/replicate_seeds.sbatch) — fold the same sequences at 5 Boltz-2 seeds: the scored consistency term, and the noise floor
 - [cluster/geometry_vs_crystal.py](cluster/geometry_vs_crystal.py) — distances, approach angle and in-plane angle of every design vs the 25 crystal copies
 - [cluster/pocket_and_smoothness.py](cluster/pocket_and_smoothness.py) — does pocket sequence or similarity to winners predict geometry? (no, at 56-74 % identity)
-- [cluster/make_arm_inputs.py](cluster/make_arm_inputs.py) — per-residue bias files for the aromatic-pocket and close-variants arms (calibrated)
+- [cluster/make_arm_inputs.py](cluster/make_arm_inputs.py) — per-residue bias files for the aromatic, polar-down and close-variants arms (calibrated)
+- [cluster/pocket_vs_crystal.py](cluster/pocket_vs_crystal.py) — the ligand's environment in the crystals vs our designs: pocket map, polar/aromatic content, stacking
 - [cluster/autopilot.py](cluster/autopilot.py) — **unattended pipeline** on the head node: replicate, four arms, main sweep, replicate, rank
 - [cluster/launch_oversample.sh](cluster/launch_oversample.sh) — deploy + submit an oversampling job from a finished run's `bridge/`
 - [cluster/launch_design.sh](cluster/launch_design.sh) — deploy + submit the RFD3 design stage over a directory of motifs

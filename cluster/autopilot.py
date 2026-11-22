@@ -9,7 +9,8 @@ submits jobs. All GPU work goes through sbatch. Standard library only, Python 3.
 
 Stages (state is saved after each, so a restart resumes where it stopped):
   repl1  replicate the best existing designs (ranked by geometry D) over 5 Boltz seeds
-  arms   four 72-sequence arms on seed 4's backbone: baseline, aromatic pocket, close variants, checkpoint 005
+  arms   five 72-sequence arms on seed 4's backbone: baseline, aromatic pocket, polar-down pocket,
+         close variants, checkpoint 005
   main   216 more sequences using the winning arm's settings (the baseline if none wins)
   repl2  replicate the best new designs
   final  aggregate every replicated design, apply the pre-registered selection rule, write a candidate file
@@ -29,8 +30,8 @@ import json
 import math
 import os
 import subprocess
-import sys
 import time
+import traceback
 from datetime import datetime, timedelta, timezone
 
 WORK = "/mnt/work/projects/chris_autopilot"
@@ -53,7 +54,7 @@ EXISTING = {  # label -> results dir holding queries.json and boltz output, for 
 }
 JOB47 = f"{P}/chris_oversample_a/results/replicate-47"
 STOP_BY = datetime(2026, 11, 22, 8, 0, tzinfo=timezone.utc)
-ESTIMATE_MIN = {"repl1": 45, "arms": 100, "main": 75, "repl2": 55}
+ESTIMATE_MIN = {"repl1": 45, "arms": 125, "main": 75, "repl2": 55}
 PENDING_WARN_MIN = 90
 POLL_SECONDS = 45
 
@@ -149,29 +150,44 @@ def submit(name, script, variables):
         "sbatch --parsable --chdir=%s --job-name=%s --output=%s/logs/%s-%%j.log --export=ALL %s/src/%s"
         % (WORK, name, WORK, name, WORK, script)
     )
-    code, out, err = sh(command, env=env)
-    if code != 0 or not out.split(";")[0].isdigit():
-        raise RuntimeError("sbatch failed: %s %s" % (out, err))
-    jid = out.split(";")[0]
-    log("submitted %s as job %s" % (name, jid))
-    return jid
+    for attempt in (1, 2, 3):
+        code, out, err = sh(command, env=env)
+        if code == 0 and out.split(";")[0].isdigit():
+            jid = out.split(";")[0]
+            log("submitted %s as job %s" % (name, jid))
+            return jid
+        log("WARNING sbatch failed (attempt %d of 3): %s %s" % (attempt, out[:100], err[:150]))
+        time.sleep(60)
+    raise RuntimeError("sbatch failed three times for %s" % name)
 
 
 def job_state(jid):
+    """'' once the job has left the queue, its state while it is in it, 'UNKNOWN' if Slurm could not be asked.
+
+    A transient squeue failure must NOT read as 'finished': that would resubmit a duplicate of a job that is
+    still running. Only Slurm's explicit 'Invalid job id' answer means the job is gone."""
     if str(jid).startswith("DRY"):
         return ""
-    return sh("squeue -h -j %s -o %%T" % jid)[1]
+    code, out, err = sh("squeue -h -j %s -o %%T" % jid)
+    if code == 0:
+        return out
+    return "" if "Invalid job id" in err else "UNKNOWN"
 
 
 def wait(jobs, outputs_ok, label):
     """Block until every job has left the queue; return the ids whose expected output is missing."""
     warned = set()
-    started = time.time()
+    started = last_beat = time.time()
     while True:
         states = {j: job_state(j) for j in jobs}
         if all(not s for s in states.values()):
             break
         minutes = (time.time() - started) / 60
+        if time.time() - last_beat > 600:  # silence must be detectable by whoever is watching the log
+            log(
+                "alive: waiting for %s (%s)" % (label, ", ".join("%s=%s" % (j, s) for j, s in states.items()))
+            )
+            last_beat = time.time()
         for jid, state in states.items():
             if state == "PENDING" and minutes > PENDING_WARN_MIN and jid not in warned:
                 log(
@@ -182,18 +198,29 @@ def wait(jobs, outputs_ok, label):
     return [j for j in jobs if not outputs_ok(j)]
 
 
-def run_with_retry(name, script, variables, outputs_ok, state_stage, state):
+def run_with_retry(name, script, variables, outputs_ok, stage, state):
+    """Run one job to a verified output, resuming a known job after a restart.
+
+    Returns the job id, or None if it failed twice. The caller skips it, because one bad job must not
+    waste the night."""
+    by_name = dict(state.get(stage).get("by_name", {}))
     for attempt in (1, 2):
-        jid = submit(name, script, variables)
-        state.set(state_stage, jobs=state.get(state_stage).get("jobs", []) + [jid])
+        jid = by_name.get(name) if attempt == 1 else None
+        if jid is not None and not (job_state(jid) or outputs_ok(jid)):
+            jid = None  # a known id, but the job is gone and left no output: it failed, so submit afresh
+        if jid is None:
+            jid = submit(name, script, variables)
+        else:
+            log("resuming %s with job %s" % (name, jid))
+        by_name[name] = jid
+        state.set(stage, by_name=by_name, jobs=list(by_name.values()))
         if DRY:
             return jid
         if not wait([jid], outputs_ok, name):
             return jid
         log("job %s (%s) finished without its expected output (attempt %d)" % (jid, name, attempt))
-    log("STOP: %s failed twice. Halting for a human." % name)
-    state.set(state_stage, status="halted")
-    sys.exit(2)
+    log("STOP: %s failed twice and is skipped; later stages continue" % name)
+    return None
 
 
 # ----------------------------------------------------------------------------- inputs
@@ -216,11 +243,17 @@ def write_fasta(entries, path):
 
 
 def replicated_sequences():
+    """Sequences with a COMPLETE replication (all 5 seeds). A partial run, such as a 2-seed smoke test, does
+    not count: counting it would silently drop its designs from the real replication list."""
     seen = set()
     for root in [JOB47] + glob.glob(WORK + "/results/replicate-*"):
-        for path in glob.glob(root + "/seed*/queries.json"):
+        counts = {}
+        paths = glob.glob(root + "/seed*_pinned/queries.json") or glob.glob(root + "/seed[0-9]/queries.json")
+        for path in paths:
             for record in json.load(open(path)):
-                seen.add(record["sequence"])
+                if record.get("kind") == "design":
+                    counts[record["sequence"]] = counts.get(record["sequence"], 0) + 1
+        seen.update(sequence for sequence, n in counts.items() if n >= 5)
     return seen
 
 
@@ -307,10 +340,10 @@ def stage_repl1(state, count=20):
         "repl1",
         state,
     )
-    state.set("repl1", status="done", finished=now().isoformat(), job=jid)
+    state.set("repl1", status="done" if jid else "failed", finished=now().isoformat(), job=jid)
 
 
-ARMS = ["baseline", "aromatic", "close", "ckpt005"]
+ARMS = ["baseline", "aromatic", "polar", "close", "ckpt005"]
 
 
 def arm_variables(arm, offset):
@@ -326,6 +359,8 @@ def arm_variables(arm, offset):
     inputs = os.path.join(WORK, "arm_inputs")
     if arm == "aromatic":
         base["OS_EXTRA_ARGS"] = "--bias_AA_per_residue %s/bias_aromatic.json" % inputs
+    elif arm == "polar":
+        base["OS_EXTRA_ARGS"] = "--bias_AA_per_residue %s/bias_polar_down.json" % inputs
     elif arm == "close":
         base["OS_EXTRA_ARGS"] = "--bias_AA_per_residue %s/bias_close_s024.json" % inputs
     elif arm == "ckpt005":
@@ -352,12 +387,22 @@ def stage_arms(state):
         "%s/queries.json s024 %s/arm_inputs 7" % (WORK, WORK, EXISTING["seed4"], WORK)
     )
     log("arm inputs: %s" % (out.splitlines()[-1] if out else err[:200]))
+    needed = [
+        os.path.join(WORK, "arm_inputs", f)
+        for f in ("bias_aromatic.json", "bias_polar_down.json", "bias_close_s024.json")
+    ]
+    if not all(os.path.exists(n) for n in needed):
+        log("STOP: arm input files are missing (%s); the arms stage is skipped" % (err or out)[:200])
+        state.set("arms", status="failed")
+        return
     state.set("arms", status="running", started=now().isoformat(), jobs=state.get("arms").get("jobs", []))
     jobs = {}
     for i, arm in enumerate(ARMS):
-        jobs[arm] = run_with_retry(
+        jid = run_with_retry(
             "arm-" + arm, "oversample.sbatch", arm_variables(arm, 7 + 4 * i), sweep_ok, "arms", state
         )
+        if jid:
+            jobs[arm] = jid
     summary = {}
     for arm, jid in jobs.items():
         rows = read_tsv("%s/results/oversample-%s/geometry_full.tsv" % (WORK, jid))
@@ -369,7 +414,7 @@ def stage_arms(state):
             "frac_good": sum(1 for s in scores if s <= GOOD_D) / max(1, len(scores)),
             "n_good": sum(1 for s in scores if s <= GOOD_D),
         }
-    winner = pick_winner(summary)
+    winner = pick_winner(summary) if "baseline" in summary else "baseline"
     summary["winner"] = winner
     log("arms: %s" % json.dumps(summary))
     log("arms: winner is '%s'" % winner)
@@ -386,6 +431,7 @@ def pick_winner(summary):
         a
         for a in ARMS
         if a != "baseline"
+        and a in summary
         and summary[a]["median_D"] <= 0.8 * base["median_D"]
         and summary[a]["n_good"] >= max(2 * base["n_good"], base["n_good"] + 2)
     ]
@@ -444,7 +490,7 @@ def stage_repl2(state, count=25):
         "repl2",
         state,
     )
-    state.set("repl2", status="done", finished=now().isoformat(), job=jid)
+    state.set("repl2", status="done" if jid else "failed", finished=now().isoformat(), job=jid)
 
 
 # ----------------------------------------------------------------------------- final
@@ -608,10 +654,20 @@ def main():
             continue
         if state.get(name).get("status") != "done" and not time_ok(name):
             break
-        function(state)
+        try:
+            function(state)
+        except Exception:
+            log("STOP: stage %s crashed and is skipped:\n%s" % (name, traceback.format_exc()))
+            state.set(name, status="failed")
     if not args.only or args.only == "final":
-        stage_final(state)
-    log("autopilot finished")
+        try:
+            stage_final(state)
+        except Exception:
+            log("STOP: the final stage crashed:\n%s" % traceback.format_exc())
+    log(
+        "autopilot finished; stages: %s"
+        % json.dumps({k: v.get("status") for k, v in state.data["stages"].items()})
+    )
 
 
 if __name__ == "__main__":
