@@ -14,4 +14,4 @@
   based on the top ten of a smoothed ratio (47 residues are carried by two or more good designs; the best is I59M, raw p
   0.009, not significant after correction).
 - **Zonghu's newest commit** scores all four of our new designs (s010 second of 193). His new sequences are independent
-  lineages (53-69 % identical to s024). His ipTM term K6 is not an organizer criterion.
+  lineages (59-70 % identical to s024). His ipTM term K6 is not an organizer criterion.

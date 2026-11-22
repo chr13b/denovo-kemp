@@ -800,7 +800,7 @@ the arm outputs.
   (median 128.4), donor 140.8 against 130.4-145.0 (median 134.0). Using the crystal medians would be fairer.
 - **Zonghu's newest ranking** (K1-K6, 193 designs, 5 seeds each): new:s018 0.775, our s010 0.759, s068 0.718, s057 0.696,
   s060 0.594, s008 0.566, our s024 0.562. His K6 is an ipTM term that is not on the organizers' list (his own page earlier
-  said gating on ipTM was a mistake), and it is 1.00 for almost every design. His new sequences are 53-69 % identical to
+  said gating on ipTM was a mistake), and it is 1.00 for almost every design. His new sequences are 59-70 % identical to
   s024, so they are independent lineages on the same backbone.
 
 ### (g10) Why most designs are 'bad', which are good, and what a free metric can do
