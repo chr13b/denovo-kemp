@@ -76,6 +76,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [src/kemp/submission.py](src/kemp/submission.py) — `designs.fasta` building and offline rule checking (indices, residue types, limits)
 - [src/kemp/ligands.py](src/kemp/ligands.py) — the Kemp ladder (substrate / TS analogue / product) and the log10(IC50) → kcal/mol conversion
 - [src/kemp/filters.py](src/kemp/filters.py) — design-funnel filters: GRAVY, pI, catalytic-residue integrity, MPNN/Boltz score parsing; `passed=None` means not evaluated
+- [src/kemp/diagnostics.py](src/kemp/diagnostics.py) — informational chemistry (charge environment both sides, nearest pi system, nitro H-bonds); never part of the score
 - [src/kemp/scoring.py](src/kemp/scoring.py) — the scored criteria as pure functions: crystal targets, asymmetric distance, sign-independent plane term, weighted geometric mean
 - [src/kemp/structure.py](src/kemp/structure.py) — structure filters: motif RMSD, RoG, clashes, Ramachandran, P-SEA topology, packing proxy, pLDDT, ligand contacts
 - [scripts/00_smoke.py](scripts/00_smoke.py) — smoke test for env and run bookkeeping; **template for new scripts**
@@ -94,6 +95,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [scripts/35_test_cheap_prefilter.py](scripts/35_test_cheap_prefilter.py) — does any RFD3-stage feature predict the Boltz-2 outcome? (answer: no)
 - [scripts/36_score_v2_weighted.py](scripts/36_score_v2_weighted.py) — scorer v2: per-contact crystal targets, real dihedral, weighted geometric mean, and K5 from replicate seeds
 - [scripts/37_measure_crystal_reference.py](scripts/37_measure_crystal_reference.py) — measure the 7K4U reference geometry (distance, angle, dihedral) and check it against textbook H-bond values
+- [scripts/38_report_diagnostics.py](scripts/38_report_diagnostics.py) — report the informational metrics for every design, as numbers without a verdict
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)
@@ -132,4 +134,5 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/criteria/foldseek_tm_vs_7k4u.tsv](results/criteria/foldseek_tm_vs_7k4u.tsv) — raw foldseek output behind that table (all three TM normalizations)
 - [results/criteria/scorer2.json](results/criteria/scorer2.json) — scorer v2 output for every design: raw geometry, sub-scores and weighted total
 - [results/criteria/consistency.json](results/criteria/consistency.json) — K5 evidence: the same sequence refolded with 5 Boltz-2 seeds (jobs 81/82), contact spread per seed
+- [results/criteria/diagnostics.json](results/criteria/diagnostics.json) — the informational metrics per design: charges on both sides, nearest pi system, nitro H-bonds
 - [notebooks/](notebooks/) — exploration only, one folder per person (`notebooks/<handle>/`); outputs stripped on commit

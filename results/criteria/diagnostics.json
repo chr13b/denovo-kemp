@@ -1,0 +1,538 @@
+[
+ {
+  "name": "chris_seedsweep_s2",
+  "stack": {
+   "res": "PHE169",
+   "d": 7.735803604125977,
+   "inter": 50.07141055804727,
+   "at_motif": false
+  },
+  "base": {
+   "pos": 1,
+   "neg": 0,
+   "his": 0,
+   "net": 1,
+   "hbond_donors": 2,
+   "nearby": [
+    "ARG191 3.5"
+   ]
+  },
+  "donor": {
+   "pos": 0,
+   "neg": 0,
+   "his": 0,
+   "net": 0,
+   "hbond_donors": 1,
+   "nearby": []
+  },
+  "nitro_hbonds": [
+   "SER161:N 3.33"
+  ],
+  "base_res": "ASP",
+  "donor_res": "GLN"
+ },
+ {
+  "name": "chris_seedsweep_s3",
+  "stack": {
+   "res": "TYR60",
+   "d": 4.887969970703125,
+   "inter": 83.70558103367568,
+   "at_motif": false
+  },
+  "base": {
+   "pos": 1,
+   "neg": 1,
+   "his": 0,
+   "net": 0,
+   "hbond_donors": 2,
+   "nearby": [
+    "ASP7 4.4",
+    "LYS196 2.7"
+   ]
+  },
+  "donor": {
+   "pos": 1,
+   "neg": 1,
+   "his": 2,
+   "net": 0,
+   "hbond_donors": 2,
+   "nearby": [
+    "ASP7 4.6",
+    "HIS134 5.8",
+    "HIS162 3.4",
+    "LYS196 5.0"
+   ]
+  },
+  "nitro_hbonds": [],
+  "base_res": "ASP",
+  "donor_res": "GLN"
+ },
+ {
+  "name": "chris_seedsweep_s4",
+  "stack": {
+   "res": "PHE222",
+   "d": 13.608444213867188,
+   "inter": 68.3327225269301,
+   "at_motif": false
+  },
+  "base": {
+   "pos": 0,
+   "neg": 0,
+   "his": 0,
+   "net": 0,
+   "hbond_donors": 1,
+   "nearby": []
+  },
+  "donor": {
+   "pos": 0,
+   "neg": 0,
+   "his": 0,
+   "net": 0,
+   "hbond_donors": 2,
+   "nearby": []
+  },
+  "nitro_hbonds": [],
+  "base_res": "ASP",
+  "donor_res": "GLN"
+ },
+ {
+  "name": "chris_seedsweep_s5",
+  "stack": {
+   "res": "PHE211",
+   "d": 3.6670544147491455,
+   "inter": 8.382111428397158,
+   "at_motif": false
+  },
+  "base": {
+   "pos": 1,
+   "neg": 0,
+   "his": 1,
+   "net": 1,
+   "hbond_donors": 5,
+   "nearby": [
+    "ARG168 2.4",
+    "HIS186 5.8"
+   ]
+  },
+  "donor": {
+   "pos": 0,
+   "neg": 1,
+   "his": 0,
+   "net": -1,
+   "hbond_donors": 1,
+   "nearby": [
+    "GLU114 3.7"
+   ]
+  },
+  "nitro_hbonds": [],
+  "base_res": "ASP",
+  "donor_res": "GLN"
+ },
+ {
+  "name": "zonghu_g10_s2",
+  "stack": {
+   "res": "HIS238",
+   "d": 4.0845794677734375,
+   "inter": 15.829712674670354,
+   "at_motif": 0.0
+  },
+  "base": {
+   "pos": 2,
+   "neg": 1,
+   "his": 1,
+   "net": 1,
+   "hbond_donors": 1,
+   "nearby": [
+    "LYS61 4.3",
+    "LYS85 3.8",
+    "ASP236 5.9",
+    "HIS238 3.3"
+   ]
+  },
+  "donor": {
+   "pos": 1,
+   "neg": 0,
+   "his": 0,
+   "net": 1,
+   "hbond_donors": 1,
+   "nearby": [
+    "LYS61 4.1"
+   ]
+  },
+  "nitro_hbonds": [
+   "SER37:OG 2.86",
+   "LYS85:NZ 2.36"
+  ],
+  "base_res": "ASP",
+  "donor_res": "GLN"
+ },
+ {
+  "name": "zonghu_g10_s3",
+  "stack": {
+   "res": "TYR132",
+   "d": 5.132532119750977,
+   "inter": 57.61294582004512,
+   "at_motif": 0.0
+  },
+  "base": {
+   "pos": 0,
+   "neg": 1,
+   "his": 0,
+   "net": -1,
+   "hbond_donors": 2,
+   "nearby": [
+    "ASP169 4.4"
+   ]
+  },
+  "donor": {
+   "pos": 0,
+   "neg": 0,
+   "his": 0,
+   "net": 0,
+   "hbond_donors": 1,
+   "nearby": []
+  },
+  "nitro_hbonds": [
+   "GLN98:NE2 3.02"
+  ],
+  "base_res": "ASP",
+  "donor_res": "GLN"
+ },
+ {
+  "name": "zonghu_g10_s5",
+  "stack": {
+   "res": "TRP140",
+   "d": 4.936375141143799,
+   "inter": 30.82008761568968,
+   "at_motif": 1.0
+  },
+  "base": {
+   "pos": 0,
+   "neg": 0,
+   "his": 0,
+   "net": 0,
+   "hbond_donors": 3,
+   "nearby": []
+  },
+  "donor": {
+   "pos": 0,
+   "neg": 0,
+   "his": 0,
+   "net": 0,
+   "hbond_donors": 0,
+   "nearby": []
+  },
+  "nitro_hbonds": [
+   "ASN6:ND2 3.39",
+   "PRO117:N 3.19"
+  ],
+  "base_res": "ASP",
+  "donor_res": "GLN"
+ },
+ {
+  "name": "zonghu_hb_s1",
+  "stack": {
+   "res": "TRP96",
+   "d": 8.580219268798828,
+   "inter": 64.01631801222685,
+   "at_motif": 1.0
+  },
+  "base": {
+   "pos": 0,
+   "neg": 0,
+   "his": 0,
+   "net": 0,
+   "hbond_donors": 0,
+   "nearby": []
+  },
+  "donor": {
+   "pos": 1,
+   "neg": 1,
+   "his": 0,
+   "net": 0,
+   "hbond_donors": 0,
+   "nearby": [
+    "LYS141 4.6",
+    "ASP211 5.6"
+   ]
+  },
+  "nitro_hbonds": [
+   "GLN60:NE2 2.88"
+  ],
+  "base_res": "ASP",
+  "donor_res": "GLN"
+ },
+ {
+  "name": "zonghu_hb_s3",
+  "stack": {
+   "res": "TYR63",
+   "d": 5.747253894805908,
+   "inter": 51.940492272979135,
+   "at_motif": 0.0
+  },
+  "base": {
+   "pos": 1,
+   "neg": 0,
+   "his": 0,
+   "net": 1,
+   "hbond_donors": 1,
+   "nearby": [
+    "LYS229 3.7"
+   ]
+  },
+  "donor": {
+   "pos": 1,
+   "neg": 0,
+   "his": 0,
+   "net": 1,
+   "hbond_donors": 3,
+   "nearby": [
+    "LYS229 2.9"
+   ]
+  },
+  "nitro_hbonds": [
+   "SER170:OG 2.85",
+   "LYS229:NZ 1.90"
+  ],
+  "base_res": "ASP",
+  "donor_res": "GLN"
+ },
+ {
+  "name": "zonghu_ms_s1",
+  "stack": {
+   "res": "TRP93",
+   "d": 5.449071884155273,
+   "inter": 86.62766562354328,
+   "at_motif": 1.0
+  },
+  "base": {
+   "pos": 0,
+   "neg": 1,
+   "his": 0,
+   "net": -1,
+   "hbond_donors": 2,
+   "nearby": [
+    "ASP47 4.3"
+   ]
+  },
+  "donor": {
+   "pos": 0,
+   "neg": 0,
+   "his": 0,
+   "net": 0,
+   "hbond_donors": 1,
+   "nearby": []
+  },
+  "nitro_hbonds": [],
+  "base_res": "ASP",
+  "donor_res": "GLN"
+ },
+ {
+  "name": "zonghu_ms_s2",
+  "stack": {
+   "res": "TRP145",
+   "d": 6.580880641937256,
+   "inter": 80.40485518834869,
+   "at_motif": 1.0
+  },
+  "base": {
+   "pos": 0,
+   "neg": 0,
+   "his": 0,
+   "net": 0,
+   "hbond_donors": 3,
+   "nearby": []
+  },
+  "donor": {
+   "pos": 0,
+   "neg": 0,
+   "his": 0,
+   "net": 0,
+   "hbond_donors": 2,
+   "nearby": []
+  },
+  "nitro_hbonds": [
+   "GLN106:NE2 3.02",
+   "SER185:OG 3.18"
+  ],
+  "base_res": "ASP",
+  "donor_res": "GLN"
+ },
+ {
+  "name": "zonghu_ms_s3",
+  "stack": {
+   "res": "TYR12",
+   "d": 5.243819713592529,
+   "inter": 66.85221006087782,
+   "at_motif": 0.0
+  },
+  "base": {
+   "pos": 1,
+   "neg": 0,
+   "his": 0,
+   "net": 1,
+   "hbond_donors": 0,
+   "nearby": [
+    "ARG198 4.0"
+   ]
+  },
+  "donor": {
+   "pos": 0,
+   "neg": 0,
+   "his": 0,
+   "net": 0,
+   "hbond_donors": 2,
+   "nearby": []
+  },
+  "nitro_hbonds": [
+   "GLY31:N 2.83"
+  ],
+  "base_res": "ASP",
+  "donor_res": "GLN"
+ },
+ {
+  "name": "zonghu_trpopt_s1",
+  "stack": {
+   "res": "TRP140",
+   "d": 4.508236408233643,
+   "inter": 59.120015338712555,
+   "at_motif": 0.0
+  },
+  "base": {
+   "pos": 1,
+   "neg": 1,
+   "his": 0,
+   "net": 0,
+   "hbond_donors": 1,
+   "nearby": [
+    "ASP5 4.8",
+    "ARG59 3.5"
+   ]
+  },
+  "donor": {
+   "pos": 1,
+   "neg": 0,
+   "his": 0,
+   "net": 1,
+   "hbond_donors": 0,
+   "nearby": [
+    "ARG241 5.6"
+   ]
+  },
+  "nitro_hbonds": [
+   "SER99:OG 3.49"
+  ],
+  "base_res": "ASP",
+  "donor_res": "GLN"
+ },
+ {
+  "name": "zonghu_vA_s1",
+  "stack": {
+   "res": "TYR212",
+   "d": 6.870882987976074,
+   "inter": 86.89285962580782,
+   "at_motif": 0.0
+  },
+  "base": {
+   "pos": 1,
+   "neg": 1,
+   "his": 0,
+   "net": 0,
+   "hbond_donors": 1,
+   "nearby": [
+    "GLU77 5.7",
+    "ARG157 4.0"
+   ]
+  },
+  "donor": {
+   "pos": 0,
+   "neg": 1,
+   "his": 0,
+   "net": -1,
+   "hbond_donors": 0,
+   "nearby": [
+    "GLU67 4.1"
+   ]
+  },
+  "nitro_hbonds": [
+   "ARG157:NE 2.91",
+   "ARG157:NH2 3.23",
+   "THR181:OG1 2.99"
+  ],
+  "base_res": "ASP",
+  "donor_res": "GLN"
+ },
+ {
+  "name": "zonghu_vA_s2",
+  "stack": {
+   "res": "TRP147",
+   "d": 4.719515800476074,
+   "inter": 59.35131218334225,
+   "at_motif": 1.0
+  },
+  "base": {
+   "pos": 0,
+   "neg": 3,
+   "his": 0,
+   "net": -3,
+   "hbond_donors": 3,
+   "nearby": [
+    "GLU11 3.2",
+    "GLU79 3.0",
+    "GLU108 4.8"
+   ]
+  },
+  "donor": {
+   "pos": 1,
+   "neg": 6,
+   "his": 0,
+   "net": -5,
+   "hbond_donors": 2,
+   "nearby": [
+    "GLU9 5.4",
+    "GLU11 3.8",
+    "ASP41 5.7",
+    "GLU79 2.6"
+   ]
+  },
+  "nitro_hbonds": [],
+  "base_res": "ASP",
+  "donor_res": "GLN"
+ },
+ {
+  "name": "zonghu_vA_s3",
+  "stack": {
+   "res": "TRP80",
+   "d": 4.792810916900635,
+   "inter": 22.677695792410532,
+   "at_motif": 1.0
+  },
+  "base": {
+   "pos": 1,
+   "neg": 1,
+   "his": 0,
+   "net": 0,
+   "hbond_donors": 4,
+   "nearby": [
+    "GLU84 4.3",
+    "LYS231 2.3"
+   ]
+  },
+  "donor": {
+   "pos": 0,
+   "neg": 1,
+   "his": 0,
+   "net": -1,
+   "hbond_donors": 1,
+   "nearby": [
+    "GLU84 3.9"
+   ]
+  },
+  "nitro_hbonds": [
+   "SER29:OG 3.28",
+   "ALA67:N 3.41"
+  ],
+  "base_res": "ASP",
+  "donor_res": "GLN"
+ }
+]
