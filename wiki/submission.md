@@ -128,3 +128,18 @@ The organizers' own `validate-submission.py` (downloaded from the shared bucket,
 with no network) **ACCEPTS** `results/designs.fasta`: 2 designs, 260 residues each, `base=` and `oxy=`
 declared and checked. The uploader `submit-designs.sh` has deliberately **not** been downloaded or run.
 Re-run the validator after every change to the file.
+
+## Candidate sets prepared at the end of the run (2026-11-22 07:36 UTC)
+
+Files on the cluster in `/mnt/work/projects/chris_autopilot/`, all validated and novelty-checked, none uploaded beyond
+the first:
+
+| file | designs | note |
+|---|---|---|
+| (already uploaded) | s024 | the strict pre-registered rule |
+| `designs_option_B.fasta` | s024 + s010 | recommended; s010 is outside the rule, see primer (g13) |
+| `designs_option_C.fasta` | s024 + s010 + s057 + s008 + s060 | wider; the last three are less defensible |
+
+Upload the chosen one with
+`cd /mnt/work/projects/chris_oversample_a/validator && ./submit-designs.sh /mnt/work/projects/chris_autopilot/designs_option_B.fasta`.
+Each upload replaces the last, and the file present at the deadline is scored.

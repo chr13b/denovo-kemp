@@ -58,11 +58,33 @@ def novelty(path):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--max", type=int, default=ap.RULE["max_designs"])
+    parser.add_argument(
+        "--also",
+        nargs="*",
+        default=[],
+        help="labels to add OUTSIDE the rule, e.g. replicate-100:d_arms_98_s010",
+    )
+    parser.add_argument(
+        "--out",
+        default=None,
+        help="output fasta name (default designs_final.fasta, or designs_proposed.fasta with --also)",
+    )
     args = parser.parse_args()
     ap.log = lambda message: print(message, flush=True)  # print only; do not append to the driver's log
 
     rows = ap.aggregate()
     passing = [r for r in rows if r["passes_rule"]][: args.max]
+    by_label = {r["label"]: r for r in rows}
+    for label in args.also:
+        if label not in by_label:
+            print("  --also %s: no such fully replicated design, ignored" % label)
+        elif by_label[label] not in passing:
+            passing.append(by_label[label])
+            print(
+                "  --also %s: added OUTSIDE the pre-registered rule (mean D %.1f, both-in-window %d/5)"
+                % (label, by_label[label]["mean_D"], by_label[label]["seeds_both"])
+            )
+    passing.sort(key=lambda r: r["mean_D"])
     print("%d designs replicated over 5 seeds; %d pass the selection rule" % (len(rows), len(passing)))
 
     kept = []
@@ -121,7 +143,8 @@ def main():
     if not kept:
         print("nothing passes every gate; no file written")
         return
-    fasta = os.path.join(ap.WORK, "designs_final.fasta")
+    name = args.out or ("designs_proposed.fasta" if args.also else "designs_final.fasta")
+    fasta = os.path.join(ap.WORK, name)
     with open(fasta, "w") as handle:
         for i, row in enumerate(kept, 1):
             handle.write(

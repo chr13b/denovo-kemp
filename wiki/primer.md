@@ -668,6 +668,41 @@ did not produce better geometry at this strength. The descriptive finding stands
 those hypotheses remain untested. The aromatic arm was cancelled one minute after it started, because the remaining
 80 minutes were worth more spent replicating the best close-variant designs.
 
+### (g13) Replicating the best 25 new designs: one passes the rule, one more looks better than the passer
+
+Job 100 replicated the 25 best new designs by single-fold D (17 close variants, 4 baseline, 4 polar-down) over 5
+seeds. Together with the earlier 23 that is 48 fully replicated designs. **Only s024 passes the pre-registered rule**
+(>= 3/5 seeds with both distances in window, mean D <= 15, OD2 nearest in >= 4/5 seeds). Single-fold winners mostly do
+not survive replication: of the 45 newly replicated designs, none passes.
+
+Several do have a better replicated mean geometry than s024, though, and nearly all are close variants of it:
+
+| design | mean D | worst seed D | base in window | both in window | iPDE | notes |
+|---|---|---|---|---|---|---|
+| **close s010** | **3.8** | **5.5** | **5 of 5** | 2 of 5 | 1.13 | donor misses by 0.06, 0.16 and 0.18 Å in three seeds |
+| close s057 | 5.0 | 7.9 | 5 of 5 | 1 of 5 | 0.98 | donor 3.8–4.3 Å in four seeds, too long |
+| polar s008 | 6.2 | 9.0 | 1 of 5 | 1 of 5 | 0.91 | base 2.72–2.85 Å, approach angles worse |
+| close s060 | 7.5 | 9.2 | 0 of 5 | 0 of 5 | 0.94 | base 2.8–2.97 Å, donor 4.3–4.6 Å |
+| **s024 (passes)** | 9.4 | **29.6** | 4 of 5 | **3 of 5** | 1.20 | one catastrophic seed |
+
+**Why the rule and the continuous score disagree.** The rule counts only seeds where BOTH contacts are inside the
+window, a binary test. s010 narrowly misses the donor window in three seeds and so scores 2 of 5, yet its geometry is
+steady (D between 2.4 and 5.5 in every seed). s024 scores 3 of 5 but has one seed where the ligand is lost (D 29.6).
+The scorer penalises variance between predictions and scores distances against an optimum rather than a window, so
+the continuous view is probably closer to it, but that is an inference, not something the organizers have confirmed.
+
+**Choosing a set is a judgement and it was left to the team lead, because it would amend a rule written before the
+data.** Three files were prepared and all pass the novelty gate (PDB qTM 0.549-0.569, Kemp family 0.29-0.30), the
+base/oxy index check and the organizers' validator:
+
+- **A, strict rule:** s024 only. Already uploaded.
+- **B, recommended:** s024 + s010. s010 is at least as good as s024 on mean D, on the worst seed and on iPDE, and its
+  base is in window in every seed. Weaker on the binary count (2 of 5 against 3 of 5).
+- **C, wider:** s024 + s010 + s057 + s008 + s060. The last three have donors or bases clearly off in most seeds, so
+  they are less defensible; they add hedging if the scorer rewards the continuous measure.
+
+All of them are one fold (close variants of one design), so none adds fold diversity.
+
 ### (g10) Why most designs are 'bad', which are good, and what a free metric can do
 
 Over all 352 swept designs, geometry D (0 = inside every crystal range; our proxy): 5th percentile 17.3, median
