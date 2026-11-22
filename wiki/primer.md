@@ -703,6 +703,80 @@ base/oxy index check and the organizers' validator:
 
 All of them are one fold (close variants of one design), so none adds fold diversity.
 
+### (g14) Zonghu's scorer against ours: they agree on single folds, and differ in five places
+
+Source: his branch `origin/zonghu` (`wiki/scoring.md`, `scripts/36_score_v2_weighted.py`, `scripts/40_score_metrics_pack.py`,
+`results/criteria/metrics_pack_weighted_v2.tsv`, `wiki/experiments/zonghu-02..04`). Read, not run.
+
+**What he has tested.** Gates and terms K1 distances, K2 approach (angle and ring plane, worse of the two decides), K3 iPDE,
+K4 base burial (CA atoms within 12 A of the base oxygen), K5 consistency (spread of the two contact distances over 5 Boltz
+seeds), combined as a weighted geometric mean (weights 0.33 / 0.22 / 0.15 / 0.15 / 0.15). He dropped pLDDT and ipTM as not
+scored, tried and removed extra chemistry metrics, found no RFD3-stage feature that predicts success (|rho| < 0.6, n = 11),
+and **refuted the Boltz-2 affinity ladder** (zonghu-02: it does not track catalytic efficiency). zonghu-03 found that a rigid
+Trp indole destroys the donor contact and a free Trp brings it back. His novelty check on s068/s024/s042/s006/s004 passes
+(family qTM about 0.30, PDB qTM 0.55-0.56, identity to the HG series 32-35 %), which agrees with ours.
+
+**Agreement.** On the 44 structures of his metrics pack measured at the declared residues, his weighted score and our D
+correlate at Spearman -0.97 (-0.92 over all 53); 7 of the two top-8 lists are shared. Caveat: 15 of those 44 are one
+design at several seeds, so the effective sample is smaller. His own 5-seed result matches ours: single folds overstate
+(s042 0.921 as one fold, 0.499 over 5 seeds). Two teams reached the same conclusion independently.
+
+**His 5-seed ranking against our replicated mean D (same five designs):**
+
+| design | his weighted K1-K5 | our mean D | our note |
+|---|---|---|---|
+| s068 | **0.683** | 10.6 | iPDE 0.73-0.89 (lowest of all), base 2.72-2.85 A to the nearest O, but OD2 3.2-3.4 A, so our rule drops it |
+| s024 | 0.528 | **9.4** | one seed loses the ligand (D 29.6) |
+| s042 | 0.499 | 11.9 | erratic, D 6.9-18.3, OD2 nearest in 1 of 5 |
+| s006 | 0.216 | 18.4 | |
+| s004 | 0.215 | 12.9 | |
+
+Same top three and same bottom two; the order swaps at the top (s068 against s024) and at the bottom.
+
+**Where they differ.**
+
+1. **Which oxygen.** His K1 takes the nearest of OD1/OD2 of the declared Asp, as our `geometry_full` does. Our selection
+   rule additionally demands that OD2 is the nearest, because the organizers' verify script uses OD2. That single rule
+   removes s068 and s042, his first and third. Unresolved, and it decides those two.
+2. **The angle terms are different quantities.** Ours: the angle at the ring nitrogen towards the ring centroid (crystal
+   range 167-176 deg) and the contact vector's angle to the ring plane. His: C-O...N angle at the oxygen (7K4U 133 deg) and
+   180 - |dihedral|. The organizers do not say which. We already store his quantity (A1, D1) for every design, so both
+   can be evaluated on everything we have.
+3. **His K2 is about 0 for almost every design** ("K2 near 0 almost everywhere" in his family-motifs ranking), so a
+   multiplicative score is then ranked by noise in a term whose definition is a guess. Ours uses windows from 25 crystal
+   copies and separates designs smoothly, but a window gives no credit for sitting near the optimum.
+4. **Combination.** His follows "worse of angle and plane decides" (max) and multiplies all five terms. **Ours sums
+   the overshoots of all six geometry terms, which is not what the organizers describe**, and treats iPDE, burial and
+   consistency as gates, not terms.
+5. **Coverage.** He has K4 burial and a continuous K5 for every design he scores; **we measure burial only on a few
+   designs (s024 48 CA) and have no K4 in the pipeline.** We have designability (refold CA RMSD), the ligand-in-pocket
+   share (16 % of 352), the iPDE / ipTM filter and 48 designs replicated over 5 seeds including all the close variants;
+   **he has not scored s010, s057, s008 or s060**, which finished later.
+
+One factual disagreement: his page says dropping the MSA "is off the table". For our de novo sequences chris-03 measured
+bit-identical output with and without it (no homologues exist), so the claim holds for natural scaffolds but not for ours.
+
+### (g15) How many designs to upload
+
+Nothing the organizers wrote settles how a team is scored from its designs (best, mean or sum; open since the start).
+They promise "at least 5 designs for lab validation, independent of score", and it is not known whether those are our top
+5 or nominated. Replicated evidence runs out after five designs: s010, s024, s057, s008, s060. The next replicated designs
+have mean D 10.6 or worse and none has both contacts in window in 3 of 5 seeds.
+
+| design | mean D | seeds with D <= 8.7 | worst seed D | both in window | OD2 nearest |
+|---|---|---|---|---|---|
+| s010 | 3.8 | 5 of 5 | 5.5 | 2 of 5 | 5 of 5 |
+| s057 | 5.0 | 5 of 5 | 7.9 | 1 of 5 | 5 of 5 |
+| s008 | 6.2 | 4 of 5 | 9.0 | 1 of 5 | 5 of 5 |
+| s060 | 7.5 | 3 of 5 | 9.2 | 0 of 5 | 5 of 5 |
+| s024 | 9.4 | 4 of 5 | 29.6 | 3 of 5 | 5 of 5 |
+
+Mean D of the set: two designs (s024 + s010) 6.6, five designs 6.4, so by our continuous proxy the extra three do not dilute
+a mean; by the binary window count they are weaker. Under "best" they are free extra draws (the organizers re-roll 5
+replicates per sequence), under "sum" they add. **Five is the better bet in most readings and the evidence stops there, but
+it is a judgement, not something the scoring proves.** Weakness: all five are one fold (seed 4's backbone), so a scorer
+definition that disagrees with ours would hit all five together.
+
 ### (g10) Why most designs are 'bad', which are good, and what a free metric can do
 
 Over all 352 swept designs, geometry D (0 = inside every crystal range; our proxy): 5th percentile 17.3, median
