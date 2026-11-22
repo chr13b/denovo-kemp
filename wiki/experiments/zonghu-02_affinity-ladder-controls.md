@@ -19,9 +19,9 @@
   geometric proxy, and it is cheap: no MMseqs2, so it runs on the small GPU nodes, two at a time,
   without touching the node the RFD3 pipeline needs. If the positive control shows no TS preference,
   the method is uninformative and we drop it — which is a cheap, valuable negative result either way.
-- **Script + config:** [`scripts/20_build_affinity_ladder.py`](../../scripts/20_build_affinity_ladder.py)
-  → cluster → [`scripts/21_report_affinity_ladder.py`](../../scripts/21_report_affinity_ladder.py).
-  Method and limits: [../affinity-ladder.md](../affinity-ladder.md). Ligands: [`src/kemp/ligands.py`](../../src/kemp/ligands.py).
+- **Script + config:** ``scripts/20_build_affinity_ladder.py``
+  → cluster → ``scripts/21_report_affinity_ladder.py``.
+  Method and limits: `../affinity-ladder.md`. Ligands: ``src/kemp/ligands.py``.
 - **Runs:** TODO — cluster projects `/mnt/work/projects/zonghu_aff_<label>`
 
 Status values: `planned`, `running`, `done: supported`, `done: refuted`, `done: inconclusive`, `abandoned`.
@@ -43,7 +43,7 @@ enzymes in parentheses — **1300 / 37 000 / 230 000** — which disagree with t
 That between-lab spread is a floor on how precisely any prediction could possibly be validated.
 
 Sequences are **constructed, not downloaded**: built by
-[`scripts/22_build_hg_series.py`](../../scripts/22_build_hg_series.py) from the 7K4U chain-A
+``scripts/22_build_hg_series.py`` from the 7K4U chain-A
 sequence (HG3 K50Q, RCSB lists exactly 1 mutation, so reverting Q50K recovers HG3) by applying
 Table 1's mutation lists. **Every mutation's wild-type residue is asserted against the base
 sequence before it is applied**, and all 17 HG3.17 mutations passed — a numbering or construct
@@ -54,7 +54,7 @@ mismatch would have aborted the build rather than producing a plausible wrong se
 **Cannot validate substrate binding.** Table 1's footnote b says K_M and k_cat "could not be
 determined accurately because saturation was not possible at the maximum substrate concentration
 tested (2 mM)". There is no published K_M for this series, so there is **no experimental
-substrate-binding constant to compare against** — see [../affinity-ladder.md](../affinity-ladder.md).
+substrate-binding constant to compare against** — see `../affinity-ladder.md`.
 
 **Can validate transition-state affinity.** k_cat/K_M is the free energy of the transition state
 relative to free enzyme + free substrate, which is a transition-state affinity — the quantity the
@@ -79,7 +79,7 @@ cannot possibly rank our designs, which differ far less.
 ## Secondary: does it separate an enzyme from a non-enzyme?
 
 Three proteins × 3 ligands × 3 seeds = **27 Boltz-2 affinity predictions**. The ladder is
-[the three matched ligands](../affinity-ladder.md): identical MW (164.12) and heavy-atom count (12),
+`the three matched ligands`: identical MW (164.12) and heavy-atom count (12),
 with `ts_analog` carrying the same InChIKey as CCD `6NT`.
 
 | arm | sequence | why |
@@ -107,7 +107,7 @@ product-inhibition read, and the seed spread per arm as a noise baseline for fut
 
 **What this cannot do:** prove catalysis. It compares a stable TS *analogue*, not the real anionic
 transition state, and n = 3 seeds gives a spread, not statistics. See
-[../affinity-ladder.md](../affinity-ladder.md) limits 1–4.
+`../affinity-ladder.md` limits 1–4.
 
 ## Result
 
@@ -139,6 +139,14 @@ transition-state stabilisation.
   *lowest* (0.33) and HG3 highest (0.42). Boltz-2's own binder/decoy head ranks the best enzyme as
   the least likely binder.
 
+
+> **Note, 2026-11-22.** The ladder machinery was deleted after this refutation
+> (`scripts/20`–`24`, `src/kemp/ligands.py`, `wiki/affinity-ladder.md`,
+> `tests/test_affinity_ladder.py`). Nothing will re-run a method that is flat across a
+> 1062-fold activity range, and it cost context on every search. The numbers and the
+> verdict below are the part worth keeping; the raw predictions remain in
+> `results/affinity/`. Links to the removed files are plain text from here on.
+
 ## Verdict and next step
 
 **The pre-registered rule's first row was technically met — and I am failing the method anyway.**
@@ -162,7 +170,7 @@ still be rejected:
 **Do not use the affinity ladder to rank designs.** The pipeline itself is correct and reusable —
 the API is verified, the ligands are size- and mass-matched, the noise handling works — but
 Boltz-2's affinity head does not resolve these 12-heavy-atom fragments at the ≥ mM affinities Kemp
-eliminases actually have. This is limit 1 and limit 4 of [../affinity-ladder.md](../affinity-ladder.md)
+eliminases actually have. This is limit 1 and limit 4 of `../affinity-ladder.md`
 turning out to bite.
 
 **Cost of finding this out: ~35 min on two small GPU nodes**, with the big node left free. Cheap for

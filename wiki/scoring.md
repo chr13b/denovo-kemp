@@ -52,8 +52,8 @@ transfer axis, however good its distance looks. K1 alone cannot see this.
 
 ## Combined score
 
-`scripts/33_combine_criteria.py`. Each criterion maps to a sub-score in [0, 1],
-and the five are multiplied.
+Superseded by scorer v2 below; the v1 script has been deleted. Each criterion mapped
+to a sub-score in [0, 1] and the five were multiplied.
 
 Results over all 16 designs the team had on 2026-11-22
 (`results/criteria/five_criteria_n16.json`):
