@@ -137,6 +137,8 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/replication_job47_pinned.tsv](results/replication_job47_pinned.tsv) — job 47: 6 sequences × 5 Boltz seeds, scorer-pinned and scan measurements side by side
 - [results/geometry_full_crystal_vs_designs.tsv](results/geometry_full_crystal_vs_designs.tsv) — 367 structures (352 swept designs + the 5-seed replicates), 13 geometric quantities each
 - [results/rescored_replicated_48.tsv](results/rescored_replicated_48.tsv) — the 48 five-seed designs rescored: D, D2, angle at the heteroatom, burial, and the rank under each
+- [results/ranking_combined_seeds1-5.tsv](results/ranking_combined_seeds1-5.tsv) — every five-seed design (ours, Zonghu's, JJ's, Mario's) on one instrument: D, D2, angle over, burial, iPDE, novelty, the rule; source on every row
+- [results/zonghu_k1_k5_on_our_refolds.tsv](results/zonghu_k1_k5_on_our_refolds.tsv) — Zonghu's K1-K5 scorer (his code, unmodified) applied to the same refolds
 - [results/oversample_a_seed4_job27_contact_vs_rmsd.png](results/oversample_a_seed4_job27_contact_vs_rmsd.png) — **the figure**: the fold is reproduced, the catalytic contact is not
 - [results/reference_kemp-1_summary.json](results/reference_kemp-1_summary.json) — verified reference run (cluster job 1); the baseline we must beat
 - [results/kemp_family_geometry.tsv](results/kemp_family_geometry.tsv) — **the geometry target**: 43 ligand copies from 23 crystal structures
