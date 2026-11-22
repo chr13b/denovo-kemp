@@ -140,6 +140,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/ranking_combined_all_seeds.tsv](results/ranking_combined_all_seeds.tsv) — every design folded on our instrument (ours, Zonghu's, JJ's, Mario's), seeds 1-5 and the fresh seeds 6-0: D, D2, angle over, burial, iPDE, novelty, the rule; source and job on every row
 - [results/zonghu_k1_k5_on_our_refolds.tsv](results/zonghu_k1_k5_on_our_refolds.tsv) — Zonghu's K1-K5 scorer (his code, unmodified) applied to the same refolds
 - [results/designs_combined_recommended.fasta](results/designs_combined_recommended.fasta) — the 8-design combined submission file the fresh-seed ranking supports (names `<source>_<design>`); validator ACCEPTED; **not uploaded by us**
+- [results/designs_swapped_18.fasta](results/designs_swapped_18.fasta) — the teammate's uploaded 20-design file (12:16 UTC) with four weak or gate-failing designs swapped for `janis_JJ10` and `mario_s100_446` and our designs relabelled `chris_`; validator ACCEPTED; **not uploaded by us**
 - [results/oversample_a_seed4_job27_contact_vs_rmsd.png](results/oversample_a_seed4_job27_contact_vs_rmsd.png) — **the figure**: the fold is reproduced, the catalytic contact is not
 - [results/reference_kemp-1_summary.json](results/reference_kemp-1_summary.json) — verified reference run (cluster job 1); the baseline we must beat
 - [results/kemp_family_geometry.tsv](results/kemp_family_geometry.tsv) — **the geometry target**: 43 ligand copies from 23 crystal structures
