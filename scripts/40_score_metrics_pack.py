@@ -38,6 +38,23 @@ from kemp.run import start_run
 
 RING = ("N1", "N2", "N3", "C3A", "C7A")
 BASE_ATOMS = {"ASP": ("OD1", "OD2"), "GLU": ("OE1", "OE2")}
+BASE_ATOMS_OD2 = {"ASP": ("OD2",), "GLU": ("OE2",)}  # --base_atom=od2: the syn oxygen only
+# carbon bonded to the contact heteroatom: angle AT the heteroatom (A1 = C-OD2...N3, A4 = C-NE2...N1)
+ATTACHED = {
+    ("ASP", "OD1"): "CG",
+    ("ASP", "OD2"): "CG",
+    ("GLU", "OE1"): "CD",
+    ("GLU", "OE2"): "CD",
+    ("GLN", "NE2"): "CD",
+    ("ASN", "ND2"): "CG",
+    ("SER", "OG"): "CB",
+    ("THR", "OG1"): "CB",
+    ("TYR", "OH"): "CZ",
+    ("LYS", "NZ"): "CE",
+    ("ARG", "NE"): "CD",
+    ("ARG", "NH1"): "CZ",
+    ("ARG", "NH2"): "CZ",
+}
 DONOR_ATOMS = {
     "GLN": ("NE2",),
     "ASN": ("ND2",),
@@ -61,6 +78,9 @@ class Config:
     iptm_baseline: float = 0.8372  # organizers' reference pipeline (chris-01); a design has to beat it
     iptm_sigma: float = 0.1  # below the baseline the score falls as exp(-((baseline - iptm) / sigma)^2)
     iptm_weight: float = 0.15
+    base_atom: str = (
+        "nearest"  # nearest | od2: which carboxylate oxygen counts as the base contact (and burial origin)
+    )
 
 
 def family_targets() -> dict[str, float]:
@@ -77,7 +97,11 @@ def family_targets() -> dict[str, float]:
 
 def read_iptm(cif: Path):
     """ipTM from the confidence json that sits beside a Boltz-2 structure (either naming scheme)."""
-    for c in (cif.parent / f"confidence_{cif.stem}.json", cif.with_suffix(".confidence.json")):
+    for c in (
+        cif.parent / f"confidence_{cif.stem}.json",
+        cif.with_suffix(".confidence.json"),
+        cif.parent / f"{cif.stem}_confidence.json",
+    ):
         if c.exists():
             return float(json.loads(c.read_text())["iptm"])
     return None
@@ -109,14 +133,14 @@ def nearest(prot, lig, allowed, lig_atom, res_id=None):
     return best
 
 
-def measure(cif, base_id, donor_id):
+def measure(cif, base_id, donor_id, base_atoms=BASE_ATOMS):
     at = pdbx.get_structure(pdbx.CIFFile.read(str(cif)), model=1, use_author_fields=True)
     at = at[at.element != "H"]
     lig, prot = at[at.hetero & (at.res_name == "6NT")], at[~at.hetero]
     centre = np.mean([atom(lig, n) for n in RING], axis=0)
     out = {}
     for label, allowed, lig_atom, nb2, rid in (
-        ("base", BASE_ATOMS, "N3", "C3A", base_id),
+        ("base", base_atoms, "N3", "C3A", base_id),
         ("donor", DONOR_ATOMS, "N1", "C7A", donor_id),
     ):
         hit = nearest(prot, lig, allowed, lig_atom, rid)
@@ -130,6 +154,7 @@ def measure(cif, base_id, donor_id):
             "atom": name,
             "d": dist,
             "angle": S.angle_between(p, t, centre),
+            "A": S.angle_between(atom(prot[prot.res_id == res_id], ATTACHED[(resname, name)]), p, t),
             "oop": S.out_of_plane(p, t, atom(lig, "N2"), atom(lig, nb2)),
         }
     base = prot[prot.res_id == out["base"]["rid"]]
@@ -180,7 +205,12 @@ def main(cfg: Config) -> None:
         if declared:
             seq = r["sequence"]
             assert seq[base_pos - 1] in "DE" and seq[donor_pos - 1] in "QNSTYKR", r["id"]
-        m = measure(pack / r["structure"], base_pos, donor_pos)
+        m = measure(
+            pack / r["structure"],
+            base_pos,
+            donor_pos,
+            BASE_ATOMS_OD2 if cfg.base_atom == "od2" else BASE_ATOMS,
+        )
         if m is None:
             print("not measurable:", r["id"])
             continue
@@ -235,7 +265,9 @@ def main(cfg: Config) -> None:
     with open(out, "w", newline="") as fh:
         w = csv.writer(fh, delimiter="\t")
         cols = "id group mode base_res base_d donor_res donor_d approach_dev burial ipde"
-        cols += " s_dist s_approach s_ipde s_burial K5 iptm s_iptm WEIGHTED manifest_D WEIGHTED_K6"
+        cols += (
+            " s_dist s_approach s_ipde s_burial K5 iptm s_iptm WEIGHTED manifest_D WEIGHTED_K6 A1 A4 dev_oop"
+        )
         w.writerow(cols.split())
         for key, v in res.items():
             p, m = v["parts"], v["m"]
@@ -261,6 +293,9 @@ def main(cfg: Config) -> None:
                     f(v["total"], 4),
                     v["row"]["D"],
                     f(v["total6"], 4),
+                    f(m["base"]["A"], 1),
+                    f(m["donor"]["A"], 1),
+                    f(max(abs(m[c]["oop"] - targets[c]["oop"]) for c in ("base", "donor")), 1),
                 ]
             )
     summary = {n: float(np.mean([v["total"] for v in vs])) for n, vs in reps.items()}

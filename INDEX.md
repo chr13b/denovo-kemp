@@ -91,6 +91,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [scripts/32_kemp_family_geometry.py](scripts/32_kemp_family_geometry.py) — measures catalytic geometry across all 97 PDB 'kemp eliminase' entries
 - [scripts/40_score_metrics_pack.py](scripts/40_score_metrics_pack.py) — score a share_metrics_pack (Boltz-2 cifs + manifest) with scorer v2, weighted K1-K5; `--target=family` uses the 23-crystal medians
 - [scripts/41_k5_seeds.sbatch](scripts/41_k5_seeds.sbatch) — Slurm: refold a directory of Boltz-2 queries at seeds 1-5 for K5
+- [scripts/42_rank_stability.py](scripts/42_rank_stability.py) — rank stability of the K1-K5 ranking under variants (OD2-only base, angle at the heteroatom vs crystal range, K6, mean-of-metrics, worst seed)
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)
@@ -127,7 +128,11 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/structures/](results/structures/) — PDBs of s068, s024, s042, s006, s004 (best seed) with Base/Donor marked (B-factor 100) + PyMOL scripts
 - [results/criteria/newseq_s4_k5_k6.tsv](results/criteria/newseq_s4_k5_k6.tsv) — 15 new seed-4-backbone sequences (job 101/102) x 5 seeds, K1-K6 per structure
 - [results/criteria/chris_replicates_k5_k6.tsv](results/criteria/chris_replicates_k5_k6.tsv) — chris' 45 replicated designs x 5 seeds (chris_autopilot replicate-90/100), K1-K6 per structure
+- [results/criteria/rank_stability.tsv](results/criteria/rank_stability.tsv) — scores and ranks of all 198 five-seed designs under the six scoring variants
+- [results/criteria/jj_hackathon_final_k5_k6.tsv](results/criteria/jj_hackathon_final_k5_k6.tsv) — JJ's 10 RFD4-Proteina designs (Hackathon_Kemp_JJ_Final) x 5 Boltz diffusion samples, K1-K6 per structure
+- [results/criteria/jj_hackathon_final_5seeds_k5_k6.tsv](results/criteria/jj_hackathon_final_5seeds_k5_k6.tsv) — top 5 JJ designs refolded at real Boltz seeds 1-5 (job 103), K1-K6 per structure
 - [results/candidates/ranking_k1_k6.md](results/candidates/ranking_k1_k6.md) — top 15 designs by weighted K1-K6 (5-seed means) with the meaning of every column
+- [results/candidates/ranking_all_k1_k6.md](results/candidates/ranking_all_k1_k6.md) — combined top 25 of all 198 designs (all sources) by K1-K6, with comparison by source
 - [results/candidates/candidates.csv](results/candidates/candidates.csv) — 10 candidate sequences (name, source, length, sequence, base/donor index); zips and confidence jsons per seed next to it
 - [results/criteria/metrics_pack_weighted_family.tsv](results/criteria/metrics_pack_weighted_family.tsv) — same, with the 23-crystal median distance targets
 - [notebooks/](notebooks/) — exploration only, one folder per person (`notebooks/<handle>/`); outputs stripped on commit
