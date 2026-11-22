@@ -1,0 +1,37 @@
+<section id="funnel" class="s8" data-transition="push">
+  <div class="spectrum"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div><div class="c5"></div><div class="c6"></div><div class="c7"></div><div class="c8 on"></div><div class="c9"></div><div class="c10"></div></div>
+  <div class="col g20">
+    <p class="eyebrow">Sequence sampling</p>
+    <h2>Biasing LigandMPNN: three arms</h2>
+  </div>
+  <div class="row" style="gap:56px">
+    <div class="col g32" style="width:1300px">
+      <p class="lede">A bias is added to the logit before the division by temperature, so at T = 0.3 a bias of 1.5 is a log-odds shift of 5 — about 148 in odds. Small numbers, decisive effect. The two catalytic residues are held by a separate mechanism and were intact in all 216 sequences.</p>
+      <table>
+        <tr>
+          <th width="30%">Arm · 72 sequences each</th>
+          <th width="15%">Median D</th>
+          <th width="14%">D ≤ 8.7</th>
+          <th width="14%">D ≤ 20</th>
+          <th width="15%">Ligand in place</th>
+          <th width="12%">vs baseline</th>
+        </tr>
+        <tr><td>baseline, no bias</td><td>30.5</td><td>1</td><td>12</td><td>22</td><td>—</td></tr>
+        <tr><td>polar-down, −1.5</td><td>32.1</td><td>1</td><td>9</td><td>15</td><td>p = 0.21</td></tr>
+        <tr><td><b>close variants of s024</b></td><td><b>25.2</b></td><td><b>11</b></td><td><b>28</b></td><td><b>34</b></td><td><b>p = 0.013</b></td></tr>
+      </table>
+      <div class="row" style="gap:48px">
+        <div class="col g12 grow ruled">
+          <p class="lede">Close variants work</p>
+          <p class="small">An 11-fold enrichment of the good tail, dose-dependent within the arm. But no single mutation is established: 133 of 260 positions vary, and the strongest candidate is absent from the two best replicated designs.</p>
+        </div>
+        <div class="col g12 grow ruled">
+          <p class="lede">Polar-down does not</p>
+          <p class="small">A real null, not a failed bias: it cut the polar count by 58 % as intended. At the replicated level the enrichment is weaker than at single-fold level.</p>
+        </div>
+      </div>
+    </div>
+    <img src="/_blob/78bdcc29ad2f618db7d333feff6240b9" alt="Cartoon render of a helical bundle design with the ligand bound between the helices" width="250" height="459" style="object-fit:contain">
+  </div>
+  <aside>LigandMPNN samples each position from a softmax, and a bias file shifts those logits before the temperature division — which is why a bias of one point five is decisive at temperature zero point three. Three arms. Staying close to a known-good parent enriches the good tail elevenfold. Pushing polar residues out of the pocket, which we read off the crystals, does nothing — and we know the bias worked, because the polar count fell by more than half. So that is a real null.</aside>
+</section>

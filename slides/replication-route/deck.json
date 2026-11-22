@@ -1,0 +1,36 @@
+{
+  "v": 5,
+  "createdOnFiles": { "v": 1, "at": "2026-11-22T10:40:00Z" },
+  "lists": "css",
+  "format": { "v": 1, "shared": ["project/deck.css"] },
+  "title": "Replication Route Pitch",
+  "order": [
+    "cover",
+    "reaction",
+    "scoring",
+    "pipeline",
+    "target",
+    "refold",
+    "gate",
+    "funnel",
+    "candidates",
+    "team"
+  ],
+  "sections": {
+    "brief": { "description": "The task, what is scored, and the quantities we measure instead.", "start": "cover" },
+    "method": { "description": "The pipeline, our geometry score, and why a single cofold cannot rank designs.", "start": "pipeline" },
+    "results": { "description": "Filters, the sequence-sampling arms and the replicated designs.", "start": "gate" },
+    "team": { "description": "The Triad.", "start": "team" }
+  },
+  "faces": {
+    "eb-garamond": {
+      "family": "EB Garamond",
+      "href": "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    },
+    "inter": {
+      "family": "Inter",
+      "href": "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    }
+  },
+  "designSystems": []
+}

@@ -1,0 +1,31 @@
+<section id="gate" class="s7" data-transition="fade">
+  <div class="spectrum"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div><div class="c5"></div><div class="c6"></div><div class="c7 on"></div><div class="c8"></div><div class="c9"></div><div class="c10"></div></div>
+  <div class="col g20">
+    <p class="eyebrow">Selection</p>
+    <h2>Filters, in the order they are applied</h2>
+  </div>
+  <table>
+    <tr>
+      <th width="10%">Step</th>
+      <th width="46%">What it does</th>
+      <th width="44%">What it removes</th>
+    </tr>
+    <tr><td><b>F1</b></td><td>Single fold per sequence, ranked by D</td><td>the great majority — 84 % put the ligand outside the pocket</td></tr>
+    <tr><td><b>F1b</b></td><td>Free filter: iPDE &lt; 1.6 and ipTM &gt; 0.85</td><td>83 % of designs, while keeping 5 of the 6 best by D</td></tr>
+    <tr><td><b>F2</b></td><td>Five-seed replication of the best by single-fold D</td><td>designs that were one lucky fold — 48 replicated in total</td></tr>
+    <tr><td><b>F3</b></td><td>The pre-registered selection rule</td><td>everything that is not reproducible</td></tr>
+    <tr><td><b>F4</b></td><td>Novelty gate, foldseek TM-align, both databases</td><td>designs too close to published structures</td></tr>
+    <tr><td><b>F5–F7</b></td><td>Index check, the organizers’ validator, upload with byte-verified read-back</td><td>off-by-one indices and invalid files</td></tr>
+  </table>
+  <div class="row" style="gap:48px">
+    <div class="col g12 grow ruled">
+      <p class="lede">F3, written before the data</p>
+      <p class="small">Both distances inside the crystal window in at least 3 of 5 seeds, mean D over the five seeds at most 15, and OD2 the nearest oxygen in at least 4 of 5. <b class="ink">Only s024 satisfies it.</b></p>
+    </div>
+    <div class="col g12 grow ruled">
+      <p class="lede">F4, novelty</p>
+      <p class="small">qTM at most 0.70 against the Kemp family and 40,066 PDB representatives. Our top designs: family qTM 0.29–0.30, PDB qTM 0.55–0.57, and MMseqs2 found no homologue at all.</p>
+    </div>
+  </div>
+  <aside>The filters run in a fixed order and most of the work is done early: eighty-four per cent of designs simply do not place the ligand. The free confidence filter removes another eighty-three per cent while keeping five of the six best designs. Then five-seed replication, then the rule we wrote before seeing the replication data. Only s024 satisfies it. Several close variants have better replicated geometry but miss the in-window count, and adding them would be an amendment made after seeing the data.</aside>
+</section>

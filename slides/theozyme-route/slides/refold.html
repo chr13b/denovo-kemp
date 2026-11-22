@@ -1,0 +1,45 @@
+<section id="refold" class="s6" data-transition="push">
+  <div class="spectrum"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div><div class="c5"></div><div class="c6 on"></div><div class="c7"></div><div class="c8"></div><div class="c9"></div><div class="c10"></div></div>
+  <div class="col g20">
+    <p class="eyebrow">Design choices</p>
+    <h2>Where we corrected ourselves</h2>
+  </div>
+  <table>
+    <tr>
+      <th width="27%">First assumption</th>
+      <th width="40%">What the data showed</th>
+      <th width="33%">What we did</th>
+    </tr>
+    <tr>
+      <td>The crystal Trp is a pi stack on the ligand</td>
+      <td>In 7K4Z it is an offset edge and nitro contact, with 0 % ring overlap</td>
+      <td>Kept it as B; added B2 as a true parallel-displaced stack</td>
+    </tr>
+    <tr>
+      <td>The stacking residue can be left to the generator</td>
+      <td>Des27 and KE70 both rely on an aromatic stacking residue</td>
+      <td>Put the Trp into the theozyme</td>
+    </tr>
+    <tr>
+      <td>The base meets either lone pair</td>
+      <td>It meets the anti lone pair, dihedral 157–178°</td>
+      <td>Base position taken from the crystal, not re-derived</td>
+    </tr>
+    <tr>
+      <td>An Asp + Ser donor variant is worth testing</td>
+      <td>Ser, His and Lys at position 50 leave a water in the donor site</td>
+      <td>Dropped it; kept Gln as the donor</td>
+    </tr>
+    <tr>
+      <td>Pilot designs are too short to bury the ligand</td>
+      <td>Burial does not track chain length (r ≈ 0.12); it tracks contact residues (0.58) and ligand SASA (−0.62)</td>
+      <td>Retracted the claim; added burial conditioning and a gate</td>
+    </tr>
+    <tr>
+      <td>Pilot design B_16 looks strong</td>
+      <td>Base O to N3 was 3.87 Å and ligand spread 1.96 Å once scores were read</td>
+      <td>Excluded it; B_18 was added instead</td>
+    </tr>
+  </table>
+  <aside>Six early assumptions turned out wrong or incomplete, and each correction changed what we built. The most consequential is the last pair: we thought our pilot designs were too short to bury the ligand, but burial does not track chain length at all — it tracks contact residues and ligand exposure. So we retracted that and added conditioning instead of making proteins longer.</aside>
+</section>

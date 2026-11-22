@@ -1,0 +1,47 @@
+<section id="candidates" class="s9" data-transition="fade">
+  <div class="spectrum"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div><div class="c5"></div><div class="c6"></div><div class="c7"></div><div class="c8"></div><div class="c9 on"></div><div class="c10"></div></div>
+  <div class="col g20">
+    <p class="eyebrow">Selection</p>
+    <h2>Selection and the ten final designs</h2>
+  </div>
+  <div class="row" style="gap:56px">
+    <div style="width:1000px">
+      <table>
+        <tr>
+          <th width="14%">Name</th>
+          <th width="16%">Theozyme</th>
+          <th width="14%">Length</th>
+          <th width="16%">iPDE</th>
+          <th width="18%">Base / donor</th>
+          <th width="22%">Strict test</th>
+        </tr>
+        <tr><td>JJ1</td><td>B</td><td>210</td><td>0.91</td><td>69 / 107</td><td><b>4 or more</b></td></tr>
+        <tr><td>JJ2</td><td>B</td><td>232</td><td>1.00</td><td>121 / 24</td><td>3</td></tr>
+        <tr><td>JJ3</td><td>B</td><td>199</td><td>0.98</td><td>92 / 66</td><td><b>4 or more</b></td></tr>
+        <tr><td>JJ4</td><td>B</td><td>192</td><td>1.00</td><td>36 / 70</td><td>0</td></tr>
+        <tr><td>JJ5</td><td>B2</td><td>219</td><td>1.05</td><td>83 / 149</td><td>0</td></tr>
+        <tr><td>JJ6</td><td>B2</td><td>160</td><td>0.96</td><td>118 / 21</td><td>2</td></tr>
+        <tr><td>JJ7</td><td>B2</td><td>227</td><td>1.09</td><td>78 / 131</td><td><b>4 or more</b></td></tr>
+        <tr><td>JJ8</td><td>B</td><td>238</td><td>1.16</td><td>212 / 116</td><td>1</td></tr>
+        <tr><td>JJ9</td><td>B</td><td>197</td><td>0.61</td><td>123 / 85</td><td>0</td></tr>
+        <tr><td>JJ10</td><td>B</td><td>171</td><td>0.69</td><td>89 / 137</td><td>0</td></tr>
+      </table>
+      <p class="small" style="margin-top:18px">Both theozymes, lengths 160–238. In every design model the Asp O sits 2.56–2.81 Å from N3 and the Gln NE2 3.1–3.3 Å from N1. JJ9 was forced in by hand, 0.11 Å outside the base window; JJ10 comes from the pilot.</p>
+    </div>
+    <div class="col g32 grow">
+      <div class="col g12">
+        <p class="num">59</p>
+        <p class="label">of 2554 scored designs placed the ligand correctly — 2.3 %</p>
+      </div>
+      <div class="col g12 ruled">
+        <p class="lede">Gates, in order</p>
+        <p class="small">Length at most 260 · median Boltz ligand RMSD at most 2.0 Å, placed in at least 3 of 5 samples · mean base O to N3 between 2.1 and 3.1 Å · novelty at most 70 % identity and TM-score at most 0.7.</p>
+      </div>
+      <div class="col g12 ruled">
+        <p class="lede">What the strict test says</p>
+        <p class="small">Only JJ1, JJ3 and JJ7 reproduce the designed base geometry in 4 of 5 samples. Donor geometry is fixed by the motif but not measured per sample.</p>
+      </div>
+    </div>
+  </div>
+  <aside>The gates, not the scores, did most of the selecting: of two and a half thousand scored designs only fifty-nine placed the ligand correctly. We fixed the rules in code before looking at which designs would pass. Ranking breaks ties in order — iPDE, then ligand spread, then burial, then ligand exposure, then cysteine count. Pick rules required at least two designs per theozyme family, different lengths, and no two picks above eighty per cent identity to each other. Two were added by hand and are flagged. The honest caveat is the last column: only three of the ten reproduce the designed base geometry in four of five samples.</aside>
+</section>

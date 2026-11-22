@@ -1,0 +1,36 @@
+{
+  "v": 5,
+  "createdOnFiles": { "v": 1, "at": "2026-11-22T10:50:00Z" },
+  "lists": "css",
+  "format": { "v": 1, "shared": ["project/deck.css"] },
+  "title": "Three Routes Pitch",
+  "order": [
+    "cover",
+    "reaction",
+    "scoring",
+    "janis",
+    "chris",
+    "mario",
+    "compare",
+    "tree",
+    "results",
+    "team"
+  ],
+  "sections": {
+    "brief": { "description": "The task, how designs are scored, and the limits we work inside.", "start": "cover" },
+    "routes": { "description": "Three independent routes from the same problem: theoretical, evolutionary, combinatorial.", "start": "janis" },
+    "compare": { "description": "The three routes side by side, and what one shared scale says about them.", "start": "compare" },
+    "team": { "description": "The Triad.", "start": "team" }
+  },
+  "faces": {
+    "eb-garamond": {
+      "family": "EB Garamond",
+      "href": "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    },
+    "inter": {
+      "family": "Inter",
+      "href": "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    }
+  },
+  "designSystems": []
+}

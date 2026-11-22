@@ -1,0 +1,39 @@
+<section id="candidates" class="s9" data-transition="fade">
+  <div class="spectrum"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div><div class="c5"></div><div class="c6"></div><div class="c7"></div><div class="c8"></div><div class="c9 on"></div><div class="c10"></div></div>
+  <div class="col g20">
+    <p class="eyebrow">Results</p>
+    <h2>The replicated designs</h2>
+  </div>
+  <div class="row" style="gap:56px">
+    <div style="width:1060px">
+      <table>
+        <tr>
+          <th width="13%">Design</th>
+          <th width="27%">Arm</th>
+          <th width="13%">Mean D</th>
+          <th width="13%">Mean D2</th>
+          <th width="17%">Worst seed</th>
+          <th width="17%">iPDE</th>
+        </tr>
+        <tr><td><b>s010</b></td><td>close variant</td><td><b>3.8</b></td><td><b>3.2</b></td><td>5.5</td><td>1.13</td></tr>
+        <tr><td>s057</td><td>close variant</td><td>5.0</td><td>4.8</td><td>7.9</td><td>0.98</td></tr>
+        <tr><td>s008</td><td>polar-down</td><td>6.2</td><td>5.1</td><td>9.0</td><td>0.91</td></tr>
+        <tr><td>s060</td><td>close variant</td><td>7.5</td><td>7.2</td><td>9.2</td><td>0.94</td></tr>
+        <tr><td><b>s024</b></td><td>the parent · only rule pass</td><td>9.4</td><td>8.2</td><td><b>29.6</b></td><td>1.20</td></tr>
+        <tr><td>s068</td><td>seed-4 sweep</td><td>10.6</td><td>7.1</td><td>11.6</td><td><b>0.79</b></td></tr>
+      </table>
+      <p class="small" style="margin-top:20px">Five-seed means. s010 is first under both D and D2. s024 has one seed that loses the ligand. s068 has the lowest iPDE and a very stable pose, but its nearest oxygen is OD1 — it passes if the scorer takes the nearest oxygen and fails if it takes OD2. Burial spans only 44.6–49.4 across the top designs, so it changes no ranking.</p>
+    </div>
+    <div class="col g32 grow">
+      <div class="col g12 ruled">
+        <p class="lede">An independent scorer agrees</p>
+        <p class="small">Zonghu’s weighted K1–K5, his own implementation with a different target structure, ranks the same designs. On single folds his score and our D correlate at Spearman −0.97 over 44 shared structures. Both analyses found independently that a single fold overstates a design.</p>
+      </div>
+      <div class="col g12 ruled">
+        <p class="lede">A weakness we share</p>
+        <p class="small">The angle measured <i>at the heteroatom</i> lies outside the crystal range in every one of the 48 replicated designs — median 40° outside. Under our own angle definition the same designs are close to the window. The organizers do not say which definition they use.</p>
+      </div>
+    </div>
+  </div>
+  <aside>s010 leads on both of our geometry scores, and it is a close variant rather than the parent. s024 is the only design that satisfies the pre-registered rule, but it has one seed in five that loses the ligand entirely. The honest part is on the right: under one plausible definition of the approach angle, every single one of our forty-eight replicated designs sits outside the crystal range. If the organizers use that definition, nothing we generated was selected for it.</aside>
+</section>
