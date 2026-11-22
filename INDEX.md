@@ -125,5 +125,71 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/criteria/family_motifs_k5_seeds_v2.tsv](results/criteria/family_motifs_k5_seeds_v2.tsv) — 640 per-seed K1-K5 scores of the 128 family-motifs designs
 - [results/criteria/family_motifs_k5_ranking.txt](results/criteria/family_motifs_k5_ranking.txt) — family-motifs ranking by 5-seed mean weighted K1-K5
 - [results/structures/](results/structures/) — PDBs of s068, s024, s042, s006, s004 (best seed) with Base/Donor marked (B-factor 100) + PyMOL scripts
+- [results/criteria/newseq_s4_k5_k6.tsv](results/criteria/newseq_s4_k5_k6.tsv) — 15 new seed-4-backbone sequences (job 101/102) x 5 seeds, K1-K6 per structure
+- [results/criteria/chris_replicates_k5_k6.tsv](results/criteria/chris_replicates_k5_k6.tsv) — chris' 45 replicated designs x 5 seeds (chris_autopilot replicate-90/100), K1-K6 per structure
+- [results/candidates/ranking_k1_k6.md](results/candidates/ranking_k1_k6.md) — top 15 designs by weighted K1-K6 (5-seed means) with the meaning of every column
+- [results/candidates/candidates.csv](results/candidates/candidates.csv) — 10 candidate sequences (name, source, length, sequence, base/donor index); zips and confidence jsons per seed next to it
 - [results/criteria/metrics_pack_weighted_family.tsv](results/criteria/metrics_pack_weighted_family.tsv) — same, with the 23-crystal median distance targets
 - [notebooks/](notebooks/) — exploration only, one folder per person (`notebooks/<handle>/`); outputs stripped on commit
+
+- [results/candidates/arms_97_s008.zip](results/candidates/arms_97_s008.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/arms_97_s008_seed1.confidence.json](results/candidates/arms_97_s008_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_97_s008_seed2.confidence.json](results/candidates/arms_97_s008_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_97_s008_seed3.confidence.json](results/candidates/arms_97_s008_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_97_s008_seed4.confidence.json](results/candidates/arms_97_s008_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_97_s008_seed5.confidence.json](results/candidates/arms_97_s008_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s010.zip](results/candidates/arms_98_s010.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/arms_98_s010_seed1.confidence.json](results/candidates/arms_98_s010_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s010_seed2.confidence.json](results/candidates/arms_98_s010_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s010_seed3.confidence.json](results/candidates/arms_98_s010_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s010_seed4.confidence.json](results/candidates/arms_98_s010_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s010_seed5.confidence.json](results/candidates/arms_98_s010_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s057.zip](results/candidates/arms_98_s057.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/arms_98_s057_seed1.confidence.json](results/candidates/arms_98_s057_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s057_seed2.confidence.json](results/candidates/arms_98_s057_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s057_seed3.confidence.json](results/candidates/arms_98_s057_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s057_seed4.confidence.json](results/candidates/arms_98_s057_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s057_seed5.confidence.json](results/candidates/arms_98_s057_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s060.zip](results/candidates/arms_98_s060.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/arms_98_s060_seed1.confidence.json](results/candidates/arms_98_s060_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s060_seed2.confidence.json](results/candidates/arms_98_s060_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s060_seed3.confidence.json](results/candidates/arms_98_s060_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s060_seed4.confidence.json](results/candidates/arms_98_s060_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s060_seed5.confidence.json](results/candidates/arms_98_s060_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s007.zip](results/candidates/ns4_s007.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/ns4_s007_seed1.confidence.json](results/candidates/ns4_s007_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s007_seed2.confidence.json](results/candidates/ns4_s007_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s007_seed3.confidence.json](results/candidates/ns4_s007_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s007_seed4.confidence.json](results/candidates/ns4_s007_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s007_seed5.confidence.json](results/candidates/ns4_s007_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s018.zip](results/candidates/ns4_s018.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/ns4_s018_seed1.confidence.json](results/candidates/ns4_s018_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s018_seed2.confidence.json](results/candidates/ns4_s018_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s018_seed3.confidence.json](results/candidates/ns4_s018_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s018_seed4.confidence.json](results/candidates/ns4_s018_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s018_seed5.confidence.json](results/candidates/ns4_s018_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s087.zip](results/candidates/ns4_s087.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/ns4_s087_seed1.confidence.json](results/candidates/ns4_s087_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s087_seed2.confidence.json](results/candidates/ns4_s087_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s087_seed3.confidence.json](results/candidates/ns4_s087_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s087_seed4.confidence.json](results/candidates/ns4_s087_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s087_seed5.confidence.json](results/candidates/ns4_s087_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s122.zip](results/candidates/ns4_s122.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/ns4_s122_seed1.confidence.json](results/candidates/ns4_s122_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s122_seed2.confidence.json](results/candidates/ns4_s122_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s122_seed3.confidence.json](results/candidates/ns4_s122_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s122_seed4.confidence.json](results/candidates/ns4_s122_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s122_seed5.confidence.json](results/candidates/ns4_s122_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s024.zip](results/candidates/seed4_s024.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/seed4_s024_seed1.confidence.json](results/candidates/seed4_s024_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s024_seed2.confidence.json](results/candidates/seed4_s024_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s024_seed3.confidence.json](results/candidates/seed4_s024_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s024_seed4.confidence.json](results/candidates/seed4_s024_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s024_seed5.confidence.json](results/candidates/seed4_s024_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s068.zip](results/candidates/seed4_s068.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/seed4_s068_seed1.confidence.json](results/candidates/seed4_s068_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s068_seed2.confidence.json](results/candidates/seed4_s068_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s068_seed3.confidence.json](results/candidates/seed4_s068_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s068_seed4.confidence.json](results/candidates/seed4_s068_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s068_seed5.confidence.json](results/candidates/seed4_s068_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates_chris_zonghu.zip](results/candidates_chris_zonghu.zip) — archive of results/candidates/ (csv, zips, confidence jsons) for sharing

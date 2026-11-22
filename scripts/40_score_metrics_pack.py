@@ -22,6 +22,8 @@ entries, `scripts/32_kemp_family_geometry.py`); the angle targets stay at 7K4U.
 from __future__ import annotations
 
 import csv
+import json
+import math
 import statistics
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -56,6 +58,9 @@ class Config:
     declared_backbones: list[str] = field(default_factory=lambda: ["seed4"])
     base_position: int = 86  # 1-based, in the sequences of the declared backbones
     donor_position: int = 52
+    iptm_baseline: float = 0.8372  # organizers' reference pipeline (chris-01); a design has to beat it
+    iptm_sigma: float = 0.1  # below the baseline the score falls as exp(-((baseline - iptm) / sigma)^2)
+    iptm_weight: float = 0.15
 
 
 def family_targets() -> dict[str, float]:
@@ -68,6 +73,21 @@ def family_targets() -> dict[str, float]:
         "base": statistics.median(float(r["base_dist"]) for r in engaged),
         "donor": statistics.median(float(r["donor_dist"]) for r in both),
     }
+
+
+def read_iptm(cif: Path):
+    """ipTM from the confidence json that sits beside a Boltz-2 structure (either naming scheme)."""
+    for c in (cif.parent / f"confidence_{cif.stem}.json", cif.with_suffix(".confidence.json")):
+        if c.exists():
+            return float(json.loads(c.read_text())["iptm"])
+    return None
+
+
+def total_with_iptm(parts: dict, w_iptm: float) -> float:
+    """Weighted geometric mean of K1-K5 plus ipTM (K6), same weights as `kemp.scoring.WEIGHTS`."""
+    w = {**S.WEIGHTS, "iptm": w_iptm}
+    known = {k: v for k, v in parts.items() if v is not None}
+    return math.exp(sum(w[k] * math.log(max(v, 1e-9)) for k, v in known.items()) / sum(w[k] for k in known))
 
 
 def atom(res, name):
@@ -173,12 +193,23 @@ def main(cfg: Config) -> None:
             "burial": S.score_burial(m["burial"]),
             "consistency": None,
         }
+        iptm = read_iptm(pack / r["structure"])
+        parts["iptm"] = (
+            None
+            if iptm is None
+            else (
+                1.0
+                if iptm >= cfg.iptm_baseline
+                else math.exp(-(((cfg.iptm_baseline - iptm) / cfg.iptm_sigma) ** 2))
+            )
+        )
         res[r["id"]] = {
             "row": r,
             "m": m,
             "dev": dev,
             "parts": parts,
             "mode": "declared" if declared else "inferred",
+            "iptm": iptm,
         }
 
     # K5: spread of the two contact distances over the seeds of one replicated sequence
@@ -193,7 +224,9 @@ def main(cfg: Config) -> None:
         for v in vs:
             v["parts"]["consistency"] = S.score_consistency(stds)
     for v in res.values():
-        v["total"] = S.weighted_total(v["parts"])
+        k15 = {k: x for k, x in v["parts"].items() if k != "iptm"}
+        v["total"] = S.weighted_total(k15)
+        v["total6"] = total_with_iptm(v["parts"], cfg.iptm_weight)
 
     def f(x, n=3):
         return "" if x is None else f"{x:.{n}f}"
@@ -202,7 +235,7 @@ def main(cfg: Config) -> None:
     with open(out, "w", newline="") as fh:
         w = csv.writer(fh, delimiter="\t")
         cols = "id group mode base_res base_d donor_res donor_d approach_dev burial ipde"
-        cols += " s_dist s_approach s_ipde s_burial K5 WEIGHTED manifest_D"
+        cols += " s_dist s_approach s_ipde s_burial K5 iptm s_iptm WEIGHTED manifest_D WEIGHTED_K6"
         w.writerow(cols.split())
         for key, v in res.items():
             p, m = v["parts"], v["m"]
@@ -218,13 +251,16 @@ def main(cfg: Config) -> None:
                     f(v["dev"], 0),
                     m["burial"],
                     v["row"]["complex_ipde"][:5],
-                    f(p["dist"]),
-                    f(p["approach"]),
-                    f(p["ipde"]),
-                    f(p["burial"]),
-                    f(p["consistency"]),
+                    f(p["dist"], 6),
+                    f(p["approach"], 6),
+                    f(p["ipde"], 6),
+                    f(p["burial"], 6),
+                    f(p["consistency"], 6),
+                    f(v["iptm"], 3),
+                    f(p["iptm"], 6),
                     f(v["total"], 4),
                     v["row"]["D"],
+                    f(v["total6"], 4),
                 ]
             )
     summary = {n: float(np.mean([v["total"] for v in vs])) for n, vs in reps.items()}
