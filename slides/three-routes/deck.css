@@ -163,6 +163,9 @@ ul.big li { font-size: 38px; line-height: 1.28; }
 .fl { color: #111518; border-width: 3px; }
 .fl-dash { color: #111518; border-width: 3px; border-style: dashed; }
 .loop-label { position: absolute; font-size: 24px; font-weight: 600; color: var(--body); }
+.flowhost-sm { position: relative; width: 1664px; height: 290px; }
+.node-sm { padding: 10px 18px; gap: 6px; }
+.node-sm .node-t { font-size: 28px; }
 
 /* table trim */
 .colbar { display: flex; flex-direction: row; gap: 0; }
