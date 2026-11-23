@@ -317,4 +317,4 @@ Built by a five-person team that ran three design routes in parallel and one sha
 
 Compute, reference tooling and the evaluation protocol were provided by Perlin and D-BSSE (ETH Zürich). Built on [RFdiffusion3](https://pubmed.ncbi.nlm.nih.gov/41000976/), [LigandMPNN](https://www.biorxiv.org/content/10.1101/2023.12.22.573103), [Boltz-2](https://github.com/jwohlwend/boltz), [Foldseek](https://github.com/steineggerlab/foldseek) and the Kemp eliminase crystal structures in the PDB (HG3.17 with 6NT is 4BS0).
 
-Released under the [MIT License](LICENSE).
+Released under the [MIT License](LICENSE). The source documents in `raw/` and the external tools keep their own terms.
