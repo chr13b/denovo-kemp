@@ -16,6 +16,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 
 ## Meta
 - [LICENSE](LICENSE) — MIT, for the code and our own writing; `raw/` and the external tools keep their own terms
+- [CITATION.cff](CITATION.cff) — how to cite the repository (GitHub shows a "Cite this repository" button)
 - [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) — short-form Contributor Covenant; reports go through GitHub, no email
 - [CLAUDE.md](CLAUDE.md) — schema for Claude Code: rules, conventions and workflows (loads automatically)
 - [AGENTS.md](AGENTS.md) — the same brief, tool-neutral, for **any** AI assistant

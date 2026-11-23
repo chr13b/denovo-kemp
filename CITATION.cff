@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "denovo-kemp: purely de novo Kemp eliminase design with steered sequence sampling and replication"
+type: software
+authors:
+  - name: "denovo-kemp contributors"
+repository-code: "https://github.com/chr13b/denovo-kemp"
+license: MIT
+version: "1.0"
+date-released: "2026-11-23"
+abstract: >-
+  A reproducible in-silico pipeline for purely de novo Kemp eliminase design: RFdiffusion3
+  motif scaffolding, steered LigandMPNN inverse folding and Boltz-2 cofolding, scored on
+  crystal-derived catalytic geometry, with five-seed and held-out-seed replication and a
+  structural-novelty gate.
+keywords:
+  - protein design
+  - de novo enzyme design
+  - Kemp eliminase
+  - RFdiffusion
+  - LigandMPNN
+  - Boltz-2
