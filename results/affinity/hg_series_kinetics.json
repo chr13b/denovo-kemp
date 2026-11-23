@@ -1,0 +1,79 @@
+{
+  "assay": {
+    "substrate": "5-nitrobenzisoxazole",
+    "note_km_kcat": "Table 1 footnote b: individual KM and kcat could not be determined accurately because saturation was not possible at the maximum substrate concentration tested (2 mM). Only kcat/KM is reported for this series.",
+    "replicates": "triplicate, enzymes from at least two independent preparations (mean +- s.d.)",
+    "citation": "Broom et al., bioRxiv 2020.03.19.999235, Table 1 (p25); published Nat. Commun. 11, 4808 (2020), doi 10.1038/s41467-020-18619-x",
+    "related_structures": {
+      "HG2": "3NYD",
+      "HG3.17-E47N/N300D": "4BS0",
+      "HG3 K50Q + 6NT (base sequence used here)": "7K4U",
+      "Thermoascus aurantiacus xylanase 10A (parent scaffold)": "1GOR"
+    }
+  },
+  "base_structure": "7K4U chain A",
+  "variants": {
+    "HG3": {
+      "fasta": "results\\affinity\\hg3.fasta",
+      "length": 305,
+      "mutations_from_hg3": [],
+      "n_mutations": 0,
+      "residue50": "K",
+      "kcat_over_KM_M1s1": {
+        "value": 160,
+        "sd": 10,
+        "blomberg": 1300
+      }
+    },
+    "HG3.7": {
+      "fasta": "results\\affinity\\hg3_7.fasta",
+      "length": 305,
+      "mutations_from_hg3": [
+        "V6I",
+        "Q37K",
+        "K50Q",
+        "M84C",
+        "S89R",
+        "Q90H",
+        "A125N"
+      ],
+      "n_mutations": 7,
+      "residue50": "Q",
+      "kcat_over_KM_M1s1": {
+        "value": 28000,
+        "sd": 4000,
+        "blomberg": 37000
+      }
+    },
+    "HG3.17": {
+      "fasta": "results\\affinity\\hg3_17.fasta",
+      "length": 305,
+      "mutations_from_hg3": [
+        "V6I",
+        "Q37K",
+        "N47E",
+        "K50Q",
+        "G82A",
+        "M84C",
+        "S89N",
+        "Q90F",
+        "T105I",
+        "A125T",
+        "T142N",
+        "T208M",
+        "F267M",
+        "W275A",
+        "R276F",
+        "T279S",
+        "D300N"
+      ],
+      "n_mutations": 17,
+      "residue50": "Q",
+      "kcat_over_KM_M1s1": {
+        "value": 170000,
+        "sd": 20000,
+        "blomberg": 230000
+      }
+    }
+  }
+}

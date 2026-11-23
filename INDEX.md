@@ -48,6 +48,13 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/experiments/_template.md](wiki/experiments/_template.md) — template for experiment pages
 - [wiki/experiments/chris-01_reference-pipeline-baseline.md](wiki/experiments/chris-01_reference-pipeline-baseline.md) — baseline: pipeline verified, RFD3 → Boltz-2 contact drift
 - [wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md](wiki/experiments/chris-02_seed-sweep-boltz-vs-rfd3-geometry.md) — seed sweep (jobs 2–5): is that drift systematic? decides where GPU time goes
+- [wiki/experiments/zonghu-01_trp-stack-theozyme-vs-crystal.md](wiki/experiments/zonghu-01_trp-stack-theozyme-vs-crystal.md) — idealised Trp44 π-stack vs the crystal edge-on contact: does a custom theozyme scaffold?
+- [wiki/experiments/zonghu-02_affinity-ladder-controls.md](wiki/experiments/zonghu-02_affinity-ladder-controls.md) — does the affinity ladder separate a real Kemp eliminase from a non-enzyme? (controls first)
+- [wiki/experiments/zonghu-03_trp-flexibility-and-dyad-geometry.md](wiki/experiments/zonghu-03_trp-flexibility-and-dyad-geometry.md) — rigid indole wrecks the donor; the dyad is too wide in every design; best design of the project
+- [wiki/design-filters.md](wiki/design-filters.md) — where every filter threshold comes from, which gate is binding, and why we rank rather than gate
+- [wiki/rfd4-proteina.md](wiki/rfd4-proteina.md) — RFD4-Proteina installed on the cluster and verified on our L4: how to use it, the CUDA-12 constraint, what is and is not verified
+- [wiki/novelty.md](wiki/novelty.md) — the one hard gate: TM <= 0.7 and identity <= 70 %; foldseek method, results, and which design already fails it
+- [wiki/scoring.md](wiki/scoring.md) — the organizers' five criteria, a metric for each, the weighted scorer v2, the seed-luck finding, and why there is no cheap pre-filter
 - [wiki/experiments/chris-03_msa-free-boltz-screen.md](wiki/experiments/chris-03_msa-free-boltz-screen.md) — **the MSA stage is a no-op**: bit-identical output without it, ~3–4× throughput
 - [wiki/experiments/chris-04_sequence-oversampling-fixed-backbone.md](wiki/experiments/chris-04_sequence-oversampling-fixed-backbone.md) — **Idea A**: 72 sequences on one fixed backbone; is the base drift sequence-level or backbone-level?
 - [wiki/experiments/chris-05_trp44-three-anchor-retested.md](wiki/experiments/chris-05_trp44-three-anchor-retested.md) — **Idea B**: zonghu's Trp44 theozyme, retested with 72 sequences instead of 1
@@ -76,12 +83,24 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [src/kemp/run.py](src/kemp/run.py) — `start_run()`: run directory plus provenance (config, commit, diff, script, lock hash, host, GPU, seed)
 - [src/kemp/data.py](src/kemp/data.py) — `fetch(url, dest, checksum)` and `sha256(path)` for reproducible data
 - [src/kemp/submission.py](src/kemp/submission.py) — `designs.fasta` building and offline rule checking (indices, residue types, limits)
+- [src/kemp/filters.py](src/kemp/filters.py) — design-funnel filters: GRAVY, pI, catalytic-residue integrity, MPNN/Boltz score parsing; `passed=None` means not evaluated
+- [src/kemp/scoring.py](src/kemp/scoring.py) — the scored criteria as pure functions: crystal targets, asymmetric distance, sign-independent plane term, weighted geometric mean
+- [src/kemp/structure.py](src/kemp/structure.py) — structure filters: motif RMSD, RoG, clashes, Ramachandran, P-SEA topology, packing proxy, pLDDT, ligand contacts
 - [scripts/00_smoke.py](scripts/00_smoke.py) — smoke test for env and run bookkeeping; **template for new scripts**
 - [scripts/30_compare_rfd3_vs_boltz.py](scripts/30_compare_rfd3_vs_boltz.py) — chris-02 table: RFD3 vs Boltz-2 contact drift + the pre-registered decision rule
+- [scripts/30_filter_designs.py](scripts/30_filter_designs.py) — the three-stage design funnel: per-design gates, error isolation, resumable JSONL/CSV verdicts
+- [scripts/31_screen_summaries.py](scripts/31_screen_summaries.py) — replay the stage-3 gates over every tracked `summary.json` (no GPU) to get the expected pass rate and the binding gate
+- [scripts/32_check_sequence_novelty.py](scripts/32_check_sequence_novelty.py) — pairwise sequence identity of designs vs the HG series (novelty gate, half 2); no cluster needed
+- [scripts/36_score_v2_weighted.py](scripts/36_score_v2_weighted.py) — scorer v2: per-contact crystal targets, real dihedral, weighted geometric mean, and K5 from replicate seeds
+- [scripts/37_measure_crystal_reference.py](scripts/37_measure_crystal_reference.py) — measure the 7K4U reference geometry (distance, angle, dihedral) and check it against textbook H-bond values
+- [scripts/39_validate_scorer.py](scripts/39_validate_scorer.py) — validate the scorer on three cases with known answers (crystal + perturbation, a real enzyme, a collapsed design) and write the report
 - [scripts/31_measure_reference_geometry.py](scripts/31_measure_reference_geometry.py) — catalytic geometry targets measured from PDB 4BS0 (HG3.17 + 6NT)
 - [scripts/32_kemp_family_geometry.py](scripts/32_kemp_family_geometry.py) — measures catalytic geometry across all 97 PDB 'kemp eliminase' entries
 - [scripts/33_analyze_oversampling.py](scripts/33_analyze_oversampling.py) — reads a sweep's `geometry.tsv`: instrument check, sequence-vs-backbone verdict, what predicts the base contact
 - [scripts/34_plot_contact_vs_rmsd.py](scripts/34_plot_contact_vs_rmsd.py) — the talk's figure: base contact vs CA RMSD per sweep, with the crystal window as a band
+- [scripts/40_score_metrics_pack.py](scripts/40_score_metrics_pack.py) — score a share_metrics_pack (Boltz-2 cifs + manifest) with scorer v2, weighted K1-K5; `--target=family` uses the 23-crystal medians
+- [scripts/41_k5_seeds.sbatch](scripts/41_k5_seeds.sbatch) — Slurm: refold a directory of Boltz-2 queries at seeds 1-5 for K5
+- [scripts/42_rank_stability.py](scripts/42_rank_stability.py) — rank stability of the K1-K5 ranking under variants (OD2-only base, angle at the heteroatom vs crystal range, K6, mean-of-metrics, worst seed)
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [scripts/91_bank_from_sweep.py](scripts/91_bank_from_sweep.py) — promote a sweep's best designs into `results/designs.jsonl`, verifying the base/donor residue at each index
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
@@ -142,10 +161,94 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/designs_combined_recommended.fasta](results/designs_combined_recommended.fasta) — the 8-design combined submission file the fresh-seed ranking supports (names `<source>_<design>`); validator ACCEPTED; **not uploaded by us**
 - [results/designs_swapped_18.fasta](results/designs_swapped_18.fasta) — the teammate's uploaded 20-design file (12:16 UTC) with four weak or gate-failing designs swapped for `janis_JJ10` and `mario_s100_446` and our designs relabelled `chris_`; validator ACCEPTED; **not uploaded by us**
 - [results/oversample_a_seed4_job27_contact_vs_rmsd.png](results/oversample_a_seed4_job27_contact_vs_rmsd.png) — **the figure**: the fold is reproduced, the catalytic contact is not
+- [results/affinity/](results/affinity/) — zonghu-02 evidence: HG-series sequences (`hg3*.fasta`; **PDB numbering is sequence index −3**), published kinetics, controls, and the verdict that refuted the affinity ladder
+- [results/theozyme/theozyme_7k4u_core.pdb](results/theozyme/theozyme_7k4u_core.pdb) — zonghu-01 input: HG3 K50Q motif from 7K4U (TRP44+GLN50+ASP127+6NT), crystal geometry
+- [results/theozyme/theozyme_7k4u_core_trpopt.pdb](results/theozyme/theozyme_7k4u_core_trpopt.pdb) — zonghu-01 input: same motif, TRP44 repositioned to an idealised π-stack; base/donor/ligand unchanged
+- [results/theozyme/theozyme_7k4u_core_trpopt2.pdb](results/theozyme/theozyme_7k4u_core_trpopt2.pdb) — zonghu-01 repaired input: idealised π-stack with crystal-calibrated clearance for the TRP44 attachment end
 - [results/reference_kemp-1_summary.json](results/reference_kemp-1_summary.json) — verified reference run (cluster job 1); the baseline we must beat
+- [results/zonghu-01_trpopt_kemp-7_summary.json](results/zonghu-01_trpopt_kemp-7_summary.json) — zonghu-01 job 7: custom theozyme runs end-to-end, but Boltz-2 put the ligand 12 Å from the base; not a candidate
+- [results/zonghu-01_trpopt_kemp-7_validation-warnings.jsonl](results/zonghu-01_trpopt_kemp-7_validation-warnings.jsonl) — zonghu-01 job 7: the 2 expected launcher warnings from the extended motif
 - [results/kemp_family_geometry.tsv](results/kemp_family_geometry.tsv) — **the geometry target**: 43 ligand copies from 23 crystal structures
 - [results/sweep_kemp-2_summary.json](results/sweep_kemp-2_summary.json) — chris-02 seed 2: collapsed refold (CA RMSD 14.6 Å)
 - [results/sweep_kemp-3_summary.json](results/sweep_kemp-3_summary.json) — chris-02 seed 3: folded, base contact drifted to 8.33 Å
 - [results/sweep_kemp-4_summary.json](results/sweep_kemp-4_summary.json) — chris-02 seed 4: **best design so far**, beats the baseline; novelty unchecked
 - [results/sweep_kemp-5_summary.json](results/sweep_kemp-5_summary.json) — chris-02 seed 5: collapsed refold (CA RMSD 13.7 Å)
+- [results/criteria/](results/criteria/) — scorer v2 evidence: the five criteria measured per design, TM-scores vs 7K4U for the novelty gate, seed-replicate consistency, and `scorer_validation.md`
+- [results/criteria/metrics_pack_weighted_v2.tsv](results/criteria/metrics_pack_weighted_v2.tsv) — all 57 pack structures, weighted K1-K5 (7K4U targets)
+- [results/criteria/metrics_pack_novelty.tsv](results/criteria/metrics_pack_novelty.tsv) — novelty gate (qTM family/PDB, identity to HG) for the pack seed4 designs
+- [results/criteria/metrics_pack_novelty_raw.txt](results/criteria/metrics_pack_novelty_raw.txt) — raw foldseek/identity output behind the novelty table
+- [results/criteria/family_motifs_k5_seeds_v2.tsv](results/criteria/family_motifs_k5_seeds_v2.tsv) — 640 per-seed K1-K5 scores of the 128 family-motifs designs
+- [results/criteria/family_motifs_k5_ranking.txt](results/criteria/family_motifs_k5_ranking.txt) — family-motifs ranking by 5-seed mean weighted K1-K5
+- [results/structures/](results/structures/) — PDBs of s068, s024, s042, s006, s004 (best seed) with Base/Donor marked (B-factor 100) + PyMOL scripts
+- [results/criteria/newseq_s4_k5_k6.tsv](results/criteria/newseq_s4_k5_k6.tsv) — 15 new seed-4-backbone sequences (job 101/102) x 5 seeds, K1-K6 per structure
+- [results/criteria/chris_replicates_k5_k6.tsv](results/criteria/chris_replicates_k5_k6.tsv) — chris' 45 replicated designs x 5 seeds (chris_autopilot replicate-90/100), K1-K6 per structure
+- [results/criteria/rank_stability.tsv](results/criteria/rank_stability.tsv) — scores and ranks of all 198 five-seed designs under the six scoring variants
+- [results/criteria/jj_hackathon_final_k5_k6.tsv](results/criteria/jj_hackathon_final_k5_k6.tsv) — JJ's 10 RFD4-Proteina designs (Hackathon_Kemp_JJ_Final) x 5 Boltz diffusion samples, K1-K6 per structure
+- [results/criteria/jj_hackathon_final_5seeds_k5_k6.tsv](results/criteria/jj_hackathon_final_5seeds_k5_k6.tsv) — top 5 JJ designs refolded at real Boltz seeds 1-5 (job 103), K1-K6 per structure
+- [results/candidates/ranking_k1_k6.md](results/candidates/ranking_k1_k6.md) — top 15 designs by weighted K1-K6 (5-seed means) with the meaning of every column
+- [results/candidates/ranking_all_k1_k6.md](results/candidates/ranking_all_k1_k6.md) — combined top 25 of all 198 designs (all sources) by K1-K6, with comparison by source
+- [results/candidates/candidates.csv](results/candidates/candidates.csv) — 10 candidate sequences (name, source, length, sequence, base/donor index); zips and confidence jsons per seed next to it
+- [results/criteria/metrics_pack_weighted_family.tsv](results/criteria/metrics_pack_weighted_family.tsv) — same, with the 23-crystal median distance targets
 - [notebooks/](notebooks/) — exploration only, one folder per person (`notebooks/<handle>/`); outputs stripped on commit
+
+- [results/candidates/arms_97_s008.zip](results/candidates/arms_97_s008.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/arms_97_s008_seed1.confidence.json](results/candidates/arms_97_s008_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_97_s008_seed2.confidence.json](results/candidates/arms_97_s008_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_97_s008_seed3.confidence.json](results/candidates/arms_97_s008_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_97_s008_seed4.confidence.json](results/candidates/arms_97_s008_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_97_s008_seed5.confidence.json](results/candidates/arms_97_s008_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s010.zip](results/candidates/arms_98_s010.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/arms_98_s010_seed1.confidence.json](results/candidates/arms_98_s010_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s010_seed2.confidence.json](results/candidates/arms_98_s010_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s010_seed3.confidence.json](results/candidates/arms_98_s010_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s010_seed4.confidence.json](results/candidates/arms_98_s010_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s010_seed5.confidence.json](results/candidates/arms_98_s010_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s057.zip](results/candidates/arms_98_s057.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/arms_98_s057_seed1.confidence.json](results/candidates/arms_98_s057_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s057_seed2.confidence.json](results/candidates/arms_98_s057_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s057_seed3.confidence.json](results/candidates/arms_98_s057_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s057_seed4.confidence.json](results/candidates/arms_98_s057_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s057_seed5.confidence.json](results/candidates/arms_98_s057_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s060.zip](results/candidates/arms_98_s060.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/arms_98_s060_seed1.confidence.json](results/candidates/arms_98_s060_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s060_seed2.confidence.json](results/candidates/arms_98_s060_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s060_seed3.confidence.json](results/candidates/arms_98_s060_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s060_seed4.confidence.json](results/candidates/arms_98_s060_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/arms_98_s060_seed5.confidence.json](results/candidates/arms_98_s060_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s007.zip](results/candidates/ns4_s007.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/ns4_s007_seed1.confidence.json](results/candidates/ns4_s007_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s007_seed2.confidence.json](results/candidates/ns4_s007_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s007_seed3.confidence.json](results/candidates/ns4_s007_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s007_seed4.confidence.json](results/candidates/ns4_s007_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s007_seed5.confidence.json](results/candidates/ns4_s007_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s018.zip](results/candidates/ns4_s018.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/ns4_s018_seed1.confidence.json](results/candidates/ns4_s018_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s018_seed2.confidence.json](results/candidates/ns4_s018_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s018_seed3.confidence.json](results/candidates/ns4_s018_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s018_seed4.confidence.json](results/candidates/ns4_s018_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s018_seed5.confidence.json](results/candidates/ns4_s018_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s087.zip](results/candidates/ns4_s087.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/ns4_s087_seed1.confidence.json](results/candidates/ns4_s087_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s087_seed2.confidence.json](results/candidates/ns4_s087_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s087_seed3.confidence.json](results/candidates/ns4_s087_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s087_seed4.confidence.json](results/candidates/ns4_s087_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s087_seed5.confidence.json](results/candidates/ns4_s087_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s122.zip](results/candidates/ns4_s122.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/ns4_s122_seed1.confidence.json](results/candidates/ns4_s122_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s122_seed2.confidence.json](results/candidates/ns4_s122_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s122_seed3.confidence.json](results/candidates/ns4_s122_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s122_seed4.confidence.json](results/candidates/ns4_s122_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/ns4_s122_seed5.confidence.json](results/candidates/ns4_s122_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s024.zip](results/candidates/seed4_s024.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/seed4_s024_seed1.confidence.json](results/candidates/seed4_s024_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s024_seed2.confidence.json](results/candidates/seed4_s024_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s024_seed3.confidence.json](results/candidates/seed4_s024_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s024_seed4.confidence.json](results/candidates/seed4_s024_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s024_seed5.confidence.json](results/candidates/seed4_s024_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s068.zip](results/candidates/seed4_s068.zip) — 5 Boltz-2 seed structures of this candidate (zip)
+- [results/candidates/seed4_s068_seed1.confidence.json](results/candidates/seed4_s068_seed1.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s068_seed2.confidence.json](results/candidates/seed4_s068_seed2.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s068_seed3.confidence.json](results/candidates/seed4_s068_seed3.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s068_seed4.confidence.json](results/candidates/seed4_s068_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates/seed4_s068_seed5.confidence.json](results/candidates/seed4_s068_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
+- [results/candidates_chris_zonghu.zip](results/candidates_chris_zonghu.zip) — archive of results/candidates/ (csv, zips, confidence jsons) for sharing

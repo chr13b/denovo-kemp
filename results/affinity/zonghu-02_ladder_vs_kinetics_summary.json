@@ -1,0 +1,67 @@
+{
+  "finished": "2026-11-21T17:02:02+0100",
+  "ok": true,
+  "rows": [
+    {
+      "variant": "HG3",
+      "kcat_over_KM": 160,
+      "log10_eff": 2.2041199826559246,
+      "ts_mean": 2.062018394470215,
+      "ts_sd": 0.17443291654117488,
+      "ts_sem": 0.10070889132057885,
+      "sub_mean": 1.243723193804423,
+      "sub_sem": 0.06237419771710848,
+      "prod_mean": 1.5771431525548298,
+      "prod_sem": 0.05244441152007877,
+      "ddg_sub_minus_ts": -1.1163566941684973,
+      "ddg_sub_sem": 0.16160897463141544,
+      "ddg_prod_minus_ts": -0.6614895476698327,
+      "ddg_prod_sem": 0.1549047968462017
+    },
+    {
+      "variant": "HG3.7",
+      "kcat_over_KM": 28000,
+      "log10_eff": 4.447158031342219,
+      "ts_mean": 2.003044843673706,
+      "ts_sd": 0.2023586797119289,
+      "ts_sem": 0.11683183820453942,
+      "sub_mean": 1.258962909380595,
+      "sub_sem": 0.12765998043098187,
+      "prod_mean": 1.4871935844421387,
+      "prod_sem": 0.07280882159354772,
+      "ddg_sub_minus_ts": -1.0151114752745778,
+      "ddg_sub_sem": 0.2360846868392255,
+      "ddg_prod_minus_ts": -0.7037484833955511,
+      "ddg_prod_sem": 0.18780484174423723
+    },
+    {
+      "variant": "HG3.17",
+      "kcat_over_KM": 170000,
+      "log10_eff": 5.230448921378274,
+      "ts_mean": 2.060133775075277,
+      "ts_sd": 0.11827338608370354,
+      "ts_sem": 0.06828517129339479,
+      "sub_mean": 1.5449241002400715,
+      "sub_sem": 0.06707049858871537,
+      "prod_mean": 1.366701602935791,
+      "prod_sem": 0.07746600674897128,
+      "ddg_sub_minus_ts": -0.7028732038690793,
+      "ddg_sub_sem": 0.13057857297412112,
+      "ddg_prod_minus_ts": -0.9460126940618364,
+      "ddg_prod_sem": 0.14088018911538522
+    }
+  ],
+  "fold_change": 1062.5,
+  "expected_ddg_kcal": 4.128659885515289,
+  "observed_ddg_sub_minus_ts_kcal": 0.413483490299418,
+  "observed_ddg_sem": 0.20776964263668393,
+  "fraction_of_expected": 0.10014956469290567,
+  "observed_ts_leg_shift_kcal": -0.002571086174997745,
+  "ts_leg_fraction_of_expected": 0.0006227410942756436,
+  "rank_order_matches": true,
+  "ddg_sign_correct": [
+    false,
+    false,
+    false
+  ]
+}

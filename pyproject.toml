@@ -6,7 +6,9 @@ readme = "README.md"
 requires-python = ">=3.10"
 # Add deps with `uv add <pkg>` (it updates uv.lock too) and give the reason in a log/ entry.
 dependencies = [
+    "biotite>=1.2.0",
     "matplotlib>=3.10.9",
+    "numpy>=2.2.6",
 ]
 
 [dependency-groups]

@@ -1,0 +1,58 @@
+id	group	mode	base_res	base_d	donor_res	donor_d	approach_dev	burial	ipde	s_dist	s_approach	s_ipde	s_burial	K5	WEIGHTED	manifest_D
+best__seed4__s042	best	declared	ASP86	2.45	GLN52	3.37	18	50	1.229	0.972	0.768	0.984	1.000		0.9212	2.62
+best__seed4__s024	best	declared	ASP86	2.49	GLN52	3.53	27	48	1.157	0.926	0.545	0.992	0.933		0.8183	3.0
+best__seed4__s004	best	declared	ASP86	3.04	GLN52	3.31	49	47	0.988	0.839	0.142	1.000	0.900		0.5531	6.43
+best__seed4__s006	best	declared	ASP86	2.90	GLN52	3.39	46	47	1.441	0.911	0.172	0.942	0.900		0.5936	8.12
+best__seed4__s059	best	declared	ASP86	2.59	GLN52	3.48	93	45	1.653	0.945	0.001	0.876	0.833		0.1482	8.73
+best__seed4__s019	best	declared	ASP86	3.03	GLN52	3.24	54	47	1.093	0.841	0.095	0.997	0.900		0.4985	8.86
+best__seed4__s069	best	declared	ASP86	2.38	GLN52	4.46	35	48	1.256	0.331	0.378	0.980	0.933		0.4981	10.01
+best__seed12__s001	best	inferred	ASP186	2.40	SER103	2.63	30	50	1.421	0.274	0.472	0.947	1.000		0.4936	10.41
+best__seed12__s003	best	inferred	ASP186	3.11	GLN101	3.14	90	47	1.913	0.797	0.001	0.773	0.900		0.1572	10.45
+best__seed3__s035	best	inferred	ASP33	3.86	LYS196	3.53	98	50	1.696	0.294	0.000	0.861	1.000		0.0793	10.59
+best__seed4__s025	best	declared	ASP86	3.52	GLN52	3.18	64	46	1.148	0.513	0.035	0.993	0.867		0.3166	10.65
+best__seed4__s068	best	declared	ASP86	2.73	GLN52	3.90	39	48	0.834	0.711	0.292	1.000	0.933		0.6294	10.78
+worst_seed4__seed4__s001	worst_seed4	declared	ASP86	9.70	GLN52	8.52	152	47	0.906	0.000	0.000	1.000	0.900		0.0000	60.39
+worst_seed4__seed4__s020	worst_seed4	declared	ASP86	10.92	GLN52	7.31	153	48	1.016	0.000	0.000	1.000	0.933		0.0000	62.73
+worst_seed4__seed4__s046	worst_seed4	declared	ASP86	10.22	GLN52	8.54	151	47	1.305	0.000	0.000	0.972	0.900		0.0000	64.7
+worst_seed4__seed4__s070	worst_seed4	declared	ASP86	10.10	GLN52	13.21	161	48	3.732	0.000	0.000	0.100	0.933		0.0000	80.04
+worst_seed4__seed4__s064	worst_seed4	declared	ASP86	17.52	GLN52	13.17	64	48	2.123	0.000	0.035	0.677	0.933		0.0001	110.12
+worst_seed4__seed4__s067	worst_seed4	declared	ASP86	15.91	GLN52	22.55	146	46	2.437	0.000	0.000	0.528	0.867		0.0000	141.0
+worst_seed4__seed4__s063	worst_seed4	declared	ASP86	22.28	GLN52	20.64	161	46	2.992	0.000	0.000	0.294	0.867		0.0000	159.65
+worst_seed4__seed4__s044	worst_seed4	declared	ASP86	23.15	GLN52	19.38	143	46	2.171	0.000	0.000	0.655	0.867		0.0000	161.02
+spread_seed4__seed4__s049	spread_seed4	declared	ASP86	2.75	GLN52	4.96	122	47	1.174	0.115	0.000	0.991	0.900		0.0185	16.85
+spread_seed4__seed4__s036	spread_seed4	declared	ASP86	4.85	GLN52	3.70	93	48	1.192	0.024	0.001	0.989	0.933		0.0372	18.46
+spread_seed4__seed4__s009	spread_seed4	declared	ASP86	2.72	GLN52	5.46	123	50	1.881	0.029	0.000	0.787	1.000		0.0099	22.99
+spread_seed4__seed4__s048	spread_seed4	declared	ASP86	4.00	GLN52	3.70	110	47	1.365	0.225	0.000	0.960	0.900		0.0417	24.81
+spread_seed4__seed4__s065	spread_seed4	declared	ASP86	6.60	GLN52	3.88	87	47	1.111	0.000	0.002	0.996	0.900		0.0023	28.64
+spread_seed4__seed4__s060	spread_seed4	declared	ASP86	4.72	GLN52	4.37	155	49	1.384	0.036	0.000	0.955	0.967		0.0017	30.16
+spread_seed4__seed4__s057	spread_seed4	declared	ASP86	6.29	GLN52	4.28	119	48	1.507	0.000	0.000	0.924	0.933		0.0011	31.33
+spread_seed4__seed4__s045	spread_seed4	declared	ASP86	5.23	GLN52	4.89	113	47	1.036	0.006	0.000	1.000	0.900		0.0092	33.09
+spread_seed4__seed4__s058	spread_seed4	declared	ASP86	5.15	GLN52	4.42	153	46	1.695	0.009	0.000	0.861	0.867		0.0011	34.37
+spread_seed4__seed4__s030	spread_seed4	declared	ASP86	4.74	GLN52	5.56	157	47	1.022	0.021	0.000	1.000	0.900		0.0012	35.55
+spread_seed4__seed4__s027	spread_seed4	declared	ASP86	4.34	GLN52	5.97	161	47	1.170	0.005	0.000	0.991	0.900		0.0006	36.64
+spread_seed4__seed4__s032	spread_seed4	declared	ASP86	8.13	GLN52	4.82	143	45	1.499	0.000	0.000	0.926	0.833		0.0000	43.3
+midrange_Trp44__Trp44__s041	midrange_Trp44	inferred	ASP54	2.95	ASN176	4.33	86	39	2.056	0.410	0.002	0.708	0.633		0.1282	75.28
+midrange_Trp44__Trp44__s061	midrange_Trp44	inferred	ASP177	8.03	SER99	4.02	120	47	3.123	0.000	0.000	0.249	0.900		0.0000	108.58
+midrange_seed3__seed3__s015	midrange_seed3	inferred	ASP7	3.65	GLN198	2.80	94	47	1.907	0.422	0.001	0.776	0.900		0.1026	34.19
+midrange_seed3__seed3__s004	midrange_seed3	inferred	ASP7	7.88	GLN198	3.09	139	50	1.197	0.000	0.000	0.988	1.000		0.0000	52.43
+midrange_8USL_B__8USL_B__s008	midrange_8USL_B	inferred	GLU240	3.89	ASN177	6.41	144	30	3.366	0.001	0.000	0.178	0.333		0.0005	51.2
+midrange_8USL_B__8USL_B__s014	midrange_8USL_B	inferred	ASP141	10.45	SER138	6.52	105	16	2.573	0.000	0.000	0.466	0.000		0.0000	96.32
+replicated__s024__seed1	replicated_5seeds	declared	ASP86	2.51	GLN52	3.52	38	48	1.156	0.932	0.301	0.992	0.933	0.270	0.6096	4.79
+replicated__s024__seed2	replicated_5seeds	declared	ASP86	2.48	GLN52	3.57	24	49	1.144	0.908	0.635	0.994	0.967	0.270	0.7159	3.52
+replicated__s024__seed3	replicated_5seeds	declared	ASP86	3.78	GLN52	5.53	99	48	1.304	0.023	0.000	0.972	0.933	0.270	0.0400	29.59
+replicated__s024__seed4	replicated_5seeds	declared	ASP86	2.55	GLN52	3.84	34	49	1.155	0.750	0.384	0.993	0.967	0.270	0.6019	5.34
+replicated__s024__seed5	replicated_5seeds	declared	ASP86	2.50	GLN52	3.59	29	48	1.253	0.898	0.494	0.980	0.933	0.270	0.6702	3.52
+replicated__s059__seed1	replicated_5seeds	declared	ASP86	4.69	GLN52	4.52	166	46	1.786	0.039	0.000	0.826	0.867	0.245	0.0028	31.99
+replicated__s059__seed2	replicated_5seeds	declared	ASP86	2.62	GLN52	3.88	111	46	1.744	0.724	0.000	0.843	0.867	0.245	0.0755	11.3
+replicated__s059__seed3	replicated_5seeds	declared	ASP86	2.72	GLN52	3.82	100	47	1.714	0.761	0.000	0.854	0.900	0.245	0.1176	11.04
+replicated__s059__seed4	replicated_5seeds	declared	ASP86	2.63	GLN52	4.85	82	45	1.722	0.149	0.004	0.851	0.833	0.245	0.1220	15.95
+replicated__s059__seed5	replicated_5seeds	declared	ASP86	3.41	GLN52	3.93	95	46	2.050	0.587	0.001	0.711	0.867	0.245	0.1237	17.9
+replicated__seed4_original__seed1	replicated_5seeds	declared	ASP86	2.81	GLN52	3.97	106	49	1.652	0.661	0.000	0.877	0.967	0.016	0.0606	18.31
+replicated__seed4_original__seed2	replicated_5seeds	declared	ASP86	6.17	GLN52	7.08	141	50	1.748	0.000	0.000	0.841	1.000	0.016	0.0005	41.99
+replicated__seed4_original__seed3	replicated_5seeds	declared	ASP86	3.86	GLN52	3.55	115	47	1.642	0.293	0.000	0.880	0.900	0.016	0.0324	24.19
+replicated__seed4_original__seed4	replicated_5seeds	declared	ASP86	2.70	GLN52	3.31	87	47	1.469	0.981	0.002	0.934	0.900	0.016	0.1326	15.94
+replicated__seed4_original__seed5	replicated_5seeds	declared	ASP86	3.05	GLN52	4.53	118	48	1.568	0.292	0.000	0.905	0.933	0.016	0.0282	21.15
+natural__4BS0	natural_control	inferred	ASP129	2.19	GLN209	5.98	54	47	3.303	0.005	0.096	0.194	0.900		0.0496
+natural__3NYD	natural_control	inferred	ASP127	2.79	GLN207	4.64	114	50	2.199	0.236	0.000	0.641	1.000		0.0339
+natural__7K4U	natural_control	inferred	ASP132	2.45	GLN212	3.22	73	45	1.445	0.969	0.013	0.940	0.833		0.3052
+crystal__4BS0	crystal	inferred	ASP127	2.53	GLN50	3.10	11	54		0.965	0.900		1.000		0.9513

@@ -11,7 +11,14 @@ from __future__ import annotations
 
 import argparse
 import re
+import sys
 from pathlib import Path
+
+# The wiki is UTF-8 and experiment questions contain characters like the pi in
+# "pi-stack". On Windows, stdout defaults to cp1252, so printing one of those
+# raises UnicodeEncodeError and takes `make check` down with it. Force UTF-8.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 ROOT = Path(__file__).resolve().parents[1]
 EXP_DIR = ROOT / "wiki" / "experiments"
