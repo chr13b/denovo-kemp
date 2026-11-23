@@ -132,7 +132,9 @@ intact in all 216 arm sequences (72 of 72 in every arm).
 * **Polar-down:** S, T, N, Q, H shifted by -1.5 at the 11 sites. The crystals have about 2.1 polar residues within 4.5 A
   of the ligand (about 1 once the pinned Gln50 is removed); our designs with the ligand in place have 4.5.
 * **Aromatic** (not run to completion): W +3.0, F and Y +2.25 at the 11 sites. No design had any aromatic residue there
-  although the crystal ring is stacked by Trp44.
+  although the crystal ring is stacked by Trp44. Smoke-tested on the head node (12 sequences per setting, T 0.3, seed 5): scale 3
+  put 1.4 aromatics per sequence at the 11 pocket positions, with at least one in 10 of 12 sequences; half the strength gave
+  0.2 per sequence and scale 5 gave 7.8 of 11 (`cluster/make_arm_inputs.py`). Composition was checked, geometry was not.
 * **Close variants of a parent:** +1.5 toward the parent's own residue at a random 88 % of the non-pinned positions
   (seed 7); the other 12 % (31 positions) are left free. Calibrated on the head node: push 1.0 gave 83-89 % identity to
   the parent, 1.5 gave 89-93 %, 2.5 gave 93-97 %.
