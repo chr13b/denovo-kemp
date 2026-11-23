@@ -110,7 +110,7 @@ means the GitHub-side rule is probably not available, and that is fine.
 **With the GitHub CLI** (`gh auth login` once, then copy-paste):
 
 ```bash
-gh api -X PUT repos/chr13b/kemp-challenge/branches/main/protection \
+gh api -X PUT repos/chr13b/denovo-kemp/branches/main/protection \
   -H "Accept: application/vnd.github+json" \
   -F required_status_checks[strict]=true \
   -F 'required_status_checks[contexts][]=check' \
@@ -130,7 +130,7 @@ personal branches, leave "Automatically delete head branches" **off**.
 
 ### The plan caveat (checked 2026-11-21: it applies to us)
 
-`chr13b/kemp-challenge` is a **private** repo. Per
+`chr13b/denovo-kemp` was a **private** repo. Per
 [GitHub's docs](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule),
 branch protection and rulesets work on private repos only with **Pro, Team or Enterprise** — a free
 personal account gets them on public repos only. Once the repository is public this caveat no longer applies,

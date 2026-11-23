@@ -94,3 +94,18 @@ entry that names the old one.
   what was done in minutes, and the full commit history shows how it developed.
 - **Alternatives:** publish from a squashed history (rejected: the history is part of the record); publish `chris` and leave the teammates' branches separate (their work would not be in the
   public branch).
+
+## 2026-11-23 · Redact the cluster address and the team account id, `raw/` included (chris)
+- **Decision:** the cluster IP and the team AWS account id were replaced by `<CLUSTER_IP>` and `<TEAM_AWS_ACCOUNT_ID>` in
+  `raw/20261121_organizers_connect-team01.txt`, `SETUP.md`, `wiki/cluster.md` and `onboard.sh` (which now reads
+  `KEMP_CLUSTER_IP` from the environment and skips the cluster step without it). This is the one deliberate exception to
+  "`raw/` is immutable", made by the repository owner before publication.
+- **Why:** neither value is needed to understand the work, and a public repository should not advertise them.
+- **Alternatives:** leave them (they are in the git history either way: history is kept, so the values remain recoverable
+  from old commits); publish from a squashed history (rejected, the history is part of the record).
+
+## 2026-11-23 · Publish as `denovo-kemp`, described as a research project (chris)
+- **Decision:** the repository is renamed `denovo-kemp`. The README presents the work as an in-silico research project and
+  no longer leads with the event it was done at; the wiki keeps the full context.
+- **Why:** the name says what the repository is, and the README should be read for the method and the measurements.
+- **Alternatives:** `kemp-replicate`, `fold-twice`.

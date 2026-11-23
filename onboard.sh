@@ -23,7 +23,8 @@ while [ $# -gt 0 ]; do
     esac
 done
 
-HOST_IP="35.181.61.66"
+# The cluster address is not published in this repository: export KEMP_CLUSTER_IP from your connect file.
+HOST_IP="${KEMP_CLUSTER_IP:-}"
 HOST_USER="ec2-user"
 HOST_ALIAS="pdh-team"
 # From raw/20261121_organizers_connect-team01.txt. Verified against the live host 2026-11-21.
@@ -118,6 +119,10 @@ fi
 step "4/6  Cluster key"
 
 KEYDEST="$HOME/.ssh/pdh-team-01.pem"
+if [ -z "$HOST_IP" ] && [ "$SKIP_CLUSTER" != "1" ]; then
+    warn "KEMP_CLUSTER_IP is not set, so the cluster step is skipped"
+    SKIP_CLUSTER=1
+fi
 if [ "$SKIP_CLUSTER" = "1" ]; then
     warn "skipped (--skip-cluster). Re-run without it once you have the key."
 elif [ -f "$KEYDEST" ]; then

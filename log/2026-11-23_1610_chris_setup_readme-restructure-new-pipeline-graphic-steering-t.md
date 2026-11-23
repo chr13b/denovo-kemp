@@ -1,0 +1,7 @@
+# [2026-11-23 16:10] setup | README restructure, new pipeline graphic, steering toolbox, redactions, repo name denovo-kemp (chris)
+
+- README: the de novo design section (with the structure render) now follows the one-minute introduction directly; the intro lists the design choices (crystal-derived theozyme tolerances, all-atom motif scaffolding, steered inverse folding, cofolding in the loop, held-out-seed statistics) and states reproducibility. `refold_gap.png` moved into "How it works". The "at a glance" table moved into the funnel section. The event name no longer appears in the README, the banner or the social-preview image.
+- LigandMPNN levers listed in one table, all from `wiki/approach.md`: catalytic pinning, parent-directed bias (+1.5, 88 % of free positions), polar-down (-1.5 on S, T, N, Q, H), aromatic stacking (W +3.0, F and Y +2.25; built, not run to completion), temperature. The polar-down result is stated as measured: polarity -58 % as designed, geometry unchanged (p = 0.21).
+- New `docs/img/pipeline.svg`, drawn by `tools/draw_pipeline_svg.py` (reproduces the file exactly). `make reproduce` now also redraws the data figures; before, it ran only the smoke test.
+- Redacted the cluster IP and team AWS account id, `raw/` included, at the owner's explicit request (decision record in `wiki/decisions.md`). They remain in git history.
+- Repo name in the README, `SETUP.md` and `CONTRIBUTING.md` points to `chr13b/denovo-kemp`. The rename itself is done in the GitHub settings; the local `origin` stays on the old URL until then.

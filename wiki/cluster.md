@@ -13,7 +13,7 @@ First-time setup of the key and SSH config is in [../SETUP.md](../SETUP.md).
 ## Connect
 
 ```bash
-ssh pdh-team          # head node: ec2-user@35.181.61.66
+ssh pdh-team          # head node: ec2-user@<CLUSTER_IP>
 ```
 
 Verified host fingerprint (ED25519): `SHA256:3HYAek1L/uZ+NT9YtwYhFBd9FUuz0vW06FWAurPTQWk`.

@@ -41,5 +41,6 @@ submission:  # results/designs.jsonl -> results/designs.fasta, with all format r
 lock:  # after editing deps in pyproject.toml by hand or after a merge conflict (prefer `uv add <pkg>`)
 	uv lock
 
-reproduce:  # FULL pipeline from a fresh clone -> results/. Add every pipeline stage here, in order.
+reproduce:  # everything that runs without the GPU cluster, from a fresh clone. Add every pipeline stage here, in order.
 	uv run --frozen python scripts/00_smoke.py
+	uv run --frozen python scripts/35_plot_readme_figures.py

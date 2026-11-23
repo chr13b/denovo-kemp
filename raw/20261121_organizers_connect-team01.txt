@@ -1,7 +1,7 @@
 Perlin x D-BSSE Protein Design Hackathon — team 01
 ==================================================
 
-Your cluster:   35.181.61.66
+Your cluster:   <CLUSTER_IP>   (redacted before publication)
 Your login:     ec2-user
 Your key:       pdh-team-01.pem   (in this folder — keep it private to your team)
 
@@ -17,7 +17,7 @@ Server fingerprint, to check on first connection:
    C:\Users\YOUR_WINDOWS_USER\.ssh\config on Windows):
 
      Host pdh-team
-         HostName 35.181.61.66
+         HostName <CLUSTER_IP>
          User ec2-user
          IdentityFile /full/path/to/pdh-team-01.pem
          IdentitiesOnly yes
@@ -34,7 +34,7 @@ Then follow GUIDE.html from "Prepare the example".
 Submitting designs
 ------------------
 Your upload folder (sign in to your team AWS account first):
-  https://eu-west-3.console.aws.amazon.com/s3/buckets/perlin-pdh-2026-paris?region=eu-west-3&prefix=submissions/664683969945/
+  https://eu-west-3.console.aws.amazon.com/s3/buckets/perlin-pdh-2026-paris?region=eu-west-3&prefix=submissions/<TEAM_AWS_ACCOUNT_ID>/
 
 Opening the bucket from the S3 home page will show "Access denied" — that is
 expected. You can only see your own folder. Use the link above.

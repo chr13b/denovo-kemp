@@ -12,15 +12,15 @@ with Claude, or with clusters is assumed.
 ## ⚡ The fast path (about 3 minutes)
 
 **Two things first, or nothing below works:**
-1. Ask the repository owner to **invite your GitHub account** to `chr13b/kemp-challenge` (it was private during the hackathon; once it is public you can simply fork it).
+1. Ask the repository owner to **invite your GitHub account** to `chr13b/denovo-kemp` (it was private during the hackathon; once it is public you can simply fork it).
 2. Ask Chris for **`pdh-team-01.pem`** — directly, person to person. Save it to your Downloads folder.
    Never from a public link, never into this repo.
 
 Then paste this into a terminal (macOS/Linux/WSL, or **Git Bash** on Windows — not PowerShell):
 
 ```bash
-git clone https://github.com/chr13b/kemp-challenge.git
-cd kemp-challenge
+git clone https://github.com/chr13b/denovo-kemp.git
+cd denovo-kemp
 bash onboard.sh
 ```
 
@@ -63,7 +63,7 @@ Terminal on macOS/Linux). **repo** = this project folder. **cluster** = the shar
 |---|---|---|
 | **git** | shares code with the team | [git-scm.com/downloads](https://git-scm.com/downloads) |
 | **uv** | installs Python and our libraries, identically for everyone | [docs.astral.sh/uv](https://docs.astral.sh/uv/getting-started/installation/) |
-| **GitHub access** | you need to be a collaborator on `chr13b/kemp-challenge` | ask Chris to invite your GitHub account |
+| **GitHub access** | you need to be a collaborator on `chr13b/denovo-kemp` | ask the repository owner to invite your GitHub account |
 
 Check that they work (each should print a version):
 
@@ -75,8 +75,8 @@ uv --version
 ### 1.2 Get the repo
 
 ```bash
-git clone https://github.com/chr13b/kemp-challenge.git
-cd kemp-challenge
+git clone https://github.com/chr13b/denovo-kemp.git
+cd denovo-kemp
 ```
 
 If git asks for a password: GitHub does **not** accept your account password here. Use a **personal access
@@ -144,7 +144,7 @@ cp /path/to/pdh-team-01.pem ~/.ssh/ && chmod 600 ~/.ssh/pdh-team-01.pem
 cat >> ~/.ssh/config <<'EOF'
 
 Host pdh-team
-    HostName 35.181.61.66
+    HostName <CLUSTER_IP>
     User ec2-user
     IdentityFile ~/.ssh/pdh-team-01.pem
     IdentitiesOnly yes
@@ -161,7 +161,7 @@ icacls "$env:USERPROFILE\.ssh\pdh-team-01.pem" /inheritance:r /grant:r "$env:USE
 Add-Content "$env:USERPROFILE\.ssh\config" @"
 
 Host pdh-team
-    HostName 35.181.61.66
+    HostName <CLUSTER_IP>
     User ec2-user
     IdentityFile $env:USERPROFILE\.ssh\pdh-team-01.pem
     IdentitiesOnly yes
@@ -247,7 +247,7 @@ You do not have to use AI at all. Everything here works by hand.
 Paste this as your **first** message in a new session, from inside the repo folder:
 
 ```text
-You are helping me in the `kemp-challenge` repo for a 1-day protein-design hackathon
+You are helping me in the `denovo-kemp` repo for a 1-day protein-design hackathon
 (Perlin x D-BSSE, team 01). Before anything else, read AGENTS.md and INDEX.md in the repo
 root, then run `uv run python tools/status.py` to see where the team is.
 

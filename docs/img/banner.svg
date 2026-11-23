@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="340" viewBox="0 0 1280 340" role="img" aria-labelledby="t d">
-  <title id="t">Kemp Challenge</title>
-  <desc id="d">De novo Kemp eliminase design: backbone, sequence, refold, replicate. A schematic ligand with its two catalytic contacts.</desc>
+  <title id="t">denovo-kemp</title>
+  <desc id="d">Purely de novo Kemp eliminase design: backbone, steered sequence, cofold, replicate. A schematic ligand with its two catalytic contacts.</desc>
   <defs>
     <linearGradient id="chain" gradientUnits="userSpaceOnUse" x1="760" y1="0" x2="1240" y2="0">
       <stop offset="0" stop-color="#0151E2"/>
@@ -48,8 +48,9 @@
   <line x1="930" y1="93" x2="934" y2="224" stroke="#01EE92" stroke-width="2" opacity="0.35"/>
   <line x1="1092" y1="79" x2="1089" y2="212" stroke="#02C4F4" stroke-width="2" opacity="0.35"/>
 
-  <text x="64" y="132" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#FFFFFF" letter-spacing="-1">Kemp Challenge</text>
-  <text x="66" y="188" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="25" fill="#C9D3DB">De novo enzyme design where one fold is noise,</text>
-  <text x="66" y="222" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="25" fill="#C9D3DB">so every candidate is replicated before it counts.</text>
-  <text x="66" y="276" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16" fill="#7F8E99" letter-spacing="1.5">PERLIN × D-BSSE PROTEIN DESIGN HACKATHON  ·  TEAM 01</text>
+  <text x="64" y="132" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#FFFFFF" letter-spacing="-1">denovo-kemp</text>
+  <text x="66" y="186" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="24" fill="#C9D3DB">Purely de novo Kemp eliminase design.</text>
+  <text x="66" y="220" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="24" fill="#C9D3DB">Steered sampling, cofolding in the loop,</text>
+  <text x="66" y="254" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="24" fill="#C9D3DB">replication before anything counts.</text>
+  <text x="66" y="300" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" fill="#7F8E99" letter-spacing="1.5">IN SILICO ENZYME DESIGN  ·  RESEARCH PROJECT</text>
 </svg>
