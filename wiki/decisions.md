@@ -84,3 +84,13 @@ entry that names the old one.
   across instruments. It costs 19 s and it changes the meaning of every geometry number we report.
 - **Alternatives:** Trusting the crystal numbers directly (risks optimising toward an unreachable target);
   asking the organisers for the scorer's reference values (worth doing anyway, but slower than measuring).
+
+## 2026-11-23 · Publish `main` as the single public branch (chris)
+- **Decision:** `main` is the one branch we publish. The teammate branches `zonghu` and `flavia` were merged in alongside
+  `chris`, so scorer v2, the design filters, the pitch decks and the geometry module sit in one history. `README.md` was
+  rewritten for a reader outside the team, an MIT `LICENSE` was added, and stale status pages were tidied (the Status table
+  in `submission.md`, the roster in `team.md`, notes on `pitch.md`, `challenge.md`, `cluster.md` and `SETUP.md`).
+- **Why:** after the hackathon the repository is also the record of the work. One branch and one README let a reader see
+  what was done in minutes, and the full commit history shows how it developed.
+- **Alternatives:** publish from a squashed history (rejected: the history is part of the record); publish `chris` and leave the teammates' branches separate (their work would not be in the
+  public branch).

@@ -3,12 +3,16 @@
 Welcome! This is the one page you need on day one. No prior experience with this repo,
 with Claude, or with clusters is assumed.
 
+> **Note (2026-11-23).** Written for the hackathon team during the event (2026-11-21 and 2026-11-22). The invitation, key
+> and cluster steps below applied while the organizers' cluster was provided. The laptop side (`make setup`, `make check`)
+> works from a plain clone.
+
 ---
 
 ## ⚡ The fast path (about 3 minutes)
 
 **Two things first, or nothing below works:**
-1. Ask Chris to **invite your GitHub account** to `chr13b/kemp-challenge` (it's private).
+1. Ask the repository owner to **invite your GitHub account** to `chr13b/kemp-challenge` (it was private during the hackathon; once it is public you can simply fork it).
 2. Ask Chris for **`pdh-team-01.pem`** — directly, person to person. Save it to your Downloads folder.
    Never from a public link, never into this repo.
 

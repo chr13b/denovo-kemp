@@ -112,6 +112,8 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
 - [tools/new.py](tools/new.py) — create collision-free log entries and experiment pages (`log <type> "<title>"`, `exp <slug>`)
 - [tools/fetch_papers.sh](tools/fetch_papers.sh) — download the open-access literature into `data/papers/` (gitignored)
+- [tools/render_design.pml](tools/render_design.pml) — PyMOL script behind the README's design figure (overview and active-site close-up of one Boltz-2 refold)
+- [tools/compose_design_figure.py](tools/compose_design_figure.py) — composes those two renders into `docs/img/design_s010.png` with captions
 - [tools/novelty_check.sh](tools/novelty_check.sh) — TM-score a design against published structures; PASS/FAIL against the 0.7 gate
 - [tools/self_diversity.sh](tools/self_diversity.sh) — all-vs-all TM-score over OUR OWN candidates: how many distinct folds are we actually submitting?
 - [tools/make_share_pack.py](tools/make_share_pack.py) — bundle structures + our metrics for a teammate to test other metrics against (writes `data/`, gitignored)
@@ -146,7 +148,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 ## Artifacts
 - [data/](data/) — bulk inputs, gitignored; registry in `wiki/data.md`
 - [runs/](runs/) — one directory per execution, gitignored; linked from the experiment pages
-- [docs/img/](docs/img/) — README images: `banner.svg` plus the two figures `scripts/35_plot_readme_figures.py` draws
+- [docs/img/](docs/img/) — README images: `banner.svg`, `social-preview.png` (1280x640, for the GitHub repo card), `design_s010.png` (PyMOL render of a de novo design) and the two data figures `scripts/35_plot_readme_figures.py` draws
 - [results/](results/) — curated tracked outputs (figures, tables, the submission); each entry names its run
 - [results/designs.jsonl.template](results/designs.jsonl.template) — copy to `results/designs.jsonl`: our submission candidates
 - [results/designs.jsonl](results/designs.jsonl) — **our submission candidates**; rebuild the FASTA with `make submission`

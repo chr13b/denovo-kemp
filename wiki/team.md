@@ -1,18 +1,22 @@
 # Team
 
-**`bash onboard.sh` adds your row for you** — it asks for a handle and fills in the rest. Then edit your own
-row to say what you're good at and what you're taking on. Don't edit other people's rows; this file is
-union-merged, so two people adding rows at once will not conflict.
+**Add your own row** below the last one: a handle, your GitHub name, and what you are taking on. (`bash onboard.sh`
+used to insert it before a `TODO` placeholder row; that row is gone, so the script now tells you to add the row by
+hand.) Don't edit other people's rows; this file is union-merged, so two people adding rows at once will not conflict.
 
 Your handle is a short lowercase nickname; it goes into your branch names, experiment IDs and log entries.
 Full setup: [../SETUP.md](../SETUP.md). "Owns" = who reviews and decides, not the only person allowed to touch it.
 
+The roster is the state at the end of the hackathon (2026-11-21 to 2026-11-22). Each "Owns" cell says what the person
+demonstrably did, read from the git history, `wiki/experiments/` and `slides/`.
+
 | Handle | GitHub | Background / strengths | Owns | Current branch |
 |--------|--------|------------------------|------|----------------|
-| chris | chr13b | — | repo, cluster access, pipeline | `chris` |
-| zonghu | zonghu3112 | TODO: your background | TODO | `zonghu` |
-| flavia | flavinzgi | TODO: your background | TODO | `flavia` |
-| TODO | | | | |
+| chris | chr13b | — | repo, cluster access, pipeline; the sequence-sampling and five-seed replication route; ranking of every candidate on one instrument | `chris` |
+| zonghu | zonghu3112 | — | scorer v2 (weighted K1-K5), design-funnel filters, novelty gate, theozyme and affinity-ladder experiments (`zonghu-01` to `zonghu-04`) | `zonghu` |
+| flavia | flavinzgi | — | pitch decks (`slides/`), `src/kemp/geometry.py`, theozyme target geometry from PDB 7K4Z (`flavia-01`) | `flavia` |
+| janis (JJ) | - | — | the theozyme route with RFD4-Proteina; sent 10 designs (`Hackathon_Kemp_JJ_Final`) | no branch (sent designs and decks) |
+| mario | - | — | the combinatorial route (site assembled from four crystal structures, OpenFold3 refold as a gate); sent 20 designs (`mario_top20`) | no branch (sent designs and decks) |
 
 ## Working agreements
 
@@ -24,7 +28,13 @@ Full setup: [../SETUP.md](../SETUP.md). "Owns" = who reviews and decides, not th
 - Cluster etiquette: 2 GPU workers for the whole team, so say in the chat when you start a long job.
   Name your project folders `<handle>_<topic>` and never touch `/mnt/work/kemp_example`.
 
-## ⚠️ Every `kemp-e2e` job burns ~10 min of shared GPU on a stage that does nothing
+## Hackathon-era notes (kept for the lessons, no longer current)
+
+The cluster events described below were true on 2026-11-21 and are historical: the queue state, the dead nodes and the
+job numbers no longer apply. They stay because the lessons (a no-op stage, a requeue loop, one fold being noisier than
+the window) are the reasons the pipeline looks the way it does.
+
+### Every `kemp-e2e` job burned ~10 min of shared GPU on a stage that does nothing
 
 As of 2026-11-21 there are five `kemp-e2e` jobs queued behind one usable GPU. Each spends roughly
 **10 of its ~23 minutes** in the MMseqs2 stage, and chris-03 proved that stage is a **no-op** for de
@@ -48,7 +58,7 @@ geometry window we are aiming at. The same control sequence at the same `--seed 
 of 2.49 Å and 2.07 Å in two different batches, against a window 0.28 Å wide. A single design's
 geometry number is not a result — see `wiki/primer.md` §5(g5).
 
-## ⚠️ Cluster: the two l4small nodes are dead, and jobs asking for them hang forever
+### Cluster: the two l4small nodes were dead, and jobs asking for them hung forever
 
 `gpu-dy-l4small-1` and `-2` sit in `idle~`/`idle%` with reason "Scheduler health check" and Slurm
 will not resume them. We are not admins, so `scontrol update NodeName=... State=POWER_UP` returns
@@ -70,7 +80,7 @@ Check your own jobs with:
     squeue -o "%.6i %.14j %.9T %.6M %.18R"
     scontrol show job <id> | grep -E "Reason|Features"
 
-## For zonghu — please read before launching more backbones (chris, 2026-11-21)
+### For zonghu — please read before launching more backbones (chris, 2026-11-21)
 
 **UPDATE, after actually testing it (job 31):** I owe you a second correction, in the other
 direction. I said your Trp44 motif "was never refuted, only tested with one sequence" — true — and
@@ -132,7 +142,7 @@ still n = 1. So: **no evidence the third anchor helps, and no proof it hurts.** 
 Trp44 line on my say-so — two or three more RFD3 seeds with your motif would show whether the donor
 result repeats, and that is ~12 min each.
 
-## Division of labour (suggestion for the first hours)
+### Division of labour suggested for the first hours
 
 Discuss and overwrite. The point is that nobody waits on anybody.
 

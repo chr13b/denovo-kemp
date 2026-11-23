@@ -1,8 +1,16 @@
 # Pitch
 
-The story for the final presentation, kept current as results come in, so the slides take 30 minutes
-and not 3 hours. Every number here is read from a run's files and links to an experiment page.
-**Status: draft on real results as of 2026-11-21. The 5-seed replication (job 47) is in and has cut the headline from two designs to one.**
+The story for the final presentation, written so the slides take 30 minutes and not 3 hours. Every number here is
+read from a run's files and links to an experiment page.
+**Status: the 2026-11-21 pitch narrative, kept as written. It was a draft on real results as of that day, when the
+5-seed replication (job 47) had cut the headline from two designs to one.**
+
+> **Update (2026-11-23).** The body below is the state of 2026-11-21 and has not been rewritten. The final numbers are in
+> [approach.md](approach.md) (the technical description) and [ranking-combined.md](ranking-combined.md) (one ranking of
+> every team member's designs on one instrument, re-folded on fresh seeds 6, 7, 8, 9 and 0). The fresh-seed re-fold changed
+> one claim: **s024 no longer passes the pre-registered rule.** Its mean D was 9.4 on its first five-seed run and 16.1 on
+> the fresh seeds (limit 15), and no design passes the rule on fresh seeds
+> ([chris-08](experiments/chris-08_combined-candidates-refold.md)).
 
 ---
 
@@ -115,7 +123,9 @@ design-then-validate pipeline.
 | the pipeline we actually run | `cluster/` |
 | analysis in one command | `scripts/33_analyze_oversampling.py` |
 
-**Figure worth drawing (not yet made):** one scatter, base contact against CA RMSD, for the 72
-sequences of chris-04, with the 0.28 Å crystal window as a horizontal band and the two winners
-marked. It shows the whole argument at once — the backbone refolds reliably (points clustered at low
-RMSD) while the contact scatters over 20 Å, and the single original sequence sits outside the band.
+**The figure (now made):** base contact against CA RMSD for the 72 sequences of chris-04, with the 0.28 Å crystal
+window as a horizontal band, in
+[`results/oversample_a_seed4_job27_contact_vs_rmsd.png`](../results/oversample_a_seed4_job27_contact_vs_rmsd.png). It shows
+the whole argument at once — the backbone refolds reliably (points clustered at low RMSD) while the contact scatters over
+20 Å, and the single original sequence sits outside the band. A simpler version, the 72 contacts sorted against the
+window, is [`docs/img/refold_gap.png`](../docs/img/refold_gap.png), drawn by `scripts/35_plot_readme_figures.py`.

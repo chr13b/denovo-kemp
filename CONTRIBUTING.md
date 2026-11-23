@@ -133,7 +133,8 @@ personal branches, leave "Automatically delete head branches" **off**.
 `chr13b/kemp-challenge` is a **private** repo. Per
 [GitHub's docs](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule),
 branch protection and rulesets work on private repos only with **Pro, Team or Enterprise** — a free
-personal account gets them on public repos only.
+personal account gets them on public repos only. Once the repository is public this caveat no longer applies,
+but the trap below still does: test the rule.
 
 > **The trap:** on a private repo under a free account the ruleset form can let you save a rule and show it
 > as **Active while enforcing nothing**. So "I added the rule" is not evidence the rule works. If you set one

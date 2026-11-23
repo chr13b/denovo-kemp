@@ -9,6 +9,13 @@ Sources: [raw/20261121_organizers_start-here.md](../raw/20261121_organizers_star
 so render it to images to read it. Everything decision-relevant in it is distilled onto this page).
 Details on running jobs are in [cluster.md](cluster.md); the file format is in [submission.md](submission.md).
 
+> **Outcome (hackathon over, 2026-11-22).** The final 20-design file was uploaded by a teammate at 12:16 UTC
+> ([submission.md](submission.md), Status). The organizers did not release per-design scores to the team, so every
+> number in this wiki comes from our own instrument. The brief offered every team the chance to submit at least five
+> designs for lab validation, independent of score (section "Lab validation" below); how those five were nominated was
+> never stated to us. This page is kept as written during the event: the rules and the scoring description are
+> reference material, the checklist and the open questions are the record of what we knew at the time.
+
 ## Goal
 
 Design **Kemp eliminase** enzymes: protein sequences that catalyse the Kemp elimination (deprotonation
@@ -117,7 +124,7 @@ Finding the sweet spot between those is a genuine strategic question, not a sett
 
 This is a second, parallel goal and it changes portfolio strategy: a handful of our 20 slots can be
 scientifically interesting rather than score-maximising, because they get made in a lab regardless of where
-we rank. We do not yet know *how* those 5 are nominated — see the open questions.
+we rank. How those 5 are nominated was never stated to us — see the open questions.
 
 ## Resources
 
@@ -130,10 +137,13 @@ we rank. We do not yet know *how* those 5 are nominated — see the open questio
 ## Timeline
 
 - 2026-11-21: kickoff, repo set up, cluster access verified.
-- TODO: submission deadline (ask an organiser and put it here — after the deadline S3 refuses uploads, no grace period).
-- TODO: presentation slot.
+- 2026-11-22: submission deadline, **estimated at about 13:30 UTC and never confirmed by the organizers** (after the
+  deadline S3 refuses uploads, no grace period). The final upload is the 12:16 UTC file in the bucket.
+- Presentation: pitch decks were prepared (`slides/`); the slot is not recorded in the repository.
 
 ## Submission checklist
+
+*The live checklist during the event; the final state of the upload is in [submission.md](submission.md), Status.*
 
 - [ ] `designs.fasta` has ≤ 20 unique designs, each 50–260 residues
 - [ ] every header carries `base=` and `oxy=` with correct residue types (`make submission` checks this locally)
@@ -147,8 +157,12 @@ we rank. We do not yet know *how* those 5 are nominated — see the open questio
 
 ## Open questions (ask the organisers)
 
-- [ ] **What is the exact submission deadline (date, time, timezone)?** *(believed 2026-11-22 10:00 Paris/Basel = 09:00 UTC; unconfirmed)* ← the only one with a hard
-      consequence: after it, S3 refuses uploads and there is no grace period.
+*As asked during the event. No answer to any of these is recorded in the repository, so they stand as the list of what
+we did not know while designing.*
+
+- [ ] **What is the exact submission deadline (date, time, timezone)?** *(first believed 2026-11-22 10:00 Paris/Basel = 09:00 UTC, which
+      evidently did not hold because an upload at 12:16 UTC is in the bucket; then estimated at about 13:30 UTC; never confirmed)* ← the only
+      one with a hard consequence: after it, S3 refuses uploads and there is no grace period.
 - [ ] **Is the base contact measured to OD2 only, or to the nearer of the two carboxylate oxygens?** They are
       chemically equivalent and a prediction can place either one near the ligand. The reference pipeline's
       `verify_boltz.py` measures OD2 specifically. It changes our ranking: s042 (job 27) has its nearest oxygen
@@ -172,13 +186,14 @@ we rank. We do not yet know *how* those 5 are nominated — see the open questio
       refold is where it is lost (primer d2). If only the refold is scored — which is what "cofold the
       submitted sequence" implies — then refold fidelity *is* the score, and we optimise for it directly.
 
-### A question we can answer ourselves, and must
+### A question we could answer ourselves, and did
 
-- [ ] **Does Boltz-2 reproduce crystal geometry for a real Kemp eliminase?** We compare designs against
+- [x] **Does Boltz-2 reproduce crystal geometry for a real Kemp eliminase?** We compare designs against
       distances measured from crystal structures but measure the designs with Boltz-2 — two different
-      instruments, never cross-checked. Folding 4BS0 / 3NYD / 7K4U's own sequences settles it, costs 19 s
-      each, and is bundled into every sweep in `cluster/oversample.sbatch`. Until that number exists, no
-      statement of the form "our design misses the window by X Å" can be trusted.
+      instruments. Folding 4BS0 / 3NYD / 7K4U's own sequences settles it, costs 19 s each, and is bundled into
+      every sweep in `cluster/oversample.sbatch`. **Answered:** with query-only alignments the three natural
+      enzymes land inside both windows in 0/5, 0/5 and 1/5 seeds ([pitch.md](pitch.md) section 3). That is a
+      handicapped comparison, since their sequences carry no MSA here, so we did not rely on it.
 
 **Answered** (from the slides, 2026-11-21 — keep for the record):
 - ~~Which atom is the `oxy` target?~~ 6NT is a benzo**triazole** with no ring oxygen; the reference pipeline

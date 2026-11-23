@@ -4,9 +4,9 @@ Usage:
     uv run python scripts/35_plot_readme_figures.py
 
 Reads  results/oversample_a_seed4_job27.tsv        (72 sequences on one backbone, one Boltz-2 fold each)
-       results/ranking_combined_all_seeds.tsv      (every design folded on our instrument, by source and job)
+       results/ranking_combined_all_seeds.tsv      (every design folded on our instrument, by job)
 Writes docs/img/refold_gap.png      one backbone, 72 sequences: how many refolds land in the crystal window
-       docs/img/fresh_seeds.png     the designs folded again on seeds nobody selected on, source marked
+       docs/img/fresh_seeds.png     designs folded again on seeds nobody selected on, by design approach
 
 No number is typed in here except the crystal window (2.41-2.69 A, `results/kemp_family_geometry.tsv`) and
 the "good design" cut D <= 8.7 (95th percentile of the unbiased baseline, `wiki/approach.md` section 2).
@@ -30,7 +30,15 @@ FRESH_JOB = "replicate-106"
 
 INK, BODY, LINE = "#111518", "#49555D", "#D5DBDF"
 GREEN = "#0E9F6E"
-SOURCE_COLOR = {"Chris": "#0151E2", "Zonghu": "#BA76DD", "JJ": "#FE6101", "Mario": "#01A98C"}
+# Designs are shown by design approach, not by author. Each source in the tables used exactly one approach:
+# the theozyme route, sequence sampling on one backbone (the evolutionary route; it also produced the 128 new
+# sequences `ns4_*` on the same backbone), or the combinatorial route. Letters prefix the design ids.
+APPROACH_OF_SOURCE = {"JJ": "T", "Chris": "E", "Zonghu": "E", "Mario": "C"}
+APPROACH = {
+    "T": ("Theoretical: one site from the literature", "#FE6101"),
+    "E": ("Evolutionary: one backbone, many sequences", "#0151E2"),
+    "C": ("Combinatorial: site assembled from many structures", "#01A98C"),
+}
 
 plt.rcParams.update(
     {
@@ -118,17 +126,16 @@ def fresh_seeds():
             continue
         earlier = [r for r in group if r["job"] != FRESH_JOB]
         first = min(earlier, key=lambda r: job_number(r["job"])) if earlier else None
-        name = re.sub(r"^(arms_9\d_|seed4_)", "", fresh[0]["design"])
-        entries.append(
-            (float(fresh[0]["mean_D"]), fresh[0]["source"], name, float(first["mean_D"]) if first else None)
-        )
+        name = re.sub(r"^(arms_9\d_|seed4_|JJ)", "", fresh[0]["design"])
+        approach = APPROACH_OF_SOURCE[fresh[0]["source"]]
+        entries.append((float(fresh[0]["mean_D"]), approach, name, float(first["mean_D"]) if first else None))
     entries.sort()
     fig, ax = plt.subplots(figsize=(10, 6.6), dpi=200)
     ax.axvspan(0, GOOD_D, color=GREEN, alpha=0.10, lw=0)
     ax.axvline(GOOD_D, color=GREEN, lw=1, ls="--")
     ax.text(GOOD_D + 0.3, -0.95, "good: D <= 8.7", color=GREEN, fontsize=9, va="center")
-    for i, (fresh_d, source, _name, first_d) in enumerate(entries):
-        color = SOURCE_COLOR[source]
+    for i, (fresh_d, approach, _name, first_d) in enumerate(entries):
+        color = APPROACH[approach][1]
         ax.barh(i, fresh_d, height=0.62, color=color, zorder=2)
         if first_d is not None:
             ax.plot([first_d, fresh_d], [i, i], color=INK, lw=0.9, zorder=3, alpha=0.55)
@@ -144,9 +151,9 @@ def fresh_seeds():
             color=INK,
         )
     ax.set_yticks(range(len(entries)))
-    ax.set_yticklabels(["%s  %s" % (e[1], e[2]) for e in entries], fontsize=9)
+    ax.set_yticklabels(["%s-%s" % (e[1], e[2]) for e in entries], fontsize=9)
     for tick, entry in zip(ax.get_yticklabels(), entries, strict=True):
-        tick.set_color(SOURCE_COLOR[entry[1]])
+        tick.set_color(APPROACH[entry[1]][1])
         tick.set_fontweight("bold")
     ax.invert_yaxis()
     ax.set_ylim(len(entries) - 0.4, -1.6)
@@ -157,13 +164,13 @@ def fresh_seeds():
     )
     ax.grid(axis="x", color=LINE, lw=0.6)
     ax.set_axisbelow(True)
-    handles = [plt.Rectangle((0, 0), 1, 1, color=c) for c in SOURCE_COLOR.values()]
+    handles = [plt.Rectangle((0, 0), 1, 1, color=c) for _label, c in APPROACH.values()]
     handles.append(
         plt.Line2D(
             [], [], marker="D", ls="", markerfacecolor="white", markeredgecolor=INK, markeredgewidth=1.2
         )
     )
-    labels = [*SOURCE_COLOR, "first look (selection fold)"]
+    labels = [*(label for label, _c in APPROACH.values()), "first look (selection fold)"]
     ax.legend(handles, labels, loc="upper right", bbox_to_anchor=(1.0, 0.86), frameon=False, fontsize=9)
     fig.suptitle(
         "Fresh seeds separate robust designs from lucky ones",
@@ -186,10 +193,10 @@ def main():
     good = [e for e in entries if e[0] <= GOOD_D]
     print("refold_gap.png: %d of %d sequences in the window" % (inside, total))
     print("fresh_seeds.png: %d designs, %d with D <= %.1f" % (len(entries), len(good), GOOD_D))
-    for fresh_d, source, name, first_d in entries:
+    for fresh_d, approach, name, first_d in entries:
         print(
             "  %-7s %-10s fresh %5.1f first %s"
-            % (source, name, fresh_d, "-" if first_d is None else "%.1f" % first_d)
+            % (approach, name, fresh_d, "-" if first_d is None else "%.1f" % first_d)
         )
 
 

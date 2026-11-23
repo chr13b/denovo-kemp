@@ -4,6 +4,9 @@ One file, `designs.fasta`, uploaded to S3. Source of truth:
 [raw/20261121_organizers_submission.md](../raw/20261121_organizers_submission.md).
 The scoring criteria are summarised in [challenge.md](challenge.md).
 
+> **Status: closed.** The hackathon ended on 2026-11-22. This page stays as reference for the file format, the
+> validator and the upload route; what was actually uploaded, and what was not, is in the Status table below.
+
 ## File format
 
 ```
@@ -66,7 +69,8 @@ refuses the file if a residue is of the wrong type.
 
 ## How to fill the 20 slots — the arithmetic, from measured rates
 
-Measured so far, all from `wiki/experiments/chris-04..07`:
+Measured by 2026-11-21, all from `wiki/experiments/chris-04..07` (the final numbers are in
+[approach.md](approach.md) and [ranking-combined.md](ranking-combined.md)):
 
 | quantity | measured value |
 |---|---|
@@ -104,15 +108,17 @@ diversity across the whole set at the end with `tools/self_diversity.sh`.
 - We cannot see other teams' submissions, and they cannot see ours.
 - Every design must pass novelty (TM-score ≤ 0.7, identity ≤ 70 %). Record the check on the experiment page.
 
-## Status
+## Status (final)
 
 | | |
 |---|---|
-| Designs ready | **1 of max 20** (`chris_osA_01` = s024; replicated 3/5 seeds both contacts in window) |
-| Last upload | **2026-11-21 23:15:30 UTC (S3's own timestamp), from the cluster with `submit-designs.sh`**: 1 design, sha256 prefix `1cf53b55`, S3 version `b43yX__RrxQPzbJd19vsm3Ek2aDIcCkJ`. **Read back and verified**: `head-object` shows 294 bytes and an ETag equal to the local file's MD5. The script validated the file first, `put-object` returned the version id, so write access is confirmed. Replace it after every improvement. |
-| Deadline | **believed 2026-11-22 10:00, timezone presumably Paris/Basel (= 09:00 UTC); told to us by a teammate, NOT confirmed — ask an organiser** |
+| Final upload | **2026-11-22 12:16 UTC, by a teammate: 20 designs, 5162 bytes.** We read it back from the bucket, read-only, and compared it with our ranking: [ranking-combined.md](ranking-combined.md) section 4.4. We did not upload anything ourselves after the first file below. |
+| Prepared, not uploaded | Two validated alternatives, built from the fresh-seed ranking: [`results/designs_combined_recommended.fasta`](../results/designs_combined_recommended.fasta) (8 designs) and [`results/designs_swapped_18.fasta`](../results/designs_swapped_18.fasta) (the uploaded file with four designs swapped out, 18 designs). The organizers' validator accepts both. |
+| Earlier upload | 2026-11-21 23:15:30 UTC (S3's own timestamp), from the cluster with `submit-designs.sh`: 1 design (`chris_osA_01` = s024), sha256 prefix `1cf53b55`, S3 version `b43yX__RrxQPzbJd19vsm3Ek2aDIcCkJ`. Read back and verified: `head-object` showed 294 bytes and an ETag equal to the local file's MD5. This confirmed write access, and was replaced by the later upload. |
+| Deadline | **Estimated at about 13:30 UTC on 2026-11-22; never confirmed by the organizers.** The earlier belief (2026-11-22 10:00 Paris/Basel = 09:00 UTC) evidently did not hold, since an upload at 12:16 UTC is in the bucket. |
+| Scores | The organizers did not release per-design scores to the team. Everything measured in this repository comes from our own instrument (Boltz-2, five seeds, our scoring code). |
 
-## Uploading from the cluster (done once 2026-11-21; this is how)
+## Uploading from the cluster (done once on 2026-11-21; this is how)
 
 The head node's AWS identity resolves and the shared release prefix is readable (that is how the validator was
 fetched). Listing our own submissions folder returns **AccessDenied**, which the organizers' docs describe as
@@ -122,17 +128,18 @@ the cluster beside `validate-submission.py`. Fallback: upload `results/designs.f
 the folder link in the team packet. Each upload replaces the previous one and the file present at the deadline is
 the one scored, so uploading a validated file early and again after every improvement is safe.
 
-## Validator status (2026-11-21)
+## Validator status on 2026-11-21 (historical)
 
 The organizers' own `validate-submission.py` (downloaded from the shared bucket, run on the cluster
 with no network) **ACCEPTS** `results/designs.fasta`: 2 designs, 260 residues each, `base=` and `oxy=`
 declared and checked. The uploader `submit-designs.sh` has deliberately **not** been downloaded or run.
 Re-run the validator after every change to the file.
 
-## Candidate sets prepared at the end of the run (2026-11-22 07:36 UTC)
+## Candidate sets prepared at the end of the run (2026-11-22 07:36 UTC; superseded, see Status)
 
 Files on the cluster in `/mnt/work/projects/chris_autopilot/`, all validated and novelty-checked, none uploaded beyond
-the first:
+the first. A teammate later uploaded a different 20-design file (see Status), and the later alternatives are the two
+files in `results/` named there.
 
 | file | designs | note |
 |---|---|---|
