@@ -72,11 +72,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/glossary.md](wiki/glossary.md) — domain and project terms
 
 ## Sources: raw/ (immutable, added by humans)
-- [raw/20261121_organizers_start-here.md](raw/20261121_organizers_start-here.md) — organizers' one-page start (2 GPUs, novelty rule)
-- [raw/20261121_organizers_cluster-guide.md](raw/20261121_organizers_cluster-guide.md) — the full cluster guide (authoritative)
-- [raw/20261121_organizers_cluster-guide.html](raw/20261121_organizers_cluster-guide.html) — same guide as delivered (HTML)
-- [raw/20261121_organizers_submission.md](raw/20261121_organizers_submission.md) — submission format, eligibility, scoring criteria
-- [raw/20261121_organizers_connect-team01.txt](raw/20261121_organizers_connect-team01.txt) — our cluster address, fingerprint and S3 folder (**no key**)
+- [raw/README.md](raw/README.md) — why this folder is empty: third-party briefs are not published
 
 ## Code
 - [src/kemp/paths.py](src/kemp/paths.py) — every project path, defined once (data/runs can be overridden by env var)

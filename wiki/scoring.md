@@ -1,7 +1,7 @@
 # Scoring: the organizers' five criteria, and a metric for each
 
 What the organizers actually score, as opposed to what is convenient to measure.
-Source: `raw/20261121_organizers_submission.md`, via `wiki/challenge.md`.
+Source: the organizers' submission document (not included), via `wiki/challenge.md`.
 
 The terms **multiply**. One weak factor is not repairable by strength elsewhere,
 which is why the combined score below is a product and not a sum.

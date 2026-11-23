@@ -1,7 +1,7 @@
 # Novelty: the one hard gate
 
 Every other scoring term is a ranking. This one disqualifies. From
-`raw/20261121_organizers_submission.md`:
+the organizers' submission document:
 
 > backbone TM-score ≤ 0.7 to any published structure **AND** sequence ≤ 70 % identity
 

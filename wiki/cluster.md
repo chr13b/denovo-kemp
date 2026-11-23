@@ -3,8 +3,8 @@
 > **Historical note (2026-11-23).** Written during the first two days of the project (2026-11-21 and 2026-11-22) for the organizers' cluster,
 > which was provided for the project. Node states, job numbers and paths on this page were true on those days.
 
-Our GPU cluster. Full detail: [raw/20261121_organizers_cluster-guide.md](../raw/20261121_organizers_cluster-guide.md)
-and [raw/20261121_organizers_connect-team01.txt](../raw/20261121_organizers_connect-team01.txt).
+Our GPU cluster. The organizers' cluster guide and our connection file are not included in this repository; this page
+distills what we used.
 First-time setup of the key and SSH config is in [../SETUP.md](../SETUP.md).
 
 > **Never put the `.pem` key in this repo.** `.gitignore` blocks `*.pem`, but don't test it.

@@ -287,7 +287,7 @@ This repo is also a worked example of keeping science honest and reproducible un
 | [`results/`](results/) | Curated, reproducible outputs: geometry target, sweeps, replication tables, rankings, candidate FASTA files |
 | [`slides/`](slides/) | Source of the three pitch decks (HTML on a fixed canvas) |
 | [`tools/`](tools/) | Small utilities, including the PyMOL render script behind the design figure |
-| [`raw/`](raw/) | Source documents (project brief, tooling guides), never edited |
+| [`raw/`](raw/) | Placeholder for third-party source documents, which are not published |
 | [`log/`](log/) | One file per log entry, timestamped |
 | [`tests/`](tests/) | pytest suite |
 | [`INDEX.md`](INDEX.md) | One line per file in the repository |

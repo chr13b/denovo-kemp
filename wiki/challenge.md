@@ -1,11 +1,8 @@
 # Challenge
 
 **A computational Kemp-eliminase design project (team 01).**
-Sources: [raw/20261121_organizers_start-here.md](../raw/20261121_organizers_start-here.md),
-[raw/20261121_organizers_submission.md](../raw/20261121_organizers_submission.md),
-[raw/20261121_organizers_cluster-guide.md](../raw/20261121_organizers_cluster-guide.md),
-and the organizers' kickoff deck (8 image-only slides, removed from the tree before publication; everything
-decision-relevant in it is distilled onto this page).
+Sources: the organizers' start-here note, submission document, cluster guide and kickoff deck. None of them is included
+in this repository (third-party material); everything decision-relevant is distilled onto this page.
 Details on running jobs are in [cluster.md](cluster.md); the file format is in [submission.md](submission.md).
 
 > **Outcome (project closed, 2026-11-22).** The final 20-design file was uploaded by a teammate at 12:16 UTC

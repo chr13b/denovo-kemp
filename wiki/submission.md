@@ -1,7 +1,7 @@
 # Submission
 
-One file, `designs.fasta`, uploaded to S3. Source of truth:
-[raw/20261121_organizers_submission.md](../raw/20261121_organizers_submission.md).
+One file, `designs.fasta`, uploaded to S3. Source of truth: the organizers' submission
+document, which is not included in this repository; the rules it states are recorded on this page.
 The scoring criteria are summarised in [challenge.md](challenge.md).
 
 > **Status: closed.** The project phase ended on 2026-11-22. This page stays as reference for the file format, the
@@ -63,8 +63,8 @@ refuses the file if a residue is of the wrong type.
    ```bash
    ./submit-designs.sh results/designs.fasta
    ```
-   The browser route and our team's direct bucket link are in
-   [raw/20261121_organizers_connect-team01.txt](../raw/20261121_organizers_connect-team01.txt).
+   The browser route and our team's direct bucket link were in the connection file the organizers
+   sent (not published).
    Opening the bucket from the S3 home page shows "Access denied" — that is expected.
 
 ## How to fill the 20 slots — the arithmetic, from measured rates

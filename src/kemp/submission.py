@@ -4,7 +4,8 @@
     problems = check([Design("chris_01", "MKD...", base=3, oxy=7)])
 
 This is our safety net, not the authority: always also run the organizers' `validate-submission.py`
-before uploading. Rules enforced here (all from raw/20261121_organizers_submission.md):
+before uploading. Rules enforced here (all from the organizers' submission document,
+summarised in wiki/submission.md):
   <= 20 designs, 50-260 residues, 20 standard AAs uppercase, unique names of allowed characters,
   1-based base=/oxy= indices that exist and point at an allowed residue type, base != oxy,
   no duplicate sequences.

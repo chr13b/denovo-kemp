@@ -122,3 +122,13 @@ entry that names the old one.
 - **Why:** the repository is presented as a research project; the event is context, not content.
 - **Alternatives:** keep the context (rejected by the owner); delete `raw/` entirely (rejected: the organizers' file-format and
   scoring rules are the reference for `wiki/submission.md`). The deck and the old wording stay recoverable from git history.
+
+## 2026-11-23 · Remove the organizers' documents from the tree (chris)
+- **Decision:** the organizers' documents in `raw/` (start-here note, cluster guide in Markdown and HTML, submission rules,
+  our connection file) were deleted from the tree. `raw/` keeps only a `README.md`, and `.gitignore` keeps new files there out
+  of the repository. This reverses the "delete `raw/` entirely: rejected" alternative recorded above.
+- **Why:** they are third-party material, and the organizers did not necessarily agree to their republication. What the
+  work needs from them is distilled in `wiki/challenge.md`, `wiki/submission.md` and `wiki/cluster.md`; links into `raw/`
+  became plain statements that the source is not included.
+- **Limit, stated plainly:** deleting from the tree does not remove the files from the git history, where they remain
+  readable in older commits. Purging them would need a history rewrite and a force-push, which the owner has declined.

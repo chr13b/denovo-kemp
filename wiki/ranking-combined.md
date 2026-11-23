@@ -20,7 +20,7 @@ A design's name in the combined file is `<source>_<design>` (`jj_JJ1`, `mario_s1
 
 Checked offline for each of the 30 designs (alphabet, length, residue types at the indices, names, duplicates, agreement of every sender's FASTA with his own CSV), then with the organizers' validator:
 
-| Requirement (`raw/20261121_organizers_submission.md`) | JJ (10) | Mario (20) |
+| Requirement (organizers' submission document) | JJ (10) | Mario (20) |
 |---|---|---|
 | length 50-260 | all pass (160-238) | all pass (159-240) |
 | alphabet: the 20 standard amino acids, uppercase | all pass | all pass |

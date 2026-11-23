@@ -45,3 +45,7 @@ credentials
 # Organizers' tools: fetched per machine with aws s3 cp (see wiki/submission.md), not ours to version
 validate-submission.py
 submit-designs.sh
+
+# Third-party source documents are not published (see raw/README.md)
+raw/*
+!raw/README.md

@@ -27,7 +27,7 @@ done
 HOST_IP="${KEMP_CLUSTER_IP:-}"
 HOST_USER="ec2-user"
 HOST_ALIAS="pdh-team"
-# From raw/20261121_organizers_connect-team01.txt. Verified against the live host 2026-11-21.
+# From the team connection file the organizers sent (not published). Verified against the live host 2026-11-21.
 EXPECTED_FP="SHA256:3HYAek1L/uZ+NT9YtwYhFBd9FUuz0vW06FWAurPTQWk"
 
 ok()   { printf '  \033[32m✓\033[0m %s\n' "$*"; }
