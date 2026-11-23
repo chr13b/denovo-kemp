@@ -1,0 +1,37 @@
+<section id="funnel" class="s8" data-transition="push">
+  <div class="spectrum"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div><div class="c5"></div><div class="c6"></div><div class="c7"></div><div class="c8 on"></div><div class="c9"></div><div class="c10"></div></div>
+  <div class="col g20">
+    <p class="eyebrow">Production</p>
+    <h2>The campaign and its settings</h2>
+  </div>
+  <div class="row" style="gap:48px">
+    <div class="col g32" style="width:1020px">
+      <p class="lede">About 3500 designs from two compute sources, 2554 distinct ones scored with the same Boltz-2 setup, for an estimated <b class="ink">$29.5</b> against the $30 budget.</p>
+      <table>
+        <tr>
+          <th width="26%">Campaign</th>
+          <th width="28%">Where</th>
+          <th width="16%">Generated</th>
+          <th width="14%">Scored</th>
+          <th width="16%">Cost</th>
+        </tr>
+        <tr><td>C0 pilot</td><td>Modal L40S</td><td>100</td><td>68</td><td>≈ $1.3</td></tr>
+        <tr><td>C1 production</td><td>Modal L40S, 19 chunks</td><td>1800</td><td>1252</td><td>≈ $17 + $11</td></tr>
+        <tr><td>C2 production</td><td>ETH Euler, 16 tasks</td><td>≈ 1600</td><td>1302</td><td>free</td></tr>
+      </table>
+      <p class="small">Boltz-2 ran with an empty MSA, CCD code 6NT, 5 diffusion samples, 3 recycling steps and 200 sampling steps. Because Boltz has no documented seed option, our consistency term is 5 diffusion samples per design, not 5 seeds.</p>
+    </div>
+    <div class="col g32 grow">
+      <div class="col g12 ruled">
+        <p class="lede">What we conditioned</p>
+        <p class="small">Burial on the Asp carboxylate, intermediate on the 12 ligand heavy atoms. Hydrogen bonds encode the base and donor pattern.</p>
+      </div>
+      <div class="col g12 ruled">
+        <p class="lede">What we kept plain</p>
+        <p class="small">One expandable segment of 160–240 residues. thinking_high throughout. No search, no guidance, no fold bias — Boltz-2 only afterwards.</p>
+      </div>
+      <img src="/_blob/30b09b2a19344ad84acf786d9a876f4f" alt="Cartoon render of a helical bundle design with the ligand bound between the helices" width="250" height="459" style="object-fit:contain">
+    </div>
+  </div>
+  <aside>Three campaigns, one scoring setup. Roughly thirty-five hundred designs generated, two and a half thousand scored, for twenty-nine dollars fifty against a thirty dollar budget. Adding the free Euler allocation as a second source is what made that possible. One honest note: our consistency term is five diffusion samples rather than five seeds, because Boltz has no documented seed option.</aside>
+</section>

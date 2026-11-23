@@ -11,6 +11,7 @@ Full setup: [../SETUP.md](../SETUP.md). "Owns" = who reviews and decides, not th
 |--------|--------|------------------------|------|----------------|
 | chris | chr13b | — | repo, cluster access, pipeline | `chris` |
 | zonghu | zonghu3112 | TODO: your background | TODO | `zonghu` |
+| flavia | flavinzgi | TODO: your background | TODO | `flavia` |
 | TODO | | | | |
 
 ## Working agreements

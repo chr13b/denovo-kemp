@@ -1,0 +1,80 @@
+<section id="tree" class="s7" data-transition="fade">
+  <div class="spectrum"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div><div class="c5"></div><div class="c6"></div><div class="c7 on"></div><div class="c8"></div><div class="c9"></div><div class="c10"></div></div>
+  <div class="col g20">
+    <p class="eyebrow">Comparison</p>
+    <h2>Three routes side by side</h2>
+  </div>
+
+  <div class="col g20">
+    <div class="row" style="gap:40px">
+      <div style="width:190px"></div>
+      <div class="col g12 grow">
+        <div style="height:14px; background:#01FAD5"></div>
+        <p class="node-t">Rational</p>
+      </div>
+      <div class="col g12 grow">
+        <div style="height:14px; background:#01EE92"></div>
+        <p class="node-t">Evolutionary</p>
+      </div>
+      <div class="col g12 grow">
+        <div style="height:14px; background:#01FC1B"></div>
+        <p class="node-t">Combinatorial</p>
+      </div>
+    </div>
+
+    <div class="row" style="gap:40px">
+      <div style="width:190px"><p class="label">Idea</p></div>
+      <div class="grow"><p class="small ink">Copy a working site faithfully</p></div>
+      <div class="grow"><p class="small ink">Breed from a proven parent</p></div>
+      <div class="grow"><p class="small ink">Assemble from many structures</p></div>
+    </div>
+
+    <div class="row" style="gap:40px">
+      <div style="width:190px"><p class="label">Steps</p></div>
+      <div class="col g12 grow">
+        <p class="small"><b class="ink">1</b>&#160; Five crystal structures</p>
+        <p class="small"><b class="ink">2</b>&#160; Two theozymes, 27 atoms</p>
+        <p class="small"><b class="ink">3</b>&#160; RFD4, conditioned</p>
+        <p class="small"><b class="ink">4</b>&#160; Gates fixed in code</p>
+      </div>
+      <div class="col g12 grow">
+        <p class="small"><b class="ink">1</b>&#160; One HG3.17 motif</p>
+        <p class="small"><b class="ink">2</b>&#160; One backbone, seed 4</p>
+        <p class="small"><b class="ink">3</b>&#160; LigandMPNN bias arms</p>
+        <p class="small"><b class="ink">4</b>&#160; Five-seed replication</p>
+      </div>
+      <div class="col g12 grow">
+        <p class="small"><b class="ink">1</b>&#160; 100 published entries</p>
+        <p class="small"><b class="ink">2</b>&#160; Four residues, four sources</p>
+        <p class="small"><b class="ink">3</b>&#160; RFD4, four campaigns</p>
+        <p class="small"><b class="ink">4</b>&#160; Foldseek, OpenFold3 gate</p>
+      </div>
+    </div>
+
+    <div class="row" style="gap:40px">
+      <div style="width:190px"><p class="label">Models</p></div>
+      <div class="grow"><p class="small">RFD4 → Boltz-2</p></div>
+      <div class="grow"><p class="small">RFD3 → LigandMPNN → Boltz-2</p></div>
+      <div class="grow"><p class="small">RFD4 → Foldseek → OpenFold3 → Boltz-2</p></div>
+    </div>
+
+    <div class="row" style="gap:40px">
+      <div style="width:190px"><p class="label">Compute</p></div>
+      <div class="grow"><p class="small">Modal L40S + Euler · ≈ $29.5</p></div>
+      <div class="grow"><p class="small">Perlin AWS · 2 × NVIDIA L4</p></div>
+      <div class="grow"><p class="small">ETH Euler · GPU Slurm arrays</p></div>
+    </div>
+
+    <div class="row" style="gap:40px">
+      <div style="width:190px"><p class="label">Scale</p></div>
+      <div class="grow"><p class="small">3500 made · 2554 scored · 10 picks</p></div>
+      <div class="grow"><p class="small">352 swept · 48 replicated · 1 pass</p></div>
+      <div class="grow"><p class="small">11,000 made · 1312 refolded · 6 stable</p></div>
+    </div>
+  </div>
+
+  <div class="col g12 ruled">
+    <p class="lede">All three converge: Boltz-2, 5 seeds &#160;·&#160; one scorer &#160;·&#160; 20 slots</p>
+  </div>
+  <aside>Same problem, three different bets, read down the columns. The first bets the literature already holds the right active site and the job is to copy it faithfully. The second bets the site barely matters because geometry dies in the refold, so breadth and replication win. The third bets no single crystal is best, and builds one from contacts across a hundred. Look at the models row: only the combinatorial route puts a second structure predictor in the middle as a cheap filter. Whatever the route, the bottom line is the same cofold.</aside>
+</section>

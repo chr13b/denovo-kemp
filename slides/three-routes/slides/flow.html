@@ -1,0 +1,54 @@
+<section id="flow" class="s8" data-transition="fade">
+  <div class="spectrum"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div><div class="c5"></div><div class="c6"></div><div class="c7"></div><div class="c8 on"></div><div class="c9"></div><div class="c10"></div></div>
+  <div class="col g20">
+    <p class="eyebrow">Comparison · flow chart</p>
+    <h2>How the three approaches converge</h2>
+  </div>
+  <div class="flowhost">
+    <div class="node" style="left:0; top:0; width:500px; height:120px">
+      <div class="node-bar" style="background:#01EE92"></div>
+      <p class="node-t">Evolutionary generation</p>
+    </div>
+    <div class="node" style="left:582px; top:0; width:500px; height:120px">
+      <div class="node-bar" style="background:#01FC1B"></div>
+      <p class="node-t">Combinatorial theozyme</p>
+    </div>
+    <div class="node" style="left:1164px; top:0; width:500px; height:120px">
+      <div class="node-bar" style="background:#01FAD5"></div>
+      <p class="node-t">Rational theozyme</p>
+    </div>
+
+    <div class="node" style="left:522px; top:200px; width:620px; height:120px">
+      <p class="node-t">Individual scoring</p>
+      <p class="node-s">Geometry · burial · declaration valid · catalytic residues in loop</p>
+    </div>
+
+    <div class="node" style="left:632px; top:380px; width:400px; height:85px">
+      <p class="node-t">Boltz-2 cofold</p>
+    </div>
+
+    <div class="node" style="left:632px; top:520px; width:400px; height:85px">
+      <p class="node-t">Novelty gate</p>
+    </div>
+
+    <div class="node" style="left:60px; top:520px; width:460px; height:85px">
+      <p class="node-t">Final candidates</p>
+    </div>
+
+    <x-connector class="fl" x1="250" y1="120" x2="250" y2="158" route="straight" head="none"></x-connector>
+    <x-connector class="fl" x1="832" y1="120" x2="832" y2="158" route="straight" head="none"></x-connector>
+    <x-connector class="fl" x1="1414" y1="120" x2="1414" y2="158" route="straight" head="none"></x-connector>
+    <x-connector class="fl" x1="250" y1="158" x2="1414" y2="158" route="straight" head="none"></x-connector>
+    <x-connector class="fl" x1="832" y1="158" x2="832" y2="200" route="straight" head="end"></x-connector>
+
+    <x-connector class="fl" x1="832" y1="320" x2="832" y2="380" route="straight" head="end"></x-connector>
+    <x-connector class="fl" x1="832" y1="465" x2="832" y2="520" route="straight" head="end"></x-connector>
+    <x-connector class="fl" x1="632" y1="562" x2="528" y2="562" route="straight" head="end"></x-connector>
+
+    <x-connector class="fl-dash" x1="1032" y1="422" x2="1300" y2="422" route="straight" head="none"></x-connector>
+    <x-connector class="fl-dash" x1="1300" y1="422" x2="1300" y2="262" route="straight" head="none"></x-connector>
+    <x-connector class="fl-dash" x1="1300" y1="262" x2="1146" y2="262" route="straight" head="end"></x-connector>
+    <p class="loop-label" style="left:1150px; top:330px; width:330px">re-score every cofold</p>
+  </div>
+  <aside>The same three approaches as a flow. Each produces designs its own way, and from there the path is shared: one scoring step on geometry, burial, a valid declaration and whether the catalytic residues sit in a loop, then the Boltz-2 cofold the organizers themselves use. The dashed line is the loop that matters: every cofold goes back through the scorer, so nothing is judged on the structure it was designed as. Only after that does the novelty gate decide which designs can take a submission slot.</aside>
+</section>

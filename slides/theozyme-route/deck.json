@@ -1,0 +1,36 @@
+{
+  "v": 5,
+  "createdOnFiles": { "v": 1, "at": "2026-11-22T09:30:00Z" },
+  "lists": "css",
+  "format": { "v": 1, "shared": ["project/deck.css"] },
+  "title": "Theozyme Route Pitch",
+  "order": [
+    "cover",
+    "reaction",
+    "scoring",
+    "pipeline",
+    "target",
+    "refold",
+    "gate",
+    "funnel",
+    "candidates",
+    "team"
+  ],
+  "sections": {
+    "brief": { "description": "The task, how designs are scored, and the limits we work inside.", "start": "cover" },
+    "theozyme": { "description": "The two theozymes, why this active site, and where we corrected ourselves.", "start": "pipeline" },
+    "campaign": { "description": "Pilot, production campaign, selection and the ten final designs.", "start": "gate" },
+    "team": { "description": "The Triad.", "start": "team" }
+  },
+  "faces": {
+    "eb-garamond": {
+      "family": "EB Garamond",
+      "href": "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    },
+    "inter": {
+      "family": "Inter",
+      "href": "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    }
+  },
+  "designSystems": []
+}

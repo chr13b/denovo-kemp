@@ -55,6 +55,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [wiki/rfd4-proteina.md](wiki/rfd4-proteina.md) — RFD4-Proteina installed on the cluster and verified on our L4: how to use it, the CUDA-12 constraint, what is and is not verified
 - [wiki/novelty.md](wiki/novelty.md) — the one hard gate: TM <= 0.7 and identity <= 70 %; foldseek method, results, and which design already fails it
 - [wiki/scoring.md](wiki/scoring.md) — the organizers' five criteria, a metric for each, the weighted scorer v2, the seed-luck finding, and why there is no cheap pre-filter
+- [wiki/experiments/flavia-01_theozyme-target-geometry.md](wiki/experiments/flavia-01_theozyme-target-geometry.md) — the measured catalytic geometry a working Kemp eliminase holds 6NT in; the target our designs aim at
 - [wiki/experiments/chris-03_msa-free-boltz-screen.md](wiki/experiments/chris-03_msa-free-boltz-screen.md) — **the MSA stage is a no-op**: bit-identical output without it, ~3–4× throughput
 - [wiki/experiments/chris-04_sequence-oversampling-fixed-backbone.md](wiki/experiments/chris-04_sequence-oversampling-fixed-backbone.md) — **Idea A**: 72 sequences on one fixed backbone; is the base drift sequence-level or backbone-level?
 - [wiki/experiments/chris-05_trp44-three-anchor-retested.md](wiki/experiments/chris-05_trp44-three-anchor-retested.md) — **Idea B**: zonghu's Trp44 theozyme, retested with 72 sequences instead of 1
@@ -86,7 +87,10 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [src/kemp/filters.py](src/kemp/filters.py) — design-funnel filters: GRAVY, pI, catalytic-residue integrity, MPNN/Boltz score parsing; `passed=None` means not evaluated
 - [src/kemp/scoring.py](src/kemp/scoring.py) — the scored criteria as pure functions: crystal targets, asymmetric distance, sign-independent plane term, weighted geometric mean
 - [src/kemp/structure.py](src/kemp/structure.py) — structure filters: motif RMSD, RoG, clashes, Ramachandran, P-SEA topology, packing proxy, pLDDT, ligand contacts
+- [src/kemp/geometry.py](src/kemp/geometry.py) — PDB parsing and the scored catalytic geometry (distance, in-plane, out-of-plane, burial); stdlib only
 - [scripts/00_smoke.py](scripts/00_smoke.py) — smoke test for env and run bookkeeping; **template for new scripts**
+- [scripts/30_measure_theozyme_geometry.py](scripts/30_measure_theozyme_geometry.py) — measure the target geometry from PDB 7K4Z → theozyme, numbers, viewer (`flavia-01`)
+- [scripts/assets/](scripts/assets/) — templates used by scripts (the theozyme viewer page)
 - [scripts/30_compare_rfd3_vs_boltz.py](scripts/30_compare_rfd3_vs_boltz.py) — chris-02 table: RFD3 vs Boltz-2 contact drift + the pre-registered decision rule
 - [scripts/30_filter_designs.py](scripts/30_filter_designs.py) — the three-stage design funnel: per-design gates, error isolation, resumable JSONL/CSV verdicts
 - [scripts/31_screen_summaries.py](scripts/31_screen_summaries.py) — replay the stage-3 gates over every tracked `summary.json` (no GPU) to get the expected pass rate and the binding gate
@@ -168,6 +172,9 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/reference_kemp-1_summary.json](results/reference_kemp-1_summary.json) — verified reference run (cluster job 1); the baseline we must beat
 - [results/zonghu-01_trpopt_kemp-7_summary.json](results/zonghu-01_trpopt_kemp-7_summary.json) — zonghu-01 job 7: custom theozyme runs end-to-end, but Boltz-2 put the ligand 12 Å from the base; not a candidate
 - [results/zonghu-01_trpopt_kemp-7_validation-warnings.jsonl](results/zonghu-01_trpopt_kemp-7_validation-warnings.jsonl) — zonghu-01 job 7: the 2 expected launcher warnings from the extended motif
+- [results/theozyme_7k4z.pdb](results/theozyme_7k4z.pdb) — the theozyme: 6NT plus the catalytic base and donor, scaffold stripped (run `flavia-01`)
+- [results/theozyme_7k4z_geometry.json](results/theozyme_7k4z_geometry.json) — the measured target numbers behind `flavia-01`; quote these, not estimates
+- [results/theozyme_viewer.html](results/theozyme_viewer.html) — standalone 3D viewer of the theozyme with the measured contacts labelled (open in a browser)
 - [results/kemp_family_geometry.tsv](results/kemp_family_geometry.tsv) — **the geometry target**: 43 ligand copies from 23 crystal structures
 - [results/sweep_kemp-2_summary.json](results/sweep_kemp-2_summary.json) — chris-02 seed 2: collapsed refold (CA RMSD 14.6 Å)
 - [results/sweep_kemp-3_summary.json](results/sweep_kemp-3_summary.json) — chris-02 seed 3: folded, base contact drifted to 8.33 Å
@@ -252,3 +259,4 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/candidates/seed4_s068_seed4.confidence.json](results/candidates/seed4_s068_seed4.confidence.json) — Boltz-2 confidence json of one seed of this candidate
 - [results/candidates/seed4_s068_seed5.confidence.json](results/candidates/seed4_s068_seed5.confidence.json) — Boltz-2 confidence json of one seed of this candidate
 - [results/candidates_chris_zonghu.zip](results/candidates_chris_zonghu.zip) — archive of results/candidates/ (csv, zips, confidence jsons) for sharing
+- [slides/](slides/) — pitch deck source: `three-routes/` (combined), `theozyme-route/` (Janis), `replication-route/` (Chris); see `slides/README.md`

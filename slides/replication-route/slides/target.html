@@ -1,0 +1,28 @@
+<section id="target" class="s5" data-transition="fade">
+  <div class="spectrum"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div><div class="c5 on"></div><div class="c6"></div><div class="c7"></div><div class="c8"></div><div class="c9"></div><div class="c10"></div></div>
+  <div class="col g20">
+    <p class="eyebrow">Method</p>
+    <h2>D, our geometry score</h2>
+  </div>
+  <div class="row" style="gap:56px">
+    <div class="col g32" style="width:1100px">
+      <p class="lede">For each of the six terms, how far the value lies outside its crystal window, in tolerance units — 0.25 Å for distances, 15° for angles — with distances below the window counted double, because too short is punished harder. D is the sum, and lower is better.</p>
+      <div class="row" style="gap:48px">
+        <div class="col g12 grow ruled">
+          <p class="lede">Good is D ≤ 8.7</p>
+          <p class="small">The 95th percentile of the unbiased design population.</p>
+        </div>
+        <div class="col g12 grow ruled">
+          <p class="lede">D2: the worse of the two decides</p>
+          <p class="small">The organizers say the angle and in-plane terms do not average. D adds them; D2 takes the maximum of the two per contact.</p>
+        </div>
+      </div>
+      <div class="col g12 ruled">
+        <p class="lede">Two ways to measure the base contact, and why both matter</p>
+        <p class="small">Their verify script measures OD2 of the declared Asp; ours uses the nearest oxygen of that residue. We call a fold “OD2 nearest” when the two agree within 0.02 Å, and require it in at least 4 of 5 seeds — a hedge against an OD2-only scorer.</p>
+      </div>
+    </div>
+    <img src="/_blob/f4743a726bf677830360d935b50a389d" alt="Cartoon render of the enzyme fold with active-site side chains and the ligand shown as sticks" width="460" height="454" style="object-fit:contain">
+  </div>
+  <aside>D is one number from six measurements: for each, how far outside its crystal window the design sits, in tolerance units, with short distances counted double because a clash is punished harder than a gap. Good means under eight point seven, the ninety-fifth percentile of an unbiased population. D2 is the same thing with the organizers' own rule that the two angular terms do not average. And because we do not know whether they measure OD2 or the nearest oxygen, we require both to agree.</aside>
+</section>

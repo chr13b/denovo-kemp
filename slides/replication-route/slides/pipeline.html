@@ -1,0 +1,45 @@
+<section id="pipeline" class="s4" data-transition="fade">
+  <div class="spectrum"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4 on"></div><div class="c5"></div><div class="c6"></div><div class="c7"></div><div class="c8"></div><div class="c9"></div><div class="c10"></div></div>
+  <div class="col g20">
+    <p class="eyebrow">Method</p>
+    <h2>The pipeline, stage by stage</h2>
+  </div>
+  <div class="row" style="gap:28px">
+    <div class="col g20 grow">
+      <div class="bar-sm" style="background:#D5DBDF"></div>
+      <h3 style="font-size:36px">Motif</h3>
+      <p class="small">HG3.17 Asp and Gln plus 6NT. Asp held by OD1, CG, OD2; Gln by OE1, CD, NE2; the whole ligand rigid.</p>
+    </div>
+    <div class="col g20 grow">
+      <div class="bar"></div>
+      <h3 style="font-size:36px">RFD3</h3>
+      <p class="small">A 260-residue backbone, no side chains. 12 min.</p>
+    </div>
+    <div class="col g20 grow">
+      <div class="bar"></div>
+      <h3 style="font-size:36px">LigandMPNN</h3>
+      <p class="small">Sequences at T 0.1/0.2/0.3, the two catalytic residues never redesigned. 6 s per batch.</p>
+    </div>
+    <div class="col g20 grow">
+      <div class="bar"></div>
+      <h3 style="font-size:36px">Boltz-2</h3>
+      <p class="small">200 sampling steps, 3 recycling, 1 diffusion sample. 19 s per fold.</p>
+    </div>
+    <div class="col g20 grow">
+      <div class="bar-sm" style="background:#D5DBDF"></div>
+      <h3 style="font-size:36px">Measure</h3>
+      <p class="small">Declared residues, with a nearest-atom scan as a cross-check.</p>
+    </div>
+  </div>
+  <div class="row" style="gap:64px">
+    <div class="col g12 grow ruled">
+      <p class="lede">One backbone, chosen on designability</p>
+      <p>Backbones were compared on the median CA RMSD between the designed backbone and its refold. It separates backbones but says nothing about an individual sequence. <b class="ink">Every design sits on seed 4, base at position 86, donor at 52.</b></p>
+    </div>
+    <div class="col g12 grow ruled">
+      <p class="lede">What we skip, and why</p>
+      <p>The MSA stage is a no-op for de novo sequences — no homologue exists, depth 1, and the output is bit-identical with and without it. Skipping MMseqs2 gives a 3–4× gain.</p>
+    </div>
+  </div>
+  <aside>Motif in, backbone out, sequences onto that backbone, then the same cofold the organizers use. Two decisions worth naming. Every design sits on one backbone, seed four, chosen on designability — how closely its refold reproduces the designed backbone. And we skip the MSA stage entirely: for a de novo sequence there is no homologue, the output is bit-identical, and dropping it makes the whole loop three to four times faster.</aside>
+</section>

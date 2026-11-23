@@ -1,0 +1,579 @@
+<title>Kemp Theozyme</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: instrument panel — rotatable site on the left, measured values on the right. */
+  :root {
+    color-scheme: light;
+    --bg: #eef0f2;
+    --surface: #ffffff;
+    --surface-2: #f6f7f9;
+    --ink: #161a1f;
+    --ink-2: #4d5661;
+    --ink-3: #79838f;
+    --line: #d8dde3;
+    --accent: #0b6e78;
+    --accent-soft: #d6ecee;
+    --good: #1f7a46;
+    --warn: #8a5a00;
+    --atom-c: #59636f;
+    --atom-n: #2f5fd0;
+    --atom-o: #cf3a26;
+    --atom-h: #9aa4b0;
+    --hbond: #0b6e78;
+    --plane: rgba(11, 110, 120, 0.1);
+    --stage-top: #fdfdfe;
+    --stage-bottom: #e7eaee;
+    --font-display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      color-scheme: dark;
+      --bg: #10151a;
+      --surface: #171d24;
+      --surface-2: #1d242c;
+      --ink: #eef2f6;
+      --ink-2: #aab4bf;
+      --ink-3: #78838f;
+      --line: #2a333d;
+      --accent: #4fc3cf;
+      --accent-soft: #123940;
+      --good: #4cc98a;
+      --warn: #e0a93f;
+      --atom-c: #9aa6b3;
+      --atom-n: #6e9bff;
+      --atom-o: #ff6a52;
+      --atom-h: #68727e;
+      --hbond: #4fc3cf;
+      --plane: rgba(79, 195, 207, 0.12);
+      --stage-top: #1b222a;
+      --stage-bottom: #0d1216;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #10151a;
+    --surface: #171d24;
+    --surface-2: #1d242c;
+    --ink: #eef2f6;
+    --ink-2: #aab4bf;
+    --ink-3: #78838f;
+    --line: #2a333d;
+    --accent: #4fc3cf;
+    --accent-soft: #123940;
+    --good: #4cc98a;
+    --warn: #e0a93f;
+    --atom-c: #9aa6b3;
+    --atom-n: #6e9bff;
+    --atom-o: #ff6a52;
+    --atom-h: #68727e;
+    --hbond: #4fc3cf;
+    --plane: rgba(79, 195, 207, 0.12);
+    --stage-top: #1b222a;
+    --stage-bottom: #0d1216;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-block: 32px 56px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  header { display: flex; flex-direction: column; gap: 10px; }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(28px, 5vw, 42px);
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .lede { margin: 0; color: var(--ink-2); max-width: 65ch; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink-2);
+    background: var(--surface);
+  }
+  .chip.key { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+  .grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+  @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .panel-head {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+    padding: 14px 18px; border-bottom: 1px solid var(--line);
+  }
+  .panel-head h2 {
+    font-family: var(--font-display); font-size: 15px; font-weight: 700;
+    letter-spacing: 0.01em; margin: 0;
+  }
+  .panel-head .hint { font-size: 12px; color: var(--ink-3); font-family: var(--font-mono); }
+
+  #stage {
+    display: block; width: 100%; aspect-ratio: 4 / 3; max-width: 100%;
+    background: linear-gradient(170deg, var(--stage-top), var(--stage-bottom));
+    cursor: grab; touch-action: none;
+  }
+  #stage:active { cursor: grabbing; }
+
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 18px; border-top: 1px solid var(--line); background: var(--surface-2); }
+  button, .toggle {
+    font-family: var(--font-body); font-size: 12.5px; font-weight: 500;
+    color: var(--ink-2); background: var(--surface);
+    border: 1px solid var(--line); border-radius: 8px;
+    padding: 6px 11px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  button:hover, .toggle:hover { border-color: var(--accent); color: var(--accent); }
+  button[aria-pressed="true"], .toggle:has(input:checked) {
+    border-color: var(--accent); color: var(--accent); background: var(--accent-soft);
+  }
+  .toggle input { accent-color: var(--accent); margin: 0; width: 13px; height: 13px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .readout { padding: 6px 18px 18px; display: flex; flex-direction: column; }
+  .contact { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .contact:last-child { border-bottom: none; }
+  .contact-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 2px; }
+  .swatch { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .contact-name { font-family: var(--font-display); font-weight: 700; font-size: 14.5px; }
+  .contact-sub { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); }
+  .contact-role { font-size: 13px; color: var(--ink-2); margin: 2px 0 10px; }
+  .metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .metric { display: flex; flex-direction: column; gap: 1px; }
+  .metric .v { font-family: var(--font-mono); font-size: 17px; font-weight: 500; font-variant-numeric: tabular-nums; }
+  .metric .k { font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+  .metric.ok .v { color: var(--good); }
+
+  .note { padding: 12px 18px; background: var(--surface-2); border-top: 1px solid var(--line); font-size: 12.5px; color: var(--ink-2); }
+
+  .section-title {
+    font-family: var(--font-display); font-weight: 700; font-size: 20px;
+    letter-spacing: -0.01em; margin: 8px 0 0;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { text-align: left; padding: 10px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+  tr:last-child td { border-bottom: none; }
+  td.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .rank { font-family: var(--font-mono); color: var(--accent); font-size: 12px; }
+  .scroll-x { overflow-x: auto; }
+
+  pre {
+    margin: 0; padding: 16px 18px; overflow-x: auto;
+    font-family: var(--font-mono); font-size: 12.5px; line-height: 1.7;
+    background: var(--surface-2); color: var(--ink);
+  }
+  .hl { color: var(--accent); font-weight: 500; }
+  ul.tight { margin: 0; padding: 14px 18px 16px 34px; display: flex; flex-direction: column; gap: 7px; font-size: 13.5px; color: var(--ink-2); }
+  ul.tight strong { color: var(--ink); font-weight: 600; }
+  footer { font-size: 12.5px; color: var(--ink-3); border-top: 1px solid var(--line); padding-top: 16px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Kemp Theozyme</h1>
+    <p class="lede">The catalytic arrangement a working Kemp eliminase holds its transition-state analogue in, stripped of the scaffold. Every number below is measured from the crystal structure, not estimated — these are the geometric targets a design has to reproduce.</p>
+    <div class="chips">
+      <span class="chip key">PDB 7K4Z · 1.08 Å</span>
+      <span class="chip">HG3.17 + 6NT</span>
+      <span class="chip">Geometry reference only</span>
+    </div>
+  </header>
+
+  <div class="grid">
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Active site</h2>
+        <span class="hint">drag to rotate</span>
+      </div>
+      <canvas id="stage" aria-label="Three-dimensional view of the catalytic site: aspartate base, glutamine donor and the 6-nitrobenzotriazole ligand"></canvas>
+      <div class="controls">
+        <button type="button" id="view-face" aria-pressed="true">Ring face-on</button>
+        <button type="button" id="view-edge" aria-pressed="false">Edge-on</button>
+        <label class="toggle"><input type="checkbox" id="opt-plane" checked> Ring plane</label>
+        <label class="toggle"><input type="checkbox" id="opt-labels" checked> Labels</label>
+        <label class="toggle"><input type="checkbox" id="opt-h"> Hydrogens</label>
+      </div>
+      <p class="note"><strong>Edge-on</strong> is the view that matters: it shows how little either partner rises out of the aromatic plane. The scorer judges in-plane and out-of-plane approach separately and keeps the worse of the two, so a contact that looks perfect face-on can still score poorly.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Measured targets</h2>
+        <span class="hint">results/theozyme_7k4z_geometry.json</span>
+      </div>
+      <div class="readout" id="readout"></div>
+      <p class="note">Base burial: <strong id="burial"></strong> Cα atoms within 12 Å of the aspartate Cγ — the scorer's own definition of a base sitting in a pocket rather than in solvent.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title">What the scorer rewards</h2>
+  <div class="panel scroll-x">
+    <table>
+      <thead><tr><th>Priority</th><th>Criterion</th><th>What it asks</th></tr></thead>
+      <tbody>
+        <tr><td class="rank">01</td><td><strong>Catalytic distance</strong></td><td>Declared base close to the atom it deprotonates; declared donor close to the atom that develops negative charge. Carries the most weight of anything.</td></tr>
+        <tr><td class="rank">02</td><td><strong>Approach geometry</strong></td><td>Angle onto the ring and whether the partner lies in the ring plane. The two do not average — the worse one decides.</td></tr>
+        <tr><td class="rank">03</td><td><strong>Interface confidence</strong></td><td>Mean predicted distance error across the protein–ligand interface of the cofolded complex. Lower is better.</td></tr>
+        <tr><td class="rank">04</td><td><strong>Base burial</strong></td><td>The base enclosed in a pocket, not solvent-exposed, so its pKa holds.</td></tr>
+        <tr><td class="rank">05</td><td><strong>Pose consistency</strong></td><td>Ligand in the same place across repeated predictions. Variance counts against you.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="lede" style="font-size:13.5px">Criteria 1 and 2 together outweigh everything else combined, and the terms multiply — strength in one never compensates for failure in another. Each distance is scored against an optimum, not a direction: too short is a clash and is penalised harder than the same error too long.</p>
+
+  <h2 class="section-title">Declaring the pair</h2>
+  <div class="panel">
+    <pre>&gt;triad_01 <span class="hl">base=19</span> <span class="hl">oxy=24</span>
+MKAYLVTGGAGFIGSHLVDRLLEQGHEVIVLDNLSTGKRENVPAGATLVEGDLGDAALLD</pre>
+    <ul class="tight">
+      <li><strong>base=</strong> must point at an <strong>ASP</strong> or <strong>GLU</strong>; <strong>oxy=</strong> at <strong>GLN, ASN, SER, THR, TYR, LYS</strong> or <strong>ARG</strong>.</li>
+      <li>Both indices are <strong>1-based into your own sequence</strong> — not HG3.17 numbering. An off-by-one measures an unrelated residue and returns a plausible but wrong score.</li>
+      <li><strong>HIS cannot be the donor.</strong> It donates from NE2 or ND1 depending on tautomer and the header cannot say which. Design around it.</li>
+      <li>Nothing else may appear in the header. Free text after the name is rejected outright.</li>
+      <li>At most <strong>20 designs</strong>, each <strong>50–260</strong> residues. Identical sequences are scored once and waste a slot.</li>
+    </ul>
+  </div>
+
+  <footer>
+    Geometry measured from PDB 7K4Z (Kemp eliminase HG3.17 bound to 6-nitrobenzotriazole). HG3.17 itself is ineligible as a submission under the novelty rules — backbones above TM-score 0.7 or sequences above 70% identity to published enzymes do not qualify. Copy the arrangement, never the fold.
+  </footer>
+</div>
+
+<script id="theozyme-data" type="application/json">
+{
+  "atoms": [
+    {"n":"N","r":"ASP","i":1,"e":"N","x":8.391,"y":10.627,"z":9.316},
+    {"n":"CA","r":"ASP","i":1,"e":"C","x":7.318,"y":9.669,"z":9.129},
+    {"n":"C","r":"ASP","i":1,"e":"C","x":6.109,"y":10.232,"z":9.843},
+    {"n":"O","r":"ASP","i":1,"e":"O","x":6.014,"y":10.199,"z":11.071},
+    {"n":"CB","r":"ASP","i":1,"e":"C","x":7.775,"y":8.307,"z":9.636},
+    {"n":"CG","r":"ASP","i":1,"e":"C","x":8.871,"y":7.715,"z":8.753},
+    {"n":"OD1","r":"ASP","i":1,"e":"O","x":8.932,"y":8.033,"z":7.542},
+    {"n":"OD2","r":"ASP","i":1,"e":"O","x":9.734,"y":6.974,"z":9.283},
+    {"n":"N","r":"GLN","i":2,"e":"N","x":8.634,"y":8.793,"z":19.559},
+    {"n":"CA","r":"GLN","i":2,"e":"C","x":7.281,"y":8.283,"z":19.507},
+    {"n":"C","r":"GLN","i":2,"e":"C","x":6.411,"y":9.054,"z":20.507},
+    {"n":"O","r":"GLN","i":2,"e":"O","x":6.911,"y":9.780,"z":21.385},
+    {"n":"CB","r":"GLN","i":2,"e":"C","x":7.236,"y":6.792,"z":19.820},
+    {"n":"CG","r":"GLN","i":2,"e":"C","x":8.198,"y":5.929,"z":19.004},
+    {"n":"CD","r":"GLN","i":2,"e":"C","x":7.893,"y":5.905,"z":17.517},
+    {"n":"OE1","r":"GLN","i":2,"e":"O","x":6.844,"y":6.382,"z":17.077},
+    {"n":"NE2","r":"GLN","i":2,"e":"N","x":8.791,"y":5.317,"z":16.745},
+    {"n":"O21","r":"6NT","i":3,"e":"O","x":14.157,"y":1.803,"z":11.518},
+    {"n":"NO1","r":"6NT","i":3,"e":"N","x":13.410,"y":2.811,"z":10.943},
+    {"n":"O11","r":"6NT","i":3,"e":"O","x":13.472,"y":2.966,"z":9.763},
+    {"n":"C5","r":"6NT","i":3,"e":"C","x":12.463,"y":3.532,"z":11.757},
+    {"n":"C6","r":"6NT","i":3,"e":"C","x":12.359,"y":3.270,"z":13.128},
+    {"n":"C7","r":"6NT","i":3,"e":"C","x":11.412,"y":3.920,"z":13.900},
+    {"n":"C7A","r":"6NT","i":3,"e":"C","x":10.556,"y":4.831,"z":13.274},
+    {"n":"N1","r":"6NT","i":3,"e":"N","x":9.562,"y":5.582,"z":13.754},
+    {"n":"C3A","r":"6NT","i":3,"e":"C","x":10.659,"y":5.070,"z":11.912},
+    {"n":"C4","r":"6NT","i":3,"e":"C","x":11.613,"y":4.417,"z":11.138},
+    {"n":"N3","r":"6NT","i":3,"e":"N","x":9.733,"y":5.971,"z":11.589},
+    {"n":"N2","r":"6NT","i":3,"e":"N","x":9.048,"y":6.298,"z":12.723},
+    {"n":"H6","r":"6NT","i":3,"e":"H","x":12.931,"y":2.653,"z":13.524},
+    {"n":"H4","r":"6NT","i":3,"e":"H","x":11.674,"y":4.575,"z":10.223},
+    {"n":"H7","r":"6NT","i":3,"e":"H","x":11.347,"y":3.755,"z":14.813},
+    {"n":"H3","r":"6NT","i":3,"e":"H","x":9.591,"y":6.290,"z":10.803}
+  ],
+  "ring": ["N1", "N2", "N3", "C3A", "C4", "C5", "C6", "C7", "C7A"],
+  "contacts": [
+    {"distance_a": 2.51, "in_plane_deg": 5.3, "out_of_plane_deg": 7.3, "partner_angle_deg": 128.5, "residue": "ASP127", "atom": "OD2", "ligand_atom": "N3", "role_text": "deprotonates the acidic position", "h_bond_angle_deg": 165.4, "h_to_partner_a": 1.67, "role": "base"},
+    {"distance_a": 3.1, "in_plane_deg": 6.5, "out_of_plane_deg": 2.8, "partner_angle_deg": 134.0, "residue": "GLN50", "atom": "NE2", "ligand_atom": "N1", "role_text": "stabilises the developing oxyanion", "role": "donor"}
+  ],
+  "base_burial": 47
+}
+</script>
+
+<script>
+(function () {
+  "use strict";
+  const DATA = JSON.parse(document.getElementById("theozyme-data").textContent);
+  const canvas = document.getElementById("stage");
+  const ctx = canvas.getContext("2d");
+
+  const css = getComputedStyle(document.documentElement);
+  const theme = () => ({
+    C: css.getPropertyValue("--atom-c").trim(),
+    N: css.getPropertyValue("--atom-n").trim(),
+    O: css.getPropertyValue("--atom-o").trim(),
+    H: css.getPropertyValue("--atom-h").trim(),
+    hbond: css.getPropertyValue("--hbond").trim(),
+    plane: css.getPropertyValue("--plane").trim(),
+    ink: css.getPropertyValue("--ink").trim(),
+    ink3: css.getPropertyValue("--ink-3").trim(),
+    surface: css.getPropertyValue("--surface").trim()
+  });
+
+  const RADIUS = { C: 0.40, N: 0.40, O: 0.39, H: 0.22 };
+  const atoms = DATA.atoms.map(a => ({ ...a, p: [a.x, a.y, a.z] }));
+  const find = (res, name) => atoms.find(a => a.r === res && a.n === name);
+  const ligand = atoms.filter(a => a.r === "6NT");
+  const ringAtoms = DATA.ring.map(n => find("6NT", n));
+
+  // Centre on the bounding box of the heavy atoms so the three pieces sit
+  // together in frame, rather than on the ring alone.
+  const heavy = atoms.filter(a => a.e !== "H");
+  const centre = [0, 1, 2].map(i =>
+    (Math.min(...heavy.map(a => a.p[i])) + Math.max(...heavy.map(a => a.p[i]))) / 2);
+  atoms.forEach(a => { a.p = [a.p[0] - centre[0], a.p[1] - centre[1], a.p[2] - centre[2]]; });
+  const extent = Math.max(...heavy.map(a => Math.hypot(a.p[0], a.p[1], a.p[2])));
+
+  // --- bonds by distance; covalent radii are close enough at this size ------
+  const bonds = [];
+  for (let i = 0; i < atoms.length; i++) {
+    for (let j = i + 1; j < atoms.length; j++) {
+      const a = atoms[i], b = atoms[j];
+      if (a.r !== b.r) continue;
+      const d = Math.hypot(a.p[0] - b.p[0], a.p[1] - b.p[1], a.p[2] - b.p[2]);
+      const limit = (a.e === "H" || b.e === "H") ? 1.25 : 1.75;
+      if (d < limit) bonds.push([a, b]);
+    }
+  }
+
+  const hbonds = DATA.contacts.map(c => ({
+    a: find(c.residue.startsWith("ASP") ? "ASP" : "GLN", c.atom),
+    b: find("6NT", c.ligand_atom),
+    label: c.distance_a.toFixed(2) + " Å"
+  }));
+
+  // --- vector helpers -------------------------------------------------------
+  const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  const cross = (a, b) => [a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]];
+  const dot = (a, b) => a[0]*b[0] + a[1]*b[1] + a[2]*b[2];
+  const unit = a => { const n = Math.hypot(...a) || 1; return [a[0]/n, a[1]/n, a[2]/n]; };
+  const mul = (m, v) => [dot(m[0], v), dot(m[1], v), dot(m[2], v)];
+  const mulM = (m, n) => m.map(row => [0,1,2].map(c => row[0]*n[0][c] + row[1]*n[1][c] + row[2]*n[2][c]));
+
+  // Newell normal of the aromatic ring.
+  let normal = [0, 0, 0];
+  ringAtoms.forEach((a, i) => {
+    const b = ringAtoms[(i + 1) % ringAtoms.length];
+    normal[0] += (a.p[1] - b.p[1]) * (a.p[2] + b.p[2]);
+    normal[1] += (a.p[2] - b.p[2]) * (a.p[0] + b.p[0]);
+    normal[2] += (a.p[0] - b.p[0]) * (a.p[1] + b.p[1]);
+  });
+  normal = unit(normal);
+
+  // Base orientation: ring normal toward the viewer, so the plane is face-on.
+  function alignTo(from, to) {
+    const v = cross(from, to), c = dot(from, to);
+    if (Math.hypot(...v) < 1e-8) return c > 0 ? [[1,0,0],[0,1,0],[0,0,1]] : [[-1,0,0],[0,-1,0],[0,0,1]];
+    const K = [[0, -v[2], v[1]], [v[2], 0, -v[0]], [-v[1], v[0], 0]];
+    const k2 = mulM(K, K), f = 1 / (1 + c);
+    return [0,1,2].map(i => [0,1,2].map(j => (i === j ? 1 : 0) + K[i][j] + k2[i][j] * f));
+  }
+  const FACE = alignTo(normal, [0, 0, 1]);
+  const rotX = t => [[1,0,0],[0,Math.cos(t),-Math.sin(t)],[0,Math.sin(t),Math.cos(t)]];
+  const rotY = t => [[Math.cos(t),0,Math.sin(t)],[0,1,0],[-Math.sin(t),0,Math.cos(t)]];
+
+  let view = FACE;
+  let drag = null;
+
+  // --- rendering ------------------------------------------------------------
+  let W = 0, H = 0, scale = 1;
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const rect = canvas.getBoundingClientRect();
+    W = rect.width; H = rect.height;
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    scale = Math.min(W, H) / (2 * extent + 2.6);
+    draw();
+  }
+
+  const project = p => { const v = mul(view, p); return { x: W / 2 + v[0] * scale, y: H / 2 - v[1] * scale, z: v[2] }; };
+
+  function draw() {
+    const T = theme();
+    const showH = document.getElementById("opt-h").checked;
+    const showLabels = document.getElementById("opt-labels").checked;
+    const showPlane = document.getElementById("opt-plane").checked;
+    ctx.clearRect(0, 0, W, H);
+
+    const visible = a => showH || a.e !== "H";
+    const pos = new Map(atoms.map(a => [a, project(a.p)]));
+
+    if (showPlane) {
+      ctx.beginPath();
+      ringAtoms.forEach((a, i) => { const p = pos.get(a); i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); });
+      ctx.closePath();
+      ctx.fillStyle = T.plane;
+      ctx.fill();
+      ctx.strokeStyle = T.plane;
+      ctx.lineWidth = 10;
+      ctx.lineJoin = "round";
+      ctx.stroke();
+    }
+
+    // Hydrogen bonds sit behind the atoms they join.
+    hbonds.forEach(hb => {
+      const p = pos.get(hb.a), q = pos.get(hb.b);
+      ctx.save();
+      ctx.setLineDash([5, 4]);
+      ctx.strokeStyle = T.hbond;
+      ctx.lineWidth = 2.2;
+      ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+      ctx.restore();
+    });
+
+    // Painter's algorithm over bond halves and atoms together.
+    const items = [];
+    bonds.forEach(([a, b]) => {
+      if (!visible(a) || !visible(b)) return;
+      const p = pos.get(a), q = pos.get(b);
+      const m = { x: (p.x + q.x) / 2, y: (p.y + q.y) / 2, z: (p.z + q.z) / 2 };
+      items.push({ z: (p.z + m.z) / 2, kind: "bond", from: p, to: m, color: T[a.e] });
+      items.push({ z: (q.z + m.z) / 2, kind: "bond", from: q, to: m, color: T[b.e] });
+    });
+    atoms.forEach(a => { if (visible(a)) items.push({ z: pos.get(a).z, kind: "atom", atom: a, p: pos.get(a) }); });
+    items.sort((u, v) => u.z - v.z);
+
+    items.forEach(it => {
+      if (it.kind === "bond") {
+        ctx.strokeStyle = it.color;
+        ctx.lineWidth = Math.max(2, 0.17 * scale);
+        ctx.lineCap = "round";
+        ctx.beginPath(); ctx.moveTo(it.from.x, it.from.y); ctx.lineTo(it.to.x, it.to.y); ctx.stroke();
+      } else {
+        const a = it.atom, r = RADIUS[a.e] * scale;
+        const g = ctx.createRadialGradient(it.p.x - r * 0.35, it.p.y - r * 0.4, r * 0.1, it.p.x, it.p.y, r);
+        g.addColorStop(0, "rgba(255,255,255,0.45)");
+        g.addColorStop(0.45, T[a.e]);
+        g.addColorStop(1, T[a.e]);
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(it.p.x, it.p.y, r, 0, Math.PI * 2); ctx.fill();
+      }
+    });
+
+    if (!showLabels) return;
+
+    ctx.font = "600 12px " + css.getPropertyValue("--font-mono").trim();
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    hbonds.forEach(hb => {
+      const p = pos.get(hb.a), q = pos.get(hb.b);
+      const x = (p.x + q.x) / 2, y = (p.y + q.y) / 2;
+      const w = ctx.measureText(hb.label).width + 10;
+      ctx.fillStyle = T.surface;
+      ctx.beginPath(); ctx.roundRect(x - w / 2, y - 9, w, 18, 5); ctx.fill();
+      ctx.strokeStyle = T.hbond; ctx.lineWidth = 1; ctx.stroke();
+      ctx.fillStyle = T.hbond;
+      ctx.fillText(hb.label, x, y + 0.5);
+    });
+
+    const tags = [
+      { atom: find("ASP", "CG"), text: "ASP127", off: [0, -24] },
+      { atom: find("GLN", "CD"), text: "GLN50", off: [0, -24] },
+      { atom: find("6NT", "NO1"), text: "6NT", off: [0, 24] },
+      { atom: find("6NT", "N3"), text: "N3", off: [-20, 6] },
+      { atom: find("6NT", "N1"), text: "N1", off: [20, 6] }
+    ];
+    ctx.font = "600 11.5px " + css.getPropertyValue("--font-body").trim();
+    tags.forEach(t => {
+      const p = pos.get(t.atom);
+      ctx.fillStyle = T.ink;
+      ctx.strokeStyle = T.surface;
+      ctx.lineWidth = 3.5;
+      ctx.strokeText(t.text, p.x + t.off[0], p.y + t.off[1]);
+      ctx.fillText(t.text, p.x + t.off[0], p.y + t.off[1]);
+    });
+  }
+
+  // --- interaction ----------------------------------------------------------
+  canvas.addEventListener("pointerdown", e => {
+    drag = { x: e.clientX, y: e.clientY };
+    canvas.setPointerCapture(e.pointerId);
+    setPreset(null);
+  });
+  canvas.addEventListener("pointermove", e => {
+    if (!drag) return;
+    const dx = (e.clientX - drag.x) * 0.01, dy = (e.clientY - drag.y) * 0.01;
+    drag = { x: e.clientX, y: e.clientY };
+    view = mulM(mulM(rotX(dy), rotY(dx)), view);
+    draw();
+  });
+  const endDrag = () => { drag = null; };
+  canvas.addEventListener("pointerup", endDrag);
+  canvas.addEventListener("pointercancel", endDrag);
+
+  const faceBtn = document.getElementById("view-face");
+  const edgeBtn = document.getElementById("view-edge");
+  function setPreset(which) {
+    faceBtn.setAttribute("aria-pressed", String(which === "face"));
+    edgeBtn.setAttribute("aria-pressed", String(which === "edge"));
+  }
+  faceBtn.addEventListener("click", () => { view = FACE; setPreset("face"); draw(); });
+  edgeBtn.addEventListener("click", () => { view = mulM(rotX(Math.PI / 2), FACE); setPreset("edge"); draw(); });
+  ["opt-plane", "opt-labels", "opt-h"].forEach(id =>
+    document.getElementById(id).addEventListener("change", draw));
+
+  window.addEventListener("resize", resize);
+  if (window.matchMedia) {
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    (mq.addEventListener ? mq.addEventListener.bind(mq, "change") : mq.addListener.bind(mq))(draw);
+  }
+
+  // --- readout panel, written from the same data the canvas draws ----------
+  const swatchFor = { base: "--atom-o", donor: "--atom-n" };
+  document.getElementById("readout").innerHTML = DATA.contacts.map(c => {
+    const extra = c.h_bond_angle_deg != null
+      ? `<div class="metric"><span class="v">${c.h_bond_angle_deg}°</span><span class="k">N–H···O angle</span></div>`
+      : `<div class="metric"><span class="v">${c.partner_angle_deg}°</span><span class="k">at donor atom</span></div>`;
+    return `<div class="contact">
+      <div class="contact-head">
+        <span class="swatch" style="background:var(${swatchFor[c.role]})"></span>
+        <span class="contact-name">${c.residue} ${c.atom}</span>
+        <span class="contact-sub">→ 6NT ${c.ligand_atom}</span>
+      </div>
+      <p class="contact-role">${c.role_text}</p>
+      <div class="metrics">
+        <div class="metric"><span class="v">${c.distance_a.toFixed(2)} Å</span><span class="k">distance</span></div>
+        <div class="metric ok"><span class="v">${c.in_plane_deg}°</span><span class="k">in-plane</span></div>
+        <div class="metric ok"><span class="v">${c.out_of_plane_deg}°</span><span class="k">out-of-plane</span></div>
+      </div>
+      <div class="metrics" style="margin-top:10px">${extra}</div>
+    </div>`;
+  }).join("");
+  document.getElementById("burial").textContent = DATA.base_burial;
+
+  resize();
+})();
+</script>

@@ -1,0 +1,47 @@
+<section id="reaction" class="s2" data-transition="fade">
+  <div class="spectrum"><div class="c1"></div><div class="c2 on"></div><div class="c3"></div><div class="c4"></div><div class="c5"></div><div class="c6"></div><div class="c7"></div><div class="c8"></div><div class="c9"></div><div class="c10"></div></div>
+  <div class="col g20">
+    <p class="eyebrow">The brief</p>
+    <h2>What is scored, and what we measure instead</h2>
+  </div>
+  <div class="row" style="gap:72px">
+    <div class="col g32" style="width:800px">
+      <p class="lede">The organizers cofold each submitted sequence with 6NT in Boltz-2, five replicates, and score five terms: contact distances, approach geometry, interface confidence, active-site packing and pose consistency.</p>
+      <p>Geometry — distances and approach together — outweighs everything else combined, and the terms multiply. Novelty, backbone TM-score at most 0.7 and sequence identity at most 70 %, is a gate rather than a score.</p>
+      <div class="col g12 ruled">
+        <p class="lede">We do not know the functional forms</p>
+        <p>So we measure the quantities ourselves and build proxies, against windows taken from the crystal structures.</p>
+      </div>
+    </div>
+    <div class="col g32 grow">
+      <svg viewBox="0 0 700 420" width="660" height="396" aria-label="The 6NT ring. The catalytic base approaches ring nitrogen N3; the oxyanion donor approaches ring nitrogen N1.">
+        <g stroke="#BA76DD" stroke-width="9" fill="none" stroke-linejoin="round">
+          <polygon points="300,262 256,338 168,338 124,262 168,186 256,186"/>
+          <polygon points="300,262 386,244 395,157 315,121 256,186"/>
+          <line x1="168" y1="338" x2="128" y2="384"/>
+        </g>
+        <circle cx="386" cy="244" r="19" fill="#0151E2"/>
+        <circle cx="315" cy="121" r="19" fill="#E32B06"/>
+        <g stroke-width="7" stroke-dasharray="13 12" stroke-linecap="round">
+          <line x1="408" y1="254" x2="545" y2="314" stroke="#0151E2"/>
+          <line x1="300" y1="104" x2="176" y2="52" stroke="#E32B06"/>
+        </g>
+        <rect x="556" y="300" width="34" height="34" fill="#0151E2"/>
+        <rect x="128" y="22" width="34" height="34" fill="#E32B06"/>
+      </svg>
+      <div class="row" style="gap:40px">
+        <div class="col g12 grow">
+          <div class="tick" style="background:#0151E2"></div>
+          <p class="small ink"><b>Base → N3</b></p>
+          <p class="small">The declared Asp carboxylate oxygen.</p>
+        </div>
+        <div class="col g12 grow">
+          <div class="tick" style="background:#E32B06"></div>
+          <p class="small ink"><b>Donor → N1</b></p>
+          <p class="small">The declared Gln NE2.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside>Five scored terms, and geometry dominates: contact distances carry the most weight, then approach geometry where the worse of angle and in-plane decides. The terms multiply, so one failure cannot be bought back. Novelty is a gate, not a score. We do not know the scorer's functional forms, so everything we do is a proxy measured against the crystals.</aside>
+</section>

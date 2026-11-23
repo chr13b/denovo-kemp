@@ -1,0 +1,26 @@
+<section id="refold" class="s6" data-transition="push">
+  <div class="spectrum"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div><div class="c5"></div><div class="c6 on"></div><div class="c7"></div><div class="c8"></div><div class="c9"></div><div class="c10"></div></div>
+  <div class="col g20">
+    <p class="eyebrow">The central difficulty</p>
+    <h2>The designed geometry is lost in the refold</h2>
+  </div>
+  <div class="row" style="gap:56px">
+    <div class="col g12 grow ruled">
+      <p class="num xl cool">0.013 Å</p>
+      <p class="label">RFD3 deviation from the crystal window</p>
+      <p class="small">The generator reproduces the contact geometry on every run. All geometric loss happens later.</p>
+    </div>
+    <div class="col g12 grow ruled">
+      <p class="num xl hot">84 %</p>
+      <p class="label">of 352 swept designs put the ligand outside the pocket</p>
+      <p class="small">Measured after the Boltz-2 cofold, which is what gets scored.</p>
+    </div>
+    <div class="col g12 grow ruled">
+      <p class="num xl">0.4–1 Å</p>
+      <p class="label">noise on a contact between folds of one sequence</p>
+      <p class="small">A single cofold is so noisy that ranking designs by one fold ranks noise.</p>
+    </div>
+  </div>
+  <p class="lede">So the method follows from the problem: <b class="ink">generate many sequences on one good backbone, screen cheaply on one fold, replicate the best over five seeds, and select on the replicated numbers.</b></p>
+  <aside>This is the finding the whole method is built around. RFdiffusion reproduces the crystal contact window essentially exactly, within about a hundredth of an ångström, on every run. So the geometry is not lost at the drawing board — it is lost in the refold, which is the thing that gets scored. And a single refold is so noisy, up to an ångström on a contact, that ranking designs by one fold is ranking noise. Hence: screen cheap, then replicate.</aside>
+</section>
