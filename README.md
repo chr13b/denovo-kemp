@@ -13,7 +13,8 @@
 
 <p align="center">
   <b>Purely de novo Kemp eliminase design: a high-throughput, steerable in-silico pipeline that generates thousands of candidates<br>
-  and the measurements that tell a real design from a lucky fold.</b>
+  and the measurements that tell a real design from a lucky fold.</b><br>
+  <i>Selected designs are now being tested in the wet lab for ligand binding.</i>
 </p>
 
 ---

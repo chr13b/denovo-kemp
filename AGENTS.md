@@ -7,7 +7,7 @@ Claude Code users: `CLAUDE.md` is the same content plus Claude-specific bits, an
 
 ## What this project is
 
-The **Perlin x D-BSSE Protein Design Hackathon**, team 01. We design Kemp eliminase enzymes and submit
+**denovo-kemp**, a computational enzyme-design research project. We design Kemp eliminase enzymes and submit
 up to 20 protein sequences as one `designs.fasta`. GPU work happens on a remote Slurm cluster.
 The task, scoring and hard rules are in `wiki/challenge.md` — **read it before any scientific decision**.
 

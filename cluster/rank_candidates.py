@@ -13,11 +13,11 @@ in a later job appears as its own row, flagged, next to its first row.
 
 Source of a design, read from the query name the job was submitted with:
 
-    d_jj_*       JJ     (Janis Jackel; RFD4-Proteina designs scored with Boltz-2)
+    d_jj_*       JJ     (Janis; RFD4-Proteina designs scored with Boltz-2)
     d_mario_*    Mario  (his top-20 list)
     d_zonghu_*   Zonghu (our teammate's own sequences, folded here as a control)
     d_chris_*    Chris  (our own designs, folded again in the same batch as a control)
-    anything else in an older job is one of OUR designs (Chris / team 01)
+    anything else in an older job is one of OUR designs (Chris)
 
 Columns: the pre-registered quantities (seeds with both contacts in window, mean D, OD2 nearest, iPDE), plus
 the two terms D lacked (D2 = worse of approach and in-plane per contact; A_over = degrees outside the crystal

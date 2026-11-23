@@ -1,6 +1,6 @@
 # Our approach: from a catalytic motif to replicated Kemp-eliminase designs
 
-Team 01, Perlin x D-BSSE Protein Design Hackathon. This page is the technical description of what we did, step by
+This page is the technical description of what we did, step by
 step, with the filters and selection criteria that produced our top designs. It is written to be lifted into the
 presentation. Every number comes from a run file or a table in `results/`; where something is an inference, it says so.
 The longer reasoning is in `wiki/primer.md` (section numbers in brackets); the scoring rules are in `wiki/challenge.md`.

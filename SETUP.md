@@ -3,7 +3,7 @@
 Welcome! This is the one page you need on day one. No prior experience with this repo,
 with Claude, or with clusters is assumed.
 
-> **Note (2026-11-23).** Written for the hackathon team during the event (2026-11-21 and 2026-11-22). The invitation, key
+> **Note (2026-11-23).** Written for the team during the first two days of the project (2026-11-21 and 2026-11-22). The invitation, key
 > and cluster steps below applied while the organizers' cluster was provided. The laptop side (`make setup`, `make check`)
 > works from a plain clone.
 
@@ -12,7 +12,7 @@ with Claude, or with clusters is assumed.
 ## ⚡ The fast path (about 3 minutes)
 
 **Two things first, or nothing below works:**
-1. Ask the repository owner to **invite your GitHub account** to `chr13b/denovo-kemp` (it was private during the hackathon; once it is public you can simply fork it).
+1. Ask the repository owner to **invite your GitHub account** to `chr13b/denovo-kemp` (it was private during the project; once it is public you can simply fork it).
 2. Ask Chris for **`pdh-team-01.pem`** — directly, person to person. Save it to your Downloads folder.
    Never from a public link, never into this repo.
 
@@ -247,8 +247,8 @@ You do not have to use AI at all. Everything here works by hand.
 Paste this as your **first** message in a new session, from inside the repo folder:
 
 ```text
-You are helping me in the `denovo-kemp` repo for a 1-day protein-design hackathon
-(Perlin x D-BSSE, team 01). Before anything else, read AGENTS.md and INDEX.md in the repo
+You are helping me in the `denovo-kemp` repo for a 1-day protein-design project
+(team 01). Before anything else, read AGENTS.md and INDEX.md in the repo
 root, then run `uv run python tools/status.py` to see where the team is.
 
 Working rules you must follow (they are in AGENTS.md too):

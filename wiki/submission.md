@@ -4,7 +4,7 @@ One file, `designs.fasta`, uploaded to S3. Source of truth:
 [raw/20261121_organizers_submission.md](../raw/20261121_organizers_submission.md).
 The scoring criteria are summarised in [challenge.md](challenge.md).
 
-> **Status: closed.** The hackathon ended on 2026-11-22. This page stays as reference for the file format, the
+> **Status: closed.** The project phase ended on 2026-11-22. This page stays as reference for the file format, the
 > validator and the upload route; what was actually uploaded, and what was not, is in the Status table below.
 
 ## File format

@@ -161,7 +161,7 @@ if [ "$SKIP_CLUSTER" != "1" ]; then
     else
         cat >> "$HOME/.ssh/config" <<EOF
 
-# Perlin x D-BSSE hackathon, team 01
+# denovo-kemp cluster, team 01
 Host $HOST_ALIAS
     HostName $HOST_IP
     User $HOST_USER

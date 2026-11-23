@@ -1,7 +1,7 @@
-# Cluster (team 01)
+# Cluster
 
-> **Historical note (2026-11-23).** Written during the hackathon (2026-11-21 and 2026-11-22) for the organizers' cluster,
-> which was provided for the event. Node states, job numbers and paths on this page were true on those days.
+> **Historical note (2026-11-23).** Written during the first two days of the project (2026-11-21 and 2026-11-22) for the organizers' cluster,
+> which was provided for the project. Node states, job numbers and paths on this page were true on those days.
 
 Our GPU cluster. Full detail: [raw/20261121_organizers_cluster-guide.md](../raw/20261121_organizers_cluster-guide.md)
 and [raw/20261121_organizers_connect-team01.txt](../raw/20261121_organizers_connect-team01.txt).

@@ -1,4 +1,4 @@
-# CLAUDE.md: Kemp Challenge (hackathon)
+# CLAUDE.md: denovo-kemp
 
 This file is the **schema** for the repo: how it is organized and how we work in it. Keep it short;
 details belong in the files it points to. `AGENTS.md` is the same brief for non-Claude assistants —
@@ -8,7 +8,7 @@ keep the two in sync when you change a rule here.
 
 ## The project in five lines
 
-**Perlin x D-BSSE Protein Design Hackathon, team 01.** We design Kemp eliminase enzymes and submit up to
+**denovo-kemp, a computational enzyme-design research project.** We design Kemp eliminase enzymes and submit up to
 20 sequences as one `designs.fasta`; the organizers cofold each with ligand 6NT in Boltz-2 and score
 catalytic geometry. GPU work runs on a remote Slurm cluster (`wiki/cluster.md`), never on a laptop.
 Hard rules, scoring and open questions: `wiki/challenge.md`. Submission format: `wiki/submission.md`.

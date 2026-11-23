@@ -1,6 +1,6 @@
 ---
 name: submit
-description: Build, check and upload designs.fasta for the hackathon submission. Use when the user wants to submit designs, add a design to the submission, check the FASTA file, or asks "are we ready to submit".
+description: Build, check and upload designs.fasta for the final submission. Use when the user wants to submit designs, add a design to the submission, check the FASTA file, or asks "are we ready to submit".
 ---
 
 # Build and upload the submission

@@ -1,8 +1,7 @@
 # [2026-11-21 13:15] ingest | kickoff slides ingested: 4 scoring terms, burial definition, lab validation; one-command onboarding (chris)
 
-Source added: [../raw/20261121_organizers_challenge-slides.pdf](../raw/20261121_organizers_challenge-slides.pdf)
-(8 slides, Lucas Merlicek / Perlin Bio). **Image-only — no text layer**, so it must be rendered to images
-to read. Everything decision-relevant is distilled into [../wiki/challenge.md](../wiki/challenge.md).
+Source added: the organizers' kickoff deck (8 slides; removed from the tree before publication, see `wiki/decisions.md`).
+**Image-only — no text layer**, so it had to be rendered to images to read. Everything decision-relevant is distilled into [../wiki/challenge.md](../wiki/challenge.md).
 
 - **Scoring is four terms, and the slides resolve a contradiction in the organizers' own written doc**
   (it says "four criteria" then lists five): items 1 and 2 of the doc are the two halves of one **Geometry**

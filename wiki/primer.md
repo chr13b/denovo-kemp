@@ -1080,7 +1080,7 @@ AlphaFold DB — and fine-tune one of the models so it produces designs more lik
 - A surrogate scorer is cheap, needs no GPU training at scale, and compounds — every run we do adds a
   labelled example.
 
-**Cons — and they are decisive for a one-day hackathon**
+**Cons — and they are decisive for a one-day project**
 1. **We have 5 labelled examples.** Fine-tuning a generative model on 5 outcomes is not possible; even a
    surrogate classifier needs tens to hundreds. The data to train on is the thing we lack.
 2. **The compute is the same compute.** Training competes directly with generating designs, on the same
@@ -1100,7 +1100,7 @@ AlphaFold DB — and fine-tune one of the models so it produces designs more lik
 generate (burial count, radius of gyration, secondary-structure fraction, LigandMPNN score) alongside
 the binary did-it-fold outcome. That costs nothing, it is the training set a surrogate would need, and
 if we accumulate 30–50 designs a simple logistic regression on those features becomes genuinely useful
-*within* the hackathon — and is the honest first step toward fine-tuning if the project continues.
+*within* the project — and is the honest first step toward fine-tuning if the project continues.
 
 **What would change my answer:** a multi-day timeline, or discovering that burial and the other free
 features do *not* predict folding success — because then a learned filter would be the only route left.
@@ -1210,7 +1210,7 @@ empty pocket?"* A design whose pocket residues show near-zero leverage was never
 **As a steering knob, the paper's own result says be careful:** the actionable tilt "vanishes on fully
 de-novo backbones", and on de novo binders plain confidence outperformed it. Our backbones are fully de
 novo. The honest position is that the *diagnostic* use costs one extra 6-second run and does not depend on
-the contested claim, while the *steering* use is a research question we should not bet the hackathon on.
+the contested claim, while the *steering* use is a research question we should not bet the project on.
 
 ---
 

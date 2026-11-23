@@ -3,7 +3,7 @@
 - **Owner:** chris
 - **Date:** 2026-11-22
 - **Status:** done: supported (the requirement check and the ranking are complete; the file choice is the team's)
-- **Question:** Do the 10 designs JJ sent (`Hackathon_Kemp_JJ_Final`) and the 20 designs Mario sent (`mario_top20`) meet the
+- **Question:** Do the 10 designs JJ sent (`Kemp_JJ_Final`) and the 20 designs Mario sent (`mario_top20`) meet the
   submission rules, and how do they rank against ours when every one of them is folded on the SAME instrument
   (Boltz-2, ligand 6NT, 5 seeds, 200 sampling steps, 3 recycling steps, query-only MSA) and measured by the SAME code?
 - **Why it matters:** the file at the deadline is the one scored and holds at most 20 designs. Our own family is one fold,

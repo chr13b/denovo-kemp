@@ -19,8 +19,8 @@ entry that names the old one.
   - nanoGPT and nanochat: flat, readable code with minimal abstraction
   - cookiecutter-data-science: data kept separate from results
 - **Alternatives:**
-  - The full cookiecutter-data-science layout (too many empty directories for a hackathon)
-  - Hydra + W&B (setup costs more than it saves at hackathon scale; revisit if we run large sweeps)
+  - The full cookiecutter-data-science layout (too many empty directories for a project this size)
+  - Hydra + W&B (setup costs more than it saves at this scale; revisit if we run large sweeps)
 
 ## 2026-11-21 · Python ≥ 3.10, managed by uv (chris)
 - **Decision:** Use uv for the environment, and commit `uv.lock` and `.python-version`. CI installs with `uv sync --locked`.
@@ -90,7 +90,7 @@ entry that names the old one.
   `chris`, so scorer v2, the design filters, the pitch decks and the geometry module sit in one history. `README.md` was
   rewritten for a reader outside the team, an MIT `LICENSE` was added, and stale status pages were tidied (the Status table
   in `submission.md`, the roster in `team.md`, notes on `pitch.md`, `challenge.md`, `cluster.md` and `SETUP.md`).
-- **Why:** after the hackathon the repository is also the record of the work. One branch and one README let a reader see
+- **Why:** after the project the repository is also the record of the work. One branch and one README let a reader see
   what was done in minutes, and the full commit history shows how it developed.
 - **Alternatives:** publish from a squashed history (rejected: the history is part of the record); publish `chris` and leave the teammates' branches separate (their work would not be in the
   public branch).
@@ -109,3 +109,16 @@ entry that names the old one.
   no longer leads with the event it was done at; the wiki keeps the full context.
 - **Why:** the name says what the repository is, and the README should be read for the method and the measurements.
 - **Alternatives:** `kemp-replicate`, `fold-twice`.
+
+## 2026-11-23 · Remove the event context from the wiki, the sources and the instructions (chris)
+- **Decision:** the event name, the presenter's name and the "team 01 at ..." framing were replaced by neutral wording in
+  `wiki/`, `raw/`, `SETUP.md`, `CLAUDE.md`, `AGENTS.md`, `CONTRIBUTING.md`, `pyproject.toml` and the slide covers. The kickoff deck
+  `raw/20261121_organizers_challenge-slides.pdf` was deleted from the tree because it is image-only (its title slide names the
+  event, a presenter and a contact address) and cannot be redacted; `wiki/challenge.md` already holds what is decision-relevant
+  in it. The two result files whose names carried the event word were renamed (`jj_final_*.tsv`), and the sender's folder name
+  is now written `Kemp_JJ_Final`. A second, deliberate exception to "`raw/` is immutable", made by the repository owner.
+- **Kept on purpose:** real identifiers that commands depend on: the cluster paths `/mnt/ref/hackathon/...` and the
+  S3 bucket name in `cluster/`, `.claude/skills/`, `wiki/` and `raw/`. Renaming them would break the scripts.
+- **Why:** the repository is presented as a research project; the event is context, not content.
+- **Alternatives:** keep the context (rejected by the owner); delete `raw/` entirely (rejected: the organizers' file-format and
+  scoring rules are the reference for `wiki/submission.md`). The deck and the old wording stay recoverable from git history.

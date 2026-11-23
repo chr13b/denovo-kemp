@@ -7,7 +7,7 @@ hand.) Don't edit other people's rows; this file is union-merged, so two people 
 Your handle is a short lowercase nickname; it goes into your branch names, experiment IDs and log entries.
 Full setup: [../SETUP.md](../SETUP.md). "Owns" = who reviews and decides, not the only person allowed to touch it.
 
-The roster is the state at the end of the hackathon (2026-11-21 to 2026-11-22). Each "Owns" cell says what the person
+The roster is the state at the end of the project (2026-11-21 to 2026-11-22). Each "Owns" cell says what the person
 demonstrably did, read from the git history, `wiki/experiments/` and `slides/`.
 
 | Handle | GitHub | Background / strengths | Owns | Current branch |
@@ -15,7 +15,7 @@ demonstrably did, read from the git history, `wiki/experiments/` and `slides/`.
 | chris | chr13b | — | repo, cluster access, pipeline; the sequence-sampling and five-seed replication route; ranking of every candidate on one instrument | `chris` |
 | zonghu | zonghu3112 | — | scorer v2 (weighted K1-K5), design-funnel filters, novelty gate, theozyme and affinity-ladder experiments (`zonghu-01` to `zonghu-04`) | `zonghu` |
 | flavia | flavinzgi | — | pitch decks (`slides/`), `src/kemp/geometry.py`, theozyme target geometry from PDB 7K4Z (`flavia-01`) | `flavia` |
-| janis (JJ) | - | — | the theozyme route with RFD4-Proteina; sent 10 designs (`Hackathon_Kemp_JJ_Final`) | no branch (sent designs and decks) |
+| janis (JJ) | - | — | the theozyme route with RFD4-Proteina; sent 10 designs (`Kemp_JJ_Final`) | no branch (sent designs and decks) |
 | mario | - | — | the combinatorial route (site assembled from four crystal structures, OpenFold3 refold as a gate); sent 20 designs (`mario_top20`) | no branch (sent designs and decks) |
 
 ## Working agreements
@@ -28,7 +28,7 @@ demonstrably did, read from the git history, `wiki/experiments/` and `slides/`.
 - Cluster etiquette: 2 GPU workers for the whole team, so say in the chat when you start a long job.
   Name your project folders `<handle>_<topic>` and never touch `/mnt/work/kemp_example`.
 
-## Hackathon-era notes (kept for the lessons, no longer current)
+## Early notes (kept for the lessons, no longer current)
 
 The cluster events described below were true on 2026-11-21 and are historical: the queue state, the dead nodes and the
 job numbers no longer apply. They stay because the lessons (a no-op stage, a requeue loop, one fold being noisier than

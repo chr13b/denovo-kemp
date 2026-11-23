@@ -122,7 +122,7 @@ gh api -X PUT repos/chr13b/denovo-kemp/branches/main/protection \
 ```
 
 **Or in the browser:** Settings → Branches → *Add branch ruleset* / *Add rule* for `main` →
-tick "Require a pull request before merging" (0 approvals is fine for a hackathon),
+tick "Require a pull request before merging" (0 approvals is fine for a small team),
 "Require status checks to pass" → select `check`, and leave force pushes blocked.
 
 Also under Settings → General → Pull Requests: allow **merge commits**. If people keep long-lived
@@ -142,7 +142,7 @@ but the trap below still does: test the rule.
 
 **What we do instead — and it is enough:** the local `no-commit-to-main` hook from `make setup` blocks the
 actual accident (committing straight to `main`), CI runs on every push and PR anyway, and the team rule is
-"branch, then merge". A hackathon does not need server-side enforcement.
+"branch, then merge". A small team does not need server-side enforcement.
 
 **If you want the GitHub-side rule anyway**, in rough order of sense:
 
@@ -159,7 +159,7 @@ The browser device flow (`gh auth login` → "Login with a web browser") can tim
 
 1. In a browser where you are already signed in to GitHub, go to
    **Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token**.
-2. Scopes: `repo`, `read:org`, `gist`. Expiry: 7 days is plenty for a hackathon.
+2. Scopes: `repo`, `read:org`, `gist`. Expiry: 7 days is plenty for a short project.
 3. Save the token to a file and pipe it in — **never paste a token into a chat or a commit**:
    ```bash
    gh auth login --with-token < ~/gh-token.txt && rm ~/gh-token.txt

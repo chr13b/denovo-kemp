@@ -13,7 +13,7 @@ mkdir -p "$DEST"
 fetch() {  # fetch <short-name> <url>
     local name="$1" url="$2" out="$DEST/$1.pdf"
     if [ -s "$out" ]; then echo "  have     $name"; return 0; fi
-    if curl -sSL --max-time 120 -A "kemp-challenge-hackathon/1.0" -o "$out" "$url" 2>/dev/null \
+    if curl -sSL --max-time 120 -A "denovo-kemp/1.0" -o "$out" "$url" 2>/dev/null \
        && [ -s "$out" ] && head -c 4 "$out" | grep -q "%PDF"; then
         echo "  fetched  $name  ($(du -h "$out" | cut -f1))"
     else

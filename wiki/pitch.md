@@ -104,7 +104,7 @@ Supporting measurements, each cheap and each changing a decision:
    crystal *arrangements* of the same two anchors (`cluster/build_family_motifs.py`).
 3. **Re-run the natural-enzyme controls with pocket conditioning** before trusting any donor number.
 
-**Why it matters beyond this hackathon.** The transferable result is not a sequence, it is a
+**Why it matters beyond this project.** The transferable result is not a sequence, it is a
 reallocation. A de novo design pipeline looks like it is limited by the generative model, so that is
 where the compute goes. Here it was not: the generator was already exact, and the loss sat in a
 25-second step that was being sampled once. Reading an existing report's two columns against each

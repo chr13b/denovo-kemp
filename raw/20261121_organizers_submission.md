@@ -1,6 +1,6 @@
 # Design submission
 
-Submit one FASTA file to S3. Works from the hackathon clusters or from your own
+Submit one FASTA file to S3. Works from the provided clusters or from your own
 machine; it requires only your team AWS sign-in.
 
 Bucket: `perlin-pdh-2026-paris` (eu-west-3, Paris)

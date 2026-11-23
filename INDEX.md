@@ -77,7 +77,6 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [raw/20261121_organizers_cluster-guide.html](raw/20261121_organizers_cluster-guide.html) — same guide as delivered (HTML)
 - [raw/20261121_organizers_submission.md](raw/20261121_organizers_submission.md) — submission format, eligibility, scoring criteria
 - [raw/20261121_organizers_connect-team01.txt](raw/20261121_organizers_connect-team01.txt) — our cluster address, fingerprint and S3 folder (**no key**)
-- [raw/20261121_organizers_challenge-slides.pdf](raw/20261121_organizers_challenge-slides.pdf) — kickoff slides: chemistry, the 4 scoring terms, limitations (**image-only, no text layer**)
 
 ## Code
 - [src/kemp/paths.py](src/kemp/paths.py) — every project path, defined once (data/runs can be overridden by env var)
@@ -196,8 +195,8 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [results/criteria/newseq_s4_k5_k6.tsv](results/criteria/newseq_s4_k5_k6.tsv) — 15 new seed-4-backbone sequences (job 101/102) x 5 seeds, K1-K6 per structure
 - [results/criteria/chris_replicates_k5_k6.tsv](results/criteria/chris_replicates_k5_k6.tsv) — chris' 45 replicated designs x 5 seeds (chris_autopilot replicate-90/100), K1-K6 per structure
 - [results/criteria/rank_stability.tsv](results/criteria/rank_stability.tsv) — scores and ranks of all 198 five-seed designs under the six scoring variants
-- [results/criteria/jj_hackathon_final_k5_k6.tsv](results/criteria/jj_hackathon_final_k5_k6.tsv) — JJ's 10 RFD4-Proteina designs (Hackathon_Kemp_JJ_Final) x 5 Boltz diffusion samples, K1-K6 per structure
-- [results/criteria/jj_hackathon_final_5seeds_k5_k6.tsv](results/criteria/jj_hackathon_final_5seeds_k5_k6.tsv) — top 5 JJ designs refolded at real Boltz seeds 1-5 (job 103), K1-K6 per structure
+- [results/criteria/jj_final_k5_k6.tsv](results/criteria/jj_final_k5_k6.tsv) — JJ's 10 RFD4-Proteina designs (Kemp_JJ_Final) x 5 Boltz diffusion samples, K1-K6 per structure
+- [results/criteria/jj_final_5seeds_k5_k6.tsv](results/criteria/jj_final_5seeds_k5_k6.tsv) — top 5 JJ designs refolded at real Boltz seeds 1-5 (job 103), K1-K6 per structure
 - [results/candidates/ranking_k1_k6.md](results/candidates/ranking_k1_k6.md) — top 15 designs by weighted K1-K6 (5-seed means) with the meaning of every column
 - [results/candidates/ranking_all_k1_k6.md](results/candidates/ranking_all_k1_k6.md) — combined top 25 of all 198 designs (all sources) by K1-K6, with comparison by source
 - [results/candidates/candidates.csv](results/candidates/candidates.csv) — 10 candidate sequences (name, source, length, sequence, base/donor index); zips and confidence jsons per seed next to it

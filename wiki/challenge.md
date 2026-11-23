@@ -1,15 +1,14 @@
 # Challenge
 
-**Perlin x D-BSSE Protein Design Hackathon — we are team 01.**
+**A computational Kemp-eliminase design project (team 01).**
 Sources: [raw/20261121_organizers_start-here.md](../raw/20261121_organizers_start-here.md),
 [raw/20261121_organizers_submission.md](../raw/20261121_organizers_submission.md),
 [raw/20261121_organizers_cluster-guide.md](../raw/20261121_organizers_cluster-guide.md),
-[raw/20261121_organizers_challenge-slides.pdf](../raw/20261121_organizers_challenge-slides.pdf)
-(Lucas Merlicek, CTO & co-founder, Perlin Bio — **image-only PDF, 8 slides**: it has no extractable text,
-so render it to images to read it. Everything decision-relevant in it is distilled onto this page).
+and the organizers' kickoff deck (8 image-only slides, removed from the tree before publication; everything
+decision-relevant in it is distilled onto this page).
 Details on running jobs are in [cluster.md](cluster.md); the file format is in [submission.md](submission.md).
 
-> **Outcome (hackathon over, 2026-11-22).** The final 20-design file was uploaded by a teammate at 12:16 UTC
+> **Outcome (project closed, 2026-11-22).** The final 20-design file was uploaded by a teammate at 12:16 UTC
 > ([submission.md](submission.md), Status). The organizers did not release per-design scores to the team, so every
 > number in this wiki comes from our own instrument. The brief offered every team the chance to submit at least five
 > designs for lab validation, independent of score (section "Lab validation" below); how those five were nominated was

@@ -1,0 +1,6 @@
+# [2026-11-23 18:00] setup | Event context removed from wiki, sources and instructions; wet-lab line in the README intro (chris)
+
+- Replaced the event name, the presenter's name and the "team 01 at ..." framing in `wiki/`, `raw/`, `SETUP.md`, `CLAUDE.md`, `AGENTS.md`, `CONTRIBUTING.md`, `pyproject.toml` and the slide covers (46 exact-match replacements, each asserted). Deleted `raw/20261121_organizers_challenge-slides.pdf` (image-only; its title slide names the event, a presenter and a contact address). Renamed `results/criteria/jj_hackathon_final_*.tsv` to `jj_final_*.tsv`. Dropped one teammate's surname from `wiki/ranking-combined.md` and `cluster/rank_candidates.py`.
+- Kept on purpose, because commands depend on them: the cluster paths `/mnt/ref/hackathon/...` and the S3 bucket name. Perlin stays named as the compute sponsor. Decision record in `wiki/decisions.md`.
+- README: added the wet-lab sentence at the top of the intro (owner's statement; the repository itself does not record it).
+- Still carrying personal names, not touched: `slides/*/team.html` (full names and photos), `slides/README.md`, `wiki/team.md`, the source column in `wiki/ranking-combined.md` and the result TSVs, experiment ids and branch names.

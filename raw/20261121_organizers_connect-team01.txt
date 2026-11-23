@@ -1,4 +1,4 @@
-Perlin x D-BSSE Protein Design Hackathon — team 01
+Team 01: connection details
 ==================================================
 
 Your cluster:   <CLUSTER_IP>   (redacted before publication)
