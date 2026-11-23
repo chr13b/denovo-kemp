@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="340" viewBox="0 0 1280 340" role="img" aria-labelledby="t d">
+  <title id="t">Kemp Challenge</title>
+  <desc id="d">De novo Kemp eliminase design: backbone, sequence, refold, replicate. A schematic ligand with its two catalytic contacts.</desc>
+  <defs>
+    <linearGradient id="chain" gradientUnits="userSpaceOnUse" x1="760" y1="0" x2="1240" y2="0">
+      <stop offset="0" stop-color="#0151E2"/>
+      <stop offset="0.25" stop-color="#02C4F4"/>
+      <stop offset="0.45" stop-color="#01EE92"/>
+      <stop offset="0.65" stop-color="#9EDE2E"/>
+      <stop offset="0.82" stop-color="#FE6101"/>
+      <stop offset="1" stop-color="#E32B06"/>
+    </linearGradient>
+    <linearGradient id="strip" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0151E2"/>
+      <stop offset="0.2" stop-color="#02C4F4"/>
+      <stop offset="0.4" stop-color="#01EE92"/>
+      <stop offset="0.6" stop-color="#9EDE2E"/>
+      <stop offset="0.8" stop-color="#FE6101"/>
+      <stop offset="1" stop-color="#E32B06"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#BA76DD" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#BA76DD" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1280" height="340" fill="#0B1220"/>
+  <rect y="328" width="1280" height="12" fill="url(#strip)"/>
+
+  <!-- the chain: N-terminus blue to C-terminus red -->
+  <path d="M 770 262 C 830 150, 890 150, 935 226 S 1030 318, 1090 214 S 1180 120, 1236 176"
+        fill="none" stroke="url(#chain)" stroke-width="11" stroke-linecap="round" opacity="0.95"/>
+
+  <!-- ligand with its glow, and the two contacts the organizers score -->
+  <circle cx="1010" cy="118" r="70" fill="url(#glow)"/>
+  <polygon points="1010,98 1028,108 1028,128 1010,138 992,128 992,108" fill="none" stroke="#BA76DD" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="1010" cy="118" r="6" fill="#BA76DD"/>
+
+  <circle cx="930" cy="84" r="9" fill="#01EE92"/>
+  <line x1="939" y1="89" x2="986" y2="111" stroke="#01EE92" stroke-width="2.5" stroke-dasharray="5 5"/>
+  <text x="858" y="72" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" fill="#01EE92" font-weight="700">Asp  2.5 Å</text>
+
+  <circle cx="1092" cy="70" r="9" fill="#02C4F4"/>
+  <line x1="1085" y1="77" x2="1034" y2="108" stroke="#02C4F4" stroke-width="2.5" stroke-dasharray="5 5"/>
+  <text x="1106" y="62" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" fill="#02C4F4" font-weight="700">Gln  3.0 Å</text>
+
+  <!-- the tethers from the catalytic residues down to the chain -->
+  <line x1="930" y1="93" x2="934" y2="224" stroke="#01EE92" stroke-width="2" opacity="0.35"/>
+  <line x1="1092" y1="79" x2="1089" y2="212" stroke="#02C4F4" stroke-width="2" opacity="0.35"/>
+
+  <text x="64" y="132" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#FFFFFF" letter-spacing="-1">Kemp Challenge</text>
+  <text x="66" y="188" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="25" fill="#C9D3DB">De novo enzyme design where one fold is noise,</text>
+  <text x="66" y="222" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="25" fill="#C9D3DB">so every candidate is replicated before it counts.</text>
+  <text x="66" y="276" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16" fill="#7F8E99" letter-spacing="1.5">PERLIN × D-BSSE PROTEIN DESIGN HACKATHON  ·  TEAM 01</text>
+</svg>

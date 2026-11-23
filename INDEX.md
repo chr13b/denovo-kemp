@@ -15,6 +15,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [CONTRIBUTING.md](CONTRIBUTING.md) — branch and merge playbook, naming scheme, reproducibility checklist
 
 ## Meta
+- [LICENSE](LICENSE) — MIT, for the code and our own writing; `raw/` and the external tools keep their own terms
 - [CLAUDE.md](CLAUDE.md) — schema for Claude Code: rules, conventions and workflows (loads automatically)
 - [AGENTS.md](AGENTS.md) — the same brief, tool-neutral, for **any** AI assistant
 - [GEMINI.md](GEMINI.md) — pointer to AGENTS.md for Gemini
@@ -105,6 +106,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 - [scripts/40_score_metrics_pack.py](scripts/40_score_metrics_pack.py) — score a share_metrics_pack (Boltz-2 cifs + manifest) with scorer v2, weighted K1-K5; `--target=family` uses the 23-crystal medians
 - [scripts/41_k5_seeds.sbatch](scripts/41_k5_seeds.sbatch) — Slurm: refold a directory of Boltz-2 queries at seeds 1-5 for K5
 - [scripts/42_rank_stability.py](scripts/42_rank_stability.py) — rank stability of the K1-K5 ranking under variants (OD2-only base, angle at the heteroatom vs crystal range, K6, mean-of-metrics, worst seed)
+- [scripts/35_plot_readme_figures.py](scripts/35_plot_readme_figures.py) — redraws the README's two figures (refold gap, fresh-seed ranking) from the tracked result tables
 - [scripts/90_build_submission.py](scripts/90_build_submission.py) — `results/designs.jsonl` → `results/designs.fasta` (`make submission`)
 - [scripts/91_bank_from_sweep.py](scripts/91_bank_from_sweep.py) — promote a sweep's best designs into `results/designs.jsonl`, verifying the base/donor residue at each index
 - [tools/check_index.py](tools/check_index.py) — lint: dead links, unindexed files, duplicate entries, bad log/experiment names
@@ -144,6 +146,7 @@ Files in `wiki/ raw/ src/ scripts/ tools/ results/ .claude/skills/` each need th
 ## Artifacts
 - [data/](data/) — bulk inputs, gitignored; registry in `wiki/data.md`
 - [runs/](runs/) — one directory per execution, gitignored; linked from the experiment pages
+- [docs/img/](docs/img/) — README images: `banner.svg` plus the two figures `scripts/35_plot_readme_figures.py` draws
 - [results/](results/) — curated tracked outputs (figures, tables, the submission); each entry names its run
 - [results/designs.jsonl.template](results/designs.jsonl.template) — copy to `results/designs.jsonl`: our submission candidates
 - [results/designs.jsonl](results/designs.jsonl) — **our submission candidates**; rebuild the FASTA with `make submission`
